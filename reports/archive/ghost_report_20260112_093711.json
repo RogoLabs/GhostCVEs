@@ -1,0 +1,107 @@
+{
+  "generated_at": "2026-01-12T15:37:11.473974",
+  "summary": {
+    "total_ghosts": 5,
+    "total_cves_tracked": 5,
+    "total_sources": 5,
+    "oldest_ghost": "CVE-2026-0773",
+    "oldest_ghost_days": 3
+  },
+  "ghosts": [
+    {
+      "cve_id": "CVE-2026-0773",
+      "first_seen": "2026-01-09T00:00:00",
+      "last_checked": "2026-01-12T15:36:49.111030",
+      "days_in_limbo": 3,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-042/",
+          "discovered_at": "2026-01-09T00:00:00",
+          "context": "ZDI-26-042: (0Day) Upsonic Cloudpickle Deserialization of Untrusted Data Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0778",
+      "first_seen": "2026-01-09T00:00:00",
+      "last_checked": "2026-01-12T15:36:49.279238",
+      "days_in_limbo": 3,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-041/",
+          "discovered_at": "2026-01-09T00:00:00",
+          "context": "ZDI-26-041: (0Day) (Pwn2Own) Enel X JuiceBox 40 Telnet Service Missing Authentication Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0776",
+      "first_seen": "2026-01-09T00:00:00",
+      "last_checked": "2026-01-12T15:36:49.459090",
+      "days_in_limbo": 3,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-040/",
+          "discovered_at": "2026-01-09T00:00:00",
+          "context": "ZDI-26-040: (0Day) Discord Client Uncontrolled Search Path Element Local Privilege Escalation Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0774",
+      "first_seen": "2026-01-09T00:00:00",
+      "last_checked": "2026-01-12T15:36:49.722856",
+      "days_in_limbo": 3,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-039/",
+          "discovered_at": "2026-01-09T00:00:00",
+          "context": "ZDI-26-039: (0Day) WatchYourLAN Configuration Page Argument Injection Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0772",
+      "first_seen": "2026-01-09T00:00:00",
+      "last_checked": "2026-01-12T15:36:49.910685",
+      "days_in_limbo": 3,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-038/",
+          "discovered_at": "2026-01-09T00:00:00",
+          "context": "ZDI-26-038: (0Day) Langflow Disk Cache Deserialization of Untrusted Data Remote Code Execution Vulnerability"
+        }
+      ]
+    }
+  ]
+}

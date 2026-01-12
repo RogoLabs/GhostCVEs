@@ -1,0 +1,25 @@
+# Ghost Hunter Dependencies
+# Python 3.11+ required
+
+# Core HTTP/Networking
+requests>=2.31.0
+
+# Database
+SQLAlchemy>=2.0.0
+
+# Terminal UI
+rich>=13.7.0
+
+# XML/Feed Parsing (stdlib is used, but defusedxml for security)
+defusedxml>=0.7.1
+
+# Optional: Better rate limiting
+ratelimit>=2.2.1
+
+# Development/Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+pytest-asyncio>=0.21.0
+mypy>=1.8.0
+black>=24.1.0
+ruff>=0.1.0
