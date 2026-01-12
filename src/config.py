@@ -178,6 +178,49 @@ GITHUB_CONFIG: Final[GitHubSearchConfig] = GitHubSearchConfig()
 
 
 # =============================================================================
+# GitHub Repository Quality & Blacklist Configuration
+# =============================================================================
+
+@dataclass(frozen=True)
+class GitHubQualityConfig:
+    """Configuration for filtering low-quality or fake GitHub repositories."""
+    
+    # Blacklisted repositories (known fake or low-quality sources)
+    # Format: "owner/repo"
+    blacklisted_repos: tuple[str, ...] = (
+        "koreatest12/auto",
+        "Hex0rc1st/CVE_POC_monitor",
+        # Add more as discovered
+    )
+    
+    # Blacklisted users/organizations (prolific fake CVE posters)
+    blacklisted_users: tuple[str, ...] = (
+        "koreatest12",
+        # Add more as discovered
+    )
+    
+    # Repository quality thresholds
+    min_stars: int = 0  # Minimum stars (0 = no filter, suggest 3+ for stricter)
+    min_age_days: int = 1  # Minimum repo age in days (helps filter brand-new spam repos)
+    require_description: bool = True  # Repo must have a description
+    require_license: bool = False  # Repo should have a license (optional)
+    
+    # Confidence scoring weights (0.0 to 1.0)
+    star_weight: float = 0.3  # Weight for star count in confidence score
+    age_weight: float = 0.2  # Weight for repo age
+    activity_weight: float = 0.2  # Weight for recent activity
+    metadata_weight: float = 0.3  # Weight for metadata quality (description, readme, etc.)
+    
+    # Activity thresholds for confidence scoring
+    good_star_count: int = 10  # Stars indicating a quality repo
+    good_age_days: int = 30  # Age indicating established repo
+    recent_activity_days: int = 180  # Consider activity within this window
+
+
+GITHUB_QUALITY_CONFIG: Final[GitHubQualityConfig] = GitHubQualityConfig()
+
+
+# =============================================================================
 # CVE Registry API Configuration
 # =============================================================================
 

@@ -1,6 +1,25 @@
 name: Ghost Hunter - Automated CVE Hunt
 
 on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'src/**'
+      - 'main.py'
+      - 'requirements.txt'
+      - '.github/workflows/hunt.yml'
+  
+  pull_request:
+    branches:
+      - main
+      - master
+    paths:
+      - 'src/**'
+      - 'main.py'
+      - 'requirements.txt'
+  
   schedule:
     # Run every 6 hours
     - cron: '0 */6 * * *'
@@ -10,10 +29,17 @@ on:
       force_run:
         description: 'Force a hunt run even if recently executed'
         required: false
-        default: 'false'
+        default: false
+        type: boolean
 
 permissions:
   contents: write
+  issues: write
+  pull-requests: read
+
+concurrency:
+  group: ghost-hunt-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 env:
   PYTHON_VERSION: '3.11'
@@ -45,35 +71,66 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ghost_log.db
-          key: ghost-db-${{ github.run_id }}
+          key: ghost-db-${{ hashFiles('ghost_log.db') }}-${{ github.run_id }}
           restore-keys: |
+            ghost-db-${{ hashFiles('ghost_log.db') }}-
             ghost-db-
       
       - name: 🔍 Run Ghost Hunt
+        id: hunt
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
         run: |
+          set +e  # Don't fail immediately on errors
           python main.py --hunt --log-level INFO --log-file hunt.log --no-banner
+          EXIT_CODE=$?
+          
+          if [ $EXIT_CODE -ne 0 ]; then
+            echo "::warning::Hunt completed with errors (exit code: $EXIT_CODE)"
+            echo "hunt_status=completed_with_errors" >> $GITHUB_OUTPUT
+          else
+            echo "hunt_status=success" >> $GITHUB_OUTPUT
+          fi
+          
+          exit 0  # Don't fail the workflow
       
       - name: 📊 Generate Reports
+        id: report
         run: |
           python main.py --report --format all --output-dir reports --no-banner
+          
+          # Extract statistics for output
+          GHOST_COUNT=$(python -c "
+          from src.storage import DatabaseManager
+          db = DatabaseManager()
+          stats = db.get_statistics()
+          print(stats.get('total_ghosts', 0))
+          " 2>/dev/null || echo "0")
+          
+          echo "ghost_count=$GHOST_COUNT" >> $GITHUB_OUTPUT
       
       - name: 📋 Display Hunt Summary
         run: |
           echo "## 🔍 Ghost Hunt Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Trigger:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Branch:** ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Hunt Status:** ${{ steps.hunt.outputs.hunt_status }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Total Ghosts:** ${{ steps.report.outputs.ghost_count }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
           
-          if [ -f "reports/ghost_report_*.md" ]; then
+          if [ -f reports/ghost_report_*.md ]; then
             # Get the latest report
             LATEST_REPORT=$(ls -t reports/ghost_report_*.md | head -1)
             cat "$LATEST_REPORT" >> $GITHUB_STEP_SUMMARY
           else
-            python main.py --dashboard --no-banner 2>&1 | head -50 >> $GITHUB_STEP_SUMMARY
+            python main.py --dashboard --no-banner 2>&1 | head -50 >> $GITHUB_STEP_SUMMARY || echo "Dashboard generation failed" >> $GITHUB_STEP_SUMMARY
           fi
       
       - name: 📤 Commit Database Updates
+        if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
@@ -94,19 +151,34 @@ jobs:
           print(stats.get('total_ghosts', 0))
           " 2>/dev/null || echo "0")
             
-            git commit -m "🔍 Ghost Hunt: ${TIMESTAMP} | ${GHOST_COUNT} Ghosts tracked"
+            # Include trigger and GitHub quality filtering info
+            git commit -m "🔍 Ghost Hunt: ${TIMESTAMP} | ${GHOST_COUNT} Ghosts tracked [via ${{ github.event_name }}]"
             git push
           fi
       
-      - name: 📁 Upload Artifacts
+      - name: 📁 Upload Hunt Logs
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ghost-hunt-reports
-          path: |
-            reports/
-            hunt.log
-            ghost_log.db
+          name: hunt-logs-${{ github.run_number }}
+          path: hunt.log
+          retention-days: 7
+      
+      - name: 📁 Upload Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ghost-hunt-reports-${{ github.run_number }}
+          path: reports/
           retention-days: 30
+      
+      - name: 📁 Upload Database
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ghost-database-${{ github.run_number }}
+          path: ghost_log.db
+          retention-days: 90
       
       - name: 🚨 Alert on New Critical Ghosts
         if: always()
@@ -126,18 +198,18 @@ jobs:
             echo "::warning::$CRITICAL_COUNT critical Ghost CVEs detected"
           fi
 
-  # Optional: Create GitHub Issue for new Ghosts
+  # Optional: Create GitHub Issue for new Ghosts (only on scheduled runs)
   notify:
     name: 📢 Notify New Ghosts
     runs-on: ubuntu-latest
     needs: hunt
-    if: success()
+    if: success() && github.event_name == 'schedule'
     
     steps:
       - name: 📥 Download Reports
         uses: actions/download-artifact@v4
         with:
-          name: ghost-hunt-reports
+          name: ghost-hunt-reports-${{ github.run_number }}
       
       - name: 🐍 Setup Python
         uses: actions/setup-python@v5

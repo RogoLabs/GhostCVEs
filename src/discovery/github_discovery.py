@@ -21,6 +21,7 @@ from src.config import (
     CVE_PATTERN,
     CVE_STRICT_PATTERN,
     GITHUB_CONFIG,
+    GITHUB_QUALITY_CONFIG,
     APP_SETTINGS,
     SourceType,
 )
@@ -107,6 +108,160 @@ class GitHubDiscovery(BaseDiscovery):
         if wait_time > 0:
             self.logger.debug(f"Rate limiting: waiting {wait_time:.2f}s")
             time.sleep(wait_time)
+    
+    def _is_blacklisted(self, repo_full_name: str) -> bool:
+        """
+        Check if a repository is blacklisted.
+        
+        Args:
+            repo_full_name: Full repository name (e.g., "owner/repo")
+        
+        Returns:
+            True if blacklisted, False otherwise
+        """
+        if not repo_full_name:
+            return False
+        
+        # Check against blacklisted repos
+        if repo_full_name in GITHUB_QUALITY_CONFIG.blacklisted_repos:
+            self.logger.info(f"Skipping blacklisted repository: {repo_full_name}")
+            return True
+        
+        # Check against blacklisted users/orgs
+        owner = repo_full_name.split("/")[0] if "/" in repo_full_name else ""
+        if owner in GITHUB_QUALITY_CONFIG.blacklisted_users:
+            self.logger.info(f"Skipping repository from blacklisted user: {owner}")
+            return True
+        
+        return False
+    
+    def _calculate_repo_quality_score(self, repo_data: dict) -> float:
+        """
+        Calculate a quality score for a repository based on various metrics.
+        
+        Args:
+            repo_data: Repository data from GitHub API
+        
+        Returns:
+            Quality score between 0.0 and 1.0
+        """
+        score = 0.0
+        
+        # Star count score (normalized)
+        stars = repo_data.get("stargazers_count", 0)
+        if stars >= GITHUB_QUALITY_CONFIG.good_star_count:
+            star_score = 1.0
+        else:
+            star_score = stars / GITHUB_QUALITY_CONFIG.good_star_count
+        score += star_score * GITHUB_QUALITY_CONFIG.star_weight
+        
+        # Repository age score
+        created_at = repo_data.get("created_at")
+        if created_at:
+            from datetime import datetime, timezone
+            created_date = self._parse_github_date(created_at)
+            if created_date:
+                age_days = (datetime.now(timezone.utc) - created_date).days
+                if age_days >= GITHUB_QUALITY_CONFIG.good_age_days:
+                    age_score = 1.0
+                else:
+                    age_score = age_days / GITHUB_QUALITY_CONFIG.good_age_days
+                score += age_score * GITHUB_QUALITY_CONFIG.age_weight
+        
+        # Recent activity score
+        updated_at = repo_data.get("updated_at") or repo_data.get("pushed_at")
+        if updated_at:
+            from datetime import datetime, timezone
+            updated_date = self._parse_github_date(updated_at)
+            if updated_date:
+                days_since_update = (datetime.now(timezone.utc) - updated_date).days
+                if days_since_update <= GITHUB_QUALITY_CONFIG.recent_activity_days:
+                    activity_score = 1.0 - (days_since_update / GITHUB_QUALITY_CONFIG.recent_activity_days)
+                else:
+                    activity_score = 0.0
+                score += activity_score * GITHUB_QUALITY_CONFIG.activity_weight
+        
+        # Metadata quality score
+        metadata_score = 0.0
+        metadata_checks = 0
+        
+        # Has description
+        if repo_data.get("description"):
+            metadata_score += 1.0
+        metadata_checks += 1
+        
+        # Has license
+        if repo_data.get("license"):
+            metadata_score += 1.0
+        metadata_checks += 1
+        
+        # Has topics/tags
+        if repo_data.get("topics"):
+            metadata_score += 1.0
+        metadata_checks += 1
+        
+        # Has homepage
+        if repo_data.get("homepage"):
+            metadata_score += 0.5
+        metadata_checks += 0.5
+        
+        if metadata_checks > 0:
+            score += (metadata_score / metadata_checks) * GITHUB_QUALITY_CONFIG.metadata_weight
+        
+        return min(1.0, max(0.0, score))
+    
+    def _validate_repository(self, repo_data: dict) -> tuple[bool, float]:
+        """
+        Validate repository quality and calculate confidence score.
+        
+        Args:
+            repo_data: Repository data from GitHub API
+        
+        Returns:
+            Tuple of (is_valid, quality_score)
+        """
+        if not repo_data:
+            return False, 0.0
+        
+        full_name = repo_data.get("full_name", "")
+        
+        # Check blacklist first
+        if self._is_blacklisted(full_name):
+            return False, 0.0
+        
+        # Check minimum stars
+        stars = repo_data.get("stargazers_count", 0)
+        if stars < GITHUB_QUALITY_CONFIG.min_stars:
+            self.logger.debug(f"Repository {full_name} below minimum stars: {stars}")
+            return False, 0.0
+        
+        # Check minimum age
+        created_at = repo_data.get("created_at")
+        if created_at:
+            from datetime import datetime, timezone
+            created_date = self._parse_github_date(created_at)
+            if created_date:
+                age_days = (datetime.now(timezone.utc) - created_date).days
+                if age_days < GITHUB_QUALITY_CONFIG.min_age_days:
+                    self.logger.debug(f"Repository {full_name} too new: {age_days} days")
+                    return False, 0.0
+        
+        # Check description requirement
+        if GITHUB_QUALITY_CONFIG.require_description:
+            if not repo_data.get("description"):
+                self.logger.debug(f"Repository {full_name} missing description")
+                return False, 0.0
+        
+        # Check license requirement (if enabled)
+        if GITHUB_QUALITY_CONFIG.require_license:
+            if not repo_data.get("license"):
+                self.logger.debug(f"Repository {full_name} missing license")
+                return False, 0.0
+        
+        # Calculate quality score
+        quality_score = self._calculate_repo_quality_score(repo_data)
+        
+        return True, quality_score
     
     def _check_github_rate_limit(self, response: requests.Response) -> None:
         """
@@ -229,6 +384,13 @@ class GitHubDiscovery(BaseDiscovery):
         
         repo = item.get("repository", {})
         repo_name = repo.get("full_name", "unknown")
+        
+        # Validate repository quality
+        is_valid, quality_score = self._validate_repository(repo)
+        if not is_valid:
+            self.logger.debug(f"Skipping low-quality repository: {repo_name}")
+            return
+        
         file_path = item.get("path", "")
         
         # Extract CVE IDs from the file name and path
@@ -263,16 +425,22 @@ class GitHubDiscovery(BaseDiscovery):
             # Extract context around the CVE mention
             context = self._extract_context(content, cve_id)
             
+            # Adjust confidence based on repository quality
+            base_confidence = 0.9
+            adjusted_confidence = (base_confidence * 0.5) + (quality_score * 0.5)
+            
             yield DiscoveryResult(
                 cve_id=cve_id,
                 source_type=SourceType.GITHUB_CODE,
                 source_name=f"GitHub Code: {repo_name}",
                 evidence_url=html_url,
                 context=context,
-                confidence=0.9,
+                confidence=adjusted_confidence,
                 raw_data={
                     "repository": repo_name,
                     "file_path": file_path,
+                    "repo_stars": repo.get("stargazers_count", 0),
+                    "quality_score": quality_score,
                 },
             )
     
@@ -371,6 +539,12 @@ class GitHubDiscovery(BaseDiscovery):
         repo = item.get("repository", {})
         repo_name = repo.get("full_name", "unknown")
         
+        # Validate repository quality
+        is_valid, quality_score = self._validate_repository(repo)
+        if not is_valid:
+            self.logger.debug(f"Skipping low-quality repository: {repo_name}")
+            return
+        
         commit = item.get("commit", {})
         message = commit.get("message", "")
         
@@ -382,6 +556,10 @@ class GitHubDiscovery(BaseDiscovery):
         cve_ids = set(CVE_STRICT_PATTERN.findall(message))
         
         for cve_id in cve_ids:
+            # Adjust confidence based on repository quality
+            base_confidence = 0.95
+            adjusted_confidence = (base_confidence * 0.5) + (quality_score * 0.5)
+            
             yield DiscoveryResult(
                 cve_id=cve_id,
                 source_type=SourceType.GITHUB_COMMIT,
@@ -389,12 +567,14 @@ class GitHubDiscovery(BaseDiscovery):
                 evidence_url=html_url,
                 discovered_at=commit_date or datetime.utcnow(),
                 context=message[:500] if message else None,
-                confidence=0.95,
+                confidence=adjusted_confidence,
                 raw_data={
                     "repository": repo_name,
                     "commit_sha": item.get("sha"),
                     "author": author_info.get("name"),
                     "commit_date": author_info.get("date"),
+                    "repo_stars": repo.get("stargazers_count", 0),
+                    "quality_score": quality_score,
                 },
             )
     
