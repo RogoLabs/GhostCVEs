@@ -31,6 +31,7 @@ A Ghost CVE is a vulnerability identifier that appears in the wild (GitHub commi
 ## ✨ Features
 
 - **Multi-Source Discovery**: Monitors GitHub (code + commits), RSS feeds, vendor advisories
+- **GitHub Quality Filtering**: Blacklists fake repositories and scores repo quality to filter spam
 - **Registry Validation**: Validates CVEs against NVD API 2.0 and MITRE CVE Services
 - **Intelligent Tracking**: Preserves first-seen dates while updating status
 - **Rich Terminal UI**: Beautiful dashboards and progress indicators
@@ -165,6 +166,32 @@ GhostCVEs/
 - Monitors commits and code for `CVE-202[5-9]-\d{4,}`
 - Supports authenticated requests for higher rate limits
 - Extracts context around CVE mentions
+- **Quality Filtering**: Blacklists known fake repositories and low-quality sources
+- **Repository Scoring**: Evaluates repos based on stars, age, activity, and metadata
+- **Dynamic Confidence**: Adjusts confidence scores based on repository quality
+
+#### GitHub Repository Blacklist
+
+The following repositories are automatically filtered out as known fake/low-quality sources:
+- `koreatest12/auto` - Known fake repository
+- `Hex0rc1st/CVE_POC_monitor` - Low-quality aggregator
+
+To add more blacklisted repos or configure quality thresholds, edit `src/config.py` -> `GitHubQualityConfig`:
+
+```python
+blacklisted_repos: tuple[str, ...] = (
+    "koreatest12/auto",
+    "Hex0rc1st/CVE_POC_monitor",
+    "your/fake-repo",  # Add more here
+)
+
+# Quality thresholds (adjust as needed)
+min_stars: int = 0          # Minimum GitHub stars (0 = no filter)
+min_age_days: int = 1       # Minimum repo age in days
+require_description: bool = True  # Repo must have description
+```
+
+For comprehensive details on GitHub reliability improvements, see [GITHUB_RELIABILITY_PLAN.md](GITHUB_RELIABILITY_PLAN.md).
 
 ## ⚙️ CLI Options
 
