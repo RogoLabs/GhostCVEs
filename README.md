@@ -8,13 +8,13 @@
 
 📊 **[View Latest Ghost Report](reports/ghost_report.md)**
 
-A Ghost CVE is a vulnerability identifier that appears in the wild (GitHub commits, security advisories, RSS feeds) but remains **RESERVED** or **NOT_FOUND** in official CVE registries like NVD and MITRE. These "ghosts" represent potential security blind spots where vulnerabilities are being discussed publicly before official disclosure.
+A Ghost CVE is a vulnerability identifier that appears in the wild (GitHub commits, security advisories, RSS feeds) but remains **RESERVED** or **NOT_FOUND** in official CVE registries like NVD and MITRE. Also known as **"RESERVED BUT PUBLIC"** CVEs, these "ghosts" represent potential security blind spots where vulnerabilities are being discussed publicly before official disclosure.
 
 ## 🎯 What is a Ghost CVE?
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                         GHOST CVE                               │
+│                    GHOST CVE (RESERVED BUT PUBLIC)              │
 │                                                                 │
 │   CVE-2025-XXXXX mentioned in:                                  │
 │   ├── GitHub commit: "Fix CVE-2025-XXXXX buffer overflow"      │
@@ -24,7 +24,7 @@ A Ghost CVE is a vulnerability identifier that appears in the wild (GitHub commi
 │   But in NVD/MITRE:                                            │
 │   └── Status: RESERVED or 404 NOT FOUND                        │
 │                                                                 │
-│   = GHOST 👻                                                    │
+│   = GHOST 👻 (Public knowledge, no official record)            │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
