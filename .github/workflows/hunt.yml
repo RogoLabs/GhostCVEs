@@ -1,0 +1,232 @@
+name: Ghost Hunter - Automated CVE Hunt
+
+on:
+  schedule:
+    # Run every 6 hours
+    - cron: '0 */6 * * *'
+  
+  workflow_dispatch:
+    inputs:
+      force_run:
+        description: 'Force a hunt run even if recently executed'
+        required: false
+        default: 'false'
+
+permissions:
+  contents: write
+
+env:
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  hunt:
+    name: 🔍 Ghost Hunt
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+      
+      - name: 📦 Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: 🗄️ Restore Database Cache
+        uses: actions/cache@v4
+        with:
+          path: ghost_log.db
+          key: ghost-db-${{ github.run_id }}
+          restore-keys: |
+            ghost-db-
+      
+      - name: 🔍 Run Ghost Hunt
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
+        run: |
+          python main.py --hunt --log-level INFO --log-file hunt.log --no-banner
+      
+      - name: 📊 Generate Reports
+        run: |
+          python main.py --report --format all --output-dir reports --no-banner
+      
+      - name: 📋 Display Hunt Summary
+        run: |
+          echo "## 🔍 Ghost Hunt Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -f "reports/ghost_report_*.md" ]; then
+            # Get the latest report
+            LATEST_REPORT=$(ls -t reports/ghost_report_*.md | head -1)
+            cat "$LATEST_REPORT" >> $GITHUB_STEP_SUMMARY
+          else
+            python main.py --dashboard --no-banner 2>&1 | head -50 >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: 📤 Commit Database Updates
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          # Add database and reports
+          git add ghost_log.db || true
+          git add reports/ || true
+          
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
+            GHOST_COUNT=$(python -c "
+          from src.storage import DatabaseManager
+          db = DatabaseManager()
+          stats = db.get_statistics()
+          print(stats.get('total_ghosts', 0))
+          " 2>/dev/null || echo "0")
+            
+            git commit -m "🔍 Ghost Hunt: ${TIMESTAMP} | ${GHOST_COUNT} Ghosts tracked"
+            git push
+          fi
+      
+      - name: 📁 Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ghost-hunt-reports
+          path: |
+            reports/
+            hunt.log
+            ghost_log.db
+          retention-days: 30
+      
+      - name: 🚨 Alert on New Critical Ghosts
+        if: always()
+        run: |
+          # Check for critical ghosts (30+ days in limbo)
+          CRITICAL_COUNT=$(python -c "
+          from src.storage import DatabaseManager
+          from src.config import APP_SETTINGS
+          db = DatabaseManager()
+          ghosts = db.get_ghost_cves(only_ghosts=True)
+          critical = [g for g in ghosts if g.days_in_limbo >= APP_SETTINGS.limbo_critical_days]
+          print(len(critical))
+          " 2>/dev/null || echo "0")
+          
+          if [ "$CRITICAL_COUNT" -gt "0" ]; then
+            echo "⚠️ Warning: $CRITICAL_COUNT critical Ghost CVEs (30+ days in limbo)"
+            echo "::warning::$CRITICAL_COUNT critical Ghost CVEs detected"
+          fi
+
+  # Optional: Create GitHub Issue for new Ghosts
+  notify:
+    name: 📢 Notify New Ghosts
+    runs-on: ubuntu-latest
+    needs: hunt
+    if: success()
+    
+    steps:
+      - name: 📥 Download Reports
+        uses: actions/download-artifact@v4
+        with:
+          name: ghost-hunt-reports
+      
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: 📦 Install Dependencies
+        run: pip install requests
+      
+      - name: 📢 Check for New Ghosts
+        id: check_ghosts
+        run: |
+          # Parse the latest JSON report for new ghosts
+          if [ -f "reports/ghost_report_*.json" ]; then
+            LATEST_REPORT=$(ls -t reports/ghost_report_*.json | head -1)
+            NEW_GHOSTS=$(python -c "
+          import json
+          from datetime import datetime, timedelta
+          
+          with open('$LATEST_REPORT') as f:
+              data = json.load(f)
+          
+          # Count ghosts first seen in the last 6 hours
+          cutoff = datetime.utcnow() - timedelta(hours=6)
+          new_count = 0
+          
+          for ghost in data.get('ghosts', []):
+              first_seen = datetime.fromisoformat(ghost['first_seen'].replace('Z', '+00:00'))
+              if first_seen.replace(tzinfo=None) > cutoff:
+                  new_count += 1
+          
+          print(new_count)
+          " 2>/dev/null || echo "0")
+            
+            echo "new_ghost_count=$NEW_GHOSTS" >> $GITHUB_OUTPUT
+          else
+            echo "new_ghost_count=0" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: 📝 Create Issue for New Ghosts
+        if: steps.check_ghosts.outputs.new_ghost_count > 0
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            
+            // Find latest JSON report
+            const reportsDir = 'reports';
+            const files = fs.readdirSync(reportsDir)
+              .filter(f => f.endsWith('.json'))
+              .sort()
+              .reverse();
+            
+            if (files.length === 0) return;
+            
+            const reportPath = path.join(reportsDir, files[0]);
+            const report = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+            
+            const cutoff = new Date(Date.now() - 6 * 60 * 60 * 1000);
+            const newGhosts = report.ghosts.filter(g => 
+              new Date(g.first_seen) > cutoff
+            );
+            
+            if (newGhosts.length === 0) return;
+            
+            let body = `## 👻 New Ghost CVEs Detected\n\n`;
+            body += `**Hunt Time:** ${new Date().toISOString()}\n`;
+            body += `**New Ghosts:** ${newGhosts.length}\n\n`;
+            body += `| CVE ID | Status | First Seen | Primary Source |\n`;
+            body += `|--------|--------|------------|----------------|\n`;
+            
+            for (const ghost of newGhosts.slice(0, 20)) {
+              const source = ghost.sources[0];
+              body += `| ${ghost.cve_id} | ${ghost.registry_status} | `;
+              body += `${ghost.first_seen.split('T')[0]} | `;
+              body += `[${source?.name || 'Unknown'}](${source?.url || '#'}) |\n`;
+            }
+            
+            if (newGhosts.length > 20) {
+              body += `\n*...and ${newGhosts.length - 20} more*\n`;
+            }
+            
+            body += `\n---\n*Automated report by Ghost Hunter*`;
+            
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `👻 ${newGhosts.length} New Ghost CVE(s) Detected`,
+              body: body,
+              labels: ['ghost-cve', 'automated']
+            });

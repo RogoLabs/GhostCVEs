@@ -1,0 +1,1000 @@
+{
+  "generated_at": "2026-01-12T15:16:43.186164",
+  "summary": {
+    "total_ghosts": 52,
+    "total_cves_tracked": 4233,
+    "total_sources": 4233,
+    "oldest_ghost": "CVE-2026-0773",
+    "oldest_ghost_days": 0
+  },
+  "ghosts": [
+    {
+      "cve_id": "CVE-2025-67855",
+      "first_seen": "2026-01-12T13:06:37.354506",
+      "last_checked": "2026-01-12T13:08:49.373699",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.95,
+      "description": null,
+      "sources": [
+        {
+          "type": "github_commit",
+          "name": "GitHub Commit: NixOS/nixpkgs",
+          "url": "https://github.com/NixOS/nixpkgs/commit/a02d96192ebb0291bc1fd26c2739631243827ecc",
+          "discovered_at": "2026-01-12T13:06:37.354506",
+          "context": "moodle: 5.0.2 -> 5.0.4\n\nFixes:\n* CVE-2025-62395\n* CVE-2025-62396\n* CVE-2025-62397\n* CVE-2025-62398\n* CVE-2025-62399\n* CVE-2025-62400\n* CVE-2025-62401\n* CVE-2025-62393\n* CVE-2025-54869\n* CVE-2025-62394\n* CVE-2025-67847\n* CVE-2025-67848\n* CVE-2025-67849\n* CVE-2025-67850\n* CVE-2025-67851\n* CVE-2025-67852\n* CVE-2025-67853\n* CVE-2025-67854\n* CVE-2025-67855\n* CVE-2025-67856\n* CVE-2025-67857\n\nChanges:\nhttps://moodledev.io/general/releases/5.0/5.0.3\nhttps://moodledev.io/general/releases/5.0/5.0.4"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-67857",
+      "first_seen": "2026-01-12T13:06:37.354500",
+      "last_checked": "2026-01-12T13:08:49.195742",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.95,
+      "description": null,
+      "sources": [
+        {
+          "type": "github_commit",
+          "name": "GitHub Commit: NixOS/nixpkgs",
+          "url": "https://github.com/NixOS/nixpkgs/commit/a02d96192ebb0291bc1fd26c2739631243827ecc",
+          "discovered_at": "2026-01-12T13:06:37.354500",
+          "context": "moodle: 5.0.2 -> 5.0.4\n\nFixes:\n* CVE-2025-62395\n* CVE-2025-62396\n* CVE-2025-62397\n* CVE-2025-62398\n* CVE-2025-62399\n* CVE-2025-62400\n* CVE-2025-62401\n* CVE-2025-62393\n* CVE-2025-54869\n* CVE-2025-62394\n* CVE-2025-67847\n* CVE-2025-67848\n* CVE-2025-67849\n* CVE-2025-67850\n* CVE-2025-67851\n* CVE-2025-67852\n* CVE-2025-67853\n* CVE-2025-67854\n* CVE-2025-67855\n* CVE-2025-67856\n* CVE-2025-67857\n\nChanges:\nhttps://moodledev.io/general/releases/5.0/5.0.3\nhttps://moodledev.io/general/releases/5.0/5.0.4"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-67847",
+      "first_seen": "2026-01-12T13:06:37.354497",
+      "last_checked": "2026-01-12T13:08:49.034093",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.95,
+      "description": null,
+      "sources": [
+        {
+          "type": "github_commit",
+          "name": "GitHub Commit: NixOS/nixpkgs",
+          "url": "https://github.com/NixOS/nixpkgs/commit/a02d96192ebb0291bc1fd26c2739631243827ecc",
+          "discovered_at": "2026-01-12T13:06:37.354497",
+          "context": "moodle: 5.0.2 -> 5.0.4\n\nFixes:\n* CVE-2025-62395\n* CVE-2025-62396\n* CVE-2025-62397\n* CVE-2025-62398\n* CVE-2025-62399\n* CVE-2025-62400\n* CVE-2025-62401\n* CVE-2025-62393\n* CVE-2025-54869\n* CVE-2025-62394\n* CVE-2025-67847\n* CVE-2025-67848\n* CVE-2025-67849\n* CVE-2025-67850\n* CVE-2025-67851\n* CVE-2025-67852\n* CVE-2025-67853\n* CVE-2025-67854\n* CVE-2025-67855\n* CVE-2025-67856\n* CVE-2025-67857\n\nChanges:\nhttps://moodledev.io/general/releases/5.0/5.0.3\nhttps://moodledev.io/general/releases/5.0/5.0.4"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-67856",
+      "first_seen": "2026-01-12T13:06:37.354495",
+      "last_checked": "2026-01-12T13:08:48.770624",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.95,
+      "description": null,
+      "sources": [
+        {
+          "type": "github_commit",
+          "name": "GitHub Commit: NixOS/nixpkgs",
+          "url": "https://github.com/NixOS/nixpkgs/commit/a02d96192ebb0291bc1fd26c2739631243827ecc",
+          "discovered_at": "2026-01-12T13:06:37.354495",
+          "context": "moodle: 5.0.2 -> 5.0.4\n\nFixes:\n* CVE-2025-62395\n* CVE-2025-62396\n* CVE-2025-62397\n* CVE-2025-62398\n* CVE-2025-62399\n* CVE-2025-62400\n* CVE-2025-62401\n* CVE-2025-62393\n* CVE-2025-54869\n* CVE-2025-62394\n* CVE-2025-67847\n* CVE-2025-67848\n* CVE-2025-67849\n* CVE-2025-67850\n* CVE-2025-67851\n* CVE-2025-67852\n* CVE-2025-67853\n* CVE-2025-67854\n* CVE-2025-67855\n* CVE-2025-67856\n* CVE-2025-67857\n\nChanges:\nhttps://moodledev.io/general/releases/5.0/5.0.3\nhttps://moodledev.io/general/releases/5.0/5.0.4"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-67852",
+      "first_seen": "2026-01-12T13:06:37.354492",
+      "last_checked": "2026-01-12T13:08:48.238263",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.95,
+      "description": null,
+      "sources": [
+        {
+          "type": "github_commit",
+          "name": "GitHub Commit: NixOS/nixpkgs",
+          "url": "https://github.com/NixOS/nixpkgs/commit/a02d96192ebb0291bc1fd26c2739631243827ecc",
+          "discovered_at": "2026-01-12T13:06:37.354492",
+          "context": "moodle: 5.0.2 -> 5.0.4\n\nFixes:\n* CVE-2025-62395\n* CVE-2025-62396\n* CVE-2025-62397\n* CVE-2025-62398\n* CVE-2025-62399\n* CVE-2025-62400\n* CVE-2025-62401\n* CVE-2025-62393\n* CVE-2025-54869\n* CVE-2025-62394\n* CVE-2025-67847\n* CVE-2025-67848\n* CVE-2025-67849\n* CVE-2025-67850\n* CVE-2025-67851\n* CVE-2025-67852\n* CVE-2025-67853\n* CVE-2025-67854\n* CVE-2025-67855\n* CVE-2025-67856\n* CVE-2025-67857\n\nChanges:\nhttps://moodledev.io/general/releases/5.0/5.0.3\nhttps://moodledev.io/general/releases/5.0/5.0.4"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-67848",
+      "first_seen": "2026-01-12T13:06:37.354488",
+      "last_checked": "2026-01-12T13:08:47.996027",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.95,
+      "description": null,
+      "sources": [
+        {
+          "type": "github_commit",
+          "name": "GitHub Commit: NixOS/nixpkgs",
+          "url": "https://github.com/NixOS/nixpkgs/commit/a02d96192ebb0291bc1fd26c2739631243827ecc",
+          "discovered_at": "2026-01-12T13:06:37.354488",
+          "context": "moodle: 5.0.2 -> 5.0.4\n\nFixes:\n* CVE-2025-62395\n* CVE-2025-62396\n* CVE-2025-62397\n* CVE-2025-62398\n* CVE-2025-62399\n* CVE-2025-62400\n* CVE-2025-62401\n* CVE-2025-62393\n* CVE-2025-54869\n* CVE-2025-62394\n* CVE-2025-67847\n* CVE-2025-67848\n* CVE-2025-67849\n* CVE-2025-67850\n* CVE-2025-67851\n* CVE-2025-67852\n* CVE-2025-67853\n* CVE-2025-67854\n* CVE-2025-67855\n* CVE-2025-67856\n* CVE-2025-67857\n\nChanges:\nhttps://moodledev.io/general/releases/5.0/5.0.3\nhttps://moodledev.io/general/releases/5.0/5.0.4"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-67851",
+      "first_seen": "2026-01-12T13:06:37.354483",
+      "last_checked": "2026-01-12T13:08:19.421909",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.95,
+      "description": null,
+      "sources": [
+        {
+          "type": "github_commit",
+          "name": "GitHub Commit: NixOS/nixpkgs",
+          "url": "https://github.com/NixOS/nixpkgs/commit/a02d96192ebb0291bc1fd26c2739631243827ecc",
+          "discovered_at": "2026-01-12T13:06:37.354483",
+          "context": "moodle: 5.0.2 -> 5.0.4\n\nFixes:\n* CVE-2025-62395\n* CVE-2025-62396\n* CVE-2025-62397\n* CVE-2025-62398\n* CVE-2025-62399\n* CVE-2025-62400\n* CVE-2025-62401\n* CVE-2025-62393\n* CVE-2025-54869\n* CVE-2025-62394\n* CVE-2025-67847\n* CVE-2025-67848\n* CVE-2025-67849\n* CVE-2025-67850\n* CVE-2025-67851\n* CVE-2025-67852\n* CVE-2025-67853\n* CVE-2025-67854\n* CVE-2025-67855\n* CVE-2025-67856\n* CVE-2025-67857\n\nChanges:\nhttps://moodledev.io/general/releases/5.0/5.0.3\nhttps://moodledev.io/general/releases/5.0/5.0.4"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-67853",
+      "first_seen": "2026-01-12T13:06:37.354481",
+      "last_checked": "2026-01-12T13:08:19.150698",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.95,
+      "description": null,
+      "sources": [
+        {
+          "type": "github_commit",
+          "name": "GitHub Commit: NixOS/nixpkgs",
+          "url": "https://github.com/NixOS/nixpkgs/commit/a02d96192ebb0291bc1fd26c2739631243827ecc",
+          "discovered_at": "2026-01-12T13:06:37.354481",
+          "context": "moodle: 5.0.2 -> 5.0.4\n\nFixes:\n* CVE-2025-62395\n* CVE-2025-62396\n* CVE-2025-62397\n* CVE-2025-62398\n* CVE-2025-62399\n* CVE-2025-62400\n* CVE-2025-62401\n* CVE-2025-62393\n* CVE-2025-54869\n* CVE-2025-62394\n* CVE-2025-67847\n* CVE-2025-67848\n* CVE-2025-67849\n* CVE-2025-67850\n* CVE-2025-67851\n* CVE-2025-67852\n* CVE-2025-67853\n* CVE-2025-67854\n* CVE-2025-67855\n* CVE-2025-67856\n* CVE-2025-67857\n\nChanges:\nhttps://moodledev.io/general/releases/5.0/5.0.3\nhttps://moodledev.io/general/releases/5.0/5.0.4"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-67849",
+      "first_seen": "2026-01-12T13:06:37.354474",
+      "last_checked": "2026-01-12T13:08:18.975727",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.95,
+      "description": null,
+      "sources": [
+        {
+          "type": "github_commit",
+          "name": "GitHub Commit: NixOS/nixpkgs",
+          "url": "https://github.com/NixOS/nixpkgs/commit/a02d96192ebb0291bc1fd26c2739631243827ecc",
+          "discovered_at": "2026-01-12T13:06:37.354474",
+          "context": "moodle: 5.0.2 -> 5.0.4\n\nFixes:\n* CVE-2025-62395\n* CVE-2025-62396\n* CVE-2025-62397\n* CVE-2025-62398\n* CVE-2025-62399\n* CVE-2025-62400\n* CVE-2025-62401\n* CVE-2025-62393\n* CVE-2025-54869\n* CVE-2025-62394\n* CVE-2025-67847\n* CVE-2025-67848\n* CVE-2025-67849\n* CVE-2025-67850\n* CVE-2025-67851\n* CVE-2025-67852\n* CVE-2025-67853\n* CVE-2025-67854\n* CVE-2025-67855\n* CVE-2025-67856\n* CVE-2025-67857\n\nChanges:\nhttps://moodledev.io/general/releases/5.0/5.0.3\nhttps://moodledev.io/general/releases/5.0/5.0.4"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-67854",
+      "first_seen": "2026-01-12T13:06:37.354472",
+      "last_checked": "2026-01-12T13:08:18.787211",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.95,
+      "description": null,
+      "sources": [
+        {
+          "type": "github_commit",
+          "name": "GitHub Commit: NixOS/nixpkgs",
+          "url": "https://github.com/NixOS/nixpkgs/commit/a02d96192ebb0291bc1fd26c2739631243827ecc",
+          "discovered_at": "2026-01-12T13:06:37.354472",
+          "context": "moodle: 5.0.2 -> 5.0.4\n\nFixes:\n* CVE-2025-62395\n* CVE-2025-62396\n* CVE-2025-62397\n* CVE-2025-62398\n* CVE-2025-62399\n* CVE-2025-62400\n* CVE-2025-62401\n* CVE-2025-62393\n* CVE-2025-54869\n* CVE-2025-62394\n* CVE-2025-67847\n* CVE-2025-67848\n* CVE-2025-67849\n* CVE-2025-67850\n* CVE-2025-67851\n* CVE-2025-67852\n* CVE-2025-67853\n* CVE-2025-67854\n* CVE-2025-67855\n* CVE-2025-67856\n* CVE-2025-67857\n\nChanges:\nhttps://moodledev.io/general/releases/5.0/5.0.3\nhttps://moodledev.io/general/releases/5.0/5.0.4"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-67850",
+      "first_seen": "2026-01-12T13:06:37.354470",
+      "last_checked": "2026-01-12T13:08:18.588074",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.95,
+      "description": null,
+      "sources": [
+        {
+          "type": "github_commit",
+          "name": "GitHub Commit: NixOS/nixpkgs",
+          "url": "https://github.com/NixOS/nixpkgs/commit/a02d96192ebb0291bc1fd26c2739631243827ecc",
+          "discovered_at": "2026-01-12T13:06:37.354470",
+          "context": "moodle: 5.0.2 -> 5.0.4\n\nFixes:\n* CVE-2025-62395\n* CVE-2025-62396\n* CVE-2025-62397\n* CVE-2025-62398\n* CVE-2025-62399\n* CVE-2025-62400\n* CVE-2025-62401\n* CVE-2025-62393\n* CVE-2025-54869\n* CVE-2025-62394\n* CVE-2025-67847\n* CVE-2025-67848\n* CVE-2025-67849\n* CVE-2025-67850\n* CVE-2025-67851\n* CVE-2025-67852\n* CVE-2025-67853\n* CVE-2025-67854\n* CVE-2025-67855\n* CVE-2025-67856\n* CVE-2025-67857\n\nChanges:\nhttps://moodledev.io/general/releases/5.0/5.0.3\nhttps://moodledev.io/general/releases/5.0/5.0.4"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0779",
+      "first_seen": "2026-01-12T13:06:36.882677",
+      "last_checked": "2026-01-12T13:11:23.759697",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-001/",
+          "discovered_at": "2026-01-12T13:06:36.882677",
+          "context": "ZDI-26-001: (0Day) ALGO 8180 IP Audio Alerter Ping Command Injection Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0780",
+      "first_seen": "2026-01-12T13:06:36.882671",
+      "last_checked": "2026-01-12T13:11:23.631779",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-002/",
+          "discovered_at": "2026-01-12T13:06:36.882671",
+          "context": "ZDI-26-002: (0Day) ALGO 8180 IP Audio Alerter Web UI Command Injection Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0781",
+      "first_seen": "2026-01-12T13:06:36.882664",
+      "last_checked": "2026-01-12T13:11:20.226514",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-003/",
+          "discovered_at": "2026-01-12T13:06:36.882664",
+          "context": "ZDI-26-003: (0Day) ALGO 8180 IP Audio Alerter Web UI Command Injection Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0782",
+      "first_seen": "2026-01-12T13:06:36.882658",
+      "last_checked": "2026-01-12T13:11:20.096088",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-004/",
+          "discovered_at": "2026-01-12T13:06:36.882658",
+          "context": "ZDI-26-004: (0Day) ALGO 8180 IP Audio Alerter Web UI Command Injection Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0783",
+      "first_seen": "2026-01-12T13:06:36.882651",
+      "last_checked": "2026-01-12T13:11:19.968001",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-005/",
+          "discovered_at": "2026-01-12T13:06:36.882651",
+          "context": "ZDI-26-005: (0Day) ALGO 8180 IP Audio Alerter Web UI Command Injection Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0784",
+      "first_seen": "2026-01-12T13:06:36.882645",
+      "last_checked": "2026-01-12T13:11:19.802193",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-006/",
+          "discovered_at": "2026-01-12T13:06:36.882645",
+          "context": "ZDI-26-006: (0Day) ALGO 8180 IP Audio Alerter Web UI Command Injection Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0785",
+      "first_seen": "2026-01-12T13:06:36.882638",
+      "last_checked": "2026-01-12T13:11:19.301452",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-007/",
+          "discovered_at": "2026-01-12T13:06:36.882638",
+          "context": "ZDI-26-007: (0Day) ALGO 8180 IP Audio Alerter API Command Injection Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0786",
+      "first_seen": "2026-01-12T13:06:36.882632",
+      "last_checked": "2026-01-12T13:11:19.131620",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-008/",
+          "discovered_at": "2026-01-12T13:06:36.882632",
+          "context": "ZDI-26-008: (0Day) ALGO 8180 IP Audio Alerter SCI Command Injection Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0787",
+      "first_seen": "2026-01-12T13:06:36.882625",
+      "last_checked": "2026-01-12T13:10:53.573468",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-009/",
+          "discovered_at": "2026-01-12T13:06:36.882625",
+          "context": "ZDI-26-009: (0Day) ALGO 8180 IP Audio Alerter SAC Command Injection Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0788",
+      "first_seen": "2026-01-12T13:06:36.882618",
+      "last_checked": "2026-01-12T13:10:53.449135",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-010/",
+          "discovered_at": "2026-01-12T13:06:36.882618",
+          "context": "ZDI-26-010: (0Day) ALGO 8180 IP Audio Alerter Web UI Persistent Cross-Site Scripting Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0789",
+      "first_seen": "2026-01-12T13:06:36.882611",
+      "last_checked": "2026-01-12T13:10:49.973796",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-011/",
+          "discovered_at": "2026-01-12T13:06:36.882611",
+          "context": "ZDI-26-011: (0Day) ALGO 8180 IP Audio Alerter Web UI Inclusion of Authentication Cookie in Response Body Information Disclosure Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0790",
+      "first_seen": "2026-01-12T13:06:36.882604",
+      "last_checked": "2026-01-12T13:10:49.847620",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-012/",
+          "discovered_at": "2026-01-12T13:06:36.882604",
+          "context": "ZDI-26-012: (0Day) ALGO 8180 IP Audio Alerter Web UI Direct Request Information Disclosure Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0791",
+      "first_seen": "2026-01-12T13:06:36.882597",
+      "last_checked": "2026-01-12T13:10:49.723974",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-013/",
+          "discovered_at": "2026-01-12T13:06:36.882597",
+          "context": "ZDI-26-013: (0Day) ALGO 8180 IP Audio Alerter SIP INVITE Replaces Stack-based Buffer Overflow Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0792",
+      "first_seen": "2026-01-12T13:06:36.882591",
+      "last_checked": "2026-01-12T13:10:49.531657",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-014/",
+          "discovered_at": "2026-01-12T13:06:36.882591",
+          "context": "ZDI-26-014: (0Day) ALGO 8180 IP Audio Alerter SIP INVITE Alert-Info Stack-based Buffer Overflow Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0793",
+      "first_seen": "2026-01-12T13:06:36.882584",
+      "last_checked": "2026-01-12T13:10:49.130513",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-015/",
+          "discovered_at": "2026-01-12T13:06:36.882584",
+          "context": "ZDI-26-015: (0Day) ALGO 8180 IP Audio Alerter InformaCast Heap-based Buffer Overflow Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0794",
+      "first_seen": "2026-01-12T13:06:36.882577",
+      "last_checked": "2026-01-12T13:10:48.952426",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-016/",
+          "discovered_at": "2026-01-12T13:06:36.882577",
+          "context": "ZDI-26-016: (0Day) ALGO 8180 IP Audio Alerter SIP Use-After-Free Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0795",
+      "first_seen": "2026-01-12T13:06:36.882570",
+      "last_checked": "2026-01-12T13:10:23.445373",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-017/",
+          "discovered_at": "2026-01-12T13:06:36.882570",
+          "context": "ZDI-26-017: (0Day) ALGO 8180 IP Audio Alerter Web UI Command Injection Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0796",
+      "first_seen": "2026-01-12T13:06:36.882563",
+      "last_checked": "2026-01-12T13:10:23.317298",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-018/",
+          "discovered_at": "2026-01-12T13:06:36.882563",
+          "context": "ZDI-26-018: (0Day) ALGO 8180 IP Audio Alerter Web UI Command Injection Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-15063",
+      "first_seen": "2026-01-12T13:06:36.882548",
+      "last_checked": "2026-01-12T13:10:19.860247",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-020/",
+          "discovered_at": "2026-01-12T13:06:36.882548",
+          "context": "ZDI-26-020: (0Day) Ollama MCP Server execAsync Command Injection Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0755",
+      "first_seen": "2026-01-12T13:06:36.882542",
+      "last_checked": "2026-01-12T13:10:19.736240",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-021/",
+          "discovered_at": "2026-01-12T13:06:36.882542",
+          "context": "ZDI-26-021: (0Day) gemini-mcp-tool execAsync Command Injection Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0756",
+      "first_seen": "2026-01-12T13:06:36.882536",
+      "last_checked": "2026-01-12T13:10:19.607870",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-022/",
+          "discovered_at": "2026-01-12T13:06:36.882536",
+          "context": "ZDI-26-022: (0Day) github-kanban-mcp-server execAsync Command Injection Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0757",
+      "first_seen": "2026-01-12T13:06:36.882529",
+      "last_checked": "2026-01-12T13:10:19.355264",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-023/",
+          "discovered_at": "2026-01-12T13:06:36.882529",
+          "context": "ZDI-26-023: (0Day) MCP Manager for Claude Desktop execute-command Command Injection Sandbox Escape Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0758",
+      "first_seen": "2026-01-12T13:06:36.882521",
+      "last_checked": "2026-01-12T13:10:18.843342",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-024/",
+          "discovered_at": "2026-01-12T13:06:36.882521",
+          "context": "ZDI-26-024: (0Day) mcp-server-siri-shortcuts shortcutName Command Injection Privilege Escalation Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0759",
+      "first_seen": "2026-01-12T13:06:36.882513",
+      "last_checked": "2026-01-12T13:10:18.648654",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-025/",
+          "discovered_at": "2026-01-12T13:06:36.882513",
+          "context": "ZDI-26-025: (0Day) Katana Network Development Starter Kit executeCommand Command Injection Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0760",
+      "first_seen": "2026-01-12T13:06:36.882506",
+      "last_checked": "2026-01-12T13:09:53.225550",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-026/",
+          "discovered_at": "2026-01-12T13:06:36.882506",
+          "context": "ZDI-26-026: (0Day) Foundation Agents MetaGPT deserialize_message Deserialization of Untrusted Data Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0761",
+      "first_seen": "2026-01-12T13:06:36.882499",
+      "last_checked": "2026-01-12T13:09:53.098956",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-027/",
+          "discovered_at": "2026-01-12T13:06:36.882499",
+          "context": "ZDI-26-027: (0Day) Foundation Agents MetaGPT actionoutput_str_to_mapping Code Injection Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0762",
+      "first_seen": "2026-01-12T13:06:36.882492",
+      "last_checked": "2026-01-12T13:09:49.625784",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-028/",
+          "discovered_at": "2026-01-12T13:06:36.882492",
+          "context": "ZDI-26-028: (0Day) GPT Academic stream_daas Deserialization of Untrusted Data Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0763",
+      "first_seen": "2026-01-12T13:06:36.882484",
+      "last_checked": "2026-01-12T13:09:49.502397",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-029/",
+          "discovered_at": "2026-01-12T13:06:36.882484",
+          "context": "ZDI-26-029: (0Day) GPT Academic run_in_subprocess_wrapper_func Deserialization of Untrusted Data Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0764",
+      "first_seen": "2026-01-12T13:06:36.882477",
+      "last_checked": "2026-01-12T13:09:49.336107",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-030/",
+          "discovered_at": "2026-01-12T13:06:36.882477",
+          "context": "ZDI-26-030: (0Day) GPT Academic upload Deserialization of Untrusted Data Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0765",
+      "first_seen": "2026-01-12T13:06:36.882471",
+      "last_checked": "2026-01-12T13:09:49.121628",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-031/",
+          "discovered_at": "2026-01-12T13:06:36.882471",
+          "context": "ZDI-26-031: (0Day) Open WebUI PIP install_frontmatter_requirements Command Injection Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0766",
+      "first_seen": "2026-01-12T13:06:36.882464",
+      "last_checked": "2026-01-12T13:09:48.614127",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-032/",
+          "discovered_at": "2026-01-12T13:06:36.882464",
+          "context": "ZDI-26-032: (0Day) Open WebUI load_tool_module_by_id Command Injection Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0767",
+      "first_seen": "2026-01-12T13:06:36.882457",
+      "last_checked": "2026-01-12T13:09:48.452037",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-033/",
+          "discovered_at": "2026-01-12T13:06:36.882457",
+          "context": "ZDI-26-033: (0Day) Open WebUI Cleartext Transmission of Credentials Information Disclosure Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0768",
+      "first_seen": "2026-01-12T13:06:36.882451",
+      "last_checked": "2026-01-12T13:09:23.094585",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-034/",
+          "discovered_at": "2026-01-12T13:06:36.882451",
+          "context": "ZDI-26-034: (0Day) Langflow code Code Injection Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0769",
+      "first_seen": "2026-01-12T13:06:36.882444",
+      "last_checked": "2026-01-12T13:09:22.966828",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-035/",
+          "discovered_at": "2026-01-12T13:06:36.882444",
+          "context": "ZDI-26-035: (0Day) Langflow eval_custom_component_code Eval Injection Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0770",
+      "first_seen": "2026-01-12T13:06:36.882438",
+      "last_checked": "2026-01-12T13:09:19.397872",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-036/",
+          "discovered_at": "2026-01-12T13:06:36.882438",
+          "context": "ZDI-26-036: (0Day) Langflow exec_globals Inclusion of Functionality from Untrusted Control Sphere Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0771",
+      "first_seen": "2026-01-12T13:06:36.882431",
+      "last_checked": "2026-01-12T13:09:19.265749",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-037/",
+          "discovered_at": "2026-01-12T13:06:36.882431",
+          "context": "ZDI-26-037: (0Day) Langflow PythonFunction Code Injection Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0772",
+      "first_seen": "2026-01-12T13:06:36.882423",
+      "last_checked": "2026-01-12T13:09:19.070558",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-038/",
+          "discovered_at": "2026-01-12T13:06:36.882423",
+          "context": "ZDI-26-038: (0Day) Langflow Disk Cache Deserialization of Untrusted Data Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0774",
+      "first_seen": "2026-01-12T13:06:36.882416",
+      "last_checked": "2026-01-12T13:09:18.946163",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-039/",
+          "discovered_at": "2026-01-12T13:06:36.882416",
+          "context": "ZDI-26-039: (0Day) WatchYourLAN Configuration Page Argument Injection Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0776",
+      "first_seen": "2026-01-12T13:06:36.882408",
+      "last_checked": "2026-01-12T13:09:18.449414",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-040/",
+          "discovered_at": "2026-01-12T13:06:36.882408",
+          "context": "ZDI-26-040: (0Day) Discord Client Uncontrolled Search Path Element Local Privilege Escalation Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0778",
+      "first_seen": "2026-01-12T13:06:36.882394",
+      "last_checked": "2026-01-12T13:09:18.279612",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-041/",
+          "discovered_at": "2026-01-12T13:06:36.882394",
+          "context": "ZDI-26-041: (0Day) (Pwn2Own) Enel X JuiceBox 40 Telnet Service Missing Authentication Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0773",
+      "first_seen": "2026-01-12T13:06:36.882366",
+      "last_checked": "2026-01-12T13:08:52.964507",
+      "days_in_limbo": 0,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-042/",
+          "discovered_at": "2026-01-12T13:06:36.882366",
+          "context": "ZDI-26-042: (0Day) Upsonic Cloudpickle Deserialization of Untrusted Data Remote Code Execution Vulnerability"
+        }
+      ]
+    }
+  ]
+}

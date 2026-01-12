@@ -1,0 +1,53 @@
+CVE ID,First Seen,Days in Limbo,Registry Status,Source Count,Primary Source,Evidence URL
+CVE-2025-67855,2026-01-12,0,NOT_FOUND,1,GitHub Commit: NixOS/nixpkgs,https://github.com/NixOS/nixpkgs/commit/a02d96192ebb0291bc1fd26c2739631243827ecc
+CVE-2025-67857,2026-01-12,0,NOT_FOUND,1,GitHub Commit: NixOS/nixpkgs,https://github.com/NixOS/nixpkgs/commit/a02d96192ebb0291bc1fd26c2739631243827ecc
+CVE-2025-67847,2026-01-12,0,NOT_FOUND,1,GitHub Commit: NixOS/nixpkgs,https://github.com/NixOS/nixpkgs/commit/a02d96192ebb0291bc1fd26c2739631243827ecc
+CVE-2025-67856,2026-01-12,0,NOT_FOUND,1,GitHub Commit: NixOS/nixpkgs,https://github.com/NixOS/nixpkgs/commit/a02d96192ebb0291bc1fd26c2739631243827ecc
+CVE-2025-67852,2026-01-12,0,NOT_FOUND,1,GitHub Commit: NixOS/nixpkgs,https://github.com/NixOS/nixpkgs/commit/a02d96192ebb0291bc1fd26c2739631243827ecc
+CVE-2025-67848,2026-01-12,0,NOT_FOUND,1,GitHub Commit: NixOS/nixpkgs,https://github.com/NixOS/nixpkgs/commit/a02d96192ebb0291bc1fd26c2739631243827ecc
+CVE-2025-67851,2026-01-12,0,NOT_FOUND,1,GitHub Commit: NixOS/nixpkgs,https://github.com/NixOS/nixpkgs/commit/a02d96192ebb0291bc1fd26c2739631243827ecc
+CVE-2025-67853,2026-01-12,0,NOT_FOUND,1,GitHub Commit: NixOS/nixpkgs,https://github.com/NixOS/nixpkgs/commit/a02d96192ebb0291bc1fd26c2739631243827ecc
+CVE-2025-67849,2026-01-12,0,NOT_FOUND,1,GitHub Commit: NixOS/nixpkgs,https://github.com/NixOS/nixpkgs/commit/a02d96192ebb0291bc1fd26c2739631243827ecc
+CVE-2025-67854,2026-01-12,0,NOT_FOUND,1,GitHub Commit: NixOS/nixpkgs,https://github.com/NixOS/nixpkgs/commit/a02d96192ebb0291bc1fd26c2739631243827ecc
+CVE-2025-67850,2026-01-12,0,NOT_FOUND,1,GitHub Commit: NixOS/nixpkgs,https://github.com/NixOS/nixpkgs/commit/a02d96192ebb0291bc1fd26c2739631243827ecc
+CVE-2026-0779,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-001/
+CVE-2026-0780,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-002/
+CVE-2026-0781,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-003/
+CVE-2026-0782,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-004/
+CVE-2026-0783,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-005/
+CVE-2026-0784,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-006/
+CVE-2026-0785,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-007/
+CVE-2026-0786,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-008/
+CVE-2026-0787,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-009/
+CVE-2026-0788,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-010/
+CVE-2026-0789,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-011/
+CVE-2026-0790,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-012/
+CVE-2026-0791,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-013/
+CVE-2026-0792,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-014/
+CVE-2026-0793,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-015/
+CVE-2026-0794,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-016/
+CVE-2026-0795,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-017/
+CVE-2026-0796,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-018/
+CVE-2025-15063,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-020/
+CVE-2026-0755,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-021/
+CVE-2026-0756,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-022/
+CVE-2026-0757,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-023/
+CVE-2026-0758,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-024/
+CVE-2026-0759,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-025/
+CVE-2026-0760,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-026/
+CVE-2026-0761,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-027/
+CVE-2026-0762,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-028/
+CVE-2026-0763,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-029/
+CVE-2026-0764,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-030/
+CVE-2026-0765,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-031/
+CVE-2026-0766,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-032/
+CVE-2026-0767,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-033/
+CVE-2026-0768,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-034/
+CVE-2026-0769,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-035/
+CVE-2026-0770,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-036/
+CVE-2026-0771,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-037/
+CVE-2026-0772,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-038/
+CVE-2026-0774,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-039/
+CVE-2026-0776,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-040/
+CVE-2026-0778,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-041/
+CVE-2026-0773,2026-01-12,0,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-042/
