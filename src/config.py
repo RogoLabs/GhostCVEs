@@ -272,6 +272,224 @@ RSS_FEEDS: Final[list[RSSFeed]] = [
         source_type="mailing_list",
         priority=2
     ),
+    
+    # ==========================================================================
+    # High-Value CNA Security Advisories
+    # ==========================================================================
+    
+    # Browser Vendors (Critical - wide attack surface)
+    RSSFeed(
+        name="Mozilla Security Advisories",
+        url="https://www.mozilla.org/en-US/security/advisories/rss.xml",
+        source_type="vendor_advisory",
+        priority=1
+    ),
+    RSSFeed(
+        name="Chrome Releases",
+        url="https://chromereleases.googleblog.com/feeds/posts/default",
+        source_type="vendor_advisory",
+        priority=1
+    ),
+    
+    # Operating System Vendors
+    RSSFeed(
+        name="Apple Security Updates",
+        url="https://support.apple.com/en-us/HT201222",
+        source_type="vendor_advisory",
+        priority=1
+    ),
+    RSSFeed(
+        name="Android Security Bulletins",
+        url="https://source.android.com/security/bulletin",
+        source_type="vendor_advisory",
+        priority=1
+    ),
+    RSSFeed(
+        name="Linux Kernel CVE Announce",
+        url="https://lore.kernel.org/linux-cve-announce/",
+        source_type="vendor_advisory",
+        priority=1
+    ),
+    
+    # Cloud Providers
+    RSSFeed(
+        name="AWS Security Bulletins",
+        url="https://aws.amazon.com/security/security-bulletins/rss/feed/",
+        source_type="vendor_advisory",
+        priority=1
+    ),
+    RSSFeed(
+        name="Google Cloud Security Bulletins",
+        url="https://cloud.google.com/feeds/kubernetes-engine-security-bulletins.xml",
+        source_type="vendor_advisory",
+        priority=1
+    ),
+    
+    # Enterprise Software
+    RSSFeed(
+        name="Oracle Security Alerts",
+        url="https://www.oracle.com/security-alerts/rss.xml",
+        source_type="vendor_advisory",
+        priority=1
+    ),
+    RSSFeed(
+        name="VMware Security Advisories",
+        url="https://www.broadcom.com/support/vmware-security-advisories",
+        source_type="vendor_advisory",
+        priority=1
+    ),
+    RSSFeed(
+        name="SAP Security Patch Day",
+        url="https://support.sap.com/content/dam/support/en_us/library/ssp/my-support/patch-day/sap_security_patchday_atom.xml",
+        source_type="vendor_advisory",
+        priority=1
+    ),
+    RSSFeed(
+        name="Atlassian Security Advisories",
+        url="https://www.atlassian.com/software/jira/security",
+        source_type="vendor_advisory",
+        priority=2
+    ),
+    RSSFeed(
+        name="GitLab Security Releases",
+        url="https://about.gitlab.com/atom.xml",
+        source_type="vendor_advisory",
+        priority=2
+    ),
+    RSSFeed(
+        name="Jenkins Security Advisories",
+        url="https://www.jenkins.io/security/advisories/rss.xml",
+        source_type="vendor_advisory",
+        priority=2
+    ),
+    
+    # Network/Security Vendors
+    RSSFeed(
+        name="Fortinet PSIRT",
+        url="https://www.fortiguard.com/rss/ir.xml",
+        source_type="vendor_advisory",
+        priority=1
+    ),
+    RSSFeed(
+        name="Palo Alto Networks Security Advisories",
+        url="https://securityadvisories.paloaltonetworks.com/rss.xml",
+        source_type="vendor_advisory",
+        priority=1
+    ),
+    
+    # Hardware Vendors
+    RSSFeed(
+        name="Intel Security Center",
+        url="https://www.intel.com/content/www/us/en/security-center/default.html",
+        source_type="vendor_advisory",
+        priority=1
+    ),
+    RSSFeed(
+        name="AMD Security Bulletins",
+        url="https://www.amd.com/en/resources/product-security.html",
+        source_type="vendor_advisory",
+        priority=2
+    ),
+    RSSFeed(
+        name="NVIDIA Security Bulletins",
+        url="https://www.nvidia.com/en-us/security/",
+        source_type="vendor_advisory",
+        priority=2
+    ),
+    RSSFeed(
+        name="Qualcomm Security Bulletins",
+        url="https://www.qualcomm.com/company/product-security/bulletins",
+        source_type="vendor_advisory",
+        priority=2
+    ),
+    
+    # Critical Infrastructure / Libraries
+    RSSFeed(
+        name="OpenSSL Security Advisories",
+        url="https://www.openssl.org/news/secadv.atom",
+        source_type="vendor_advisory",
+        priority=1
+    ),
+    RSSFeed(
+        name="curl Security Advisories",
+        url="https://curl.se/docs/security.html",
+        source_type="vendor_advisory",
+        priority=1
+    ),
+    RSSFeed(
+        name="PHP Security Advisories",
+        url="https://www.php.net/releases/feed.php",
+        source_type="vendor_advisory",
+        priority=2
+    ),
+    RSSFeed(
+        name="Python Security Announcements",
+        url="https://mail.python.org/archives/list/security-announce@python.org/latest",
+        source_type="vendor_advisory",
+        priority=2
+    ),
+    
+    # CMS / Web Platforms
+    RSSFeed(
+        name="WordPress Security Releases",
+        url="https://wordpress.org/news/category/security/feed/",
+        source_type="vendor_advisory",
+        priority=2
+    ),
+    RSSFeed(
+        name="Drupal Security Advisories",
+        url="https://www.drupal.org/security/rss.xml",
+        source_type="vendor_advisory",
+        priority=2
+    ),
+    
+    # ICS/SCADA
+    RSSFeed(
+        name="Siemens ProductCERT",
+        url="https://new.siemens.com/global/en/products/services/cert.html",
+        source_type="vendor_advisory",
+        priority=2
+    ),
+    RSSFeed(
+        name="Schneider Electric Security Notifications",
+        url="https://www.se.com/ww/en/work/support/cybersecurity/security-notifications.jsp",
+        source_type="vendor_advisory",
+        priority=2
+    ),
+    
+    # Consumer Devices
+    RSSFeed(
+        name="Samsung Mobile Security",
+        url="https://security.samsungmobile.com/workScope.smsb",
+        source_type="vendor_advisory",
+        priority=2
+    ),
+    RSSFeed(
+        name="NETGEAR Security Advisories",
+        url="https://www.netgear.com/about/security/",
+        source_type="vendor_advisory",
+        priority=3
+    ),
+    RSSFeed(
+        name="TP-Link Security Advisories",
+        url="https://www.tp-link.com/us/press/security-advisory/",
+        source_type="vendor_advisory",
+        priority=3
+    ),
+    RSSFeed(
+        name="Zyxel Security Advisories",
+        url="https://www.zyxel.com/support/security_advisories.shtml",
+        source_type="vendor_advisory",
+        priority=3
+    ),
+    
+    # Collaboration Tools
+    RSSFeed(
+        name="Zoom Security Bulletins",
+        url="https://www.zoom.com/en/trust/security-bulletin/",
+        source_type="vendor_advisory",
+        priority=2
+    ),
 ]
 
 
@@ -495,6 +713,100 @@ VENDOR_ENDPOINTS: Final[list[VendorEndpoint]] = [
         advisory_path="/advisories",
         source_type="platform_advisory",
         requires_auth=True
+    ),
+    # ==========================================================================
+    # Additional High-Value CNA Vendor Endpoints
+    # ==========================================================================
+    VendorEndpoint(
+        name="Cisco PSIRT",
+        base_url="https://api.cisco.com",
+        advisory_path="/security/advisories/v2",
+        source_type="vendor_advisory",
+        requires_auth=True
+    ),
+    VendorEndpoint(
+        name="Red Hat Security Data",
+        base_url="https://access.redhat.com",
+        advisory_path="/hydra/rest/securitydata/cve.json",
+        source_type="vendor_advisory"
+    ),
+    VendorEndpoint(
+        name="Canonical Ubuntu CVE Tracker",
+        base_url="https://ubuntu.com",
+        advisory_path="/security/cves",
+        source_type="vendor_advisory"
+    ),
+    VendorEndpoint(
+        name="Debian Security Tracker",
+        base_url="https://security-tracker.debian.org",
+        advisory_path="/tracker/",
+        source_type="vendor_advisory"
+    ),
+    VendorEndpoint(
+        name="VMware Security Advisories API",
+        base_url="https://www.broadcom.com",
+        advisory_path="/support/vmware-security-advisories",
+        source_type="vendor_advisory"
+    ),
+    VendorEndpoint(
+        name="Fortinet PSIRT",
+        base_url="https://www.fortiguard.com",
+        advisory_path="/psirt",
+        source_type="vendor_advisory"
+    ),
+    VendorEndpoint(
+        name="Palo Alto Networks Security Advisories",
+        base_url="https://security.paloaltonetworks.com",
+        advisory_path="/",
+        source_type="vendor_advisory"
+    ),
+    VendorEndpoint(
+        name="F5 Security Advisories",
+        base_url="https://my.f5.com",
+        advisory_path="/manage/s/article",
+        source_type="vendor_advisory"
+    ),
+    VendorEndpoint(
+        name="Ivanti Security Advisories",
+        base_url="https://forums.ivanti.com",
+        advisory_path="/s/security-advisories",
+        source_type="vendor_advisory"
+    ),
+    VendorEndpoint(
+        name="SonicWall PSIRT",
+        base_url="https://psirt.global.sonicwall.com",
+        advisory_path="/vuln-list",
+        source_type="vendor_advisory"
+    ),
+    VendorEndpoint(
+        name="Juniper Security Bulletins",
+        base_url="https://supportportal.juniper.net",
+        advisory_path="/s/security-advisories",
+        source_type="vendor_advisory"
+    ),
+    VendorEndpoint(
+        name="Citrix Security Bulletins",
+        base_url="https://support.citrix.com",
+        advisory_path="/search/#/All%20Products?ct=Security%20Bulletin",
+        source_type="vendor_advisory"
+    ),
+    VendorEndpoint(
+        name="Elastic Security Advisories",
+        base_url="https://www.elastic.co",
+        advisory_path="/community/security/",
+        source_type="vendor_advisory"
+    ),
+    VendorEndpoint(
+        name="Splunk Security Advisories",
+        base_url="https://advisory.splunk.com",
+        advisory_path="/",
+        source_type="vendor_advisory"
+    ),
+    VendorEndpoint(
+        name="HashiCorp Security",
+        base_url="https://discuss.hashicorp.com",
+        advisory_path="/c/security/",
+        source_type="vendor_advisory"
     ),
 ]
 
