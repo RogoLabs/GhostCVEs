@@ -72,8 +72,9 @@ def create_discovery_modules(
     """
     modules: list[BaseDiscovery] = []
     
-    # GitHub Discovery
-    modules.append(GitHubDiscovery(token=github_token))
+    # GitHub Discovery (disabled by default - too much noise from fake repos)
+    if GITHUB_QUALITY_CONFIG.enabled:
+        modules.append(GitHubDiscovery(token=github_token))
     
     # RSS Discovery
     modules.append(RSSDiscovery())

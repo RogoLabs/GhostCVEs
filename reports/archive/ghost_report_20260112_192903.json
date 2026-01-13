@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-01-13T00:45:55.355429",
+  "generated_at": "2026-01-13T01:29:03.621460",
   "summary": {
     "total_ghosts": 146,
     "total_cves_tracked": 7256,
@@ -507,7 +507,7 @@
     {
       "cve_id": "CVE-2025-11563",
       "first_seen": "2026-01-12T15:41:20.019075",
-      "last_checked": "2026-01-13T00:45:51.495156",
+      "last_checked": "2026-01-13T01:29:00.714333",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -526,7 +526,7 @@
     {
       "cve_id": "CVE-2025-11173",
       "first_seen": "2026-01-12T15:41:20.019062",
-      "last_checked": "2026-01-13T00:45:55.024991",
+      "last_checked": "2026-01-13T01:29:02.693254",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -545,7 +545,7 @@
     {
       "cve_id": "CVE-2025-61636",
       "first_seen": "2026-01-12T15:41:20.019046",
-      "last_checked": "2026-01-13T00:45:52.467460",
+      "last_checked": "2026-01-13T01:29:03.151498",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -564,7 +564,7 @@
     {
       "cve_id": "CVE-2025-6927",
       "first_seen": "2026-01-12T15:41:20.019044",
-      "last_checked": "2026-01-13T00:45:51.405763",
+      "last_checked": "2026-01-13T01:29:00.257456",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -583,7 +583,7 @@
     {
       "cve_id": "CVE-2025-67483",
       "first_seen": "2026-01-12T15:41:20.018961",
-      "last_checked": "2026-01-13T00:45:51.430941",
+      "last_checked": "2026-01-13T01:29:00.796736",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -602,7 +602,7 @@
     {
       "cve_id": "CVE-2025-61645",
       "first_seen": "2026-01-12T15:41:20.018896",
-      "last_checked": "2026-01-13T00:45:50.966320",
+      "last_checked": "2026-01-13T01:29:02.870330",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -621,7 +621,7 @@
     {
       "cve_id": "CVE-2025-62799",
       "first_seen": "2026-01-12T15:41:20.018715",
-      "last_checked": "2026-01-13T00:45:53.739141",
+      "last_checked": "2026-01-13T01:28:59.479527",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -640,7 +640,7 @@
     {
       "cve_id": "CVE-2025-61642",
       "first_seen": "2026-01-12T15:41:20.018688",
-      "last_checked": "2026-01-13T00:45:54.286353",
+      "last_checked": "2026-01-13T01:29:02.068154",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -659,7 +659,7 @@
     {
       "cve_id": "CVE-2025-11002",
       "first_seen": "2026-01-12T15:41:20.018677",
-      "last_checked": "2026-01-13T00:45:54.462248",
+      "last_checked": "2026-01-13T01:28:59.494529",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -678,7 +678,7 @@
     {
       "cve_id": "CVE-2025-61640",
       "first_seen": "2026-01-12T15:41:20.018578",
-      "last_checked": "2026-01-13T00:45:54.059062",
+      "last_checked": "2026-01-13T01:28:59.049908",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -697,7 +697,7 @@
     {
       "cve_id": "CVE-2025-3839",
       "first_seen": "2026-01-12T15:41:20.018575",
-      "last_checked": "2026-01-13T00:45:54.169395",
+      "last_checked": "2026-01-13T01:29:03.054506",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -716,7 +716,7 @@
     {
       "cve_id": "CVE-2025-61654",
       "first_seen": "2026-01-12T15:41:20.018570",
-      "last_checked": "2026-01-13T00:45:52.521279",
+      "last_checked": "2026-01-13T01:28:59.525958",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -735,7 +735,7 @@
     {
       "cve_id": "CVE-2025-0577",
       "first_seen": "2026-01-12T15:41:20.018321",
-      "last_checked": "2026-01-13T00:45:51.033644",
+      "last_checked": "2026-01-13T01:29:01.590204",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -754,7 +754,7 @@
     {
       "cve_id": "CVE-2025-67482",
       "first_seen": "2026-01-12T15:41:20.018070",
-      "last_checked": "2026-01-13T00:45:51.675556",
+      "last_checked": "2026-01-13T01:29:00.638329",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -773,7 +773,7 @@
     {
       "cve_id": "CVE-2025-6594",
       "first_seen": "2026-01-12T15:41:20.017927",
-      "last_checked": "2026-01-13T00:45:53.734321",
+      "last_checked": "2026-01-13T01:28:59.777119",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -792,7 +792,7 @@
     {
       "cve_id": "CVE-2025-6589",
       "first_seen": "2026-01-12T15:41:20.017924",
-      "last_checked": "2026-01-13T00:45:51.090061",
+      "last_checked": "2026-01-13T01:29:00.683417",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -811,7 +811,7 @@
     {
       "cve_id": "CVE-2025-14282",
       "first_seen": "2026-01-12T15:41:20.017814",
-      "last_checked": "2026-01-13T00:45:53.755663",
+      "last_checked": "2026-01-13T01:28:59.813642",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -830,7 +830,7 @@
     {
       "cve_id": "CVE-2025-6593",
       "first_seen": "2026-01-12T15:41:20.017723",
-      "last_checked": "2026-01-13T00:45:50.551062",
+      "last_checked": "2026-01-13T01:28:59.140488",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -849,7 +849,7 @@
     {
       "cve_id": "CVE-2025-61653",
       "first_seen": "2026-01-12T15:41:20.017447",
-      "last_checked": "2026-01-13T00:45:53.313063",
+      "last_checked": "2026-01-13T01:29:00.437711",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -868,7 +868,7 @@
     {
       "cve_id": "CVE-2026-0716",
       "first_seen": "2026-01-12T15:41:20.017437",
-      "last_checked": "2026-01-13T00:45:53.856208",
+      "last_checked": "2026-01-13T01:29:01.952735",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -887,7 +887,7 @@
     {
       "cve_id": "CVE-2025-67479",
       "first_seen": "2026-01-12T15:41:20.017349",
-      "last_checked": "2026-01-13T00:45:51.651878",
+      "last_checked": "2026-01-13T01:28:59.095629",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -906,7 +906,7 @@
     {
       "cve_id": "CVE-2025-67859",
       "first_seen": "2026-01-12T15:41:20.017290",
-      "last_checked": "2026-01-13T00:45:52.620008",
+      "last_checked": "2026-01-13T01:28:59.791226",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -925,7 +925,7 @@
     {
       "cve_id": "CVE-2025-10256",
       "first_seen": "2026-01-12T15:41:20.017245",
-      "last_checked": "2026-01-13T00:45:54.027380",
+      "last_checked": "2026-01-13T01:29:03.147191",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -944,7 +944,7 @@
     {
       "cve_id": "CVE-2025-59024",
       "first_seen": "2026-01-12T15:41:20.017241",
-      "last_checked": "2026-01-13T00:45:53.767703",
+      "last_checked": "2026-01-13T01:29:00.391491",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -963,7 +963,7 @@
     {
       "cve_id": "CVE-2025-62603",
       "first_seen": "2026-01-12T15:41:20.017180",
-      "last_checked": "2026-01-13T00:45:54.806425",
+      "last_checked": "2026-01-13T01:29:01.240063",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -982,7 +982,7 @@
     {
       "cve_id": "CVE-2025-62600",
       "first_seen": "2026-01-12T15:41:20.017163",
-      "last_checked": "2026-01-13T00:45:53.397637",
+      "last_checked": "2026-01-13T01:29:00.669150",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1001,7 +1001,7 @@
     {
       "cve_id": "CVE-2025-67476",
       "first_seen": "2026-01-12T15:41:20.017035",
-      "last_checked": "2026-01-13T00:45:53.346679",
+      "last_checked": "2026-01-13T01:29:02.618215",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1020,7 +1020,7 @@
     {
       "cve_id": "CVE-2025-67484",
       "first_seen": "2026-01-12T15:41:20.016928",
-      "last_checked": "2026-01-13T00:45:51.796604",
+      "last_checked": "2026-01-13T01:29:00.894422",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1039,7 +1039,7 @@
     {
       "cve_id": "CVE-2025-9615",
       "first_seen": "2026-01-12T15:41:20.016844",
-      "last_checked": "2026-01-13T00:45:53.431349",
+      "last_checked": "2026-01-13T01:29:02.894145",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1058,7 +1058,7 @@
     {
       "cve_id": "CVE-2025-67481",
       "first_seen": "2026-01-12T15:41:20.016758",
-      "last_checked": "2026-01-13T00:45:51.843271",
+      "last_checked": "2026-01-13T01:29:02.706538",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1077,7 +1077,7 @@
     {
       "cve_id": "CVE-2025-62599",
       "first_seen": "2026-01-12T15:41:20.016619",
-      "last_checked": "2026-01-13T00:45:53.468628",
+      "last_checked": "2026-01-13T01:28:59.680906",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1096,7 +1096,7 @@
     {
       "cve_id": "CVE-2025-67478",
       "first_seen": "2026-01-12T15:41:20.016602",
-      "last_checked": "2026-01-13T00:45:52.328173",
+      "last_checked": "2026-01-13T01:29:00.219247",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1115,7 +1115,7 @@
     {
       "cve_id": "CVE-2025-62601",
       "first_seen": "2026-01-12T15:41:20.016503",
-      "last_checked": "2026-01-13T00:45:53.498068",
+      "last_checked": "2026-01-13T01:29:02.219397",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1134,7 +1134,7 @@
     {
       "cve_id": "CVE-2025-61656",
       "first_seen": "2026-01-12T15:41:20.016344",
-      "last_checked": "2026-01-13T00:45:50.589116",
+      "last_checked": "2026-01-13T01:29:00.124576",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1153,7 +1153,7 @@
     {
       "cve_id": "CVE-2025-61657",
       "first_seen": "2026-01-12T15:41:20.016092",
-      "last_checked": "2026-01-13T00:45:51.456093",
+      "last_checked": "2026-01-13T01:29:03.111814",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1172,7 +1172,7 @@
     {
       "cve_id": "CVE-2025-67477",
       "first_seen": "2026-01-12T15:41:20.016061",
-      "last_checked": "2026-01-13T00:45:53.224486",
+      "last_checked": "2026-01-13T01:29:02.320532",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1191,7 +1191,7 @@
     {
       "cve_id": "CVE-2025-1272",
       "first_seen": "2026-01-12T15:41:20.016010",
-      "last_checked": "2026-01-13T00:45:51.928664",
+      "last_checked": "2026-01-13T01:29:00.489750",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1210,7 +1210,7 @@
     {
       "cve_id": "CVE-2025-11224",
       "first_seen": "2026-01-12T15:41:20.015958",
-      "last_checked": "2026-01-13T00:45:51.775500",
+      "last_checked": "2026-01-13T01:29:02.623320",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1229,7 +1229,7 @@
     {
       "cve_id": "CVE-2025-6592",
       "first_seen": "2026-01-12T15:41:20.015921",
-      "last_checked": "2026-01-13T00:45:51.120947",
+      "last_checked": "2026-01-13T01:28:59.085950",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1248,7 +1248,7 @@
     {
       "cve_id": "CVE-2025-11065",
       "first_seen": "2026-01-12T15:41:20.015831",
-      "last_checked": "2026-01-13T00:45:51.787006",
+      "last_checked": "2026-01-13T01:29:02.171471",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1267,7 +1267,7 @@
     {
       "cve_id": "CVE-2025-24293",
       "first_seen": "2026-01-12T15:41:20.015825",
-      "last_checked": "2026-01-13T00:45:54.241583",
+      "last_checked": "2026-01-13T01:29:01.180572",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1286,7 +1286,7 @@
     {
       "cve_id": "CVE-2025-14876",
       "first_seen": "2026-01-12T15:41:20.015800",
-      "last_checked": "2026-01-13T00:45:52.608520",
+      "last_checked": "2026-01-13T01:29:00.308414",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1305,7 +1305,7 @@
     {
       "cve_id": "CVE-2025-67475",
       "first_seen": "2026-01-12T15:41:20.015622",
-      "last_checked": "2026-01-13T00:45:51.688785",
+      "last_checked": "2026-01-13T01:29:03.354747",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1324,7 +1324,7 @@
     {
       "cve_id": "CVE-2025-24528",
       "first_seen": "2026-01-12T15:41:20.015608",
-      "last_checked": "2026-01-13T00:45:52.037195",
+      "last_checked": "2026-01-13T01:28:58.892666",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1343,7 +1343,7 @@
     {
       "cve_id": "CVE-2025-11175",
       "first_seen": "2026-01-12T15:41:20.015535",
-      "last_checked": "2026-01-13T00:45:53.416929",
+      "last_checked": "2026-01-13T01:29:00.704252",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1362,7 +1362,7 @@
     {
       "cve_id": "CVE-2025-8860",
       "first_seen": "2026-01-12T15:41:20.015444",
-      "last_checked": "2026-01-13T00:45:53.541378",
+      "last_checked": "2026-01-13T01:29:02.452143",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1381,7 +1381,7 @@
     {
       "cve_id": "CVE-2025-61635",
       "first_seen": "2026-01-12T15:41:20.015400",
-      "last_checked": "2026-01-13T00:45:53.557838",
+      "last_checked": "2026-01-13T01:28:59.853925",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1400,7 +1400,7 @@
     {
       "cve_id": "CVE-2025-62291",
       "first_seen": "2026-01-12T15:41:20.015375",
-      "last_checked": "2026-01-13T00:45:53.193544",
+      "last_checked": "2026-01-13T01:29:00.837672",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1419,7 +1419,7 @@
     {
       "cve_id": "CVE-2025-12343",
       "first_seen": "2026-01-12T15:41:20.015287",
-      "last_checked": "2026-01-13T00:45:54.041060",
+      "last_checked": "2026-01-13T01:28:59.083315",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1438,7 +1438,7 @@
     {
       "cve_id": "CVE-2025-43904",
       "first_seen": "2026-01-12T15:41:20.015095",
-      "last_checked": "2026-01-13T00:45:53.585191",
+      "last_checked": "2026-01-13T01:29:00.744107",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1457,7 +1457,7 @@
     {
       "cve_id": "CVE-2025-61638",
       "first_seen": "2026-01-12T15:41:20.015016",
-      "last_checked": "2026-01-13T00:45:52.392262",
+      "last_checked": "2026-01-13T01:29:03.276850",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1476,7 +1476,7 @@
     {
       "cve_id": "CVE-2025-31510",
       "first_seen": "2026-01-12T15:41:20.014975",
-      "last_checked": "2026-01-13T00:45:53.807101",
+      "last_checked": "2026-01-13T01:29:00.325430",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1495,7 +1495,7 @@
     {
       "cve_id": "CVE-2025-61643",
       "first_seen": "2026-01-12T15:41:20.014836",
-      "last_checked": "2026-01-13T00:45:52.687986",
+      "last_checked": "2026-01-13T01:29:02.464909",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1514,7 +1514,7 @@
     {
       "cve_id": "CVE-2025-61873",
       "first_seen": "2026-01-12T15:41:20.014736",
-      "last_checked": "2026-01-13T00:45:50.463543",
+      "last_checked": "2026-01-13T01:28:59.408738",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1533,7 +1533,7 @@
     {
       "cve_id": "CVE-2025-11261",
       "first_seen": "2026-01-12T15:41:20.014712",
-      "last_checked": "2026-01-13T00:45:51.809382",
+      "last_checked": "2026-01-13T01:29:00.979366",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1552,7 +1552,7 @@
     {
       "cve_id": "CVE-2025-61646",
       "first_seen": "2026-01-12T15:41:20.014709",
-      "last_checked": "2026-01-13T00:45:51.453669",
+      "last_checked": "2026-01-13T01:29:01.539545",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1571,7 +1571,7 @@
     {
       "cve_id": "CVE-2025-61641",
       "first_seen": "2026-01-12T15:41:20.014677",
-      "last_checked": "2026-01-13T00:45:53.339560",
+      "last_checked": "2026-01-13T01:29:02.810718",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1590,7 +1590,7 @@
     {
       "cve_id": "CVE-2025-6596",
       "first_seen": "2026-01-12T15:41:20.014646",
-      "last_checked": "2026-01-13T00:45:52.929025",
+      "last_checked": "2026-01-13T01:29:01.735025",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1609,7 +1609,7 @@
     {
       "cve_id": "CVE-2025-6597",
       "first_seen": "2026-01-12T15:41:20.014474",
-      "last_checked": "2026-01-13T00:45:53.250179",
+      "last_checked": "2026-01-13T01:29:01.368141",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1628,7 +1628,7 @@
     {
       "cve_id": "CVE-2025-24531",
       "first_seen": "2026-01-12T15:41:20.014421",
-      "last_checked": "2026-01-13T00:45:52.929744",
+      "last_checked": "2026-01-13T01:29:02.503584",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1647,7 +1647,7 @@
     {
       "cve_id": "CVE-2025-9820",
       "first_seen": "2026-01-12T15:41:20.014348",
-      "last_checked": "2026-01-13T00:45:53.897789",
+      "last_checked": "2026-01-13T01:28:58.896744",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1666,7 +1666,7 @@
     {
       "cve_id": "CVE-2025-6590",
       "first_seen": "2026-01-12T15:41:20.014329",
-      "last_checked": "2026-01-13T00:45:50.998032",
+      "last_checked": "2026-01-13T01:29:03.044692",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1685,7 +1685,7 @@
     {
       "cve_id": "CVE-2025-61639",
       "first_seen": "2026-01-12T15:41:20.014300",
-      "last_checked": "2026-01-13T00:45:51.458716",
+      "last_checked": "2026-01-13T01:28:59.333684",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1704,7 +1704,7 @@
     {
       "cve_id": "CVE-2025-61637",
       "first_seen": "2026-01-12T15:41:20.014101",
-      "last_checked": "2026-01-13T00:45:54.379421",
+      "last_checked": "2026-01-13T01:29:01.628689",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1723,7 +1723,7 @@
     {
       "cve_id": "CVE-2025-61655",
       "first_seen": "2026-01-12T15:41:20.014067",
-      "last_checked": "2026-01-13T00:45:52.711209",
+      "last_checked": "2026-01-13T01:29:01.336370",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1742,7 +1742,7 @@
     {
       "cve_id": "CVE-2025-11687",
       "first_seen": "2026-01-12T15:41:20.014012",
-      "last_checked": "2026-01-13T00:45:52.282210",
+      "last_checked": "2026-01-13T01:29:00.439423",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1761,7 +1761,7 @@
     {
       "cve_id": "CVE-2025-59023",
       "first_seen": "2026-01-12T15:41:20.013966",
-      "last_checked": "2026-01-13T00:45:53.883946",
+      "last_checked": "2026-01-13T01:29:03.261926",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1780,7 +1780,7 @@
     {
       "cve_id": "CVE-2025-61634",
       "first_seen": "2026-01-12T15:41:20.013916",
-      "last_checked": "2026-01-13T00:45:52.229525",
+      "last_checked": "2026-01-13T01:29:00.626107",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1799,7 +1799,7 @@
     {
       "cve_id": "CVE-2025-67480",
       "first_seen": "2026-01-12T15:41:20.013878",
-      "last_checked": "2026-01-13T00:45:51.321897",
+      "last_checked": "2026-01-13T01:29:00.509577",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1818,7 +1818,7 @@
     {
       "cve_id": "CVE-2025-6591",
       "first_seen": "2026-01-12T15:41:20.013838",
-      "last_checked": "2026-01-13T00:45:53.890746",
+      "last_checked": "2026-01-13T01:29:01.246136",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1837,7 +1837,7 @@
     {
       "cve_id": "CVE-2025-64438",
       "first_seen": "2026-01-12T15:41:20.013833",
-      "last_checked": "2026-01-13T00:45:52.454685",
+      "last_checked": "2026-01-13T01:29:02.690737",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1856,7 +1856,7 @@
     {
       "cve_id": "CVE-2025-64098",
       "first_seen": "2026-01-12T15:41:20.013808",
-      "last_checked": "2026-01-13T00:45:54.398231",
+      "last_checked": "2026-01-13T01:29:03.012997",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1875,7 +1875,7 @@
     {
       "cve_id": "CVE-2025-62602",
       "first_seen": "2026-01-12T15:41:20.013779",
-      "last_checked": "2026-01-13T00:45:53.503052",
+      "last_checked": "2026-01-13T01:29:00.491324",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1894,7 +1894,7 @@
     {
       "cve_id": "CVE-2025-22873",
       "first_seen": "2026-01-12T15:41:20.013744",
-      "last_checked": "2026-01-13T00:45:53.296134",
+      "last_checked": "2026-01-13T01:29:02.750758",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1913,7 +1913,7 @@
     {
       "cve_id": "CVE-2025-61652",
       "first_seen": "2026-01-12T15:41:20.013707",
-      "last_checked": "2026-01-13T00:45:54.916097",
+      "last_checked": "2026-01-13T01:28:58.907513",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1932,7 +1932,7 @@
     {
       "cve_id": "CVE-2025-6595",
       "first_seen": "2026-01-12T15:41:20.013590",
-      "last_checked": "2026-01-13T00:45:51.927810",
+      "last_checked": "2026-01-13T01:29:01.645192",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1951,7 +1951,7 @@
     {
       "cve_id": "CVE-2025-51602",
       "first_seen": "2026-01-12T15:41:20.013454",
-      "last_checked": "2026-01-13T00:45:51.273668",
+      "last_checked": "2026-01-13T01:29:01.785129",
       "days_in_limbo": 0,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1970,7 +1970,7 @@
     {
       "cve_id": "CVE-2026-0775",
       "first_seen": "2026-01-12T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.292749",
+      "last_checked": "2026-01-13T01:28:58.705474",
       "days_in_limbo": 1,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -1989,7 +1989,7 @@
     {
       "cve_id": "CVE-2025-14338",
       "first_seen": "2026-01-09T18:19:07",
-      "last_checked": "2026-01-13T00:45:55.292060",
+      "last_checked": "2026-01-13T01:29:03.560514",
       "days_in_limbo": 3,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2008,7 +2008,7 @@
     {
       "cve_id": "CVE-2025-66005",
       "first_seen": "2026-01-09T18:19:07",
-      "last_checked": "2026-01-13T00:45:55.293004",
+      "last_checked": "2026-01-13T01:29:03.559759",
       "days_in_limbo": 3,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2027,7 +2027,7 @@
     {
       "cve_id": "CVE-2026-0773",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.297105",
+      "last_checked": "2026-01-13T01:28:58.711768",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2046,7 +2046,7 @@
     {
       "cve_id": "CVE-2026-0778",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.299368",
+      "last_checked": "2026-01-13T01:28:58.713978",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2065,7 +2065,7 @@
     {
       "cve_id": "CVE-2026-0776",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.301020",
+      "last_checked": "2026-01-13T01:28:58.715619",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2084,7 +2084,7 @@
     {
       "cve_id": "CVE-2026-0774",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.302422",
+      "last_checked": "2026-01-13T01:28:58.717076",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2103,7 +2103,7 @@
     {
       "cve_id": "CVE-2026-0772",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.303776",
+      "last_checked": "2026-01-13T01:28:58.718400",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2122,7 +2122,7 @@
     {
       "cve_id": "CVE-2026-0771",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.305396",
+      "last_checked": "2026-01-13T01:28:58.719999",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2141,7 +2141,7 @@
     {
       "cve_id": "CVE-2026-0770",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.306522",
+      "last_checked": "2026-01-13T01:28:58.721103",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2160,7 +2160,7 @@
     {
       "cve_id": "CVE-2026-0769",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.307748",
+      "last_checked": "2026-01-13T01:28:58.722194",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2179,7 +2179,7 @@
     {
       "cve_id": "CVE-2026-0768",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.308863",
+      "last_checked": "2026-01-13T01:28:58.723254",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2198,7 +2198,7 @@
     {
       "cve_id": "CVE-2026-0767",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.310072",
+      "last_checked": "2026-01-13T01:28:58.724347",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2217,7 +2217,7 @@
     {
       "cve_id": "CVE-2026-0766",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.311102",
+      "last_checked": "2026-01-13T01:28:58.725472",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2236,7 +2236,7 @@
     {
       "cve_id": "CVE-2026-0765",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.312429",
+      "last_checked": "2026-01-13T01:28:58.726970",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2255,7 +2255,7 @@
     {
       "cve_id": "CVE-2026-0764",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.313696",
+      "last_checked": "2026-01-13T01:28:58.728475",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2274,7 +2274,7 @@
     {
       "cve_id": "CVE-2026-0763",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.314863",
+      "last_checked": "2026-01-13T01:28:58.730310",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2293,7 +2293,7 @@
     {
       "cve_id": "CVE-2026-0762",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.315948",
+      "last_checked": "2026-01-13T01:28:58.731672",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2312,7 +2312,7 @@
     {
       "cve_id": "CVE-2026-0761",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.317395",
+      "last_checked": "2026-01-13T01:28:58.733145",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2331,7 +2331,7 @@
     {
       "cve_id": "CVE-2026-0760",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.318324",
+      "last_checked": "2026-01-13T01:28:58.734228",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2350,7 +2350,7 @@
     {
       "cve_id": "CVE-2026-0759",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.319230",
+      "last_checked": "2026-01-13T01:28:58.735212",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2369,7 +2369,7 @@
     {
       "cve_id": "CVE-2026-0758",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.320203",
+      "last_checked": "2026-01-13T01:28:58.736128",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2388,7 +2388,7 @@
     {
       "cve_id": "CVE-2026-0757",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.321186",
+      "last_checked": "2026-01-13T01:28:58.737082",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2407,7 +2407,7 @@
     {
       "cve_id": "CVE-2026-0756",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.322776",
+      "last_checked": "2026-01-13T01:28:58.738055",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2426,7 +2426,7 @@
     {
       "cve_id": "CVE-2026-0755",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.323817",
+      "last_checked": "2026-01-13T01:28:58.738970",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2445,7 +2445,7 @@
     {
       "cve_id": "CVE-2025-15063",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.324794",
+      "last_checked": "2026-01-13T01:28:58.740419",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2464,7 +2464,7 @@
     {
       "cve_id": "CVE-2026-0796",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.325744",
+      "last_checked": "2026-01-13T01:28:58.741598",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2483,7 +2483,7 @@
     {
       "cve_id": "CVE-2026-0795",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.326693",
+      "last_checked": "2026-01-13T01:28:58.742523",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2502,7 +2502,7 @@
     {
       "cve_id": "CVE-2026-0794",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.327944",
+      "last_checked": "2026-01-13T01:28:58.743459",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2521,7 +2521,7 @@
     {
       "cve_id": "CVE-2026-0793",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.328936",
+      "last_checked": "2026-01-13T01:28:58.744548",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2540,7 +2540,7 @@
     {
       "cve_id": "CVE-2026-0792",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.330196",
+      "last_checked": "2026-01-13T01:28:58.745867",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2559,7 +2559,7 @@
     {
       "cve_id": "CVE-2026-0791",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.331333",
+      "last_checked": "2026-01-13T01:28:58.746822",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2578,7 +2578,7 @@
     {
       "cve_id": "CVE-2026-0790",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.332467",
+      "last_checked": "2026-01-13T01:28:58.747727",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2597,7 +2597,7 @@
     {
       "cve_id": "CVE-2026-0789",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.333592",
+      "last_checked": "2026-01-13T01:28:58.748725",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2616,7 +2616,7 @@
     {
       "cve_id": "CVE-2026-0788",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.335871",
+      "last_checked": "2026-01-13T01:28:58.749684",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2635,7 +2635,7 @@
     {
       "cve_id": "CVE-2026-0787",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.337620",
+      "last_checked": "2026-01-13T01:28:58.750596",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2654,7 +2654,7 @@
     {
       "cve_id": "CVE-2026-0786",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.339082",
+      "last_checked": "2026-01-13T01:28:58.751460",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2673,7 +2673,7 @@
     {
       "cve_id": "CVE-2026-0785",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.340326",
+      "last_checked": "2026-01-13T01:28:58.752299",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2692,7 +2692,7 @@
     {
       "cve_id": "CVE-2026-0784",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.341560",
+      "last_checked": "2026-01-13T01:28:58.753126",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2711,7 +2711,7 @@
     {
       "cve_id": "CVE-2026-0783",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.342723",
+      "last_checked": "2026-01-13T01:28:58.753965",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2730,7 +2730,7 @@
     {
       "cve_id": "CVE-2026-0782",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.344086",
+      "last_checked": "2026-01-13T01:28:58.755085",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2749,7 +2749,7 @@
     {
       "cve_id": "CVE-2026-0781",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.345327",
+      "last_checked": "2026-01-13T01:28:58.755938",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2768,7 +2768,7 @@
     {
       "cve_id": "CVE-2026-0780",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.346713",
+      "last_checked": "2026-01-13T01:28:58.756828",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
@@ -2787,7 +2787,7 @@
     {
       "cve_id": "CVE-2026-0779",
       "first_seen": "2026-01-09T00:00:00",
-      "last_checked": "2026-01-13T00:45:50.348980",
+      "last_checked": "2026-01-13T01:28:58.757648",
       "days_in_limbo": 4,
       "registry_status": "NOT_FOUND",
       "registry_source": "MITRE",
