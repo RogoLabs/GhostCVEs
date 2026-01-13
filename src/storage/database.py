@@ -126,6 +126,80 @@ class DatabaseManager:
         Base.metadata.create_all(self.engine)
         self.logger.info("Database schema initialized")
     
+    def purge_blacklisted_sources(
+        self,
+        blacklisted_repos: tuple[str, ...],
+        blacklisted_users: tuple[str, ...],
+    ) -> int:
+        """
+        Remove discovery sources from blacklisted repositories.
+        
+        Also removes GhostCVE records that have no remaining sources.
+        
+        Args:
+            blacklisted_repos: Tuple of "owner/repo" strings to block
+            blacklisted_users: Tuple of usernames/orgs to block
+        
+        Returns:
+            Number of sources removed
+        """
+        removed_count = 0
+        
+        with self.get_session() as session:
+            # Get all sources
+            all_sources = session.execute(select(DiscoverySource)).scalars().all()
+            
+            sources_to_delete = []
+            for source in all_sources:
+                should_delete = False
+                
+                # Check source name and evidence URL against blacklist
+                source_name = source.source_name.lower() if source.source_name else ""
+                evidence_url = source.evidence_url.lower() if source.evidence_url else ""
+                
+                for repo in blacklisted_repos:
+                    repo_lower = repo.lower()
+                    if repo_lower in source_name or f"github.com/{repo_lower}" in evidence_url:
+                        should_delete = True
+                        break
+                
+                if not should_delete:
+                    for user in blacklisted_users:
+                        user_lower = user.lower()
+                        if f": {user_lower}/" in source_name or f"github.com/{user_lower}/" in evidence_url:
+                            should_delete = True
+                            break
+                
+                if should_delete:
+                    sources_to_delete.append(source)
+            
+            # Delete marked sources
+            for source in sources_to_delete:
+                session.delete(source)
+                removed_count += 1
+            
+            session.commit()
+            
+            # Now clean up orphaned GhostCVE records (those with no sources)
+            orphaned_ghosts = session.execute(
+                select(GhostCVE)
+                .where(~GhostCVE.id.in_(
+                    select(DiscoverySource.ghost_cve_id).distinct()
+                ))
+            ).scalars().all()
+            
+            for ghost in orphaned_ghosts:
+                self.logger.debug(f"Removing orphaned Ghost CVE: {ghost.cve_id}")
+                session.delete(ghost)
+            
+            session.commit()
+            
+            if orphaned_ghosts:
+                self.logger.info(f"Removed {len(orphaned_ghosts)} orphaned Ghost CVE records")
+        
+        self.logger.info(f"Purged {removed_count} sources from blacklisted repositories")
+        return removed_count
+
     def get_session(self) -> Session:
         """
         Get a new database session.
