@@ -1,0 +1,149 @@
+CVE ID,First Seen,Days in Limbo,Registry Status,Source Count,Primary Source,Evidence URL
+CVE-2026-3872,2026-01-13,0,NOT_FOUND,1,GitHub Code: mullvad/coding-guidelines,https://github.com/mullvad/coding-guidelines/blob/bed5e118ae18f5c409527ccb0316d8f9e794b1f6/README.md
+CVE-2025-69199,2026-01-13,0,NOT_FOUND,1,GitHub Code: pterodactyl/wings,https://github.com/pterodactyl/wings/blob/00605c9dfb015d703ac779b2b9978a4e90023626/CHANGELOG.md
+CVE-2025-26792,2026-01-13,0,NOT_FOUND,1,GitHub Code: ironmansoftware/universal-docs,https://github.com/ironmansoftware/universal-docs/blob/c32537f083d2d24335901f16f18cbe864438196b/changelog.md
+CVE-2025-54552,2026-01-13,0,NOT_FOUND,1,GitHub Code: ironmansoftware/universal-docs,https://github.com/ironmansoftware/universal-docs/blob/c32537f083d2d24335901f16f18cbe864438196b/changelog.md
+CVE-2026-00001,2026-01-13,0,NOT_FOUND,1,GitHub Code: GhostTroops/TOP,https://github.com/GhostTroops/TOP/blob/67fcf9c07b479913695dfe407a9f9c6e66ae833d/README.md
+CVE-2026-5000,2026-01-13,0,NOT_FOUND,1,GitHub Code: GhostTroops/TOP,https://github.com/GhostTroops/TOP/blob/67fcf9c07b479913695dfe407a9f9c6e66ae833d/README.md
+CVE-2025-66683,2026-01-13,0,NOT_FOUND,1,GitHub Code: ycdxsb/PocOrExp_in_Github,https://github.com/ycdxsb/PocOrExp_in_Github/blob/32ce9558eb027b3c3b445f3eba8e1b3a658bf63f/Today.md
+CVE-2026-48073,2026-01-12,0,NOT_FOUND,1,GitHub Code: ShielderSec/poc,https://github.com/ShielderSec/poc/blob/1404ee53bf83f4a01b70ba4396a8a23c9c84554d/README.md
+CVE-2026-48074,2026-01-12,0,NOT_FOUND,1,GitHub Code: ShielderSec/poc,https://github.com/ShielderSec/poc/blob/1404ee53bf83f4a01b70ba4396a8a23c9c84554d/README.md
+CVE-2025-65606,2026-01-12,0,NOT_FOUND,1,GitHub Code: gcp-lopo/hacker-news-ai-pages,https://github.com/gcp-lopo/hacker-news-ai-pages/blob/a566289b10accec58ae87a19d24f69db540892ee/archives/2026-01-07/index.html
+CVE-2026-11409,2026-01-12,0,NOT_FOUND,1,GitHub Code: skylily1/agent-builder,https://github.com/skylily1/agent-builder/blob/4f99dc20b8cdc730b41bc3cd0598d2b66c0b655f/mission_control.py
+CVE-2026-20288,2026-01-12,0,NOT_FOUND,1,GitHub Code: erlef-cna/cna-staging,https://github.com/erlef-cna/cna-staging/blob/59f4e2f20559da06fa6e3cdc3c1696b3b5394ed5/records/reservations/CVE-2026-20288.json
+CVE-2025-67117,2026-01-12,0,NOT_FOUND,1,GitHub Code: Tyaoo/picker,https://github.com/Tyaoo/picker/blob/a2f5a5b5e38e9a79e73b2883a041111535be7c59/today.md
+CVE-2026-0002,2026-01-12,0,NOT_FOUND,1,GitHub Code: devopsifyco/check-cli,https://github.com/devopsifyco/check-cli/blob/a71cfafd65eb12d0d9aca41d16b395de5a07d560/checks/types/types.go
+CVE-2026-4256,2026-01-12,0,NOT_FOUND,2,GitHub Code: intSpLoiT/intframework,https://github.com/intSpLoiT/intframework/blob/eabaa799d0260aa52b735fa9769266d1ce4b64ef/modules/exploits/example.rb
+CVE-2026-10973,2026-01-12,0,NOT_FOUND,2,GitHub Code: adysec/nuclei_poc,https://github.com/adysec/nuclei_poc/blob/f12c1e9b4c3a6ee3f795d831c2aa8046e9985278/poc_all/cve/CVE-2016-10973_2.yaml
+CVE-2025-51046,2026-01-12,0,NOT_FOUND,2,GitHub Code: arschlochnop/VulnWatchdog,https://github.com/arschlochnop/VulnWatchdog/blob/03f1f3b5f4462cca4ba605eacf3d308d520cb0a8/data/2025/CVE-2025-51046-0xMesh-X_CVE-2025-51046.md
+CVE-2025-60321,2026-01-12,0,NOT_FOUND,1,GitHub Code: BhavanaNannuru/cyber_security_journal,https://github.com/BhavanaNannuru/cyber_security_journal/blob/9196cc52a087ea4f8f4101e9cee10159ed3ac078/CVEs.md
+CVE-2025-31337,2026-01-12,0,NOT_FOUND,1,GitHub Code: coleleavitt/AAMVA-PDF417-Vulnerability-Research,https://github.com/coleleavitt/AAMVA-PDF417-Vulnerability-Research/blob/e632650e4d69bdf0d11fe90db0ef289bcdaaf64f/huh.md
+CVE-2025-31336,2026-01-12,0,NOT_FOUND,1,GitHub Code: coleleavitt/AAMVA-PDF417-Vulnerability-Research,https://github.com/coleleavitt/AAMVA-PDF417-Vulnerability-Research/blob/e632650e4d69bdf0d11fe90db0ef289bcdaaf64f/huh.md
+CVE-2025-48932,2026-01-12,0,NOT_FOUND,1,GitHub Code: XiaomingX/data-cve-poc,https://github.com/XiaomingX/data-cve-poc/blob/16ef9f44e9a18253ab0558178c39b58b4b58cee2/2025/CVE-2025-48932/USAGE.md
+CVE-2025-26244,2026-01-12,0,NOT_FOUND,1,GitHub Code: DeimosC2/DeimosC2,https://github.com/DeimosC2/DeimosC2/blob/036ed1ffd2397bca01d24e3b924476f9e94e47fa/README.md
+CVE-2025-30412,2026-01-12,0,NOT_FOUND,1,GitHub Code: airbus-seclab/airbus-seclab.github.io,https://github.com/airbus-seclab/airbus-seclab.github.io/blob/467d73618b06e8631cce2c452a3f84f5f701c2b5/index.md
+CVE-2025-30411,2026-01-12,0,NOT_FOUND,1,GitHub Code: airbus-seclab/airbus-seclab.github.io,https://github.com/airbus-seclab/airbus-seclab.github.io/blob/467d73618b06e8631cce2c452a3f84f5f701c2b5/index.md
+CVE-2025-30413,2026-01-12,0,NOT_FOUND,1,GitHub Code: airbus-seclab/airbus-seclab.github.io,https://github.com/airbus-seclab/airbus-seclab.github.io/blob/467d73618b06e8631cce2c452a3f84f5f701c2b5/index.md
+CVE-2025-30410,2026-01-12,0,NOT_FOUND,1,GitHub Code: airbus-seclab/airbus-seclab.github.io,https://github.com/airbus-seclab/airbus-seclab.github.io/blob/467d73618b06e8631cce2c452a3f84f5f701c2b5/index.md
+CVE-2025-30416,2026-01-12,0,NOT_FOUND,1,GitHub Code: airbus-seclab/airbus-seclab.github.io,https://github.com/airbus-seclab/airbus-seclab.github.io/blob/467d73618b06e8631cce2c452a3f84f5f701c2b5/index.md
+CVE-2025-11563,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-11173,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-61636,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-6927,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-67483,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-61645,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-62799,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-61642,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-11002,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-61640,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-3839,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-61654,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-0577,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-67482,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-6594,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-6589,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-14282,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-6593,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-61653,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2026-0716,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-67479,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-67859,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-10256,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-59024,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-62603,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-62600,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-67476,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-67484,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-9615,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-67481,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-62599,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-67478,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-62601,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-61656,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-61657,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-67477,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-1272,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-11224,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-6592,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-11065,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-24293,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-14876,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-67475,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-24528,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-11175,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-8860,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-61635,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-62291,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-12343,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-43904,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-61638,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-31510,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-61643,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-61873,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-11261,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-61646,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-61641,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-6596,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-6597,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-24531,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-9820,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-6590,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-61639,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-61637,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-61655,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-11687,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-59023,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-61634,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-67480,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-6591,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-64438,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-64098,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-62602,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-22873,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-61652,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-6595,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-51602,2026-01-12,0,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2026-0775,2026-01-12,1,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-043/
+CVE-2025-14338,2026-01-09,3,NOT_FOUND,1,OSS Security,https://seclists.org/oss-sec/2026/q1/46
+CVE-2025-66005,2026-01-09,3,NOT_FOUND,1,OSS Security,https://seclists.org/oss-sec/2026/q1/46
+CVE-2026-0773,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-042/
+CVE-2026-0778,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-041/
+CVE-2026-0776,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-040/
+CVE-2026-0774,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-039/
+CVE-2026-0772,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-038/
+CVE-2026-0771,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-037/
+CVE-2026-0770,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-036/
+CVE-2026-0769,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-035/
+CVE-2026-0768,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-034/
+CVE-2026-0767,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-033/
+CVE-2026-0766,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-032/
+CVE-2026-0765,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-031/
+CVE-2026-0764,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-030/
+CVE-2026-0763,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-029/
+CVE-2026-0762,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-028/
+CVE-2026-0761,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-027/
+CVE-2026-0760,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-026/
+CVE-2026-0759,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-025/
+CVE-2026-0758,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-024/
+CVE-2026-0757,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-023/
+CVE-2026-0756,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-022/
+CVE-2026-0755,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-021/
+CVE-2025-15063,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-020/
+CVE-2026-0796,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-018/
+CVE-2026-0795,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-017/
+CVE-2026-0794,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-016/
+CVE-2026-0793,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-015/
+CVE-2026-0792,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-014/
+CVE-2026-0791,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-013/
+CVE-2026-0790,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-012/
+CVE-2026-0789,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-011/
+CVE-2026-0788,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-010/
+CVE-2026-0787,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-009/
+CVE-2026-0786,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-008/
+CVE-2026-0785,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-007/
+CVE-2026-0784,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-006/
+CVE-2026-0783,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-005/
+CVE-2026-0782,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-004/
+CVE-2026-0781,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-003/
+CVE-2026-0780,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-002/
+CVE-2026-0779,2026-01-09,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-001/
