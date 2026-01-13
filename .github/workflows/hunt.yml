@@ -76,6 +76,34 @@ jobs:
             ghost-db-${{ hashFiles('ghost_log.db') }}-
             ghost-db-
       
+      - name: 🧹 Clean Legacy GitHub Data
+        run: |
+          # Remove legacy GitHub Code discovery data (disabled feature)
+          if [ -f ghost_log.db ]; then
+            python -c "
+          import sqlite3
+          conn = sqlite3.connect('ghost_log.db')
+          cursor = conn.cursor()
+          
+          # Delete GitHub Code sources
+          cursor.execute(\"DELETE FROM discovery_sources WHERE source_type = 'github_code'\")
+          deleted_sources = cursor.rowcount
+          
+          # Delete orphaned ghost CVEs (those with no remaining sources)
+          cursor.execute('''
+              DELETE FROM ghost_cves 
+              WHERE cve_id NOT IN (SELECT DISTINCT cve_id FROM discovery_sources)
+          ''')
+          deleted_ghosts = cursor.rowcount
+          
+          conn.commit()
+          conn.close()
+          
+          if deleted_sources > 0 or deleted_ghosts > 0:
+              print(f'Cleaned {deleted_sources} GitHub sources and {deleted_ghosts} orphaned ghosts')
+          " 2>/dev/null || echo "Database cleanup skipped (no database or error)"
+          fi
+      
       - name: 🔍 Run Ghost Hunt
         id: hunt
         env:
@@ -153,7 +181,14 @@ jobs:
             
             # Include trigger and GitHub quality filtering info
             git commit -m "🔍 Ghost Hunt: ${TIMESTAMP} | ${GHOST_COUNT} Ghosts tracked [via ${{ github.event_name }}]"
-            git push
+            
+            # Pull latest changes and rebase before push to avoid race conditions
+            git pull --rebase origin ${{ github.ref_name }} || true
+            git push || {
+              echo "::warning::Push failed, retrying after pull"
+              git pull --rebase origin ${{ github.ref_name }}
+              git push
+            }
           fi
       
       - name: 📁 Upload Hunt Logs
