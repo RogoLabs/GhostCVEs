@@ -25,6 +25,7 @@ from src.config import (
 )
 from src.discovery.base import RateLimiter
 from src.registry.local_registry import LocalCVERegistry
+from src.registry.nvd_local import NVDLocalRegistry
 
 
 logger = logging.getLogger(__name__)
@@ -87,13 +88,13 @@ class CVEValidator:
     Validates CVE identifiers against official registries.
     
     Uses a local clone of CVEProject/cvelistV5 for fast lookups.
-    Falls back to API calls only when local data is unavailable.
+    Falls back to local NVD JSON file (downloaded from nvd.handsonhacking.org).
     A CVE is considered a "Ghost" if it's found in public sources but
     is either RESERVED or NOT_FOUND in official registries.
     
     Attributes:
         local_registry: Local CVE registry for fast lookups
-        nvd_api_key: Optional NVD API key for higher rate limits
+        nvd_local: Local NVD JSON registry for validation
         session: Requests session for HTTP calls
         use_local: Whether to use local registry (default: True)
     """
@@ -103,32 +104,32 @@ class CVEValidator:
         nvd_api_key: str | None = None,
         data_dir: str | Path = "data",
         use_local: bool = True,
+        console = None,
     ) -> None:
         """
         Initialize the CVE validator.
         
         Args:
-            nvd_api_key: Optional NVD API key for higher rate limits.
-            data_dir: Directory for local CVE repository clone.
+            nvd_api_key: Deprecated - no longer used (local NVD file used instead).
+            data_dir: Directory for local CVE repository clone and NVD JSON.
             use_local: Whether to use local registry (default: True).
+            console: Optional rich console for progress display.
         """
-        self.nvd_api_key = nvd_api_key
+        self.nvd_api_key = nvd_api_key  # Kept for compatibility but not used
         self.use_local = use_local
         self.session = self._create_session()
         self.logger = logging.getLogger(f"{__name__}.{self.__class__.__name__}")
+        self.console = console
         
-        # Initialize local registry
+        # Initialize local CVE registry (CVEProject/cvelistV5)
         self.local_registry = LocalCVERegistry(data_dir)
         self._local_available = False
         
-        # Configure rate limiters based on API key availability
-        nvd_requests = 50 if nvd_api_key else REGISTRY_CONFIG.nvd_requests_per_window
-        self.nvd_rate_limiter = RateLimiter(
-            requests_per_window=nvd_requests,
-            window_seconds=REGISTRY_CONFIG.nvd_window_seconds,
-        )
+        # Initialize local NVD registry (downloaded nvd.json)
+        self.nvd_local = NVDLocalRegistry(data_dir)
+        self._nvd_local_available = False
         
-        # MITRE has more lenient rate limits
+        # MITRE has more lenient rate limits (only used as final fallback)
         self.mitre_rate_limiter = RateLimiter(
             requests_per_window=30,
             window_seconds=60,
@@ -140,12 +141,13 @@ class CVEValidator:
     
     def ensure_local_registry(self) -> bool:
         """
-        Ensure the local CVE registry is available.
+        Ensure the local CVE registry and NVD data are available.
         
         Clones or updates the CVEProject/cvelistV5 repository.
+        Downloads NVD JSON from nvd.handsonhacking.org if needed.
         
         Returns:
-            True if local registry is ready
+            True if at least one local registry is ready
         """
         if not self.use_local:
             return False
@@ -156,12 +158,27 @@ class CVEValidator:
         if self._local_available:
             info = self.local_registry.get_repo_info()
             self.logger.info(
-                f"Local registry ready: {info.get('last_updated', 'unknown')}"
+                f"Local CVE registry ready: {info.get('last_updated', 'unknown')}"
             )
         else:
-            self.logger.warning("Local registry not available, using API fallback")
+            self.logger.warning("Local CVE registry not available")
         
-        return self._local_available
+        # Also ensure NVD local data is available
+        self.logger.info("Ensuring local NVD data is available...")
+        self._nvd_local_available = self.nvd_local.ensure_nvd_data(console=self.console)
+        
+        if self._nvd_local_available:
+            info = self.nvd_local.get_info()
+            self.logger.info(
+                f"Local NVD data ready: {info.get('cve_count', 'unknown')} CVEs"
+            )
+        else:
+            self.logger.warning("Local NVD data not available")
+        
+        if not self._local_available and not self._nvd_local_available:
+            self.logger.error("No local registries available - validation will be limited")
+        
+        return self._local_available or self._nvd_local_available
     
     def _create_session(self) -> requests.Session:
         """
@@ -183,10 +200,10 @@ class CVEValidator:
     
     def validate(self, cve_id: str, found_in_wild: bool = True) -> ValidationResult:
         """
-        Validate a CVE ID against registries.
+        Validate a CVE ID against local registries.
         
-        Uses local CVE repository for fast lookups. Falls back to API
-        only when local data is unavailable.
+        Uses local CVE repository and NVD JSON for fast lookups.
+        No external API calls are made - local sources are comprehensive.
         
         Args:
             cve_id: CVE identifier to validate (e.g., CVE-2025-12345)
@@ -205,27 +222,27 @@ class CVEValidator:
         
         self.logger.debug(f"Validating CVE: {cve_id}")
         
-        # Try local registry first (fast!)
+        # Try local CVE registry first (CVEProject/cvelistV5 - fast!)
         if self._local_available:
             result = self._validate_local(cve_id, found_in_wild)
             if result is not None:
                 self._cache[cve_id] = result
                 return result
         
-        # Fall back to API calls (slow, rate-limited)
-        result = self._validate_nvd(cve_id, found_in_wild)
+        # Try local NVD data next (nvd.json - also fast!)
+        if self._nvd_local_available:
+            result = self._validate_nvd_local(cve_id, found_in_wild)
+            self._cache[cve_id] = result
+            return result
         
-        # If NVD doesn't have it, try MITRE
-        if result.status in (CVEStatus.NOT_FOUND, CVEStatus.ERROR):
-            mitre_result = self._validate_mitre(cve_id, found_in_wild)
-            
-            # Use MITRE result if it has better information
-            if mitre_result.status != CVEStatus.ERROR:
-                result = mitre_result
-        
-        # Cache the result
+        # If no local sources available, return NOT_FOUND
+        result = self._create_result(
+            cve_id=cve_id,
+            status=CVEStatus.NOT_FOUND,
+            found_in_wild=found_in_wild,
+            registry_source="NONE",
+        )
         self._cache[cve_id] = result
-        
         return result
     
     def _validate_local(
@@ -266,6 +283,43 @@ class CVEValidator:
             status=status,
             found_in_wild=found_in_wild,
             registry_source="LOCAL",
+            description=description,
+            published_date=published_date,
+        )
+    
+    def _validate_nvd_local(
+        self,
+        cve_id: str,
+        found_in_wild: bool,
+    ) -> ValidationResult:
+        """
+        Validate CVE against local NVD JSON data.
+        
+        Args:
+            cve_id: CVE identifier
+            found_in_wild: Whether CVE was found in public sources
+        
+        Returns:
+            ValidationResult from local NVD data
+        """
+        status_str, description = self.nvd_local.get_status(cve_id)
+        published_date = self.nvd_local.get_published_date(cve_id)
+        
+        # Map string status to enum
+        status_map = {
+            "PUBLISHED": CVEStatus.PUBLISHED,
+            "RESERVED": CVEStatus.RESERVED,
+            "REJECTED": CVEStatus.REJECTED,
+            "NOT_FOUND": CVEStatus.NOT_FOUND,
+        }
+        
+        status = status_map.get(status_str, CVEStatus.NOT_FOUND)
+        
+        return self._create_result(
+            cve_id=cve_id,
+            status=status,
+            found_in_wild=found_in_wild,
+            registry_source="NVD_LOCAL",
             description=description,
             published_date=published_date,
         )

@@ -109,29 +109,45 @@ class GitHubDiscovery(BaseDiscovery):
             self.logger.debug(f"Rate limiting: waiting {wait_time:.2f}s")
             time.sleep(wait_time)
     
-    def _is_blacklisted(self, repo_full_name: str) -> bool:
+    def _is_blacklisted(self, repo_full_name: str, url: str = "") -> bool:
         """
         Check if a repository is blacklisted.
         
         Args:
             repo_full_name: Full repository name (e.g., "owner/repo")
+            url: Optional URL to check for blacklisted patterns
         
         Returns:
             True if blacklisted, False otherwise
         """
-        if not repo_full_name:
-            return False
+        # Check against blacklisted repos by name
+        if repo_full_name:
+            repo_lower = repo_full_name.lower()
+            for blocked in GITHUB_QUALITY_CONFIG.blacklisted_repos:
+                if blocked.lower() == repo_lower:
+                    self.logger.info(f"Skipping blacklisted repository: {repo_full_name}")
+                    return True
+            
+            # Check against blacklisted users/orgs
+            owner = repo_full_name.split("/")[0] if "/" in repo_full_name else ""
+            if owner:
+                owner_lower = owner.lower()
+                for blocked_user in GITHUB_QUALITY_CONFIG.blacklisted_users:
+                    if blocked_user.lower() == owner_lower:
+                        self.logger.info(f"Skipping repository from blacklisted user: {owner}")
+                        return True
         
-        # Check against blacklisted repos
-        if repo_full_name in GITHUB_QUALITY_CONFIG.blacklisted_repos:
-            self.logger.info(f"Skipping blacklisted repository: {repo_full_name}")
-            return True
-        
-        # Check against blacklisted users/orgs
-        owner = repo_full_name.split("/")[0] if "/" in repo_full_name else ""
-        if owner in GITHUB_QUALITY_CONFIG.blacklisted_users:
-            self.logger.info(f"Skipping repository from blacklisted user: {owner}")
-            return True
+        # Also check URL for blacklisted repos (in case full_name wasn't populated)
+        if url:
+            url_lower = url.lower()
+            for blocked in GITHUB_QUALITY_CONFIG.blacklisted_repos:
+                if f"github.com/{blocked.lower()}" in url_lower:
+                    self.logger.info(f"Skipping blacklisted repository (by URL): {blocked}")
+                    return True
+            for blocked_user in GITHUB_QUALITY_CONFIG.blacklisted_users:
+                if f"github.com/{blocked_user.lower()}/" in url_lower:
+                    self.logger.info(f"Skipping blacklisted user (by URL): {blocked_user}")
+                    return True
         
         return False
     
@@ -210,12 +226,13 @@ class GitHubDiscovery(BaseDiscovery):
         
         return min(1.0, max(0.0, score))
     
-    def _validate_repository(self, repo_data: dict) -> tuple[bool, float]:
+    def _validate_repository(self, repo_data: dict, url: str = "") -> tuple[bool, float]:
         """
         Validate repository quality and calculate confidence score.
         
         Args:
             repo_data: Repository data from GitHub API
+            url: Optional URL for additional blacklist checking
         
         Returns:
             Tuple of (is_valid, quality_score)
@@ -224,9 +241,10 @@ class GitHubDiscovery(BaseDiscovery):
             return False, 0.0
         
         full_name = repo_data.get("full_name", "")
+        html_url = repo_data.get("html_url", "") or url
         
-        # Check blacklist first
-        if self._is_blacklisted(full_name):
+        # Check blacklist first (by name and URL)
+        if self._is_blacklisted(full_name, html_url):
             return False, 0.0
         
         # Check minimum stars
@@ -385,8 +403,8 @@ class GitHubDiscovery(BaseDiscovery):
         repo = item.get("repository", {})
         repo_name = repo.get("full_name", "unknown")
         
-        # Validate repository quality
-        is_valid, quality_score = self._validate_repository(repo)
+        # Validate repository quality (pass URL for blacklist checking)
+        is_valid, quality_score = self._validate_repository(repo, html_url)
         if not is_valid:
             self.logger.debug(f"Skipping low-quality repository: {repo_name}")
             return
@@ -539,8 +557,8 @@ class GitHubDiscovery(BaseDiscovery):
         repo = item.get("repository", {})
         repo_name = repo.get("full_name", "unknown")
         
-        # Validate repository quality
-        is_valid, quality_score = self._validate_repository(repo)
+        # Validate repository quality (pass URL for blacklist checking)
+        is_valid, quality_score = self._validate_repository(repo, html_url)
         if not is_valid:
             self.logger.debug(f"Skipping low-quality repository: {repo_name}")
             return

@@ -9,6 +9,7 @@ Author: rogolabs.net
 """
 
 from dataclasses import dataclass, field
+from datetime import datetime
 from typing import Final
 import re
 
@@ -26,6 +27,140 @@ CVE_STRICT_PATTERN: Final[re.Pattern[str]] = re.compile(
     r"\bCVE-202[5-9]-\d{4,7}\b",
     re.IGNORECASE
 )
+
+
+# =============================================================================
+# CVE ID Validation
+# =============================================================================
+
+@dataclass(frozen=True)
+class CVEValidationConfig:
+    """
+    Configuration for CVE ID plausibility validation.
+    
+    Filters out obviously fake or improbable CVE IDs based on:
+    - Year validity (not in the future)
+    - ID range plausibility for the given year
+    - Pattern detection (all zeros, repeated digits, embedded years)
+    """
+    
+    # Current year for validation (updated at runtime)
+    # Maximum reasonable CVE ID numbers by year (approximate, based on historical data)
+    # These are rough upper bounds - real counts vary but this catches obvious fakes
+    max_id_by_year: dict[int, int] = field(default_factory=lambda: {
+        2025: 70000,   # ~60k CVEs expected by end of 2025
+        2026: 15000,   # We're in January 2026, so far fewer allocated
+        2027: 0,       # Future year - no CVEs yet
+        2028: 0,
+        2029: 0,
+    })
+    
+    # For current year, maximum plausible ID based on month
+    # Roughly ~5000 CVEs/month gets allocated, so month * 6000 is generous
+    max_id_per_month: int = 6000
+    
+    # Suspicious patterns to reject
+    reject_all_zeros: bool = True          # CVE-2025-0000000
+    reject_all_same_digit: bool = True     # CVE-2025-11111, CVE-2025-99999
+    reject_embedded_years: bool = True     # CVE-2025-412026 (contains "2026")
+    
+    # Minimum ID (CVE IDs start at 0001 typically)
+    min_id: int = 1
+
+
+# Create default config
+CVE_VALIDATION_CONFIG: Final[CVEValidationConfig] = CVEValidationConfig()
+
+
+def validate_cve_id(cve_id: str, config: CVEValidationConfig | None = None) -> tuple[bool, str]:
+    """
+    Validate a CVE ID for plausibility.
+    
+    Checks if a CVE ID is structurally valid and plausible given current date
+    and historical CVE allocation patterns.
+    
+    Args:
+        cve_id: CVE identifier to validate (e.g., CVE-2025-12345)
+        config: Optional validation config (uses default if None)
+    
+    Returns:
+        Tuple of (is_valid, reason) where reason explains rejection
+    
+    Examples:
+        >>> validate_cve_id("CVE-2025-12345")
+        (True, "")
+        >>> validate_cve_id("CVE-2027-12345")  # Future year
+        (False, "Year 2027 is in the future")
+        >>> validate_cve_id("CVE-2026-99268")  # Implausibly high for Jan 2026
+        (False, "ID 99268 is implausibly high for year 2026")
+    """
+    if config is None:
+        config = CVE_VALIDATION_CONFIG
+    
+    cve_id = cve_id.upper().strip()
+    
+    # Basic format check
+    if not cve_id.startswith("CVE-"):
+        return (False, "Invalid format: must start with CVE-")
+    
+    parts = cve_id.split("-")
+    if len(parts) != 3:
+        return (False, "Invalid format: must be CVE-YYYY-NNNNN")
+    
+    try:
+        year = int(parts[1])
+        id_num = int(parts[2])
+    except ValueError:
+        return (False, "Invalid format: year and ID must be numeric")
+    
+    # Get current date
+    now = datetime.utcnow()
+    current_year = now.year
+    current_month = now.month
+    
+    # Check year validity
+    if year > current_year:
+        return (False, f"Year {year} is in the future")
+    
+    if year < 1999:  # CVEs started in 1999
+        return (False, f"Year {year} predates CVE system (started 1999)")
+    
+    # Check ID minimum
+    if id_num < config.min_id:
+        return (False, f"ID {id_num} is below minimum ({config.min_id})")
+    
+    # Check suspicious patterns
+    id_str = parts[2]
+    
+    if config.reject_all_zeros and id_str.replace("0", "") == "":
+        return (False, f"ID {id_str} is all zeros (obviously fake)")
+    
+    if config.reject_all_same_digit and len(set(id_str)) == 1 and len(id_str) >= 4:
+        return (False, f"ID {id_str} is all same digit (suspicious pattern)")
+    
+    if config.reject_embedded_years:
+        # Check for embedded years like "2026" in "412026" or "3272025"
+        for check_year in range(2024, current_year + 2):
+            year_str = str(check_year)
+            # Only flag if embedded (not at start) and ID is suspiciously formed
+            if year_str in id_str and not id_str.startswith(year_str):
+                if len(id_str) >= 6:  # Long IDs with embedded years are suspicious
+                    return (False, f"ID {id_str} contains embedded year {check_year} (suspicious)")
+    
+    # Check plausibility for the given year
+    if year == current_year:
+        # For current year, estimate based on month
+        max_plausible = current_month * config.max_id_per_month
+        if id_num > max_plausible:
+            return (False, f"ID {id_num} is implausibly high for {year} in month {current_month}")
+    elif year in config.max_id_by_year:
+        max_for_year = config.max_id_by_year[year]
+        if max_for_year == 0:
+            return (False, f"Year {year} has no CVEs allocated yet")
+        if id_num > max_for_year:
+            return (False, f"ID {id_num} exceeds plausible maximum ({max_for_year}) for year {year}")
+    
+    return (True, "")
 
 
 # =============================================================================
@@ -196,6 +331,9 @@ class GitHubQualityConfig:
     # Blacklisted users/organizations (prolific fake CVE posters)
     blacklisted_users: tuple[str, ...] = (
         "koreatest12",
+        "Hex0rc1st",
+        "Abhishek-khowal",  # Fake CVE test repos
+        "Abhinandan-Khurana",  # Demo/test data with fake CVE IDs
         # Add more as discovered
     )
     
@@ -228,11 +366,16 @@ GITHUB_QUALITY_CONFIG: Final[GitHubQualityConfig] = GitHubQualityConfig()
 class RegistryConfig:
     """Configuration for CVE registry validation."""
     
-    # MITRE CVE Services API
+    # MITRE CVE Services API (fallback only)
     mitre_api_base: str = "https://cveawg.mitre.org/api"
     mitre_cve_endpoint: str = "/cve/{cve_id}"
     
-    # NVD API 2.0
+    # Local NVD JSON file (primary source for NVD data)
+    nvd_local_url: str = "https://nvd.handsonhacking.org/nvd.json"
+    nvd_local_filename: str = "nvd.json"
+    nvd_local_max_age_hours: int = 24  # Re-download if older than this
+    
+    # Legacy NVD API 2.0 (deprecated - using local file instead)
     nvd_api_base: str = "https://services.nvd.nist.gov/rest/json/cves/2.0"
     nvd_cve_endpoint: str = "?cveId={cve_id}"
     
@@ -244,7 +387,7 @@ class RegistryConfig:
     max_retries: int = 3
     retry_delay_seconds: float = 1.0
     
-    # Rate limiting (NVD allows 5 requests per 30 seconds without API key)
+    # Rate limiting (for MITRE API fallback only)
     nvd_requests_per_window: int = 5
     nvd_window_seconds: int = 30
 

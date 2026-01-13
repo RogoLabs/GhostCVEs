@@ -14,6 +14,8 @@ from datetime import datetime
 from typing import Iterator
 import logging
 
+from src.config import validate_cve_id
+
 
 logger = logging.getLogger(__name__)
 
@@ -32,6 +34,7 @@ class DiscoveryResult:
         context: Optional surrounding text/context of the CVE mention
         confidence: Confidence score (0.0-1.0) of the discovery validity
         raw_data: Optional raw data from the source for debugging
+        validation_error: If set, this CVE ID failed plausibility validation
     """
     cve_id: str
     source_type: str
@@ -41,10 +44,23 @@ class DiscoveryResult:
     context: str | None = None
     confidence: float = 1.0
     raw_data: dict | None = None
+    validation_error: str | None = None
     
     def __post_init__(self) -> None:
-        """Normalize CVE ID to uppercase."""
+        """Normalize CVE ID to uppercase and validate."""
         self.cve_id = self.cve_id.upper()
+        
+        # Validate CVE ID plausibility
+        is_valid, reason = validate_cve_id(self.cve_id)
+        if not is_valid:
+            self.validation_error = reason
+            # Reduce confidence for invalid CVE IDs
+            self.confidence = 0.0
+    
+    @property
+    def is_valid(self) -> bool:
+        """Check if this CVE ID passed plausibility validation."""
+        return self.validation_error is None
     
     def __hash__(self) -> int:
         """Hash based on CVE ID and evidence URL for deduplication."""
@@ -111,10 +127,12 @@ class BaseDiscovery(ABC):
         Execute discovery and return all results as a list.
         
         This is a convenience wrapper around `discover()` that collects
-        all results and handles common error cases.
+        all results, validates CVE IDs, and handles common error cases.
+        Invalid CVE IDs (implausible patterns, future years, etc.) are
+        filtered out with a warning.
         
         Returns:
-            List of DiscoveryResult objects
+            List of valid DiscoveryResult objects
         """
         if not self.enabled:
             self.logger.info(f"Discovery module '{self.name}' is disabled, skipping")
@@ -122,9 +140,18 @@ class BaseDiscovery(ABC):
         
         self.logger.info(f"Starting discovery: {self.name}")
         self._results = []
+        invalid_count = 0
         
         try:
             for result in self.discover():
+                # Filter out invalid CVE IDs
+                if not result.is_valid:
+                    self.logger.warning(
+                        f"Rejected implausible CVE ID: {result.cve_id} - {result.validation_error}"
+                    )
+                    invalid_count += 1
+                    continue
+                    
                 self._results.append(result)
                 self.logger.debug(
                     f"Found {result.cve_id} in {result.source_name}"
@@ -135,8 +162,13 @@ class BaseDiscovery(ABC):
                 exc_info=True
             )
         
+        if invalid_count > 0:
+            self.logger.info(
+                f"Discovery filtered out {invalid_count} implausible CVE IDs"
+            )
+        
         self.logger.info(
-            f"Discovery complete: {self.name} - Found {len(self._results)} CVE mentions"
+            f"Discovery complete: {self.name} - Found {len(self._results)} valid CVE mentions"
         )
         return self._results
     

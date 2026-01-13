@@ -25,7 +25,7 @@ from datetime import datetime
 from pathlib import Path
 
 from src import __version__
-from src.config import APP_SETTINGS, DATABASE_CONFIG
+from src.config import APP_SETTINGS, DATABASE_CONFIG, GITHUB_QUALITY_CONFIG
 from src.discovery import GitHubDiscovery, RSSDiscovery, VendorDiscovery
 from src.discovery.base import BaseDiscovery, DiscoveryResult
 from src.registry import CVEValidator
@@ -115,24 +115,41 @@ def run_hunt(
     # Create discovery modules
     modules = create_discovery_modules(github_token)
     
-    # Create validator with local registry
-    validator = CVEValidator(nvd_api_key=nvd_api_key)
+    # Create validator with local registry (pass console for progress display)
+    validator = CVEValidator(nvd_api_key=nvd_api_key, console=dashboard.console)
     
     dashboard.console.print()
     dashboard.console.print("[bold cyan]🔍 Starting Ghost Hunt...[/bold cyan]")
     dashboard.console.print()
     
-    # Ensure local CVE registry is available (fast validation)
-    dashboard.console.print("[dim]📦 Preparing local CVE registry...[/dim]")
+    # Purge any previously collected data from blacklisted sources
+    if GITHUB_QUALITY_CONFIG.blacklisted_repos or GITHUB_QUALITY_CONFIG.blacklisted_users:
+        purged = db_manager.purge_blacklisted_sources(
+            GITHUB_QUALITY_CONFIG.blacklisted_repos,
+            GITHUB_QUALITY_CONFIG.blacklisted_users,
+        )
+        if purged > 0:
+            dashboard.console.print(
+                f"[dim]🗑️  Purged {purged} entries from blacklisted sources[/dim]"
+            )
+    
+    # Ensure local CVE registry and NVD data are available (fast validation)
+    dashboard.console.print("[dim]📦 Preparing local CVE registries...[/dim]")
     if validator.ensure_local_registry():
         repo_info = validator.local_registry.get_repo_info()
         dashboard.console.print(
-            f"[green]✓ Local registry ready[/green] "
+            f"[green]✓ Local CVE registry ready[/green] "
             f"[dim](last updated: {repo_info.get('last_updated', 'unknown')})[/dim]"
         )
+        if validator._nvd_local_available:
+            nvd_info = validator.nvd_local.get_info()
+            dashboard.console.print(
+                f"[green]✓ Local NVD data ready[/green] "
+                f"[dim]({nvd_info.get('cve_count', 'unknown'):,} CVEs indexed)[/dim]"
+            )
     else:
         dashboard.console.print(
-            "[yellow]⚠ Local registry unavailable, using API fallback (slower)[/yellow]"
+            "[red]✗ Local registries unavailable - validation will be limited[/red]"
         )
     dashboard.console.print()
     
