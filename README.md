@@ -30,9 +30,9 @@ A Ghost CVE is a vulnerability identifier that appears in the wild (GitHub commi
 
 ## ✨ Features
 
-- **Multi-Source Discovery**: Monitors GitHub (code + commits), RSS feeds, vendor advisories
-- **GitHub Quality Filtering**: Blacklists fake repositories and scores repo quality to filter spam
-- **Registry Validation**: Validates CVEs against NVD API 2.0 and MITRE CVE Services
+- **Multi-Source Discovery**: Monitors RSS feeds, vendor advisories, and security trackers
+- **Local CVE Validation**: Fast offline validation using local CVEProject/cvelistV5 repo and NVD JSON database
+- **CVE ID Plausibility Checks**: Filters out fake/invalid CVE IDs (future years, implausible ID ranges)
 - **Intelligent Tracking**: Preserves first-seen dates while updating status
 - **Rich Terminal UI**: Beautiful dashboards and progress indicators
 - **Automated Hunting**: GitHub Actions workflow runs every 6 hours
@@ -59,11 +59,11 @@ pip install -r requirements.txt
 ### Set Environment Variables
 
 ```bash
-# Required for GitHub discovery
-export GITHUB_TOKEN="ghp_your_token_here"
-
-# Optional: Higher NVD rate limits
+# Optional: Higher NVD rate limits (not required - uses local NVD data)
 export NVD_API_KEY="your_nvd_api_key"
+
+# Optional: For future GitHub discovery (currently disabled)
+export GITHUB_TOKEN="ghp_your_token_here"
 ```
 
 ### Run a Hunt
@@ -97,9 +97,8 @@ python main.py --dashboard
 
 📋 Found 47 unique CVE mentions
 
-✓ GitHub Discovery: 23 CVEs found
-✓ RSS Discovery: 18 CVEs found  
-✓ Vendor Discovery: 6 CVEs found
+✓ RSS Discovery: 35 CVEs found  
+✓ Vendor Discovery: 12 CVEs found
 
 ╭──────────────── 🎯 Hunt Complete ────────────────╮
 │ CVE Mentions Found      │                     47 │
@@ -161,37 +160,36 @@ GhostCVEs/
 | Red Hat RHSA | vendor_advisory | 2 |
 | CISA KEV | government_advisory | 1 |
 
-### GitHub Search
+### Local CVE Validation
 
-- Monitors commits and code for `CVE-202[5-9]-\d{4,}`
-- Supports authenticated requests for higher rate limits
-- Extracts context around CVE mentions
-- **Quality Filtering**: Blacklists known fake repositories and low-quality sources
-- **Repository Scoring**: Evaluates repos based on stars, age, activity, and metadata
-- **Dynamic Confidence**: Adjusts confidence scores based on repository quality
+Ghost Hunter uses fully local CVE validation for speed and reliability:
 
-#### GitHub Repository Blacklist
+1. **CVEProject/cvelistV5**: Official CVE records cloned locally (~2GB shallow clone)
+2. **NVD JSON Database**: Full NVD data from nvd.handsonhacking.org (~1.4GB, 327K+ CVEs)
 
-The following repositories are automatically filtered out as known fake/low-quality sources:
-- `koreatest12/auto` - Known fake repository
-- `Hex0rc1st/CVE_POC_monitor` - Low-quality aggregator
+Both sources are automatically downloaded on first run and cached locally.
 
-To add more blacklisted repos or configure quality thresholds, edit `src/config.py` -> `GitHubQualityConfig`:
+## 🚧 Future Improvements
+
+### GitHub Code Search (Currently Disabled)
+
+GitHub code/commit search has been temporarily disabled due to high noise levels from:
+
+- **Fake CVE repositories**: Many repos contain demo/test data with made-up CVE IDs
+- **POC aggregators**: Low-quality repos that scrape and republish without validation
+- **AI-generated content**: Synthetic security reports with non-existent CVEs
+
+**Planned improvements:**
+- CNA (CVE Numbering Authority) whitelist - only trust repos from official CNAs
+- Enhanced repository quality scoring
+- Machine learning-based fake detection
+
+To re-enable GitHub discovery (not recommended without additional filtering):
 
 ```python
-blacklisted_repos: tuple[str, ...] = (
-    "koreatest12/auto",
-    "Hex0rc1st/CVE_POC_monitor",
-    "your/fake-repo",  # Add more here
-)
-
-# Quality thresholds (adjust as needed)
-min_stars: int = 0          # Minimum GitHub stars (0 = no filter)
-min_age_days: int = 1       # Minimum repo age in days
-require_description: bool = True  # Repo must have description
+# In src/config.py -> GitHubQualityConfig
+enabled: bool = True  # Change from False to True
 ```
-
-For comprehensive details on GitHub reliability improvements, see [GITHUB_RELIABILITY_PLAN.md](GITHUB_RELIABILITY_PLAN.md).
 
 ## ⚙️ CLI Options
 
