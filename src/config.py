@@ -320,11 +320,17 @@ GITHUB_CONFIG: Final[GitHubSearchConfig] = GitHubSearchConfig()
 class GitHubQualityConfig:
     """Configuration for filtering low-quality or fake GitHub repositories."""
     
+    # Master switch for GitHub discovery
+    # Disabled due to high noise from fake/demo CVE repos
+    # Re-enable when CNA whitelist is implemented
+    enabled: bool = False
+    
     # Blacklisted repositories (known fake or low-quality sources)
     # Format: "owner/repo"
     blacklisted_repos: tuple[str, ...] = (
         "koreatest12/auto",
         "Hex0rc1st/CVE_POC_monitor",
+        "santosomar/AI-agents-for-cybersecurity",  # Made up CVEs for demos
         # Add more as discovered
     )
     
