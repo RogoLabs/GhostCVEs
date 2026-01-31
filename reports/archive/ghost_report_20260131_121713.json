@@ -1,0 +1,1394 @@
+{
+  "generated_at": "2026-01-31T12:17:13.656934",
+  "summary": {
+    "total_ghosts": 72,
+    "total_cves_tracked": 5724,
+    "total_sources": 5802,
+    "oldest_ghost": "CVE-2025-14338",
+    "oldest_ghost_days": 21
+  },
+  "ghosts": [
+    {
+      "cve_id": "CVE-2026-0797",
+      "first_seen": "2026-01-30T00:00:00",
+      "last_checked": "2026-01-31T12:16:43.322734",
+      "days_in_limbo": 1,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-050/",
+          "discovered_at": "2026-01-30T00:00:00",
+          "context": "ZDI-26-050: GIMP ICO File Parsing Heap-based Buffer Overflow Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-1530",
+      "first_seen": "2026-01-29T00:39:27.722407",
+      "last_checked": "2026-01-31T12:16:58.855826",
+      "days_in_limbo": 2,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7363636363636363,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-01-29T00:39:27.722407",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-1531",
+      "first_seen": "2026-01-29T00:39:27.720390",
+      "last_checked": "2026-01-31T12:16:58.892230",
+      "days_in_limbo": 2,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7363636363636363,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-01-29T00:39:27.720390",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-13881",
+      "first_seen": "2026-01-28T00:35:35.578193",
+      "last_checked": "2026-01-31T12:16:58.925020",
+      "days_in_limbo": 3,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7399999999999999,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-01-28T00:35:35.578193",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-29867",
+      "first_seen": "2026-01-28T00:00:00",
+      "last_checked": "2026-01-31T12:16:43.334633",
+      "days_in_limbo": 3,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.8499999999999998,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-047/",
+          "discovered_at": "2026-01-28T00:00:00",
+          "context": "ZDI-26-047: Hancom Office DOC File Parsing Type Confusion Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-58151",
+      "first_seen": "2026-01-27T12:05:50",
+      "last_checked": "2026-01-29T12:21:22.023375",
+      "days_in_limbo": 4,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.8499999999999999,
+      "description": null,
+      "sources": [
+        {
+          "type": "mailing_list",
+          "name": "OSS Security",
+          "url": "https://seclists.org/oss-sec/2026/q1/118",
+          "discovered_at": "2026-01-27T12:05:50",
+          "context": "Xen Security Advisory 478 v2 (CVE-2025-58151) - varstored: TOCTOU issues with mapped guest memory"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-1220",
+      "first_seen": "2026-01-20T14:15:51.788000",
+      "last_checked": "2026-01-31T12:16:46.684319",
+      "days_in_limbo": 10,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.802325581395349,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-21T12:16:15.265505",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Chrome Releases",
+          "url": "http://chromereleases.googleblog.com/feeds/7996239757113969332/comments/default",
+          "discovered_at": "2026-01-20T14:15:51.788000",
+          "context": "Stable Channel Update for Desktop"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-1200",
+      "first_seen": "2026-01-20T00:33:53.126503",
+      "last_checked": "2026-01-31T12:16:58.938478",
+      "days_in_limbo": 11,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7382978723404258,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-01-20T00:33:53.126503",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-68121",
+      "first_seen": "2026-01-16T12:15:01.463756",
+      "last_checked": "2026-01-31T12:16:57.401363",
+      "days_in_limbo": 15,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7999999999999994,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-16T12:15:01.463756",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0665",
+      "first_seen": "2026-01-13T02:00:25.732578",
+      "last_checked": "2026-01-31T12:16:54.264552",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7973333333333323,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-13T12:15:50.142089",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-01-13T02:00:25.732578",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-14840",
+      "first_seen": "2026-01-13T02:00:25.731558",
+      "last_checked": "2026-01-19T18:15:09.501401",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7178571428571427,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-01-13T02:00:25.731558",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-11563",
+      "first_seen": "2026-01-12T15:41:20.019075",
+      "last_checked": "2026-01-31T12:16:44.143481",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.019075",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-11173",
+      "first_seen": "2026-01-12T15:41:20.019062",
+      "last_checked": "2026-01-31T12:16:53.126818",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.019062",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-61636",
+      "first_seen": "2026-01-12T15:41:20.019046",
+      "last_checked": "2026-01-31T12:16:45.131711",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.019046",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-6927",
+      "first_seen": "2026-01-12T15:41:20.019044",
+      "last_checked": "2026-01-31T12:16:53.820560",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.019044",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-67483",
+      "first_seen": "2026-01-12T15:41:20.018961",
+      "last_checked": "2026-01-31T12:16:45.995287",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.018961",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-61645",
+      "first_seen": "2026-01-12T15:41:20.018896",
+      "last_checked": "2026-01-31T12:16:48.358529",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.018896",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-62799",
+      "first_seen": "2026-01-12T15:41:20.018715",
+      "last_checked": "2026-01-31T12:16:44.897236",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.018715",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-61642",
+      "first_seen": "2026-01-12T15:41:20.018688",
+      "last_checked": "2026-01-31T12:16:58.264121",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.018688",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-61640",
+      "first_seen": "2026-01-12T15:41:20.018578",
+      "last_checked": "2026-01-31T12:16:52.154954",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.018578",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-61654",
+      "first_seen": "2026-01-12T15:41:20.018570",
+      "last_checked": "2026-01-31T12:16:58.109060",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.018570",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-0577",
+      "first_seen": "2026-01-12T15:41:20.018321",
+      "last_checked": "2026-01-31T12:16:57.050504",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.018321",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-67482",
+      "first_seen": "2026-01-12T15:41:20.018070",
+      "last_checked": "2026-01-31T12:16:53.310759",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.018070",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-6594",
+      "first_seen": "2026-01-12T15:41:20.017927",
+      "last_checked": "2026-01-31T12:16:45.639944",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.017927",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-6589",
+      "first_seen": "2026-01-12T15:41:20.017924",
+      "last_checked": "2026-01-31T12:16:45.503333",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.017924",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-14282",
+      "first_seen": "2026-01-12T15:41:20.017814",
+      "last_checked": "2026-01-31T12:16:51.199012",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.017814",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-6593",
+      "first_seen": "2026-01-12T15:41:20.017723",
+      "last_checked": "2026-01-31T12:16:56.269229",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.017723",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-61653",
+      "first_seen": "2026-01-12T15:41:20.017447",
+      "last_checked": "2026-01-31T12:16:43.970421",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.017447",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-67479",
+      "first_seen": "2026-01-12T15:41:20.017349",
+      "last_checked": "2026-01-31T12:16:51.333821",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.017349",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-10256",
+      "first_seen": "2026-01-12T15:41:20.017245",
+      "last_checked": "2026-01-31T12:16:56.161822",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.017245",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-59024",
+      "first_seen": "2026-01-12T15:41:20.017241",
+      "last_checked": "2026-01-31T12:16:46.181599",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.017241",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-62603",
+      "first_seen": "2026-01-12T15:41:20.017180",
+      "last_checked": "2026-01-31T12:16:52.353059",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.017180",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-62600",
+      "first_seen": "2026-01-12T15:41:20.017163",
+      "last_checked": "2026-01-31T12:16:50.804918",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.017163",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-67476",
+      "first_seen": "2026-01-12T15:41:20.017035",
+      "last_checked": "2026-01-31T12:16:43.981778",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.017035",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-67484",
+      "first_seen": "2026-01-12T15:41:20.016928",
+      "last_checked": "2026-01-31T12:16:53.712807",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.016928",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-67481",
+      "first_seen": "2026-01-12T15:41:20.016758",
+      "last_checked": "2026-01-31T12:16:45.413558",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.016758",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-62599",
+      "first_seen": "2026-01-12T15:41:20.016619",
+      "last_checked": "2026-01-31T12:16:52.339999",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.016619",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-67478",
+      "first_seen": "2026-01-12T15:41:20.016602",
+      "last_checked": "2026-01-31T12:16:51.785931",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.016602",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-62601",
+      "first_seen": "2026-01-12T15:41:20.016503",
+      "last_checked": "2026-01-31T12:16:45.195189",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.016503",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-61656",
+      "first_seen": "2026-01-12T15:41:20.016344",
+      "last_checked": "2026-01-31T12:16:56.606879",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.016344",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-61657",
+      "first_seen": "2026-01-12T15:41:20.016092",
+      "last_checked": "2026-01-31T12:16:54.584603",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.016092",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-67477",
+      "first_seen": "2026-01-12T15:41:20.016061",
+      "last_checked": "2026-01-31T12:16:52.350382",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.016061",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-1272",
+      "first_seen": "2026-01-12T15:41:20.016010",
+      "last_checked": "2026-01-31T12:16:46.886276",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.016010",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-6592",
+      "first_seen": "2026-01-12T15:41:20.015921",
+      "last_checked": "2026-01-31T12:16:51.761338",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.015921",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-14876",
+      "first_seen": "2026-01-12T15:41:20.015800",
+      "last_checked": "2026-01-31T12:16:48.271238",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.015800",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-67475",
+      "first_seen": "2026-01-12T15:41:20.015622",
+      "last_checked": "2026-01-31T12:16:49.367589",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.015622",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-8860",
+      "first_seen": "2026-01-12T15:41:20.015444",
+      "last_checked": "2026-01-31T12:16:45.111175",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.015444",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-61635",
+      "first_seen": "2026-01-12T15:41:20.015400",
+      "last_checked": "2026-01-31T12:16:46.139602",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.015400",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-12343",
+      "first_seen": "2026-01-12T15:41:20.015287",
+      "last_checked": "2026-01-31T12:16:57.688999",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.015287",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-61638",
+      "first_seen": "2026-01-12T15:41:20.015016",
+      "last_checked": "2026-01-31T12:16:57.656558",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.015016",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-61643",
+      "first_seen": "2026-01-12T15:41:20.014836",
+      "last_checked": "2026-01-31T12:16:53.080439",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.014836",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-11261",
+      "first_seen": "2026-01-12T15:41:20.014712",
+      "last_checked": "2026-01-31T12:16:56.929038",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.014712",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-61646",
+      "first_seen": "2026-01-12T15:41:20.014709",
+      "last_checked": "2026-01-31T12:16:53.811081",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.014709",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-61641",
+      "first_seen": "2026-01-12T15:41:20.014677",
+      "last_checked": "2026-01-31T12:16:49.601801",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.014677",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-6596",
+      "first_seen": "2026-01-12T15:41:20.014646",
+      "last_checked": "2026-01-31T12:16:49.433938",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.014646",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-6597",
+      "first_seen": "2026-01-12T15:41:20.014474",
+      "last_checked": "2026-01-31T12:16:49.093370",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.014474",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-6590",
+      "first_seen": "2026-01-12T15:41:20.014329",
+      "last_checked": "2026-01-31T12:16:47.812818",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.014329",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-61639",
+      "first_seen": "2026-01-12T15:41:20.014300",
+      "last_checked": "2026-01-31T12:16:44.803249",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.014300",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-61637",
+      "first_seen": "2026-01-12T15:41:20.014101",
+      "last_checked": "2026-01-31T12:16:54.471275",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.014101",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-61655",
+      "first_seen": "2026-01-12T15:41:20.014067",
+      "last_checked": "2026-01-31T12:16:50.396806",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.014067",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-59023",
+      "first_seen": "2026-01-12T15:41:20.013966",
+      "last_checked": "2026-01-31T12:16:51.048382",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.013966",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-61634",
+      "first_seen": "2026-01-12T15:41:20.013916",
+      "last_checked": "2026-01-31T12:16:43.717894",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.013916",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-67480",
+      "first_seen": "2026-01-12T15:41:20.013878",
+      "last_checked": "2026-01-31T12:16:51.987542",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.013878",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-6591",
+      "first_seen": "2026-01-12T15:41:20.013838",
+      "last_checked": "2026-01-31T12:16:54.994472",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.013838",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-64438",
+      "first_seen": "2026-01-12T15:41:20.013833",
+      "last_checked": "2026-01-31T12:16:54.806870",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.013833",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-64098",
+      "first_seen": "2026-01-12T15:41:20.013808",
+      "last_checked": "2026-01-31T12:16:51.151385",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.013808",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-62602",
+      "first_seen": "2026-01-12T15:41:20.013779",
+      "last_checked": "2026-01-31T12:16:49.176755",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.013779",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-22873",
+      "first_seen": "2026-01-12T15:41:20.013744",
+      "last_checked": "2026-01-31T12:16:44.411029",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.013744",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-61652",
+      "first_seen": "2026-01-12T15:41:20.013707",
+      "last_checked": "2026-01-31T12:16:43.686311",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.013707",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-6595",
+      "first_seen": "2026-01-12T15:41:20.013590",
+      "last_checked": "2026-01-31T12:16:48.114006",
+      "days_in_limbo": 18,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-12T15:41:20.013590",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-14338",
+      "first_seen": "2026-01-09T18:19:07",
+      "last_checked": "2026-01-13T12:17:57.041894",
+      "days_in_limbo": 21,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.8499999999999999,
+      "description": null,
+      "sources": [
+        {
+          "type": "mailing_list",
+          "name": "OSS Security",
+          "url": "https://seclists.org/oss-sec/2026/q1/46",
+          "discovered_at": "2026-01-09T18:19:07",
+          "context": "InputPlumber: Lack of D-Bus Authorization and Input Verification allows UI Input Injection and Denial-of-Service (CVE-2025-66005, CVE-2025-14338)"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-66005",
+      "first_seen": "2026-01-09T18:19:07",
+      "last_checked": "2026-01-13T12:17:57.044411",
+      "days_in_limbo": 21,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "MITRE",
+      "confidence_score": 0.8499999999999999,
+      "description": null,
+      "sources": [
+        {
+          "type": "mailing_list",
+          "name": "OSS Security",
+          "url": "https://seclists.org/oss-sec/2026/q1/46",
+          "discovered_at": "2026-01-09T18:19:07",
+          "context": "InputPlumber: Lack of D-Bus Authorization and Input Verification allows UI Input Injection and Denial-of-Service (CVE-2025-66005, CVE-2025-14338)"
+        }
+      ]
+    }
+  ]
+}
