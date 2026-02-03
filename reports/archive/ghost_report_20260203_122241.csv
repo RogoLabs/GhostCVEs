@@ -1,0 +1,36 @@
+CVE ID,First Seen,Days in Limbo,Registry Status,Source Count,Primary Source,Evidence URL
+CVE-2026-1767,2026-02-03,0,NOT_FOUND,2,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2026-1766,2026-02-03,0,NOT_FOUND,2,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2026-1765,2026-02-03,0,NOT_FOUND,2,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2026-1764,2026-02-03,0,NOT_FOUND,2,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2026-1580,2026-02-02,0,NOT_FOUND,1,OSS Security,https://seclists.org/oss-sec/2026/q1/140
+CVE-2025-67601,2026-02-01,1,NOT_FOUND,1,GitHub Security Advisories,https://github.com/advisories/GHSA-mc24-7m59-4q5p
+CVE-2026-0797,2026-01-30,4,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-050/
+CVE-2025-29867,2026-01-28,6,NOT_FOUND,1,ZDI Advisories,http://www.zerodayinitiative.com/advisories/ZDI-26-047/
+CVE-2025-58151,2026-01-27,7,NOT_FOUND,1,OSS Security,https://seclists.org/oss-sec/2026/q1/118
+CVE-2026-1220,2026-01-20,13,NOT_FOUND,2,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2026-1200,2026-01-20,14,NOT_FOUND,1,Red Hat Security Data,https://access.redhat.com/hydra/rest/securitydata/cve.json
+CVE-2025-68121,2026-01-16,18,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2026-0665,2026-01-13,21,NOT_FOUND,2,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-14840,2026-01-13,21,NOT_FOUND,1,Red Hat Security Data,https://access.redhat.com/hydra/rest/securitydata/cve.json
+CVE-2025-11563,2026-01-12,21,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-62799,2026-01-12,21,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-0577,2026-01-12,21,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-14282,2026-01-12,21,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-10256,2026-01-12,21,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-59024,2026-01-12,21,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-62603,2026-01-12,21,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-62600,2026-01-12,21,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-62599,2026-01-12,21,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-62601,2026-01-12,21,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-1272,2026-01-12,21,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-14876,2026-01-12,21,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-8860,2026-01-12,21,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-12343,2026-01-12,21,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-59023,2026-01-12,21,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-64438,2026-01-12,21,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-64098,2026-01-12,21,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-62602,2026-01-12,21,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-22873,2026-01-12,21,NOT_FOUND,1,Debian Security Tracker,https://security-tracker.debian.org/tracker/data/json
+CVE-2025-14338,2026-01-09,24,NOT_FOUND,1,OSS Security,https://seclists.org/oss-sec/2026/q1/46
+CVE-2025-66005,2026-01-09,24,NOT_FOUND,1,OSS Security,https://seclists.org/oss-sec/2026/q1/46
