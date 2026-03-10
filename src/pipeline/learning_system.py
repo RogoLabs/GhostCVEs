@@ -129,6 +129,33 @@ class SourceReliabilityTracker:
         logger.debug(f"Unknown source {source_name}, returning default reliability")
         return self.DEFAULT_RELIABILITY
 
+    def get_source_reliability(self, source_type: str) -> float:
+        """
+        Get reliability score for a source type (alias for get_reliability).
+
+        This is an alias method for compatibility with GhostAnalyzer interface.
+
+        Args:
+            source_type: Type or name of the source
+
+        Returns:
+            Reliability score (0.0-1.0), or default if unknown
+        """
+        return self.get_reliability(source_type)
+
+    def is_high_quality_source(self, source_type: str) -> bool:
+        """
+        Check if a source type is high quality (reliability >= 0.80).
+
+        Args:
+            source_type: Type or name of the source
+
+        Returns:
+            True if source has high reliability (>= 0.80)
+        """
+        reliability = self.get_reliability(source_type)
+        return reliability >= 0.80
+
     def _calculate_reliability(self, outcomes: List[dict]) -> float:
         """
         Calculate reliability score from outcomes.
