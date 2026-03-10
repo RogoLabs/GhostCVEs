@@ -836,3 +836,4 @@ class SourceType:
     RESEARCH_BLOG: str = "research_blog"
     DISTRO_ADVISORY: str = "distro_advisory"
     GOVERNMENT_ADVISORY: str = "government_advisory"
+    EXPLOIT_DB: str = "exploit_db"
