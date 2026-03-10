@@ -225,7 +225,7 @@ class TestBaseVendorScraper:
         <body>
             <h1>Security Advisories</h1>
             <p>CVE-2025-12345: Critical vulnerability</p>
-            <p>CVE-2025-67890: High severity issue</p>
+            <p>CVE-2025-23456: High severity issue</p>
         </body>
         </html>
         """
@@ -242,7 +242,7 @@ class TestBaseVendorScraper:
         assert len(results) == 2
         cve_ids = [r.cve_id for r in results]
         assert "CVE-2025-12345" in cve_ids
-        assert "CVE-2025-67890" in cve_ids
+        assert "CVE-2025-23456" in cve_ids
 
         for result in results:
             assert result.source_type == SourceType.VENDOR_ADVISORY

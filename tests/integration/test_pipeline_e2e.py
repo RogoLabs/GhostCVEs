@@ -24,8 +24,10 @@ from pathlib import Path
 from unittest.mock import Mock, patch, MagicMock
 
 from src.discovery.base import DiscoveryResult, BaseDiscovery
+from src.models.dataclasses import DisclosureClassification
+from src.models.enums import DisclosureStatus, DisclosureType, CVEStatus
 from src.pipeline.orchestrator import PipelineOrchestrator, PipelineStats
-from src.registry.validator import ValidationResult, CVEStatus
+from src.registry.validator import ValidationResult
 from src.storage.database import DatabaseManager
 from src.storage.models import GhostCVE, DiscoverySource
 
@@ -94,6 +96,14 @@ class TestCompleteGhostDetectionFlow(unittest.TestCase):
             context="Critical vulnerability in Example Product v1.2.3",
         )
 
+        # Mock disclosure: PUBLIC disclosure (vendor advisory with details)
+        mock_disclosure = DisclosureClassification(
+            status=DisclosureStatus.PUBLIC,
+            disclosure_type=DisclosureType.ADVISORY,
+            confidence=0.95,
+            reasoning="Vendor advisory with vulnerability details",
+        )
+
         # Mock validation: RESERVED status (Ghost)
         mock_validation = ValidationResult(
             cve_id="CVE-2026-1234",
@@ -105,6 +115,8 @@ class TestCompleteGhostDetectionFlow(unittest.TestCase):
 
         # Act: Process discovery through pipeline
         with patch.object(
+            self.orchestrator.disclosure_classifier, "classify", return_value=mock_disclosure
+        ), patch.object(
             self.orchestrator.multi_source_validator, "validate", return_value=mock_validation
         ):
             result = self.orchestrator.process_discovery(discovery)
@@ -169,6 +181,13 @@ class TestCompleteGhostDetectionFlow(unittest.TestCase):
             confidence=0.90,
         )
 
+        mock_disclosure = DisclosureClassification(
+            status=DisclosureStatus.PUBLIC,
+            disclosure_type=DisclosureType.ADVISORY,
+            confidence=0.95,
+            reasoning="Public disclosure with details",
+        )
+
         mock_validation = ValidationResult(
             cve_id="CVE-2026-9099",
             status=CVEStatus.RESERVED,
@@ -178,6 +197,8 @@ class TestCompleteGhostDetectionFlow(unittest.TestCase):
 
         # Act: Process both discoveries
         with patch.object(
+            self.orchestrator.disclosure_classifier, "classify", return_value=mock_disclosure
+        ), patch.object(
             self.orchestrator.multi_source_validator, "validate", return_value=mock_validation
         ):
             result1 = self.orchestrator.process_discovery(discovery1)
@@ -251,16 +272,26 @@ class TestPublishedCVEFlow(unittest.TestCase):
             confidence=1.0,
         )
 
+        mock_disclosure = DisclosureClassification(
+            status=DisclosureStatus.PUBLIC,
+            disclosure_type=DisclosureType.ADVISORY,
+            confidence=1.0,
+            reasoning="GitHub advisory with full details",
+        )
+
         mock_validation = ValidationResult(
             cve_id="CVE-2026-1011",
             status=CVEStatus.PUBLISHED,
             is_ghost=False,
             registry_source="NVD_LOCAL",
             description="Buffer overflow in Example Product allows remote code execution",
+            raw_response={"description": "Buffer overflow in Example Product allows remote code execution"},
         )
 
         # Act
         with patch.object(
+            self.orchestrator.disclosure_classifier, "classify", return_value=mock_disclosure
+        ), patch.object(
             self.orchestrator.multi_source_validator, "validate", return_value=mock_validation
         ):
             result = self.orchestrator.process_discovery(discovery)
@@ -380,6 +411,13 @@ class TestResolutionDetection(unittest.TestCase):
         )
 
         # Initially RESERVED (Ghost)
+        initial_disclosure = DisclosureClassification(
+            status=DisclosureStatus.PUBLIC,
+            disclosure_type=DisclosureType.ADVISORY,
+            confidence=0.95,
+            reasoning="Public security advisory",
+        )
+
         initial_validation = ValidationResult(
             cve_id="CVE-2026-3033",
             status=CVEStatus.RESERVED,
@@ -388,6 +426,8 @@ class TestResolutionDetection(unittest.TestCase):
         )
 
         with patch.object(
+            self.orchestrator.disclosure_classifier, "classify", return_value=initial_disclosure
+        ), patch.object(
             self.orchestrator.multi_source_validator, "validate", return_value=initial_validation
         ):
             self.orchestrator.process_discovery(discovery)
@@ -415,6 +455,7 @@ class TestResolutionDetection(unittest.TestCase):
             is_ghost=False,
             registry_source="NVD_LOCAL",
             description="Resolved: SQL injection in authentication module",
+            raw_response={"description": "Resolved: SQL injection in authentication module"},
         )
 
         # Act: Check for resolutions
@@ -670,8 +711,22 @@ class TestErrorRecovery(unittest.TestCase):
 
         source3 = MockDiscoverySource(working_discoveries_3, name="Working Source 3")
 
-        mock_validation = ValidationResult(
+        mock_disclosure = DisclosureClassification(
+            status=DisclosureStatus.PUBLIC,
+            disclosure_type=DisclosureType.ADVISORY,
+            confidence=0.95,
+            reasoning="Public disclosure",
+        )
+
+        mock_validation_1 = ValidationResult(
             cve_id="CVE-2026-6061",
+            status=CVEStatus.RESERVED,
+            is_ghost=True,
+            registry_source="CVE_ORG_LOCAL",
+        )
+
+        mock_validation_3 = ValidationResult(
+            cve_id="CVE-2026-6063",
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG_LOCAL",
@@ -679,7 +734,9 @@ class TestErrorRecovery(unittest.TestCase):
 
         # Act: Run pipeline with mixed sources
         with patch.object(
-            self.orchestrator.multi_source_validator, "validate", return_value=mock_validation
+            self.orchestrator.disclosure_classifier, "classify", return_value=mock_disclosure
+        ), patch.object(
+            self.orchestrator.multi_source_validator, "validate", side_effect=[mock_validation_1, mock_validation_3]
         ):
             stats = self.orchestrator.run_full_pipeline([source1, source2, source3])
 
@@ -782,6 +839,14 @@ class TestFullPipelineIntegration(unittest.TestCase):
         source2 = MockDiscoverySource(source2_discoveries, name="GitHub Security")
         source3 = MockDiscoverySource(source3_discoveries, name="RSS Feeds")
 
+        # Mock disclosure responses - PUBLIC for all
+        disclosure_response = DisclosureClassification(
+            status=DisclosureStatus.PUBLIC,
+            disclosure_type=DisclosureType.ADVISORY,
+            confidence=0.95,
+            reasoning="Public advisory with details",
+        )
+
         # Mock validation responses - return the same validation for duplicate CVE
         validation_responses = [
             ValidationResult(  # CVE-2026-7071 from source1
@@ -796,6 +861,7 @@ class TestFullPipelineIntegration(unittest.TestCase):
                 is_ghost=False,
                 registry_source="NVD_LOCAL",
                 description="Known vulnerability",
+                raw_response={"description": "Known vulnerability"},
             ),
             ValidationResult(  # CVE-2026-7071 from source2 (duplicate)
                 cve_id="CVE-2026-7071",
@@ -815,11 +881,14 @@ class TestFullPipelineIntegration(unittest.TestCase):
                 is_ghost=False,
                 registry_source="NVD_LOCAL",
                 description="Published vulnerability",
+                raw_response={"description": "Published vulnerability"},
             ),
         ]
 
         # Act: Run full pipeline
         with patch.object(
+            self.orchestrator.disclosure_classifier, "classify", return_value=disclosure_response
+        ), patch.object(
             self.orchestrator.multi_source_validator, "validate", side_effect=validation_responses
         ):
             stats = self.orchestrator.run_full_pipeline([source1, source2, source3])
@@ -891,8 +960,17 @@ class TestFullPipelineIntegration(unittest.TestCase):
             registry_source="NVD_LOCAL",
         )
 
+        mock_disclosure = DisclosureClassification(
+            status=DisclosureStatus.PUBLIC,
+            disclosure_type=DisclosureType.ADVISORY,
+            confidence=0.95,
+            reasoning="Public disclosure",
+        )
+
         # Act
         with patch.object(
+            self.orchestrator.disclosure_classifier, "classify", return_value=mock_disclosure
+        ), patch.object(
             self.orchestrator.multi_source_validator,
             "validate",
             side_effect=[mock_validation_ghost, mock_validation_published],

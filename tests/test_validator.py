@@ -77,25 +77,28 @@ class TestCVEValidator:
         validator = CVEValidator(nvd_api_key="test_key")
         assert validator.nvd_api_key == "test_key"
     
-    @patch('src.registry.validator.CVEValidator._validate_nvd')
-    def test_validate_uses_cache(self, mock_nvd, validator):
+    @patch('src.registry.validator.CVEValidator._validate_local')
+    def test_validate_uses_cache(self, mock_local, validator):
         """Test that validation results are cached."""
         mock_result = ValidationResult(
             cve_id="CVE-2025-12345",
             status=CVEStatus.RESERVED,
             is_ghost=True,
-            registry_source="NVD",
+            registry_source="CVE_ORG_LOCAL",
         )
-        mock_nvd.return_value = mock_result
-        
-        # First call should hit the API
+        mock_local.return_value = mock_result
+
+        # Enable local validation
+        validator._local_available = True
+
+        # First call should hit local validation
         result1 = validator.validate("CVE-2025-12345")
-        assert mock_nvd.call_count == 1
-        
+        assert mock_local.call_count == 1
+
         # Second call should use cache
         result2 = validator.validate("CVE-2025-12345")
-        assert mock_nvd.call_count == 1  # Not incremented
-        
+        assert mock_local.call_count == 1  # Not incremented
+
         assert result1.cve_id == result2.cve_id
     
     def test_clear_cache(self, validator):
