@@ -31,9 +31,10 @@ from datetime import datetime, timedelta
 from typing import Optional
 
 from src.api.cve_org_client import CVEOrgAPIClient
+from src.models.enums import CVEStatus
 from src.registry.local_registry import LocalCVERegistry
 from src.registry.nvd_local import NVDLocalRegistry
-from src.registry.validator import ValidationResult, CVEStatus
+from src.registry.validator import ValidationResult
 
 
 logger = logging.getLogger(__name__)

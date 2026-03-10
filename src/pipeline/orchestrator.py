@@ -444,7 +444,7 @@ class PipelineOrchestrator:
             # Recalculate source reliability scores after recording resolutions
             if resolved_count > 0:
                 self.logger.info("Recalculating source reliability scores...")
-                self.learning_system.recalculate_all_sources()
+                self.learning_system.recalculate_all()
                 self.logger.info(
                     f"Resolution check complete: {resolved_count} Ghost CVEs resolved"
                 )

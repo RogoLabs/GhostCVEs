@@ -13,7 +13,6 @@ import logging
 import time
 from dataclasses import dataclass
 from datetime import datetime
-from enum import Enum
 from pathlib import Path
 from typing import Optional
 
@@ -24,31 +23,12 @@ from src.config import (
     APP_SETTINGS,
 )
 from src.discovery.base import RateLimiter
+from src.models.enums import CVEStatus
 from src.registry.local_registry import LocalCVERegistry
 from src.registry.nvd_local import NVDLocalRegistry
 
 
 logger = logging.getLogger(__name__)
-
-
-class CVEStatus(Enum):
-    """
-    CVE lifecycle status enumeration.
-    
-    Attributes:
-        RESERVED: CVE ID is reserved but details not yet published
-        PUBLISHED: CVE details are publicly available
-        REJECTED: CVE ID was rejected (duplicate, invalid, etc.)
-        NOT_FOUND: CVE ID does not exist in the registry
-        GHOST: CVE is referenced in public sources but RESERVED/NOT_FOUND
-        ERROR: Could not determine status due to API error
-    """
-    RESERVED = "RESERVED"
-    PUBLISHED = "PUBLISHED"
-    REJECTED = "REJECTED"
-    NOT_FOUND = "NOT_FOUND"
-    GHOST = "GHOST"
-    ERROR = "ERROR"
 
 
 @dataclass
