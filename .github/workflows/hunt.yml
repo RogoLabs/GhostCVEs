@@ -349,39 +349,57 @@ jobs:
             DB_SIZE=$(du -h ghost_log.db | cut -f1)
             ARCHIVE_SIZE=$(du -h ghost_log_${MONTH}.db.gz | cut -f1)
 
+            # Create release notes with escaped content to avoid YAML parsing issues
+            cat > notes.md << 'END_NOTES'
+            ## Monthly Ghost CVE Database Snapshot
+
+            **Month**: MONTH_PLACEHOLDER
+            **Generated**: DATE_PLACEHOLDER
+
+            ### Statistics
+            - **Active Ghosts**: GHOST_COUNT_PLACEHOLDER
+            - **Total CVEs Tracked**: TOTAL_CVES_PLACEHOLDER
+            - **Database Size**: DB_SIZE_PLACEHOLDER
+            - **Compressed Archive**: ARCHIVE_SIZE_PLACEHOLDER
+
+            ### Contents
+            - `ghost_log_MONTH_PLACEHOLDER.db.gz` - Full SQLite database
+
+            ### Usage
+            ```bash
+            # Download and extract
+            wget https://github.com/REPO_PLACEHOLDER/releases/download/data-MONTH_PLACEHOLDER/ghost_log_MONTH_PLACEHOLDER.db.gz
+            gunzip ghost_log_MONTH_PLACEHOLDER.db.gz
+
+            # Query with sqlite3
+            sqlite3 ghost_log_MONTH_PLACEHOLDER.db 'SELECT * FROM ghost_cves WHERE is_ghost=1'
+            ```
+
+            ---
+            *Automated monthly archive by Ghost Hunter*
+            END_NOTES
+
+            # Remove leading whitespace and replace placeholders
+            sed -i.bak \
+              -e 's/^            //' \
+              -e "s/MONTH_PLACEHOLDER/${MONTH}/g" \
+              -e "s/DATE_PLACEHOLDER/$(date -u)/g" \
+              -e "s/GHOST_COUNT_PLACEHOLDER/${GHOST_COUNT}/g" \
+              -e "s/TOTAL_CVES_PLACEHOLDER/${TOTAL_CVES}/g" \
+              -e "s/DB_SIZE_PLACEHOLDER/${DB_SIZE}/g" \
+              -e "s/ARCHIVE_SIZE_PLACEHOLDER/${ARCHIVE_SIZE}/g" \
+              -e "s|REPO_PLACEHOLDER|${{ github.repository }}|g" \
+              notes.md
+            rm notes.md.bak
+
             # Create release
             gh release create "data-${MONTH}" \
               ghost_log_${MONTH}.db.gz \
               --title "Ghost CVE Data Archive - ${MONTH}" \
-              --notes "## Monthly Ghost CVE Database Snapshot
-
-**Month**: ${MONTH}
-**Generated**: $(date -u)
-
-### Statistics
-- **Active Ghosts**: ${GHOST_COUNT}
-- **Total CVEs Tracked**: ${TOTAL_CVES}
-- **Database Size**: ${DB_SIZE}
-- **Compressed Archive**: ${ARCHIVE_SIZE}
-
-### Contents
-- \`ghost_log_${MONTH}.db.gz\` - Full SQLite database
-
-### Usage
-\`\`\`bash
-# Download and extract
-wget https://github.com/\${{ github.repository }}/releases/download/data-${MONTH}/ghost_log_${MONTH}.db.gz
-gunzip ghost_log_${MONTH}.db.gz
-
-# Query with sqlite3
-sqlite3 ghost_log_${MONTH}.db 'SELECT * FROM ghost_cves WHERE is_ghost=1'
-\`\`\`
-
----
-*Automated monthly archive by Ghost Hunter*"
+              --notes-file notes.md
 
             # Cleanup
-            rm -f ghost_log_${MONTH}.db.gz
+            rm -f ghost_log_${MONTH}.db.gz notes.md
 
             echo "✓ Monthly archive created: data-${MONTH}"
           fi
