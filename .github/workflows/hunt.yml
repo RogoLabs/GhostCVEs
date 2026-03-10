@@ -67,6 +67,16 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       
+      - name: 🗄️ Cache CVE Data Files
+        uses: actions/cache@v4
+        with:
+          path: |
+            data/nvd.json
+            data/cvelistV5
+          key: cve-data-${{ hashFiles('data/nvd.json') }}-v1
+          restore-keys: |
+            cve-data-v1-
+
       - name: 🗄️ Restore Database Cache
         uses: actions/cache@v4
         with:
@@ -162,34 +172,82 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          
+
+          # Optimize database before commit (reduces size 20-30%)
+          echo "Optimizing database..."
+          python -c "
+          import sqlite3
+          from pathlib import Path
+
+          db_path = 'ghost_log.db'
+          if Path(db_path).exists():
+              size_before = Path(db_path).stat().st_size / (1024 * 1024)
+
+              conn = sqlite3.connect(db_path)
+              conn.execute('VACUUM')
+              conn.execute('ANALYZE')
+              conn.close()
+
+              size_after = Path(db_path).stat().st_size / (1024 * 1024)
+              saved = ((size_before - size_after) / size_before * 100) if size_before > 0 else 0
+
+              print(f'Database optimized: {size_before:.2f}MB -> {size_after:.2f}MB (saved {saved:.1f}%)')
+          " || echo "Database optimization skipped"
+
           # Add database and reports
           git add ghost_log.db || true
-          git add reports/ || true
-          
+          git add reports/ghost_report*.{json,csv,md} || true
+
           # Check if there are changes to commit
           if git diff --staged --quiet; then
             echo "No changes to commit"
-          else
-            TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
-            GHOST_COUNT=$(python -c "
+            exit 0
+          fi
+
+          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
+          GHOST_COUNT=$(python -c "
           from src.storage import DatabaseManager
           db = DatabaseManager()
           stats = db.get_statistics()
           print(stats.get('total_ghosts', 0))
           " 2>/dev/null || echo "0")
-            
-            # Include trigger and GitHub quality filtering info
-            git commit -m "🔍 Ghost Hunt: ${TIMESTAMP} | ${GHOST_COUNT} Ghosts tracked [via ${{ github.event_name }}]"
-            
-            # Pull latest changes and rebase before push to avoid race conditions
-            git pull --rebase origin ${{ github.ref_name }} || true
-            git push || {
-              echo "::warning::Push failed, retrying after pull"
-              git pull --rebase origin ${{ github.ref_name }}
-              git push
-            }
-          fi
+
+          git commit -m "🔍 Ghost Hunt: ${TIMESTAMP} | ${GHOST_COUNT} Ghosts tracked [via ${{ github.event_name }}]"
+
+          # Enhanced retry logic with exponential backoff
+          MAX_RETRIES=5
+          RETRY_DELAY=10
+
+          for i in $(seq 1 $MAX_RETRIES); do
+            echo "Push attempt $i of $MAX_RETRIES"
+
+            # Pull with rebase first
+            if git pull --rebase origin ${{ github.ref_name }}; then
+              echo "✓ Rebase successful"
+            else
+              echo "⚠ Rebase failed, attempting merge"
+              git rebase --abort || true
+              git pull --no-rebase origin ${{ github.ref_name }} || true
+            fi
+
+            # Try to push with extended timeout
+            if timeout 300 git push; then
+              echo "✓ Push successful on attempt $i"
+              exit 0
+            else
+              EXIT_CODE=$?
+              echo "✗ Push attempt $i failed (exit code: $EXIT_CODE)"
+
+              if [ $i -lt $MAX_RETRIES ]; then
+                echo "Waiting ${RETRY_DELAY}s before retry..."
+                sleep $RETRY_DELAY
+                RETRY_DELAY=$((RETRY_DELAY * 2))  # Exponential backoff: 10s -> 20s -> 40s -> 80s -> 160s
+              fi
+            fi
+          done
+
+          echo "::error::Failed to push after $MAX_RETRIES attempts"
+          exit 1
       
       - name: 📁 Upload Hunt Logs
         if: always()
@@ -227,10 +285,40 @@ jobs:
           critical = [g for g in ghosts if g.days_in_limbo >= APP_SETTINGS.limbo_critical_days]
           print(len(critical))
           " 2>/dev/null || echo "0")
-          
+
           if [ "$CRITICAL_COUNT" -gt "0" ]; then
             echo "⚠️ Warning: $CRITICAL_COUNT critical Ghost CVEs (30+ days in limbo)"
             echo "::warning::$CRITICAL_COUNT critical Ghost CVEs detected"
+          fi
+
+      - name: 📊 Workflow Health Check
+        if: always()
+        run: |
+          echo "## 📊 Workflow Health Metrics" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Database metrics
+          if [ -f ghost_log.db ]; then
+            DB_SIZE=$(du -h ghost_log.db | cut -f1)
+            TOTAL_CVES=$(sqlite3 ghost_log.db 'SELECT COUNT(*) FROM ghost_cves' 2>/dev/null || echo "N/A")
+            ACTIVE_GHOSTS=$(sqlite3 ghost_log.db 'SELECT COUNT(*) FROM ghost_cves WHERE is_ghost=1' 2>/dev/null || echo "N/A")
+            TOTAL_SOURCES=$(sqlite3 ghost_log.db 'SELECT COUNT(*) FROM discovery_sources' 2>/dev/null || echo "N/A")
+
+            echo "- **Database Size**: ${DB_SIZE}" >> $GITHUB_STEP_SUMMARY
+            echo "- **Total CVEs Tracked**: ${TOTAL_CVES}" >> $GITHUB_STEP_SUMMARY
+            echo "- **Active Ghosts**: ${ACTIVE_GHOSTS}" >> $GITHUB_STEP_SUMMARY
+            echo "- **Discovery Sources**: ${TOTAL_SOURCES}" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- **Database**: Not found" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "- **Workflow Status**: ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Hunt Status**: ${{ steps.hunt.outputs.hunt_status }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Alert if workflow had issues
+          if [ "${{ job.status }}" != "success" ]; then
+            echo "::warning::Workflow completed with status: ${{ job.status }}"
           fi
 
   # Optional: Create GitHub Issue for new Ghosts (only on scheduled runs)
