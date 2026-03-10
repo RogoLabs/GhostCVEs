@@ -133,6 +133,14 @@ jobs:
           
           exit 0  # Don't fail the workflow
       
+      - name: 🔄 Check for Ghost Resolutions
+        id: resolutions
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+        run: |
+          echo "Checking if any Ghost CVEs have been published..."
+          python main.py --check-resolutions --no-banner || echo "Resolution check completed with warnings"
+
       - name: 📊 Generate Reports
         id: report
         run: |
