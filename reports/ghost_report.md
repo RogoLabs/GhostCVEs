@@ -1,6 +1,6 @@
 # Ghost CVE Report
 
-**Generated:** 2026-03-10 18:41 UTC
+**Generated:** 2026-03-10 18:59 UTC
 
 ## Summary
 
@@ -20,24 +20,24 @@
 | CVE-2026-3632 | Debian Security Tracker | 2026-03-06 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-2092 | Red Hat Security Data | 2026-03-06 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
 | CVE-2026-2603 | Red Hat Security Data | 2026-03-06 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
-| CVE-2026-3086 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-170/) |
-| CVE-2026-3084 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-169/) |
-| CVE-2026-2921 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-168/) |
-| CVE-2026-3085 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-167/) |
-| CVE-2026-3083 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-166/) |
-| CVE-2026-2922 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-165/) |
-| CVE-2026-2920 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-164/) |
-| CVE-2026-3082 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-163/) |
-| CVE-2026-3081 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-162/) |
-| CVE-2026-2923 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-161/) |
-| CVE-2026-3562 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-160/) |
-| CVE-2026-3561 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-159/) |
-| CVE-2026-3560 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-158/) |
-| CVE-2026-3559 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-157/) |
-| CVE-2026-3558 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-156/) |
-| CVE-2026-3557 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-155/) |
-| CVE-2026-3556 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-154/) |
 | CVE-2026-3555 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-153/) |
+| CVE-2026-3556 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-154/) |
+| CVE-2026-3557 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-155/) |
+| CVE-2026-3558 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-156/) |
+| CVE-2026-3559 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-157/) |
+| CVE-2026-3560 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-158/) |
+| CVE-2026-3561 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-159/) |
+| CVE-2026-3562 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-160/) |
+| CVE-2026-2923 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-161/) |
+| CVE-2026-3081 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-162/) |
+| CVE-2026-3082 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-163/) |
+| CVE-2026-2920 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-164/) |
+| CVE-2026-2922 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-165/) |
+| CVE-2026-3083 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-166/) |
+| CVE-2026-3085 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-167/) |
+| CVE-2026-2921 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-168/) |
+| CVE-2026-3084 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-169/) |
+| CVE-2026-3086 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-170/) |
 | CVE-2026-3234 | Red Hat Security Data | 2026-03-05 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
 | CVE-2026-2376 | Red Hat Security Data | 2026-03-04 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
 | CVE-2025-62879 | GitHub Security Advisories | 2026-03-03 | [Link](https://github.com/advisories/GHSA-wj3p-5h3x-c74q) |
@@ -49,9 +49,9 @@
 | CVE-2026-3184 | Debian Security Tracker | 2026-02-25 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-3190 | Red Hat Security Advisories | 2026-02-25 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
 | CVE-2026-3121 | Red Hat Security Advisories | 2026-02-25 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
-| CVE-2026-2493 | ZDI Advisories | 2026-02-25 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-130/) |
-| CVE-2026-2491 | ZDI Advisories | 2026-02-25 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-129/) |
 | CVE-2025-15060 | ZDI Advisories | 2026-02-25 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-124/) |
+| CVE-2026-2491 | ZDI Advisories | 2026-02-25 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-129/) |
+| CVE-2026-2493 | ZDI Advisories | 2026-02-25 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-130/) |
 | CVE-2026-3099 | Debian Security Tracker | 2026-02-24 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-2708 | Debian Security Tracker | 2026-02-20 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-2625 | Debian Security Tracker | 2026-02-18 | [Link](https://security-tracker.debian.org/tracker/data/json) |
@@ -60,8 +60,8 @@
 | CVE-2026-2604 | Debian Security Tracker | 2026-02-17 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-2050 | Debian Security Tracker | 2026-02-17 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-2049 | Debian Security Tracker | 2026-02-17 | [Link](https://security-tracker.debian.org/tracker/data/json) |
-| CVE-2025-69690 | Full Disclosure | 2026-02-16 | [Link](https://seclists.org/fulldisclosure/2026/Feb/16) |
 | CVE-2025-69691 | Full Disclosure | 2026-02-16 | [Link](https://seclists.org/fulldisclosure/2026/Feb/16) |
+| CVE-2025-69690 | Full Disclosure | 2026-02-16 | [Link](https://seclists.org/fulldisclosure/2026/Feb/16) |
 | CVE-2026-2574 | Debian Security Tracker | 2026-02-16 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-2575 | Red Hat Security Data | 2026-02-16 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
 | CVE-2025-67860 | GitHub Security Advisories | 2026-02-13 | [Link](https://github.com/advisories/GHSA-3c9m-gq32-g4jx) |
@@ -91,8 +91,8 @@
 | CVE-2025-58151 | OSS Security | 2026-01-27 | [Link](https://seclists.org/oss-sec/2026/q1/118) |
 | CVE-2026-1220 | Debian Security Tracker | 2026-01-20 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2025-14840 | Red Hat Security Data | 2026-01-13 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
-| CVE-2025-14338 | OSS Security | 2026-01-09 | [Link](https://seclists.org/oss-sec/2026/q1/46) |
 | CVE-2025-66005 | OSS Security | 2026-01-09 | [Link](https://seclists.org/oss-sec/2026/q1/46) |
+| CVE-2025-14338 | OSS Security | 2026-01-09 | [Link](https://seclists.org/oss-sec/2026/q1/46) |
 
 ## Critical Ghosts (30+ Days)
 
@@ -219,7 +219,7 @@
 
 - [Red Hat Security Data](https://access.redhat.com/hydra/rest/securitydata/cve.json) (2026-01-13)
 
-### CVE-2025-14338
+### CVE-2025-66005
 
 - **First Seen:** 2026-01-09
 - **Days in Limbo:** 60
@@ -228,7 +228,7 @@
 
 - [OSS Security](https://seclists.org/oss-sec/2026/q1/46) (2026-01-09)
 
-### CVE-2025-66005
+### CVE-2025-14338
 
 - **First Seen:** 2026-01-09
 - **Days in Limbo:** 60
