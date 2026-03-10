@@ -13,6 +13,9 @@ rich>=13.7.0
 # XML/Feed Parsing (stdlib is used, but defusedxml for security)
 defusedxml>=0.7.1
 
+# HTML Parsing
+beautifulsoup4>=4.12.0
+
 # Optional: Better rate limiting
 ratelimit>=2.2.1
 
