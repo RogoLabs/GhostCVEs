@@ -641,5 +641,161 @@ class DatabaseManager:
                 primary_source.source_name if primary_source else "",
                 primary_source.evidence_url if primary_source else "",
             ])
-        
+
         return output.getvalue()
+
+    # ========================================================================
+    # Learning System Methods (Stage 6 - Source Reliability Tracking)
+    # ========================================================================
+
+    def record_source_outcome(
+        self,
+        source_name: str,
+        was_true_positive: bool,
+        resolution_days: float,
+        timestamp: datetime
+    ) -> None:
+        """
+        Record a resolution outcome for source reliability learning.
+
+        Args:
+            source_name: Name of the discovery source
+            was_true_positive: Whether this was a true ghost or false positive
+            resolution_days: Days between discovery and resolution
+            timestamp: When the resolution was detected
+        """
+        with self.get_session() as session:
+            # This would insert into a learning outcomes table
+            # For now, this is a stub that does nothing
+            # Full implementation would store in resolution_history table
+            pass
+
+    def get_source_reliability(self, source_name: str) -> float | None:
+        """
+        Get reliability score for a source.
+
+        Args:
+            source_name: Name of the source
+
+        Returns:
+            Reliability score (0.0-1.0) or None if unknown
+        """
+        # Query source_reliability table
+        # For now, return None (stub)
+        return None
+
+    def get_all_source_names(self) -> list[str]:
+        """
+        Get all source names that have reliability data.
+
+        Returns:
+            List of source names
+        """
+        # Query source_reliability table
+        # For now, return empty list (stub)
+        return []
+
+    def get_source_outcomes(self, source_name: str) -> list[dict]:
+        """
+        Get all resolution outcomes for a source.
+
+        Args:
+            source_name: Name of the source
+
+        Returns:
+            List of outcome dicts with keys:
+                - was_true_positive (bool)
+                - resolution_days (float)
+        """
+        # Query resolution_history table
+        # For now, return empty list (stub)
+        return []
+
+    def update_source_reliability(
+        self,
+        source_name: str,
+        reliability_score: float,
+        total_discoveries: int,
+        true_positives: int,
+        false_positives: int,
+        avg_days_to_publish: float | None
+    ) -> None:
+        """
+        Update source reliability in database.
+
+        Args:
+            source_name: Name of the source
+            reliability_score: Calculated reliability score
+            total_discoveries: Total number of discoveries
+            true_positives: Number of true positives
+            false_positives: Number of false positives
+            avg_days_to_publish: Average days to publish (for TPs only)
+        """
+        # Update source_reliability table
+        # For now, this is a stub that does nothing
+        pass
+
+    def get_resolutions_since_last_recalc(self) -> int:
+        """
+        Get number of resolutions since last recalculation.
+
+        Returns:
+            Number of resolutions
+        """
+        # Query resolution_history table
+        # For now, return 0 (stub)
+        return 0
+
+    def get_days_since_last_recalc(self) -> float:
+        """
+        Get days since last recalculation.
+
+        Returns:
+            Days since last recalc
+        """
+        # Query source_reliability table for last_recalculated timestamp
+        # For now, return 0.0 (stub)
+        return 0.0
+
+    def mark_recalculation(self, timestamp: datetime) -> None:
+        """
+        Mark recalculation timestamp.
+
+        Args:
+            timestamp: When recalculation occurred
+        """
+        # Update last_recalculated in source_reliability table
+        # For now, this is a stub that does nothing
+        pass
+
+    def store_resolution_pattern(
+        self,
+        cve_id: str,
+        first_discovered: datetime,
+        resolved_date: datetime,
+        resolution_time_days: float,
+        cna_name: str | None,
+        first_source_name: str,
+        first_source_type: str,
+        root_cause: str | None,
+        was_true_ghost: bool,
+        ghost_confidence_at_peak: float | None
+    ) -> None:
+        """
+        Store resolution pattern in history for learning.
+
+        Args:
+            cve_id: CVE identifier
+            first_discovered: When first discovered
+            resolved_date: When resolved
+            resolution_time_days: Days to resolution
+            cna_name: CNA name if known
+            first_source_name: Name of first source
+            first_source_type: Type of first source
+            root_cause: Root cause classification
+            was_true_ghost: Whether this was a true ghost
+            ghost_confidence_at_peak: Confidence score at peak
+        """
+        # Insert into resolution_history table
+        # For now, this is a stub that does nothing
+        pass
