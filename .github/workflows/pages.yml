@@ -53,8 +53,15 @@ jobs:
             echo "{}" > docs/_data/latest.json
           fi
 
-          # Generate additional data files
-          python scripts/generate_dashboard_data.py
+          # Generate additional data files (only if database exists)
+          if [ -f ghost_log.db ]; then
+            python scripts/generate_dashboard_data.py
+          else
+            echo "⚠️ No database found, skipping dashboard data generation"
+            echo '{"generated_at":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","summary":{},"ghosts":[]}' > docs/_data/latest.json
+            echo '{"generated_at":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","timeline":[]}' > docs/_data/trends.json
+            echo '{"generated_at":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","summary":{},"status_breakdown":{},"source_breakdown":{},"age_distribution":{}}' > docs/_data/stats.json
+          fi
 
       - name: 🔨 Setup Pages
         uses: actions/configure-pages@v4
