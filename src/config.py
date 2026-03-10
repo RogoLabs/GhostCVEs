@@ -829,6 +829,7 @@ class SourceType:
     GITHUB_COMMIT: str = "github_commit"
     GITHUB_CODE: str = "github_code"
     GITHUB_ISSUE: str = "github_issue"
+    GITHUB_ADVISORY: str = "github_advisory"
     RSS_FEED: str = "rss_feed"
     VENDOR_ADVISORY: str = "vendor_advisory"
     MAILING_LIST: str = "mailing_list"
