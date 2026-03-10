@@ -300,8 +300,12 @@ jobs:
 
           maint = DatabaseMaintenance()
 
-          # Weekly VACUUM on Mondays
+          # Weekly cleanup of resolved CVEs (no longer ghosts)
+          # This prevents database bloat from CVEs that became published
           if datetime.now().weekday() == 0:
+              cleaned = maint.cleanup_resolved_ghosts(days=30)
+              print(f'✓ Cleaned up {cleaned} resolved CVEs (published 30+ days ago)')
+
               result = maint.vacuum()
               print(f'✓ Weekly VACUUM: Saved {result[\"saved_percent\"]:.1f}%')
 

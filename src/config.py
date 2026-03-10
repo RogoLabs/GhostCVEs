@@ -47,17 +47,18 @@ class CVEValidationConfig:
     # Current year for validation (updated at runtime)
     # Maximum reasonable CVE ID numbers by year (approximate, based on historical data)
     # These are rough upper bounds - real counts vary but this catches obvious fakes
+    # Tightened to reduce false positives from high-ID CVEs
     max_id_by_year: dict[int, int] = field(default_factory=lambda: {
-        2025: 70000,   # ~60k CVEs expected by end of 2025
-        2026: 15000,   # We're in January 2026, so far fewer allocated
+        2025: 50000,   # More realistic limit based on actual allocation
+        2026: 15000,   # We're in March 2026, adjust as year progresses
         2027: 0,       # Future year - no CVEs yet
         2028: 0,
         2029: 0,
     })
-    
+
     # For current year, maximum plausible ID based on month
-    # Roughly ~5000 CVEs/month gets allocated, so month * 6000 is generous
-    max_id_per_month: int = 6000
+    # Tightened from 6000 to 5000 to reduce false positives
+    max_id_per_month: int = 5000
     
     # Suspicious patterns to reject
     reject_all_zeros: bool = True          # CVE-2025-0000000
