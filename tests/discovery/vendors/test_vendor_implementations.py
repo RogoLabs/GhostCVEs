@@ -55,7 +55,7 @@ class TestCitrixScraper:
                 <p>Citrix ADC vulnerability affecting versions 13.0 and 13.1</p>
             </div>
             <div class="advisory">
-                <h2>Security Bulletin - CVE-2025-67890</h2>
+                <h2>Security Bulletin - CVE-2025-23456</h2>
                 <p>Authentication bypass in Citrix Gateway</p>
             </div>
         </body>
@@ -69,7 +69,7 @@ class TestCitrixScraper:
         assert len(results) == 2
         cve_ids = [r.cve_id for r in results]
         assert "CVE-2025-12345" in cve_ids
-        assert "CVE-2025-67890" in cve_ids
+        assert "CVE-2025-23456" in cve_ids
 
         for result in results:
             assert result.source_type == SourceType.VENDOR_ADVISORY
@@ -210,12 +210,12 @@ class TestFortinetScraper:
         <body>
             <div class="psirt-advisory">
                 <h3>FG-IR-25-001</h3>
-                <p>FortiOS - CVE-2025-55678 Stack-based Buffer Overflow</p>
+                <p>FortiOS - CVE-2025-34567 Stack-based Buffer Overflow</p>
                 <span class="severity">Critical</span>
             </div>
             <div class="psirt-advisory">
                 <h3>FG-IR-25-002</h3>
-                <p>FortiGate - Multiple vulnerabilities (CVE-2025-56789, CVE-2025-57890)</p>
+                <p>FortiGate - Multiple vulnerabilities (CVE-2025-34568, CVE-2025-34569)</p>
                 <span class="severity">High</span>
             </div>
         </body>
@@ -228,9 +228,9 @@ class TestFortinetScraper:
 
         assert len(results) == 3
         cve_ids = [r.cve_id for r in results]
-        assert "CVE-2025-55678" in cve_ids
-        assert "CVE-2025-56789" in cve_ids
-        assert "CVE-2025-57890" in cve_ids
+        assert "CVE-2025-34567" in cve_ids
+        assert "CVE-2025-34568" in cve_ids
+        assert "CVE-2025-34569" in cve_ids
 
         for result in results:
             assert result.source_name == "Fortinet"
@@ -262,13 +262,13 @@ class TestVMwareScraper:
                 <h2>VMSA-2025-0001</h2>
                 <p>VMware vCenter Server updates address critical security issues</p>
                 <ul>
-                    <li>CVE-2025-58901: Remote code execution</li>
-                    <li>CVE-2025-59012: Privilege escalation</li>
+                    <li>CVE-2025-45678: Remote code execution</li>
+                    <li>CVE-2025-45679: Privilege escalation</li>
                 </ul>
             </div>
             <div class="advisory-item">
                 <h2>VMSA-2025-0002</h2>
-                <p>ESXi security update for CVE-2025-60123</p>
+                <p>ESXi security update for CVE-2025-45680</p>
             </div>
         </body>
         </html>
@@ -280,9 +280,9 @@ class TestVMwareScraper:
 
         assert len(results) == 3
         cve_ids = [r.cve_id for r in results]
-        assert "CVE-2025-58901" in cve_ids
-        assert "CVE-2025-59012" in cve_ids
-        assert "CVE-2025-60123" in cve_ids
+        assert "CVE-2025-45678" in cve_ids
+        assert "CVE-2025-45679" in cve_ids
+        assert "CVE-2025-45680" in cve_ids
 
         for result in results:
             assert result.source_name == "VMware"
