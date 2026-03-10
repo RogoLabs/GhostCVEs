@@ -40,6 +40,8 @@ jobs:
           pip install -r requirements.txt
 
       - name: 📊 Generate Dashboard Data
+        env:
+          PYTHONPATH: ${{ github.workspace }}
         run: |
           mkdir -p docs/_data
 
