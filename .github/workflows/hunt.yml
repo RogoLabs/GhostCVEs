@@ -413,6 +413,7 @@ jobs:
         if: github.event_name == 'schedule' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PYTHONPATH: ${{ github.workspace }}
         run: |
           python scripts/create_ghost_issues.py || echo "Issue creation completed with warnings"
 
