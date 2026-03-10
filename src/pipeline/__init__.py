@@ -1,11 +1,26 @@
 """
-Pipeline modules for world-class ghost detection.
+Pipeline Module
+===============
 
-6-stage pipeline for CVE ghost detection:
-1. Discovery (existing modules)
-2. Disclosure Classification (this module)
-3. NVD/CVE.org Check
-4. Ghost Analysis
-5. Root Cause Detection
-6. Learning System
+6-stage pipeline for world-class Ghost CVE detection:
+1. Discovery - Find CVE mentions across 23 sources
+2. Disclosure Classification - Analyze public disclosure status
+3. Multi-Source Validation - CVE.org API + local registries
+4. Ghost Analysis - Apply 6-hour grace period and confidence threshold
+5. Root Cause Detection - Determine why CVE is a ghost
+6. Continuous Learning - Track resolutions and update reliability scores
+
+Author: rogolabs.net
 """
+
+from src.pipeline.orchestrator import (
+    PipelineOrchestrator,
+    PipelineStats,
+    ProcessedCVE,
+)
+
+__all__ = [
+    "PipelineOrchestrator",
+    "PipelineStats",
+    "ProcessedCVE",
+]
