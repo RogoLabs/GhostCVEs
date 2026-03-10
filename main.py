@@ -7,13 +7,23 @@ Main entry point for the Ghost Hunter application.
 Identifies Ghost CVEs - vulnerability IDs mentioned in public sources
 but still marked as RESERVED or missing in official registries.
 
+Uses a 6-stage detection pipeline:
+1. Discovery - Find CVE mentions across 23+ sources
+2. Disclosure - Classify disclosure method
+3. Validation - Multi-source registry validation
+4. Ghost Analysis - Confidence scoring and classification
+5. Root Cause - Detect why CVE is reserved
+6. Learning - Track patterns and improve detection
+
 Author: rogolabs.net
 License: MIT
 
 Usage:
-    python main.py --hunt          # Run discovery and validation
-    python main.py --report        # Generate reports from database
-    python main.py --hunt --report # Run hunt then generate reports
+    python main.py --hunt                  # Run 6-stage detection pipeline
+    python main.py --check-resolutions     # Check for Ghost resolutions
+    python main.py --report                # Generate reports from database
+    python main.py --hunt --report         # Hunt then generate reports
+    python main.py --dashboard             # Show Ghost CVE dashboard
 """
 
 import argparse
@@ -26,8 +36,9 @@ from pathlib import Path
 
 from src import __version__
 from src.config import APP_SETTINGS, DATABASE_CONFIG, GITHUB_QUALITY_CONFIG
-from src.discovery import GitHubDiscovery, RSSDiscovery, VendorDiscovery
+from src.discovery import GitHubDiscovery, RSSDiscovery, VendorDiscovery, ExploitDBDiscovery
 from src.discovery.base import BaseDiscovery, DiscoveryResult
+from src.pipeline.orchestrator import PipelineOrchestrator
 from src.registry import CVEValidator
 from src.storage import DatabaseManager
 from src.ui import Dashboard, ReportGenerator
@@ -93,36 +104,36 @@ def run_hunt(
     max_workers: int | None = None,
 ) -> dict:
     """
-    Execute the Ghost Hunt process.
-    
-    Runs all discovery modules in parallel, validates discovered CVEs
-    against official registries, and stores results in the database.
-    
+    Execute the Ghost Hunt process using the Pipeline Orchestrator.
+
+    Runs all discovery modules through the 6-stage pipeline:
+    1. Discovery - Find CVE mentions in public sources
+    2. Disclosure - Classify disclosure method
+    3. Validation - Multi-source validation
+    4. Ghost Analysis - Confidence scoring
+    5. Root Cause - Detect why it's a ghost
+    6. Learning - Track patterns and improve
+
     Args:
         db_manager: Database manager instance
         dashboard: Dashboard for progress display
         github_token: GitHub API token
         nvd_api_key: NVD API key for higher rate limits
-        max_workers: Maximum concurrent workers
-    
+        max_workers: Maximum concurrent workers (legacy param, now handled internally)
+
     Returns:
         Dictionary with hunt results
     """
     logger = logging.getLogger(__name__)
     started_at = datetime.utcnow()
-    
-    max_workers = max_workers or APP_SETTINGS.max_workers
-    
-    # Create discovery modules
-    modules = create_discovery_modules(github_token)
-    
-    # Create validator with local registry (pass console for progress display)
-    validator = CVEValidator(nvd_api_key=nvd_api_key, console=dashboard.console)
-    
+
+    # Initialize the pipeline orchestrator
+    orchestrator = PipelineOrchestrator(db_manager)
+
     dashboard.console.print()
-    dashboard.console.print("[bold cyan]🔍 Starting Ghost Hunt...[/bold cyan]")
+    dashboard.console.print("[bold cyan]🔍 Starting Ghost Hunt Pipeline...[/bold cyan]")
     dashboard.console.print()
-    
+
     # Purge any previously collected data from blacklisted sources
     if GITHUB_QUALITY_CONFIG.blacklisted_repos or GITHUB_QUALITY_CONFIG.blacklisted_users:
         purged = db_manager.purge_blacklisted_sources(
@@ -133,157 +144,104 @@ def run_hunt(
             dashboard.console.print(
                 f"[dim]🗑️  Purged {purged} entries from blacklisted sources[/dim]"
             )
-    
-    # Ensure local CVE registry and NVD data are available (fast validation)
-    dashboard.console.print("[dim]📦 Preparing local CVE registries...[/dim]")
-    if validator.ensure_local_registry():
-        repo_info = validator.local_registry.get_repo_info()
+
+    # Ensure pipeline resources are ready
+    dashboard.console.print("[dim]📦 Preparing pipeline resources...[/dim]")
+    if orchestrator.ensure_resources():
+        # Get registry info from validator
+        repo_info = orchestrator.validator.local_registry.get_repo_info()
         dashboard.console.print(
             f"[green]✓ Local CVE registry ready[/green] "
             f"[dim](last updated: {repo_info.get('last_updated', 'unknown')})[/dim]"
         )
-        if validator._nvd_local_available:
-            nvd_info = validator.nvd_local.get_info()
+        if orchestrator.validator._nvd_local_available:
+            nvd_info = orchestrator.validator.nvd_local.get_info()
             dashboard.console.print(
                 f"[green]✓ Local NVD data ready[/green] "
                 f"[dim]({nvd_info.get('cve_count', 'unknown'):,} CVEs indexed)[/dim]"
             )
+        dashboard.console.print("[green]✓ Pipeline orchestrator ready[/green]")
     else:
         dashboard.console.print(
-            "[red]✗ Local registries unavailable - validation will be limited[/red]"
+            "[red]✗ Pipeline resources unavailable - validation will be limited[/red]"
         )
     dashboard.console.print()
-    
-    # Track results
-    all_discoveries: list[DiscoveryResult] = []
-    module_results: dict[str, tuple[int, int]] = {}  # module_name -> (cve_count, ghost_count)
-    errors: list[str] = []
-    
-    # Run discovery modules in parallel
+
+    # Create discovery modules
+    modules = create_discovery_modules(github_token)
+
+    # Run the full pipeline
+    dashboard.console.print("[bold]🚀 Executing 6-Stage Detection Pipeline[/bold]")
+    dashboard.console.print()
+
     with dashboard.display_hunt_progress() as progress:
-        discovery_task = progress.add_task(
-            "[cyan]Running discovery modules...",
+        pipeline_task = progress.add_task(
+            "[cyan]Processing discoveries through pipeline...",
             total=len(modules),
         )
-        
-        with ThreadPoolExecutor(max_workers=max_workers) as executor:
-            futures = {
-                executor.submit(module.run): module
-                for module in modules
-            }
-            
-            for future in as_completed(futures):
-                module = futures[future]
-                
-                try:
-                    results = future.result()
-                    all_discoveries.extend(results)
-                    module_results[module.name] = (len(results), 0)  # Ghost count updated later
-                    
-                except Exception as e:
-                    error_msg = f"{module.name}: {str(e)}"
-                    errors.append(error_msg)
-                    logger.error(error_msg, exc_info=True)
-                    module_results[module.name] = (0, 0)
-                
-                progress.advance(discovery_task)
-    
-    # Deduplicate discoveries by CVE ID
-    unique_cves: dict[str, DiscoveryResult] = {}
-    for discovery in all_discoveries:
-        if discovery.cve_id not in unique_cves:
-            unique_cves[discovery.cve_id] = discovery
-    
+
+        # Execute pipeline (orchestrator handles all stages internally)
+        stats = orchestrator.run_full_pipeline(modules)
+
+        # Update progress (pipeline completed)
+        progress.update(pipeline_task, completed=len(modules))
+
     dashboard.console.print()
     dashboard.console.print(
-        f"[bold]📋 Found {len(unique_cves)} unique CVE mentions[/bold]"
+        f"[bold]📋 Processed {stats.total_discoveries} discoveries ({stats.unique_cves} unique CVEs)[/bold]"
     )
     dashboard.console.print()
-    
-    # Validate and store CVEs
-    new_ghosts = 0
-    validated_count = 0
-    
-    with dashboard.display_hunt_progress() as progress:
-        validation_task = progress.add_task(
-            "[cyan]Validating CVEs against registries...",
-            total=len(unique_cves),
-        )
-        
-        for cve_id, discovery in unique_cves.items():
-            try:
-                # Validate against registry
-                validation = validator.validate(cve_id, found_in_wild=True)
-                
-                # Check if this is a new ghost
-                existing = db_manager.get_ghost_by_id(cve_id)
-                was_ghost = existing.is_ghost if existing else False
-                
-                # Record in database
-                ghost_cve = db_manager.record_discovery(discovery, validation)
-                
-                if validation.is_ghost and not was_ghost:
-                    new_ghosts += 1
-                    logger.info(f"New Ghost CVE: {cve_id}")
-                
-                validated_count += 1
-                
-            except Exception as e:
-                error_msg = f"Validation failed for {cve_id}: {str(e)}"
-                errors.append(error_msg)
-                logger.error(error_msg)
-            
-            progress.advance(validation_task)
-    
-    # Update module ghost counts
-    for module_name in module_results:
-        cve_count, _ = module_results[module_name]
-        # This is approximate - actual ghost count per module would require more tracking
-        module_results[module_name] = (cve_count, 0)
-    
+
     # Get final statistics
-    stats = db_manager.get_statistics()
-    
+    db_stats = db_manager.get_statistics()
+
     # Record hunt run
-    modules_run = [m.name for m in modules]
     db_manager.record_hunt_run(
         started_at=started_at,
-        total_cves_found=len(unique_cves),
-        new_ghosts_found=new_ghosts,
-        modules_run=modules_run,
-        errors=errors if errors else None,
-        success=len(errors) == 0,
+        total_cves_found=stats.unique_cves,
+        new_ghosts_found=stats.ghosts_found,
+        modules_run=stats.sources_used,
+        errors=None if stats.errors == 0 else [f"{stats.errors} processing errors"],
+        success=stats.errors == 0,
     )
-    
+
     # Display results per module
+    dashboard.console.print("[bold]📊 Pipeline Results:[/bold]")
+    dashboard.console.print(f"  [cyan]Sources Used:[/cyan] {', '.join(stats.sources_used)}")
+    dashboard.console.print(f"  [cyan]Total Discoveries:[/cyan] {stats.total_discoveries}")
+    dashboard.console.print(f"  [cyan]Unique CVEs:[/cyan] {stats.unique_cves}")
+    dashboard.console.print(f"  [cyan]Ghosts Found:[/cyan] {stats.ghosts_found}")
+    dashboard.console.print(f"  [cyan]Published CVEs:[/cyan] {stats.published_found}")
+    if stats.errors > 0:
+        dashboard.console.print(f"  [yellow]Errors:[/yellow] {stats.errors}")
     dashboard.console.print()
-    dashboard.console.print("[bold]📊 Discovery Module Results:[/bold]")
-    for module_name, (cve_count, ghost_count) in module_results.items():
-        dashboard.display_discovery_results(module_name, cve_count, ghost_count)
-    
+
     # Display hunt summary
-    duration = (datetime.utcnow() - started_at).total_seconds()
     dashboard.display_hunt_summary(
-        total_cves=len(unique_cves),
-        new_ghosts=new_ghosts,
-        total_ghosts=stats["total_ghosts"],
-        duration_seconds=duration,
+        total_cves=stats.unique_cves,
+        new_ghosts=stats.ghosts_found,
+        total_ghosts=db_stats["total_ghosts"],
+        duration_seconds=stats.duration_seconds,
     )
-    
-    if errors:
-        dashboard.console.print()
-        dashboard.display_warning(f"{len(errors)} errors occurred during hunt")
-        for error in errors[:5]:  # Show first 5 errors
-            dashboard.console.print(f"  [dim red]• {error}[/dim red]")
-        if len(errors) > 5:
-            dashboard.console.print(f"  [dim]... and {len(errors) - 5} more[/dim]")
-    
+
+    # Check for resolutions after hunt
+    dashboard.console.print()
+    dashboard.console.print("[dim]🔄 Checking for Ghost CVE resolutions...[/dim]")
+    resolved = orchestrator.check_for_resolutions()
+    if resolved > 0:
+        dashboard.console.print(
+            f"[green]✓ {resolved} Ghost CVE(s) resolved (RESERVED → PUBLISHED)[/green]"
+        )
+    else:
+        dashboard.console.print("[dim]No resolutions found[/dim]")
+
     return {
-        "total_cves": len(unique_cves),
-        "new_ghosts": new_ghosts,
-        "total_ghosts": stats["total_ghosts"],
-        "duration_seconds": duration,
-        "errors": errors,
+        "total_cves": stats.unique_cves,
+        "new_ghosts": stats.ghosts_found,
+        "total_ghosts": db_stats["total_ghosts"],
+        "duration_seconds": stats.duration_seconds,
+        "errors": [] if stats.errors == 0 else [f"{stats.errors} processing errors"],
+        "resolved": resolved,
     }
 
 
@@ -341,27 +299,86 @@ def run_report(
     dashboard.display_statistics(stats)
 
 
+def check_resolutions(db_manager: DatabaseManager, dashboard: Dashboard) -> None:
+    """
+    Check all Ghost CVEs for resolutions (RESERVED -> PUBLISHED transitions).
+
+    Args:
+        db_manager: Database manager instance
+        dashboard: Dashboard for progress display
+    """
+    logger = logging.getLogger(__name__)
+
+    # Initialize the pipeline orchestrator
+    orchestrator = PipelineOrchestrator(db_manager)
+
+    dashboard.console.print()
+    dashboard.console.print("[bold cyan]🔄 Checking Ghost CVE Resolutions...[/bold cyan]")
+    dashboard.console.print()
+
+    # Ensure resources
+    dashboard.console.print("[dim]📦 Preparing resources...[/dim]")
+    if not orchestrator.ensure_resources():
+        dashboard.display_error("Failed to prepare resources")
+        return
+    dashboard.console.print("[green]✓ Resources ready[/green]")
+    dashboard.console.print()
+
+    # Get ghost count
+    ghosts = db_manager.get_ghost_cves(only_ghosts=True)
+    if not ghosts:
+        dashboard.display_info("No Ghost CVEs to check")
+        return
+
+    dashboard.console.print(f"[dim]Checking {len(ghosts)} Ghost CVEs...[/dim]")
+    dashboard.console.print()
+
+    # Check for resolutions
+    with dashboard.display_hunt_progress() as progress:
+        check_task = progress.add_task(
+            "[cyan]Checking resolutions...",
+            total=len(ghosts),
+        )
+
+        resolved = orchestrator.check_for_resolutions()
+
+        progress.update(check_task, completed=len(ghosts))
+
+    dashboard.console.print()
+    if resolved > 0:
+        dashboard.console.print(
+            f"[bold green]✓ {resolved} Ghost CVE(s) resolved (RESERVED → PUBLISHED)[/bold green]"
+        )
+    else:
+        dashboard.console.print("[bold]No resolutions found - all Ghosts still haunting![/bold]")
+
+    # Show updated statistics
+    dashboard.console.print()
+    stats = db_manager.get_statistics()
+    dashboard.display_statistics(stats)
+
+
 def show_dashboard(db_manager: DatabaseManager, dashboard: Dashboard) -> None:
     """
     Display the Ghost CVE dashboard.
-    
+
     Args:
         db_manager: Database manager instance
         dashboard: Dashboard instance
     """
     ghosts = db_manager.get_ghost_cves(only_ghosts=True, limit=20)
-    
+
     if not ghosts:
         dashboard.display_info("No Ghost CVEs in database. Run --hunt to discover some!")
         return
-    
+
     # Build sources map
     sources_map = {}
     for ghost in ghosts:
         sources_map[ghost.cve_id] = db_manager.get_sources_for_cve(ghost.cve_id)
-    
+
     dashboard.display_ghost_table(ghosts, sources_map)
-    
+
     stats = db_manager.get_statistics()
     dashboard.display_statistics(stats)
 
@@ -378,10 +395,11 @@ def main() -> int:
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  python main.py --hunt              Run CVE discovery
-  python main.py --report            Generate reports
-  python main.py --hunt --report     Hunt then report
-  python main.py --dashboard         Show Ghost CVE dashboard
+  python main.py --hunt                  Run CVE discovery pipeline
+  python main.py --report                Generate reports
+  python main.py --hunt --report         Hunt then report
+  python main.py --dashboard             Show Ghost CVE dashboard
+  python main.py --check-resolutions     Check for Ghost resolutions
         """,
     )
     
@@ -402,7 +420,13 @@ Examples:
         action="store_true",
         help="Display Ghost CVE dashboard",
     )
-    
+
+    parser.add_argument(
+        "--check-resolutions",
+        action="store_true",
+        help="Check for Ghost CVE resolutions (RESERVED → PUBLISHED)",
+    )
+
     parser.add_argument(
         "--format",
         choices=["console", "json", "csv", "markdown", "all"],
@@ -486,9 +510,9 @@ Examples:
     
     try:
         # Default to dashboard if no mode specified
-        if not any([args.hunt, args.report, args.dashboard]):
+        if not any([args.hunt, args.report, args.dashboard, args.check_resolutions]):
             args.dashboard = True
-        
+
         # Run requested modes
         if args.hunt:
             run_hunt(
@@ -498,7 +522,13 @@ Examples:
                 nvd_api_key=nvd_api_key,
                 max_workers=args.workers,
             )
-        
+
+        if args.check_resolutions:
+            check_resolutions(
+                db_manager=db_manager,
+                dashboard=dashboard,
+            )
+
         if args.report:
             run_report(
                 db_manager=db_manager,
@@ -506,10 +536,10 @@ Examples:
                 output_dir=args.output_dir,
                 format=args.format,
             )
-        
-        if args.dashboard and not args.hunt and not args.report:
+
+        if args.dashboard and not args.hunt and not args.report and not args.check_resolutions:
             show_dashboard(db_manager, dashboard)
-        
+
         return 0
         
     except KeyboardInterrupt:
