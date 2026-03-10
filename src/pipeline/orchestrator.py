@@ -402,7 +402,7 @@ class PipelineOrchestrator:
                         resolution_days = (datetime.utcnow() - ghost.first_seen).total_seconds() / 86400
 
                         # Record resolution in learning system for each source
-                        sources = self.db.get_ghost_sources(ghost.cve_id)
+                        sources = self.db.get_sources_for_cve(ghost.cve_id)
                         for source in sources:
                             self.learning_system.record_resolution(
                                 source_name=source.source_name,
