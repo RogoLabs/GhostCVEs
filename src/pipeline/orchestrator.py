@@ -2,14 +2,16 @@
 Pipeline Orchestrator
 =====================
 
-Master orchestrator that coordinates all stages of the Ghost CVE detection pipeline:
-1. Discovery - Find CVE mentions in public sources
-2. Validation - Check CVE status against registries
-3. Storage - Record discoveries in database
-4. Resolution Tracking - Monitor for RESERVED -> PUBLISHED transitions
+Master orchestrator that coordinates all 6 stages of the Ghost CVE detection pipeline:
+1. Discovery - Find CVE mentions across 23 sources
+2. Disclosure Classification - Analyze public disclosure status
+3. Multi-Source Validation - CVE.org API + local registries
+4. Ghost Analysis - Apply 6-hour grace period and confidence threshold
+5. Root Cause Detection - Determine why CVE is a ghost
+6. Continuous Learning - Track resolutions and update reliability scores
 
 This is the critical integration layer that ties all components together
-into a cohesive detection system.
+into a cohesive world-class detection system.
 
 Author: rogolabs.net
 """
@@ -20,7 +22,17 @@ from datetime import datetime
 from typing import List, Optional
 
 from src.discovery.base import DiscoveryResult, BaseDiscovery
-from src.registry.validator import CVEValidator, ValidationResult, CVEStatus
+from src.models.dataclasses import (
+    DisclosureClassification,
+    GhostAnalysis,
+)
+from src.models.enums import CVEStatus, GhostRootCause
+from src.pipeline.disclosure_classifier import DisclosureClassifier
+from src.pipeline.ghost_analyzer import GhostAnalyzer
+from src.pipeline.root_cause_detector import RootCauseDetector
+from src.pipeline.learning_system import SourceReliabilityTracker
+from src.registry.multi_source_validator import MultiSourceValidator
+from src.registry.validator import ValidationResult
 from src.storage.database import DatabaseManager
 from src.storage.models import GhostCVE
 
@@ -31,7 +43,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class ProcessedCVE:
     """
-    Result of processing a CVE through the pipeline.
+    Result of processing a CVE through the 6-stage pipeline.
 
     Attributes:
         cve_id: The CVE identifier
@@ -39,15 +51,21 @@ class ProcessedCVE:
         status: Current registry status
         first_seen: When this CVE was first discovered
         sources: List of source names that discovered this CVE
-        confidence: Average confidence score
+        confidence: Average confidence score across all sources
+        disclosure: Disclosure classification result
+        ghost_analysis: Ghost analysis result
+        root_cause: Root cause if CVE is a ghost
         description: CVE description if available
     """
     cve_id: str
     is_ghost: bool
     status: str
     first_seen: datetime
+    disclosure: DisclosureClassification
+    ghost_analysis: GhostAnalysis
     sources: List[str] = field(default_factory=list)
     confidence: float = 1.0
+    root_cause: Optional[GhostRootCause] = None
     description: Optional[str] = None
 
 
@@ -78,51 +96,65 @@ class PipelineStats:
 
 class PipelineOrchestrator:
     """
-    Master orchestrator for the Ghost CVE detection pipeline.
+    Master orchestrator for the 6-stage Ghost CVE detection pipeline.
 
-    Coordinates discovery sources, validation against registries,
-    and storage in the database. Handles the complete flow from
-    CVE discovery to Ghost classification and tracking.
+    Coordinates all stages from discovery through continuous learning:
+    - Stage 1: Discovery (handled by discovery modules)
+    - Stage 2: Disclosure Classification
+    - Stage 3: Multi-Source Validation
+    - Stage 4: Ghost Analysis
+    - Stage 5: Root Cause Detection
+    - Stage 6: Continuous Learning
 
     Attributes:
         db: Database manager for persistence
-        validator: CVE validator for registry checks
+        disclosure_classifier: Stage 2 - Disclosure classification
+        multi_source_validator: Stage 3 - Multi-source validation
+        ghost_analyzer: Stage 4 - Ghost analysis with confidence scoring
+        root_cause_detector: Stage 5 - Root cause detection
+        learning_system: Stage 6 - Source reliability tracker
     """
 
     def __init__(self, db_manager: DatabaseManager) -> None:
         """
-        Initialize the pipeline orchestrator.
+        Initialize the pipeline orchestrator with all V2 components.
 
         Args:
             db_manager: Database manager instance for persistence
         """
         self.db = db_manager
-        self.validator = CVEValidator(use_local=True)
         self.logger = logging.getLogger(f"{__name__}.{self.__class__.__name__}")
+
+        # Initialize V2 pipeline components
+        self.disclosure_classifier = DisclosureClassifier()
+        self.multi_source_validator = MultiSourceValidator()
+        self.learning_system = SourceReliabilityTracker(db_manager)
+        self.ghost_analyzer = GhostAnalyzer(reliability_tracker=self.learning_system)
+        self.root_cause_detector = RootCauseDetector()
 
         # Track processed CVEs to avoid duplicates within a run
         self._processed_cves: dict[str, ProcessedCVE] = {}
+
+        # Track discoveries per CVE for multi-source aggregation
+        self._discoveries_by_cve: dict[str, List[DiscoveryResult]] = {}
 
     def ensure_resources(self) -> bool:
         """
         Ensure all required resources are available.
 
-        Initializes database schema and ensures local registries are ready.
+        Initializes database schema with V2 tables and ensures local
+        registries are ready for multi-source validation.
 
         Returns:
             True if resources are ready, False otherwise
         """
         try:
-            # Initialize database
+            # Initialize database with V2 schema
             self.db.initialize()
 
-            # Ensure local registries are available
-            registries_ready = self.validator.ensure_local_registry()
-
-            if not registries_ready:
-                self.logger.warning(
-                    "Local registries not available - validation will be limited"
-                )
+            # Multi-source validator will initialize local registries lazily
+            # on first validation attempt (with fallback to CVE.org API)
+            self.logger.info("Resources initialized - multi-source validation ready")
 
             return True
 
@@ -135,9 +167,15 @@ class PipelineOrchestrator:
         discovery: DiscoveryResult,
     ) -> Optional[ProcessedCVE]:
         """
-        Process a single discovery through the pipeline.
+        Process a single discovery through the 6-stage pipeline.
 
-        Validates the CVE against registries and stores it in the database.
+        Stages:
+        1. Discovery (already done by discovery module)
+        2. Disclosure Classification - Analyze public disclosure status
+        3. Multi-Source Validation - Check CVE.org API + local registries
+        4. Ghost Analysis - Apply grace period and confidence threshold
+        5. Root Cause Detection - Determine why CVE is a ghost
+        6. Storage - Record in database with all metadata
 
         Args:
             discovery: Discovery result to process
@@ -148,41 +186,73 @@ class PipelineOrchestrator:
         try:
             self.logger.debug(f"Processing discovery: {discovery.cve_id}")
 
-            # Stage 1: Validate against registries
-            validation = self.validator.validate(
+            # Track this discovery for multi-source aggregation
+            if discovery.cve_id not in self._discoveries_by_cve:
+                self._discoveries_by_cve[discovery.cve_id] = []
+            self._discoveries_by_cve[discovery.cve_id].append(discovery)
+
+            # Get all discoveries for this CVE
+            all_discoveries = self._discoveries_by_cve[discovery.cve_id]
+
+            # Stage 2: Disclosure Classification
+            disclosure = self.disclosure_classifier.classify(discovery)
+            self.logger.debug(
+                f"Disclosure classification for {discovery.cve_id}: "
+                f"status={disclosure.status.value}, confidence={disclosure.confidence:.2f}"
+            )
+
+            # Stage 3: Multi-Source Validation
+            validation = self.multi_source_validator.validate(
                 discovery.cve_id,
                 found_in_wild=True
             )
-
             self.logger.debug(
                 f"Validation result for {discovery.cve_id}: "
-                f"status={validation.status.value}, is_ghost={validation.is_ghost}"
+                f"status={validation.status.value}"
             )
 
-            # Stage 2: Store in database
-            ghost_cve = self.db.record_discovery(discovery, validation)
-
-            # Stage 3: Create processed result
-            processed = ProcessedCVE(
-                cve_id=ghost_cve.cve_id,
-                is_ghost=ghost_cve.is_ghost,
-                status=ghost_cve.registry_status,
-                first_seen=ghost_cve.first_seen,
-                sources=[discovery.source_name],
-                confidence=discovery.confidence,
-                description=validation.description,
+            # Stage 4: Ghost Analysis
+            ghost_analysis = self.ghost_analyzer.analyze(
+                discoveries=all_discoveries,
+                disclosure=disclosure,
+                validation=validation,
+            )
+            self.logger.debug(
+                f"Ghost analysis for {discovery.cve_id}: "
+                f"is_ghost={ghost_analysis.is_ghost}, confidence={ghost_analysis.confidence:.2f}"
             )
 
-            # Log result
-            if ghost_cve.is_ghost:
+            # Stage 5: Root Cause Detection (if ghost)
+            root_cause = None
+            if ghost_analysis.is_ghost:
+                root_cause = self.root_cause_detector.detect(
+                    discovery=discovery,
+                    disclosure=disclosure,
+                    ghost_analysis=ghost_analysis,
+                    validation=validation,
+                )
                 self.logger.info(
                     f"Ghost CVE detected: {discovery.cve_id} "
-                    f"(status: {validation.status.value})"
+                    f"(root_cause: {root_cause.value}, confidence: {ghost_analysis.confidence:.0%})"
                 )
-            else:
-                self.logger.debug(
-                    f"Published CVE recorded: {discovery.cve_id}"
-                )
+
+            # Stage 6: Store in database (part of learning system)
+            # TODO: Replace this with proper V2 database storage
+            ghost_cve = self.db.record_discovery(discovery, validation)
+
+            # Create processed result
+            processed = ProcessedCVE(
+                cve_id=discovery.cve_id,
+                is_ghost=ghost_analysis.is_ghost,
+                status=validation.status.value,
+                first_seen=ghost_cve.first_seen if ghost_cve else datetime.utcnow(),
+                disclosure=disclosure,
+                ghost_analysis=ghost_analysis,
+                sources=[d.source_name for d in all_discoveries],
+                confidence=ghost_analysis.confidence,
+                root_cause=root_cause,
+                description=validation.raw_response.get('description') if validation.raw_response else None,
+            )
 
             return processed
 
@@ -216,8 +286,9 @@ class PipelineOrchestrator:
             f"Starting pipeline with {len(discovery_sources)} discovery sources"
         )
 
-        # Reset processed CVEs tracker
+        # Reset processed CVEs tracker and discoveries aggregator
         self._processed_cves = {}
+        self._discoveries_by_cve = {}
 
         # Track unique CVE IDs seen
         unique_cves_seen: set[str] = set()
@@ -290,8 +361,9 @@ class PipelineOrchestrator:
         """
         Check existing Ghost CVEs for resolution (RESERVED -> PUBLISHED).
 
-        Scans all tracked Ghost CVEs and re-validates them to detect
-        when they transition from RESERVED to PUBLISHED status.
+        Part of Stage 6 (Continuous Learning): Scans all tracked Ghost CVEs,
+        re-validates them, and records resolutions in the learning system
+        to update source reliability scores.
 
         Returns:
             Number of Ghost CVEs that were resolved
@@ -313,8 +385,8 @@ class PipelineOrchestrator:
             # Check each ghost
             for ghost in ghosts:
                 try:
-                    # Re-validate the CVE
-                    validation = self.validator.validate(
+                    # Re-validate the CVE with multi-source validation
+                    validation = self.multi_source_validator.validate(
                         ghost.cve_id,
                         found_in_wild=True
                     )
@@ -326,14 +398,30 @@ class PipelineOrchestrator:
                             f"(RESERVED -> PUBLISHED)"
                         )
 
+                        # Calculate resolution time
+                        resolution_days = (datetime.utcnow() - ghost.first_seen).total_seconds() / 86400
+
+                        # Record resolution in learning system for each source
+                        sources = self.db.get_ghost_sources(ghost.cve_id)
+                        for source in sources:
+                            self.learning_system.record_resolution(
+                                source_name=source.source_name,
+                                resolution_days=resolution_days,
+                                timestamp=datetime.utcnow()
+                            )
+                            self.logger.debug(
+                                f"Recorded resolution for source {source.source_name}: "
+                                f"{resolution_days:.1f} days"
+                            )
+
                         # Update the record
                         with self.db.get_session() as session:
                             ghost.registry_status = validation.status.value
                             ghost.is_ghost = False
                             ghost.last_checked = datetime.utcnow()
 
-                            if validation.description:
-                                ghost.description = validation.description
+                            if validation.raw_response and 'description' in validation.raw_response:
+                                ghost.description = validation.raw_response['description']
 
                             session.add(ghost)
                             session.commit()
@@ -353,7 +441,10 @@ class PipelineOrchestrator:
                         f"Error checking resolution for {ghost.cve_id}: {e}"
                     )
 
+            # Recalculate source reliability scores after recording resolutions
             if resolved_count > 0:
+                self.logger.info("Recalculating source reliability scores...")
+                self.learning_system.recalculate_all_sources()
                 self.logger.info(
                     f"Resolution check complete: {resolved_count} Ghost CVEs resolved"
                 )
