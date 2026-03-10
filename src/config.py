@@ -837,3 +837,4 @@ class SourceType:
     DISTRO_ADVISORY: str = "distro_advisory"
     GOVERNMENT_ADVISORY: str = "government_advisory"
     EXPLOIT_DB: str = "exploit_db"
+    CVE_ORG: str = "cve_org"
