@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👻 Ghost CVE Tracker - Live Dashboard</title>
+    <meta name="description" content="Real-time tracking of Ghost CVEs - vulnerabilities mentioned publicly but missing from official registries">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>👻 Ghost CVE Tracker</h1>
+            <p class="tagline">Tracking CVEs mentioned in the wild but missing from official registries</p>
+            <nav>
+                <a href="index.html" class="active">Dashboard</a>
+                <a href="https://github.com/rogolabs/GhostCVEs">GitHub</a>
+                <a href="https://github.com/rogolabs/GhostCVEs/releases">Data Archives</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Statistics Cards -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value" id="ghostCount">-</div>
+                <div class="stat-label">Active Ghosts</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="criticalCount">-</div>
+                <div class="stat-label">Critical (30+ days)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="newToday">-</div>
+                <div class="stat-label">New Today</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="sourcesCount">-</div>
+                <div class="stat-label">Discovery Sources</div>
+            </div>
+        </section>
+
+        <!-- Trend Chart -->
+        <section class="chart-section">
+            <h2>Discovery Trends (Last 30 Days)</h2>
+            <div class="chart-container">
+                <canvas id="trendChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Filters -->
+        <section class="filters">
+            <h2>Ghost CVE Registry</h2>
+            <div class="filter-controls">
+                <input type="text" id="searchInput" placeholder="Search CVE ID..." aria-label="Search CVE">
+                <select id="statusFilter" aria-label="Filter by status">
+                    <option value="">All Statuses</option>
+                    <option value="RESERVED">RESERVED</option>
+                    <option value="NOT_FOUND">NOT_FOUND</option>
+                </select>
+                <select id="ageFilter" aria-label="Filter by age">
+                    <option value="">All Ages</option>
+                    <option value="7">Last 7 days</option>
+                    <option value="30">Last 30 days</option>
+                    <option value="90">Last 90 days</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Ghost Table -->
+        <section class="ghost-table-section">
+            <table class="ghost-table">
+                <thead>
+                    <tr>
+                        <th>CVE ID</th>
+                        <th>Status</th>
+                        <th>First Seen</th>
+                        <th>Days in Limbo</th>
+                        <th>Primary Source</th>
+                    </tr>
+                </thead>
+                <tbody id="ghostsBody">
+                    <tr>
+                        <td colspan="5" class="loading">Loading data...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section">
+            <h2>What is a Ghost CVE?</h2>
+            <p>
+                A <strong>Ghost CVE</strong> (also known as "RESERVED BUT PUBLIC") is a vulnerability identifier
+                that appears in public sources like GitHub commits, security advisories, or RSS feeds, but remains
+                <strong>RESERVED</strong> or <strong>NOT_FOUND</strong> in official CVE registries like NVD and MITRE.
+            </p>
+            <p>
+                These "ghosts" represent potential security blind spots where vulnerabilities are being discussed
+                publicly before official disclosure. This tracker monitors RSS feeds, vendor advisories, and
+                security trackers to identify these gaps.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Built with 👻 by <a href="https://rogolabs.net">rogolabs.net</a></p>
+            <p>Data updated every 6 hours | <a href="https://github.com/rogolabs/GhostCVEs">Source Code</a> | Last updated: <span id="lastUpdated">-</span></p>
+        </div>
+    </footer>
+
+    <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

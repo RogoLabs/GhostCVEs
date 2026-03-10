@@ -291,6 +291,109 @@ jobs:
             echo "::warning::$CRITICAL_COUNT critical Ghost CVEs detected"
           fi
 
+      - name: 🧹 Database Maintenance (Phase 2)
+        if: github.event_name == 'schedule' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+        run: |
+          python -c "
+          from datetime import datetime
+          from src.storage.maintenance import DatabaseMaintenance
+
+          maint = DatabaseMaintenance()
+
+          # Weekly VACUUM on Mondays
+          if datetime.now().weekday() == 0:
+              result = maint.vacuum()
+              print(f'✓ Weekly VACUUM: Saved {result[\"saved_percent\"]:.1f}%')
+
+          # Monthly archiving on 1st of month
+          if datetime.now().day == 1:
+              archived = maint.archive_old_sources(days=90)
+              print(f'✓ Monthly archive: {archived} old sources archived')
+
+              # Optimize indexes
+              maint.optimize_indexes()
+              print('✓ Indexes optimized')
+          "
+
+      - name: 📦 Monthly Archive to GitHub Releases (Phase 2)
+        if: github.event_name == 'schedule' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Create monthly release on 1st of month
+          if [ $(date +%d) == "01" ]; then
+            MONTH=$(date +%Y-%m)
+
+            echo "Creating monthly archive for ${MONTH}..."
+
+            # Compress database
+            gzip -c ghost_log.db > ghost_log_${MONTH}.db.gz
+
+            # Get statistics
+            GHOST_COUNT=$(python -c "
+            from src.storage import DatabaseManager
+            stats = DatabaseManager().get_statistics()
+            print(stats.get('total_ghosts', 0))
+            " 2>/dev/null || echo "0")
+
+            TOTAL_CVES=$(python -c "
+            from src.storage import DatabaseManager
+            stats = DatabaseManager().get_statistics()
+            print(stats.get('total_cves', 0))
+            " 2>/dev/null || echo "0")
+
+            DB_SIZE=$(du -h ghost_log.db | cut -f1)
+            ARCHIVE_SIZE=$(du -h ghost_log_${MONTH}.db.gz | cut -f1)
+
+            # Create release
+            gh release create "data-${MONTH}" \
+              ghost_log_${MONTH}.db.gz \
+              --title "Ghost CVE Data Archive - ${MONTH}" \
+              --notes "## Monthly Ghost CVE Database Snapshot
+
+**Month**: ${MONTH}
+**Generated**: $(date -u)
+
+### Statistics
+- **Active Ghosts**: ${GHOST_COUNT}
+- **Total CVEs Tracked**: ${TOTAL_CVES}
+- **Database Size**: ${DB_SIZE}
+- **Compressed Archive**: ${ARCHIVE_SIZE}
+
+### Contents
+- \`ghost_log_${MONTH}.db.gz\` - Full SQLite database
+
+### Usage
+\`\`\`bash
+# Download and extract
+wget https://github.com/\${{ github.repository }}/releases/download/data-${MONTH}/ghost_log_${MONTH}.db.gz
+gunzip ghost_log_${MONTH}.db.gz
+
+# Query with sqlite3
+sqlite3 ghost_log_${MONTH}.db 'SELECT * FROM ghost_cves WHERE is_ghost=1'
+\`\`\`
+
+---
+*Automated monthly archive by Ghost Hunter*"
+
+            # Cleanup
+            rm -f ghost_log_${MONTH}.db.gz
+
+            echo "✓ Monthly archive created: data-${MONTH}"
+          fi
+
+          # Cleanup old reports (keep last 30 days)
+          find reports/archive -name "ghost_report_*.md" -mtime +30 -delete 2>/dev/null || true
+          find reports/archive -name "ghost_report_*.json" -mtime +30 -delete 2>/dev/null || true
+          find reports/archive -name "ghost_report_*.csv" -mtime +30 -delete 2>/dev/null || true
+
+      - name: 🚨 Create Issues for Critical Ghosts (Phase 4)
+        if: github.event_name == 'schedule' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/create_ghost_issues.py || echo "Issue creation completed with warnings"
+
       - name: 📊 Workflow Health Check
         if: always()
         run: |

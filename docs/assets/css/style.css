@@ -1,0 +1,301 @@
+/* Ghost CVE Tracker Dashboard Styles */
+
+:root {
+    --primary-color: #6366f1;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    --success-color: #10b981;
+    --bg-color: #ffffff;
+    --surface-color: #f9fafb;
+    --text-color: #111827;
+    --text-muted: #6b7280;
+    --border-color: #e5e7eb;
+    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background: var(--primary-color);
+    color: white;
+    padding: 2rem 0;
+    box-shadow: var(--shadow);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.tagline {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+}
+
+nav {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+nav a:hover, nav a.active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Main Content */
+main {
+    padding: 2rem 0;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.stat-card {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.stat-value {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Chart Section */
+.chart-section {
+    margin-bottom: 3rem;
+}
+
+.chart-section h2 {
+    margin-bottom: 1rem;
+}
+
+.chart-container {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+/* Filters */
+.filters {
+    margin-bottom: 2rem;
+}
+
+.filters h2 {
+    margin-bottom: 1rem;
+}
+
+.filter-controls {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-controls input,
+.filter-controls select {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.filter-controls input:focus,
+.filter-controls select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* Table */
+.ghost-table-section {
+    margin-bottom: 3rem;
+}
+
+.ghost-table {
+    width: 100%;
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.ghost-table th,
+.ghost-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.ghost-table th {
+    background: var(--surface-color);
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.ghost-table tbody tr:hover {
+    background: var(--surface-color);
+}
+
+.ghost-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.ghost-table td.loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-muted);
+}
+
+/* Status badges */
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.status-reserved {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status-not_found {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* Row severity */
+tr.critical {
+    background: #fef2f2;
+}
+
+tr.warning {
+    background: #fffbeb;
+}
+
+/* Links */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* About Section */
+.about-section {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+}
+
+.about-section h2 {
+    margin-bottom: 1rem;
+}
+
+.about-section p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+
+/* Footer */
+footer {
+    background: var(--surface-color);
+    border-top: 1px solid var(--border-color);
+    padding: 2rem 0;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+footer p {
+    margin: 0.5rem 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .stat-value {
+        font-size: 2rem;
+    }
+
+    .filter-controls {
+        flex-direction: column;
+    }
+
+    .filter-controls input,
+    .filter-controls select {
+        min-width: 100%;
+    }
+
+    .ghost-table {
+        font-size: 0.9rem;
+    }
+
+    .ghost-table th,
+    .ghost-table td {
+        padding: 0.75rem;
+    }
+}

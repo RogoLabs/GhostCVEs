@@ -1,0 +1,75 @@
+name: Deploy GitHub Pages Dashboard
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'reports/**'
+      - 'docs/**'
+      - 'scripts/generate_dashboard_data.py'
+  workflow_run:
+    workflows: ["Ghost Hunter - Automated CVE Hunt"]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build-deploy:
+    name: 🚀 Build and Deploy Dashboard
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 📦 Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: 📊 Generate Dashboard Data
+        run: |
+          mkdir -p docs/_data
+
+          # Copy latest report if exists
+          if ls reports/ghost_report_*.json 1> /dev/null 2>&1; then
+            LATEST=$(ls -t reports/ghost_report_*.json | head -1)
+            cp "$LATEST" docs/_data/latest.json
+          else
+            echo "{}" > docs/_data/latest.json
+          fi
+
+          # Generate additional data files
+          python scripts/generate_dashboard_data.py
+
+      - name: 🔨 Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: 📤 Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+      - name: 🚀 Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: ✅ Deployment Complete
+        run: |
+          echo "## 🚀 Dashboard Deployed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Dashboard URL: ${{ steps.deployment.outputs.page_url }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "The Ghost CVE dashboard has been successfully deployed!" >> $GITHUB_STEP_SUMMARY
