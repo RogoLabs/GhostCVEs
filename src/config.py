@@ -9,7 +9,7 @@ Author: rogolabs.net
 """
 
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Final
 import re
 
@@ -115,7 +115,7 @@ def validate_cve_id(cve_id: str, config: CVEValidationConfig | None = None) -> t
         return (False, "Invalid format: year and ID must be numeric")
     
     # Get current date
-    now = datetime.utcnow()
+    now = datetime.now(timezone.utc)
     current_year = now.year
     current_month = now.month
     

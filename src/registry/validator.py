@@ -12,7 +12,7 @@ Author: rogolabs.net
 import logging
 import time
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
 
@@ -60,7 +60,7 @@ class ValidationResult:
     def __post_init__(self) -> None:
         """Set validation timestamp if not provided."""
         if self.validated_at is None:
-            self.validated_at = datetime.utcnow()
+            self.validated_at = datetime.now(timezone.utc)
 
 
 class CVEValidator:
@@ -664,7 +664,7 @@ class CVEValidator:
             return None
         
         result = self._cache[cve_id]
-        age = (datetime.utcnow() - result.validated_at).total_seconds()
+        age = (datetime.now(timezone.utc) - result.validated_at).total_seconds()
         
         if age > self._cache_ttl_seconds:
             del self._cache[cve_id]
