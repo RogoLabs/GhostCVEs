@@ -112,7 +112,151 @@ def identify_redundant_sources(
     return (is_redundant, similarity)
 
 
-# Placeholder for SourceAuditor class (will be implemented in Task 2)
 class SourceAuditor:
-    """Placeholder for SourceAuditor class - to be implemented in Task 2."""
-    pass
+    """
+    Audits discovery sources for performance and reliability.
+
+    Analyzes historical data from database to calculate metrics for each source:
+    - Ghost detection rate (true positives)
+    - False positive rate (already published CVEs)
+    - Average time to resolution
+    - Fetch reliability
+    - Unique discovery value
+    """
+
+    def __init__(self, database_manager):
+        """
+        Initialize auditor with database access.
+
+        Args:
+            database_manager: DatabaseManager instance for data access
+        """
+        self.db = database_manager
+
+    def collect_source_metrics(self, source_name: str) -> SourceMetrics:
+        """
+        Collect comprehensive metrics for a single source.
+
+        Args:
+            source_name: Name of the source to audit
+
+        Returns:
+            SourceMetrics with calculated values
+        """
+        logger.info(f"Collecting metrics for source: {source_name}")
+
+        # Get all discoveries from this source
+        discoveries = self.db.get_source_discoveries(source_name)
+        total_discoveries = len(discoveries)
+
+        if total_discoveries == 0:
+            logger.warning(f"No discoveries found for source: {source_name}")
+            return self._empty_metrics(source_name)
+
+        # Calculate ghost detection rate
+        ghost_count = sum(1 for d in discoveries if d.get("is_ghost"))
+        ghost_detection_rate = ghost_count / total_discoveries if total_discoveries > 0 else 0.0
+
+        # Calculate false positive rate (CVEs that were already PUBLISHED)
+        published_count = sum(1 for d in discoveries if d.get("registry_status") == "PUBLISHED")
+        false_positive_rate = published_count / total_discoveries if total_discoveries > 0 else 0.0
+
+        # Get resolution history for this source
+        resolutions = self.db.get_source_resolution_history(source_name)
+
+        # Calculate average time to resolution
+        if resolutions:
+            avg_resolution_days = sum(r["resolution_days"] for r in resolutions) / len(resolutions)
+        else:
+            avg_resolution_days = 0.0
+
+        # Calculate fetch reliability (placeholder - would need fetch history tracking)
+        fetch_reliability = 0.95  # Default, will be improved with monitoring
+        fetch_failure_rate = 0.05
+
+        # Get unique CVEs (found only by this source)
+        all_cves = {d["cve_id"] for d in discoveries}
+        other_sources_cves = self._get_cves_from_other_sources(source_name)
+        unique_cves = all_cves - other_sources_cves
+        unique_count = len(unique_cves)
+        unique_ratio = unique_count / total_discoveries if total_discoveries > 0 else 0.0
+
+        # Calculate reliability score
+        reliability_score = calculate_reliability_score(
+            ghost_detection_rate=ghost_detection_rate,
+            false_positive_rate=false_positive_rate,
+            fetch_reliability=fetch_reliability,
+            unique_discoveries_ratio=unique_ratio
+        )
+
+        # Get last successful fetch timestamp
+        last_fetch = max(
+            (datetime.fromisoformat(d["discovered_at"]) for d in discoveries),
+            default=datetime.now()
+        )
+
+        return SourceMetrics(
+            source_name=source_name,
+            total_discoveries=total_discoveries,
+            ghost_detection_rate=ghost_detection_rate,
+            false_positive_rate=false_positive_rate,
+            avg_time_to_resolution=avg_resolution_days,
+            reliability_score=reliability_score,
+            last_successful_fetch=last_fetch,
+            fetch_failure_rate=fetch_failure_rate,
+            avg_fetch_time=2.0,  # Placeholder
+            unique_cves_found=unique_count
+        )
+
+    def audit_all_sources(self) -> list[SourceMetrics]:
+        """
+        Audit all sources in the database.
+
+        Returns:
+            List of SourceMetrics for all sources, sorted by reliability score
+        """
+        logger.info("Starting audit of all sources")
+
+        all_sources = self.db.get_all_sources()
+        logger.info(f"Found {len(all_sources)} sources to audit")
+
+        metrics_list = []
+        for source_name in all_sources:
+            try:
+                metrics = self.collect_source_metrics(source_name)
+                metrics_list.append(metrics)
+            except Exception as e:
+                logger.error(f"Error auditing source {source_name}: {e}")
+                continue
+
+        # Sort by reliability score (highest first)
+        metrics_list.sort(key=lambda m: m.reliability_score, reverse=True)
+
+        return metrics_list
+
+    def _empty_metrics(self, source_name: str) -> SourceMetrics:
+        """Return empty metrics for a source with no data."""
+        return SourceMetrics(
+            source_name=source_name,
+            total_discoveries=0,
+            ghost_detection_rate=0.0,
+            false_positive_rate=0.0,
+            avg_time_to_resolution=0.0,
+            reliability_score=0.0,
+            last_successful_fetch=datetime.now(),
+            fetch_failure_rate=1.0,
+            avg_fetch_time=0.0,
+            unique_cves_found=0
+        )
+
+    def _get_cves_from_other_sources(self, exclude_source: str) -> set[str]:
+        """Get set of all CVE IDs discovered by sources other than the specified one."""
+        all_sources = self.db.get_all_sources()
+        other_cves = set()
+
+        for source in all_sources:
+            if source != exclude_source:
+                discoveries = self.db.get_source_discoveries(source)
+                other_cves.update(d["cve_id"] for d in discoveries)
+
+        return other_cves
