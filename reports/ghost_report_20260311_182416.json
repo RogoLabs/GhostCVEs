@@ -1,0 +1,1564 @@
+{
+  "generated_at": "2026-03-11T18:24:16.705098",
+  "summary": {
+    "total_ghosts": 71,
+    "total_cves_tracked": 6236,
+    "total_sources": 6446,
+    "oldest_ghost": "CVE-2026-1220",
+    "oldest_ghost_days": 50
+  },
+  "ghosts": [
+    {
+      "cve_id": "CVE-2025-64152",
+      "first_seen": "2026-03-09T03:00:20",
+      "last_checked": "2026-03-11T18:22:15.414312",
+      "days_in_limbo": 2,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "mailing_list",
+          "name": "OSS Security",
+          "url": "https://seclists.org/oss-sec/2026/q1/284",
+          "discovered_at": "2026-03-09T03:00:20",
+          "context": "CVE-2025-64152: Apache IoTDB: Path Traversal Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-55017",
+      "first_seen": "2026-03-09T02:51:37",
+      "last_checked": "2026-03-11T18:22:15.498588",
+      "days_in_limbo": 2,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "mailing_list",
+          "name": "OSS Security",
+          "url": "https://seclists.org/oss-sec/2026/q1/283",
+          "discovered_at": "2026-03-09T02:51:37",
+          "context": "CVE-2025-55017: Apache IoTDB: Path Traversal Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-3633",
+      "first_seen": "2026-03-06T12:20:56.888259",
+      "last_checked": "2026-03-11T18:22:15.571572",
+      "days_in_limbo": 5,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7437500000000001,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-03-09T12:20:56.118775",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-03-06T12:20:56.888259",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-3634",
+      "first_seen": "2026-03-06T12:20:56.885375",
+      "last_checked": "2026-03-11T18:22:15.646244",
+      "days_in_limbo": 5,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7437500000000001,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-03-09T12:20:56.166030",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-03-06T12:20:56.885375",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-3632",
+      "first_seen": "2026-03-06T12:20:56.872021",
+      "last_checked": "2026-03-11T18:22:15.720450",
+      "days_in_limbo": 5,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7437500000000001,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-03-09T12:20:56.153716",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-03-06T12:20:56.872021",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-2092",
+      "first_seen": "2026-03-06T00:47:13.281684",
+      "last_checked": "2026-03-11T18:22:15.792556",
+      "days_in_limbo": 5,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7277777777777776,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-03-06T00:47:13.281684",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-2603",
+      "first_seen": "2026-03-06T00:47:13.259382",
+      "last_checked": "2026-03-11T18:22:15.867735",
+      "days_in_limbo": 5,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7277777777777776,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-03-06T00:47:13.259382",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-3555",
+      "first_seen": "2026-03-06T00:00:00",
+      "last_checked": "2026-03-11T18:22:15.941413",
+      "days_in_limbo": 5,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.8499999999999998,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-153/",
+          "discovered_at": "2026-03-06T00:00:00",
+          "context": "ZDI-26-153: (Pwn2Own) Philips Hue Bridge Zigbee Stack Custom Command Handler Heap-based Buffer Overflow Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-3556",
+      "first_seen": "2026-03-06T00:00:00",
+      "last_checked": "2026-03-11T18:22:16.017147",
+      "days_in_limbo": 5,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.8499999999999998,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-154/",
+          "discovered_at": "2026-03-06T00:00:00",
+          "context": "ZDI-26-154: (Pwn2Own) Philips Hue Bridge HomeKit Pair-Setup Heap-based Buffer Overflow Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-3557",
+      "first_seen": "2026-03-06T00:00:00",
+      "last_checked": "2026-03-11T18:22:16.091358",
+      "days_in_limbo": 5,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.8499999999999998,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-155/",
+          "discovered_at": "2026-03-06T00:00:00",
+          "context": "ZDI-26-155: (Pwn2Own) Philips Hue Bridge hap_pair_verify_handler Sub-TLV Parsing Heap-based Buffer Overflow Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-3558",
+      "first_seen": "2026-03-06T00:00:00",
+      "last_checked": "2026-03-11T18:22:16.164487",
+      "days_in_limbo": 5,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.8499999999999998,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-156/",
+          "discovered_at": "2026-03-06T00:00:00",
+          "context": "ZDI-26-156: (Pwn2Own) Philips Hue Bridge HomeKit Accessory Protocol Transient Pairing Mode Authentication Bypass Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-3559",
+      "first_seen": "2026-03-06T00:00:00",
+      "last_checked": "2026-03-11T18:22:16.241210",
+      "days_in_limbo": 5,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.8499999999999998,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-157/",
+          "discovered_at": "2026-03-06T00:00:00",
+          "context": "ZDI-26-157: (Pwn2Own) Philips Hue Bridge HomeKit Accessory Protocol Static Nonce Authentication Bypass Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-3560",
+      "first_seen": "2026-03-06T00:00:00",
+      "last_checked": "2026-03-11T18:22:16.315030",
+      "days_in_limbo": 5,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.8499999999999998,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-158/",
+          "discovered_at": "2026-03-06T00:00:00",
+          "context": "ZDI-26-158: (Pwn2Own) Philips Hue Bridge HomeKit hk_hap_pair_storage_put Heap-based Buffer Overflow Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-3561",
+      "first_seen": "2026-03-06T00:00:00",
+      "last_checked": "2026-03-11T18:22:16.393596",
+      "days_in_limbo": 5,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.8499999999999998,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-159/",
+          "discovered_at": "2026-03-06T00:00:00",
+          "context": "ZDI-26-159: (Pwn2Own) Philips Hue Bridge hk_hap characteristics Heap-based Buffer Overflow Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-3562",
+      "first_seen": "2026-03-06T00:00:00",
+      "last_checked": "2026-03-11T18:22:16.467793",
+      "days_in_limbo": 5,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.8499999999999998,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-160/",
+          "discovered_at": "2026-03-06T00:00:00",
+          "context": "ZDI-26-160: (Pwn2Own) Philips Hue Bridge hk_hap Ed25519 Signature Verification Authentication Bypass Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-2923",
+      "first_seen": "2026-03-06T00:00:00",
+      "last_checked": "2026-03-11T18:22:16.541554",
+      "days_in_limbo": 5,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.8499999999999998,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-161/",
+          "discovered_at": "2026-03-06T00:00:00",
+          "context": "ZDI-26-161: GStreamer DVB Subtitles Out-Of-Bounds Write Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-3081",
+      "first_seen": "2026-03-06T00:00:00",
+      "last_checked": "2026-03-11T18:22:16.614483",
+      "days_in_limbo": 5,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.8499999999999998,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-162/",
+          "discovered_at": "2026-03-06T00:00:00",
+          "context": "ZDI-26-162: GStreamer H.266 Codec Parser Stack-based Buffer Overflow Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-3082",
+      "first_seen": "2026-03-06T00:00:00",
+      "last_checked": "2026-03-11T18:22:16.688762",
+      "days_in_limbo": 5,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.8499999999999998,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-163/",
+          "discovered_at": "2026-03-06T00:00:00",
+          "context": "ZDI-26-163: GStreamer JPEG Parser Heap-based Buffer Overflow Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-2920",
+      "first_seen": "2026-03-06T00:00:00",
+      "last_checked": "2026-03-11T18:22:16.762760",
+      "days_in_limbo": 5,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.8499999999999998,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-164/",
+          "discovered_at": "2026-03-06T00:00:00",
+          "context": "ZDI-26-164: GStreamer ASF Demuxer Heap-based Buffer Overflow Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-2922",
+      "first_seen": "2026-03-06T00:00:00",
+      "last_checked": "2026-03-11T18:22:16.835075",
+      "days_in_limbo": 5,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.8499999999999998,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-165/",
+          "discovered_at": "2026-03-06T00:00:00",
+          "context": "ZDI-26-165: GStreamer RealMedia Demuxer Out-Of-Bounds Write Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-3083",
+      "first_seen": "2026-03-06T00:00:00",
+      "last_checked": "2026-03-11T18:22:16.909086",
+      "days_in_limbo": 5,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.8499999999999998,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-166/",
+          "discovered_at": "2026-03-06T00:00:00",
+          "context": "ZDI-26-166: GStreamer rtpqdm2depay Out-Of-Bounds Write Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-3085",
+      "first_seen": "2026-03-06T00:00:00",
+      "last_checked": "2026-03-11T18:22:16.983280",
+      "days_in_limbo": 5,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.8499999999999998,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-167/",
+          "discovered_at": "2026-03-06T00:00:00",
+          "context": "ZDI-26-167: GStreamer rtpqdm2depay Heap-based Buffer Overflow Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-2921",
+      "first_seen": "2026-03-06T00:00:00",
+      "last_checked": "2026-03-11T18:22:17.057035",
+      "days_in_limbo": 5,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.8499999999999998,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-168/",
+          "discovered_at": "2026-03-06T00:00:00",
+          "context": "ZDI-26-168: GStreamer RIFF Palette Integer Overflow Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-3084",
+      "first_seen": "2026-03-06T00:00:00",
+      "last_checked": "2026-03-11T18:22:17.130527",
+      "days_in_limbo": 5,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.8499999999999998,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-169/",
+          "discovered_at": "2026-03-06T00:00:00",
+          "context": "ZDI-26-169: GStreamer H.266 Codec Parser Integer Underflow Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-3086",
+      "first_seen": "2026-03-06T00:00:00",
+      "last_checked": "2026-03-11T18:22:17.203454",
+      "days_in_limbo": 5,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.8499999999999998,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-170/",
+          "discovered_at": "2026-03-06T00:00:00",
+          "context": "ZDI-26-170: GStreamer H.266 Codec Parser Out-Of-Bounds Write Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-3234",
+      "first_seen": "2026-03-05T12:22:43.670779",
+      "last_checked": "2026-03-11T18:22:17.276825",
+      "days_in_limbo": 6,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7249999999999999,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-03-05T12:22:43.670779",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-2376",
+      "first_seen": "2026-03-04T00:40:08.527391",
+      "last_checked": "2026-03-11T18:22:17.349434",
+      "days_in_limbo": 7,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7307692307692305,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-03-04T00:40:08.527391",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-3195",
+      "first_seen": "2026-03-03T00:39:58.006693",
+      "last_checked": "2026-03-11T18:22:17.423172",
+      "days_in_limbo": 8,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7966666666666671,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-03-03T12:20:25.032399",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Advisories",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-03-03T00:39:58.006693",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-3196",
+      "first_seen": "2026-03-03T00:39:58.006656",
+      "last_checked": "2026-03-11T18:22:17.497062",
+      "days_in_limbo": 8,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7966666666666671,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-03-03T12:20:25.033233",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Advisories",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-03-03T00:39:58.006656",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-3442",
+      "first_seen": "2026-03-03T00:39:57.992339",
+      "last_checked": "2026-03-11T18:23:15.096325",
+      "days_in_limbo": 8,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7966666666666671,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-03-03T12:20:25.050220",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Advisories",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-03-03T00:39:57.992339",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-3441",
+      "first_seen": "2026-03-03T00:39:57.992300",
+      "last_checked": "2026-03-11T18:23:15.172185",
+      "days_in_limbo": 8,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7966666666666671,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-03-03T12:20:25.032699",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Advisories",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-03-03T00:39:57.992300",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-3184",
+      "first_seen": "2026-02-25T12:22:54.201642",
+      "last_checked": "2026-03-11T18:23:15.497595",
+      "days_in_limbo": 14,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7980769230769228,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-02-26T12:23:18.147843",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Advisories",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-02-25T12:22:54.201642",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-3190",
+      "first_seen": "2026-02-25T12:22:54.201325",
+      "last_checked": "2026-03-11T18:23:15.570346",
+      "days_in_limbo": 14,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7403846153846154,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Advisories",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-02-25T12:22:54.201325",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-3121",
+      "first_seen": "2026-02-25T00:42:12.549925",
+      "last_checked": "2026-03-11T18:23:15.646864",
+      "days_in_limbo": 14,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7407407407407409,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Advisories",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-02-25T00:42:12.549925",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-15060",
+      "first_seen": "2026-02-25T00:00:00",
+      "last_checked": "2026-03-11T18:23:15.719119",
+      "days_in_limbo": 14,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.8500000000000009,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-124/",
+          "discovered_at": "2026-02-25T00:00:00",
+          "context": "ZDI-26-124: claude-hovercraft executeClaudeCode Command Injection Remote Code Execution Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-2491",
+      "first_seen": "2026-02-25T00:00:00",
+      "last_checked": "2026-03-11T18:23:15.792678",
+      "days_in_limbo": 14,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.8500000000000009,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-129/",
+          "discovered_at": "2026-02-25T00:00:00",
+          "context": "ZDI-26-129: Socomec DIRIS A-40 HTTP API Authentication Bypass Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-2493",
+      "first_seen": "2026-02-25T00:00:00",
+      "last_checked": "2026-03-11T18:23:15.866516",
+      "days_in_limbo": 14,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.8500000000000009,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-130/",
+          "discovered_at": "2026-02-25T00:00:00",
+          "context": "ZDI-26-130: IceWarp collaboration Directory Traversal Information Disclosure Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-3099",
+      "first_seen": "2026-02-24T12:23:09.974546",
+      "last_checked": "2026-03-11T18:23:15.938964",
+      "days_in_limbo": 15,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.796428571428571,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-02-25T12:22:53.091059",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Advisories",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-02-24T12:23:09.974546",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-2708",
+      "first_seen": "2026-02-20T00:39:37.130319",
+      "last_checked": "2026-03-11T18:23:16.011932",
+      "days_in_limbo": 19,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7986486486486476,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-02-20T12:19:50.782350",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-02-20T00:39:37.130319",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-2625",
+      "first_seen": "2026-02-18T00:42:29.357227",
+      "last_checked": "2026-03-11T18:23:16.085731",
+      "days_in_limbo": 21,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7975609756097549,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-02-18T12:22:12.045965",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-02-18T00:42:29.357227",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-2470",
+      "first_seen": "2026-02-17T16:12:48",
+      "last_checked": "2026-03-11T18:23:16.158637",
+      "days_in_limbo": 22,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "mailing_list",
+          "name": "OSS Security",
+          "url": "https://seclists.org/oss-sec/2026/q1/168",
+          "discovered_at": "2026-02-17T16:12:48",
+          "context": "Re: [OSSA-2026-002] OpenStack Nova: calls qemu-img without format restrictions for resize (CVE-2026-24708)"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-2604",
+      "first_seen": "2026-02-17T00:42:36.260699",
+      "last_checked": "2026-03-11T18:23:16.234651",
+      "days_in_limbo": 22,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7988372093023243,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-02-17T12:21:59.553080",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-02-17T00:42:36.260699",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-2050",
+      "first_seen": "2026-02-17T00:40:57.810365",
+      "last_checked": "2026-03-11T18:23:16.308247",
+      "days_in_limbo": 22,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-02-17T00:40:57.810365",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-2049",
+      "first_seen": "2026-02-17T00:40:57.800873",
+      "last_checked": "2026-03-11T18:23:16.380695",
+      "days_in_limbo": 22,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7999999999999988,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-02-17T00:40:57.800873",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-69691",
+      "first_seen": "2026-02-16T21:08:03",
+      "last_checked": "2026-03-11T18:23:16.453741",
+      "days_in_limbo": 22,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.8500000000000001,
+      "description": null,
+      "sources": [
+        {
+          "type": "mailing_list",
+          "name": "Full Disclosure",
+          "url": "https://seclists.org/fulldisclosure/2026/Feb/16",
+          "discovered_at": "2026-02-16T21:08:03",
+          "context": "[Full Disclosure] CVE-2025-69690 & CVE-2025-69691 \u2014 Authenticated RCE in Netgate pfSense CE 2.7.2 and 2.8.0"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-69690",
+      "first_seen": "2026-02-16T21:08:03",
+      "last_checked": "2026-03-11T18:23:16.528040",
+      "days_in_limbo": 22,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.8500000000000001,
+      "description": null,
+      "sources": [
+        {
+          "type": "mailing_list",
+          "name": "Full Disclosure",
+          "url": "https://seclists.org/fulldisclosure/2026/Feb/16",
+          "discovered_at": "2026-02-16T21:08:03",
+          "context": "[Full Disclosure] CVE-2025-69690 & CVE-2025-69691 \u2014 Authenticated RCE in Netgate pfSense CE 2.7.2 and 2.8.0"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-2574",
+      "first_seen": "2026-02-16T12:24:04.031485",
+      "last_checked": "2026-03-11T18:23:16.600431",
+      "days_in_limbo": 23,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7965909090909077,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-02-17T12:21:59.578554",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-02-16T12:24:04.031485",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-2575",
+      "first_seen": "2026-02-16T12:24:04.010971",
+      "last_checked": "2026-03-11T18:23:16.674852",
+      "days_in_limbo": 23,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7367816091954027,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-02-16T12:24:04.010971",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-2366",
+      "first_seen": "2026-02-12T00:41:33.421624",
+      "last_checked": "2026-03-11T18:23:16.748293",
+      "days_in_limbo": 27,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7380952380952384,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-02-12T00:41:33.421624",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-2369",
+      "first_seen": "2026-02-12T00:41:33.416762",
+      "last_checked": "2026-03-11T18:23:16.820426",
+      "days_in_limbo": 27,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7981132075471683,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-02-12T12:22:53.166899",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-02-12T00:41:33.416762",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0964",
+      "first_seen": "2026-02-11T00:47:07.109267",
+      "last_checked": "2026-03-11T18:23:16.894206",
+      "days_in_limbo": 28,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7972727272727256,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-02-12T00:39:55.192008",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-02-11T00:47:07.109267",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0966",
+      "first_seen": "2026-02-11T00:47:07.108583",
+      "last_checked": "2026-03-11T18:23:16.967485",
+      "days_in_limbo": 28,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7972727272727256,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-02-12T00:39:55.133861",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-02-11T00:47:07.108583",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-14821",
+      "first_seen": "2026-02-11T00:47:07.099860",
+      "last_checked": "2026-03-11T18:23:17.041126",
+      "days_in_limbo": 28,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7972727272727256,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-02-12T00:39:55.159329",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-02-11T00:47:07.099860",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0968",
+      "first_seen": "2026-02-11T00:47:07.097390",
+      "last_checked": "2026-03-11T18:23:17.114764",
+      "days_in_limbo": 28,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7972727272727256,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-02-12T00:39:55.160166",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-02-11T00:47:07.097390",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0967",
+      "first_seen": "2026-02-11T00:47:07.093488",
+      "last_checked": "2026-03-11T18:23:17.188155",
+      "days_in_limbo": 28,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7972727272727256,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-02-12T00:39:55.157824",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-02-11T00:47:07.093488",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-0965",
+      "first_seen": "2026-02-11T00:47:07.090130",
+      "last_checked": "2026-03-11T18:23:17.260286",
+      "days_in_limbo": 28,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7972727272727256,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-02-12T00:39:55.144948",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-02-11T00:47:07.090130",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-2272",
+      "first_seen": "2026-02-11T00:47:07.086544",
+      "last_checked": "2026-03-11T18:23:17.334267",
+      "days_in_limbo": 28,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7981818181818167,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-02-11T12:26:22.160264",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-02-11T00:47:07.086544",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-2271",
+      "first_seen": "2026-02-11T00:47:07.084577",
+      "last_checked": "2026-03-11T18:23:17.408639",
+      "days_in_limbo": 28,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7981818181818167,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-02-11T12:26:22.141926",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-02-11T00:47:07.084577",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-1609",
+      "first_seen": "2026-02-10T00:47:56.329957",
+      "last_checked": "2026-03-11T18:23:17.480205",
+      "days_in_limbo": 29,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7380530973451329,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-02-10T00:47:56.329957",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-1584",
+      "first_seen": "2026-02-10T00:46:14.236940",
+      "last_checked": "2026-03-11T18:23:17.553380",
+      "days_in_limbo": 29,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7999999999999984,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-02-10T00:46:14.236940",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-2239",
+      "first_seen": "2026-02-09T12:27:09.858738",
+      "last_checked": "2026-03-11T18:23:17.626334",
+      "days_in_limbo": 30,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7974137931034465,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-02-10T12:28:13.733367",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-02-09T12:27:09.858738",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-2100",
+      "first_seen": "2026-02-07T00:39:22.042709",
+      "last_checked": "2026-03-11T18:24:15.175131",
+      "days_in_limbo": 32,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7984126984126967,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-02-07T12:15:08.457397",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Data",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-02-07T00:39:22.042709",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-65852",
+      "first_seen": "2026-02-07T00:39:21.738300",
+      "last_checked": "2026-03-11T18:24:15.251423",
+      "days_in_limbo": 32,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 1.0,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "GitHub Security Advisories",
+          "url": "https://github.com/advisories/GHSA-rjv5-9px2-fqw6",
+          "discovered_at": "2026-02-07T00:39:21.738300",
+          "context": "Gogs has authorization bypass in repository deletion API"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-12805",
+      "first_seen": "2026-02-04T00:36:59.682713",
+      "last_checked": "2026-03-11T18:24:15.574452",
+      "days_in_limbo": 35,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7318840579710146,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Advisories",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-02-04T00:36:59.682713",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-1767",
+      "first_seen": "2026-02-03T00:40:39.488752",
+      "last_checked": "2026-03-11T18:24:15.652056",
+      "days_in_limbo": 36,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7992957746478854,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-02-03T12:20:11.122489",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Advisories",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-02-03T00:40:39.488752",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-1766",
+      "first_seen": "2026-02-03T00:40:39.488730",
+      "last_checked": "2026-03-11T18:24:15.729538",
+      "days_in_limbo": 36,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7992957746478854,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-02-03T12:20:11.106390",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Advisories",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-02-03T00:40:39.488730",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-1765",
+      "first_seen": "2026-02-03T00:40:39.488704",
+      "last_checked": "2026-03-11T18:24:15.805474",
+      "days_in_limbo": 36,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7992957746478854,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-02-03T12:20:11.100335",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Advisories",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-02-03T00:40:39.488704",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-1764",
+      "first_seen": "2026-02-03T00:40:39.488652",
+      "last_checked": "2026-03-11T18:24:15.883499",
+      "days_in_limbo": 36,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.7992957746478854,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-02-03T12:20:11.101575",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Red Hat Security Advisories",
+          "url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
+          "discovered_at": "2026-02-03T00:40:39.488652",
+          "context": null
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-63374",
+      "first_seen": "2026-02-03T00:00:00",
+      "last_checked": "2026-03-11T18:24:15.960454",
+      "days_in_limbo": 36,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.85,
+      "description": null,
+      "sources": [
+        {
+          "type": "vendor_advisory",
+          "name": "ZDI Advisories",
+          "url": "http://www.zerodayinitiative.com/advisories/ZDI-26-059/",
+          "discovered_at": "2026-02-03T00:00:00",
+          "context": "ZDI-26-059: CyberArk Endpoint Privilege Management Improper Privilege Management Local Privilege Escalation Vulnerability"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2025-58151",
+      "first_seen": "2026-01-27T12:05:50",
+      "last_checked": "2026-03-11T18:24:16.036707",
+      "days_in_limbo": 43,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.8499999999999999,
+      "description": null,
+      "sources": [
+        {
+          "type": "mailing_list",
+          "name": "OSS Security",
+          "url": "https://seclists.org/oss-sec/2026/q1/118",
+          "discovered_at": "2026-01-27T12:05:50",
+          "context": "Xen Security Advisory 478 v2 (CVE-2025-58151) - varstored: TOCTOU issues with mapped guest memory"
+        }
+      ]
+    },
+    {
+      "cve_id": "CVE-2026-1220",
+      "first_seen": "2026-01-20T14:15:51.788000",
+      "last_checked": "2026-03-11T18:24:16.114322",
+      "days_in_limbo": 50,
+      "registry_status": "NOT_FOUND",
+      "registry_source": "NVD_LOCAL",
+      "confidence_score": 0.8005154639175261,
+      "description": null,
+      "sources": [
+        {
+          "type": "distro_advisory",
+          "name": "Debian Security Tracker",
+          "url": "https://security-tracker.debian.org/tracker/data/json",
+          "discovered_at": "2026-01-21T12:16:15.265505",
+          "context": null
+        },
+        {
+          "type": "vendor_advisory",
+          "name": "Chrome Releases",
+          "url": "http://chromereleases.googleblog.com/feeds/7996239757113969332/comments/default",
+          "discovered_at": "2026-01-20T14:15:51.788000",
+          "context": "Stable Channel Update for Desktop"
+        }
+      ]
+    }
+  ]
+}
