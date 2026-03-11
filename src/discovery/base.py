@@ -10,7 +10,7 @@ Author: rogolabs.net
 
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Iterator
 import logging
 
@@ -244,7 +244,7 @@ class RateLimiter:
         Returns:
             Number of seconds to wait before making the request (0 if immediate)
         """
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc)
         window_start = now.timestamp() - self.window_seconds
         
         # Remove old request timestamps

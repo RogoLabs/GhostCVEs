@@ -18,7 +18,7 @@ Author: rogolabs.net
 
 import logging
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import List, Optional
 
 from src.discovery.base import DiscoveryResult, BaseDiscovery
@@ -245,7 +245,7 @@ class PipelineOrchestrator:
                 cve_id=discovery.cve_id,
                 is_ghost=ghost_analysis.is_ghost,
                 status=validation.status.value,
-                first_seen=ghost_cve.first_seen if ghost_cve else datetime.utcnow(),
+                first_seen=ghost_cve.first_seen if ghost_cve else datetime.now(timezone.utc),
                 disclosure=disclosure,
                 ghost_analysis=ghost_analysis,
                 sources=[d.source_name for d in all_discoveries],
@@ -279,7 +279,7 @@ class PipelineOrchestrator:
         Returns:
             PipelineStats with execution statistics
         """
-        start_time = datetime.utcnow()
+        start_time = datetime.now(timezone.utc)
         stats = PipelineStats(started_at=start_time)
 
         self.logger.info(
@@ -342,7 +342,7 @@ class PipelineOrchestrator:
 
         # Calculate final statistics
         stats.unique_cves = len(unique_cves_seen)
-        end_time = datetime.utcnow()
+        end_time = datetime.now(timezone.utc)
         stats.duration_seconds = (end_time - start_time).total_seconds()
 
         # Log summary
@@ -399,7 +399,7 @@ class PipelineOrchestrator:
                         )
 
                         # Calculate resolution time
-                        resolution_days = (datetime.utcnow() - ghost.first_seen).total_seconds() / 86400
+                        resolution_days = (datetime.now(timezone.utc) - ghost.first_seen).total_seconds() / 86400
 
                         # Record resolution in learning system for each source
                         sources = self.db.get_sources_for_cve(ghost.cve_id)
@@ -407,7 +407,7 @@ class PipelineOrchestrator:
                             self.learning_system.record_resolution(
                                 source_name=source.source_name,
                                 resolution_days=resolution_days,
-                                timestamp=datetime.utcnow()
+                                timestamp=datetime.now(timezone.utc)
                             )
                             self.logger.debug(
                                 f"Recorded resolution for source {source.source_name}: "
@@ -418,7 +418,7 @@ class PipelineOrchestrator:
                         with self.db.get_session() as session:
                             ghost.registry_status = validation.status.value
                             ghost.is_ghost = False
-                            ghost.last_checked = datetime.utcnow()
+                            ghost.last_checked = datetime.now(timezone.utc)
 
                             if validation.raw_response and 'description' in validation.raw_response:
                                 ghost.description = validation.raw_response['description']
@@ -431,7 +431,7 @@ class PipelineOrchestrator:
                     elif validation.status != CVEStatus.PUBLISHED:
                         # Still a ghost, just update last_checked
                         with self.db.get_session() as session:
-                            ghost.last_checked = datetime.utcnow()
+                            ghost.last_checked = datetime.now(timezone.utc)
                             ghost.registry_status = validation.status.value
                             session.add(ghost)
                             session.commit()

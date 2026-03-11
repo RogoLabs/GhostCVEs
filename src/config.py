@@ -9,7 +9,7 @@ Author: rogolabs.net
 """
 
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Final
 import re
 
@@ -47,10 +47,10 @@ class CVEValidationConfig:
     # Current year for validation (updated at runtime)
     # Maximum reasonable CVE ID numbers by year (approximate, based on historical data)
     # These are rough upper bounds - real counts vary but this catches obvious fakes
-    # Tightened to reduce false positives from high-ID CVEs
+    # Updated limits based on actual CVE allocations (some CNAs have large blocks)
     max_id_by_year: dict[int, int] = field(default_factory=lambda: {
-        2025: 50000,   # More realistic limit based on actual allocation
-        2026: 15000,   # We're in March 2026, adjust as year progresses
+        2025: 100000,  # Raised: published CVEs exist above 70k
+        2026: 30000,   # We're in March 2026, raised to accommodate large CNA blocks
         2027: 0,       # Future year - no CVEs yet
         2028: 0,
         2029: 0,
@@ -115,7 +115,7 @@ def validate_cve_id(cve_id: str, config: CVEValidationConfig | None = None) -> t
         return (False, "Invalid format: year and ID must be numeric")
     
     # Get current date
-    now = datetime.utcnow()
+    now = datetime.now(timezone.utc)
     current_year = now.year
     current_month = now.month
     
@@ -221,15 +221,7 @@ RSS_FEEDS: Final[list[RSSFeed]] = [
         source_type="distro_advisory",
         priority=2
     ),
-    
-    # Ubuntu USN
-    RSSFeed(
-        name="Ubuntu Security Notices",
-        url="https://ubuntu.com/security/notices/rss.xml",
-        source_type="distro_advisory",
-        priority=2
-    ),
-    
+
     # Red Hat RHSA
     RSSFeed(
         name="Red Hat Security Advisories",
@@ -285,13 +277,7 @@ RSS_FEEDS: Final[list[RSSFeed]] = [
         source_type="vendor_advisory",
         priority=1
     ),
-    RSSFeed(
-        name="Chrome Releases",
-        url="https://chromereleases.googleblog.com/feeds/posts/default",
-        source_type="vendor_advisory",
-        priority=1
-    ),
-    
+
     # Operating System Vendors
     RSSFeed(
         name="Apple Security Updates",
@@ -729,12 +715,6 @@ VENDOR_ENDPOINTS: Final[list[VendorEndpoint]] = [
         name="Red Hat Security Data",
         base_url="https://access.redhat.com",
         advisory_path="/hydra/rest/securitydata/cve.json",
-        source_type="vendor_advisory"
-    ),
-    VendorEndpoint(
-        name="Canonical Ubuntu CVE Tracker",
-        base_url="https://ubuntu.com",
-        advisory_path="/security/cves",
         source_type="vendor_advisory"
     ),
     VendorEndpoint(

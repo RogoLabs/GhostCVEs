@@ -15,7 +15,7 @@ Author: rogolabs.net
 """
 
 import pytest
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from src.pipeline.root_cause_detector import RootCauseDetector
 from src.models.enums import DisclosureStatus, DisclosureType, GhostRootCause, CVEStatus
 from src.models.dataclasses import (
@@ -69,7 +69,7 @@ class TestRootCauseDetectorBasic:
             source_type="vendor_advisory",
             source_name="Microsoft MSRC",
             evidence_url="https://msrc.microsoft.com/update-guide/CVE-2025-1234",
-            discovered_at=datetime.utcnow() - timedelta(hours=12),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=12),
             context="CVE-2025-1234: Buffer overflow in Windows",
             confidence=0.95,
         )
@@ -96,7 +96,7 @@ class TestRootCauseDetectorBasic:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow(),
+            validated_at=datetime.now(timezone.utc),
         )
 
         result = detector.detect(
@@ -120,7 +120,7 @@ class TestFakeCVEDetection:
             source_type="social_media",
             source_name="Twitter",
             evidence_url="https://twitter.com/user/status/123",
-            discovered_at=datetime.utcnow() - timedelta(hours=12),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=12),
             context="CVE-2025-999999",
             confidence=0.40,
         )
@@ -147,7 +147,7 @@ class TestFakeCVEDetection:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow(),
+            validated_at=datetime.now(timezone.utc),
         )
 
         result = detector.detect(
@@ -166,7 +166,7 @@ class TestFakeCVEDetection:
             source_type="forum",
             source_name="SecurityForum",
             evidence_url="https://forum.example.com/post/123",
-            discovered_at=datetime.utcnow() - timedelta(hours=12),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=12),
             context="CVE-2025-11111",
             confidence=0.30,
         )
@@ -193,7 +193,7 @@ class TestFakeCVEDetection:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow(),
+            validated_at=datetime.now(timezone.utc),
         )
 
         result = detector.detect(
@@ -213,7 +213,7 @@ class TestFakeCVEDetection:
             source_type="blog",
             source_name="FakeBlog",
             evidence_url="https://blog.fake.com/post/123",
-            discovered_at=datetime.utcnow() - timedelta(hours=12),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=12),
             context="CVE-2030-1234",
             confidence=0.40,
         )
@@ -240,7 +240,7 @@ class TestFakeCVEDetection:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow(),
+            validated_at=datetime.now(timezone.utc),
         )
 
         result = detector.detect(
@@ -261,7 +261,7 @@ class TestFakeCVEDetection:
                 source_type="reddit",
                 source_name="Reddit",
                 evidence_url="https://reddit.com/r/security/post/123",
-                discovered_at=datetime.utcnow() - timedelta(hours=12),
+                discovered_at=datetime.now(timezone.utc) - timedelta(hours=12),
                 context="CVE-2025-88888",
                 confidence=0.25,
             ),
@@ -270,7 +270,7 @@ class TestFakeCVEDetection:
                 source_type="social_media",
                 source_name="Twitter",
                 evidence_url="https://twitter.com/user/status/456",
-                discovered_at=datetime.utcnow() - timedelta(hours=10),
+                discovered_at=datetime.now(timezone.utc) - timedelta(hours=10),
                 context="CVE-2025-88888",
                 confidence=0.20,
             ),
@@ -298,7 +298,7 @@ class TestFakeCVEDetection:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow(),
+            validated_at=datetime.now(timezone.utc),
         )
 
         # Use first discovery for detect
@@ -324,7 +324,7 @@ class TestEmbargoDetection:
             source_type="vendor_advisory",
             source_name="Apple Security",
             evidence_url="https://support.apple.com/security",
-            discovered_at=datetime.utcnow() - timedelta(hours=12),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=12),
             context="This CVE is under embargo and will be disclosed on 2026-04-01",
             confidence=0.85,
         )
@@ -351,7 +351,7 @@ class TestEmbargoDetection:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow(),
+            validated_at=datetime.now(timezone.utc),
         )
 
         result = detector.detect(
@@ -370,7 +370,7 @@ class TestEmbargoDetection:
             source_type="research_team",
             source_name="Project Zero",
             evidence_url="https://googleprojectzero.blogspot.com/post/123",
-            discovered_at=datetime.utcnow() - timedelta(hours=12),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=12),
             context="We are following coordinated disclosure practices with the vendor",
             confidence=0.90,
         )
@@ -397,7 +397,7 @@ class TestEmbargoDetection:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow(),
+            validated_at=datetime.now(timezone.utc),
         )
 
         result = detector.detect(
@@ -416,7 +416,7 @@ class TestEmbargoDetection:
             source_type="vulnerability_broker",
             source_name="ZDI Upcoming",  # Contains 'upcoming'
             evidence_url="https://www.zerodayinitiative.com/rss/upcoming/",
-            discovered_at=datetime.utcnow() - timedelta(hours=12),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=12),
             context="CVE-2025-7700 upcoming disclosure scheduled",
             confidence=0.80,
         )
@@ -443,7 +443,7 @@ class TestEmbargoDetection:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow(),
+            validated_at=datetime.now(timezone.utc),
         )
 
         result = detector.detect(
@@ -462,7 +462,7 @@ class TestEmbargoDetection:
             source_type="vendor_advisory",
             source_name="Cisco PSIRT",
             evidence_url="https://sec.cloudapps.cisco.com/security/center/",
-            discovered_at=datetime.utcnow() - timedelta(hours=12),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=12),
             context="Details will be disclosed after Q1 2026 patch release",
             confidence=0.85,
         )
@@ -489,7 +489,7 @@ class TestEmbargoDetection:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow(),
+            validated_at=datetime.now(timezone.utc),
         )
 
         result = detector.detect(
@@ -508,7 +508,7 @@ class TestEmbargoDetection:
             source_type="vendor_advisory",
             source_name="Vendor Security",
             evidence_url="https://vendor.com/advisory",
-            discovered_at=datetime.utcnow() - timedelta(hours=12),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=12),
             context="Security update: Patch pending for CVE-2025-9900",
             confidence=0.80,
         )
@@ -535,7 +535,7 @@ class TestEmbargoDetection:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow(),
+            validated_at=datetime.now(timezone.utc),
         )
 
         result = detector.detect(
@@ -558,7 +558,7 @@ class TestCNADelayDetection:
             source_type="vendor_advisory",
             source_name="Slow CNA Advisory",
             evidence_url="https://slowcna.org/advisory",
-            discovered_at=datetime.utcnow() - timedelta(days=20),  # Old
+            discovered_at=datetime.now(timezone.utc) - timedelta(days=20),  # Old
             context="Disclosed 20 days ago but CVE not published yet",
             confidence=0.75,
         )
@@ -585,7 +585,7 @@ class TestCNADelayDetection:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow(),
+            validated_at=datetime.now(timezone.utc),
         )
 
         result = detector.detect(
@@ -606,7 +606,7 @@ class TestCNADelayDetection:
             source_type="vendor_advisory",
             source_name="MITRE Advisory",
             evidence_url="https://mitre.org/advisory",
-            discovered_at=datetime.utcnow() - timedelta(days=5),
+            discovered_at=datetime.now(timezone.utc) - timedelta(days=5),
             context="Disclosed but CVE still RESERVED",
             confidence=0.85,
         )
@@ -633,7 +633,7 @@ class TestCNADelayDetection:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow(),
+            validated_at=datetime.now(timezone.utc),
         )
 
         result = detector.detect(
@@ -660,7 +660,7 @@ class TestVendorFailureDetection:
             source_type="vendor_advisory",
             source_name="Microsoft MSRC",
             evidence_url="https://msrc.microsoft.com/update-guide/CVE-2025-3000",
-            discovered_at=datetime.utcnow() - timedelta(hours=12),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=12),
             context="Microsoft Security Response Center published but CVE RESERVED",
             confidence=0.95,
         )
@@ -687,7 +687,7 @@ class TestVendorFailureDetection:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow(),
+            validated_at=datetime.now(timezone.utc),
         )
 
         result = detector.detect(
@@ -706,7 +706,7 @@ class TestVendorFailureDetection:
             source_type="vendor_advisory",
             source_name="Cisco PSIRT",
             evidence_url="https://tools.cisco.com/security/center/psirt",
-            discovered_at=datetime.utcnow() - timedelta(hours=12),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=12),
             context="Cisco PSIRT disclosed but CVE RESERVED",
             confidence=0.90,
         )
@@ -733,7 +733,7 @@ class TestVendorFailureDetection:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow(),
+            validated_at=datetime.now(timezone.utc),
         )
 
         result = detector.detect(
@@ -752,7 +752,7 @@ class TestVendorFailureDetection:
             source_type="vendor_advisory",
             source_name="Fortinet Security Advisory",
             evidence_url="https://www.fortiguard.com/psirt",
-            discovered_at=datetime.utcnow() - timedelta(hours=12),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=12),
             context="Security Advisory published but CVE RESERVED",
             confidence=0.88,
         )
@@ -779,7 +779,7 @@ class TestVendorFailureDetection:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow(),
+            validated_at=datetime.now(timezone.utc),
         )
 
         result = detector.detect(
@@ -798,7 +798,7 @@ class TestVendorFailureDetection:
             source_type="vendor_advisory",
             source_name="Oracle Security Bulletin",
             evidence_url="https://www.oracle.com/security-alerts/",
-            discovered_at=datetime.utcnow() - timedelta(hours=12),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=12),
             context="Security Bulletin published but CVE RESERVED",
             confidence=0.87,
         )
@@ -825,7 +825,7 @@ class TestVendorFailureDetection:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow(),
+            validated_at=datetime.now(timezone.utc),
         )
 
         result = detector.detect(
@@ -844,7 +844,7 @@ class TestVendorFailureDetection:
             source_type="vendor_advisory",
             source_name="Microsoft MSRC",
             evidence_url="https://msrc.microsoft.com/update-guide/CVE-2025-7000",
-            discovered_at=datetime.utcnow() - timedelta(hours=12),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=12),
             context="MSRC published but CVE NOT_FOUND",
             confidence=0.85,
         )
@@ -871,7 +871,7 @@ class TestVendorFailureDetection:
             status=CVEStatus.NOT_FOUND,  # Not RESERVED
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow(),
+            validated_at=datetime.now(timezone.utc),
         )
 
         result = detector.detect(
@@ -901,7 +901,7 @@ class TestSystemLagDetection:
             source_type="vendor_advisory",
             source_name="Vendor Security",
             evidence_url="https://vendor.com/advisory",
-            discovered_at=datetime.utcnow() - timedelta(hours=2),  # Recent
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=2),  # Recent
             context="Recently disclosed, not yet found in registry",
             confidence=0.80,
         )
@@ -928,7 +928,7 @@ class TestSystemLagDetection:
             status=CVEStatus.NOT_FOUND,
             is_ghost=False,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow(),
+            validated_at=datetime.now(timezone.utc),
         )
 
         result = detector.detect(
@@ -954,7 +954,7 @@ class TestPriorityOrder:
             source_type="social_media",
             source_name="Twitter",
             evidence_url="https://twitter.com/user/status/123",
-            discovered_at=datetime.utcnow() - timedelta(hours=12),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=12),
             context="CVE-2025-99999 under embargo until next month",  # Embargo keyword
             confidence=0.25,
         )
@@ -981,7 +981,7 @@ class TestPriorityOrder:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow(),
+            validated_at=datetime.now(timezone.utc),
         )
 
         result = detector.detect(
@@ -1001,7 +1001,7 @@ class TestPriorityOrder:
             source_type="vendor_advisory",
             source_name="Vendor Advisory",
             evidence_url="https://vendor.com/advisory",
-            discovered_at=datetime.utcnow() - timedelta(days=20),  # Qualifies for CNA_DELAY
+            discovered_at=datetime.now(timezone.utc) - timedelta(days=20),  # Qualifies for CNA_DELAY
             context="This vulnerability is under embargo until coordinated disclosure",
             confidence=0.85,
         )
@@ -1028,7 +1028,7 @@ class TestPriorityOrder:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow(),
+            validated_at=datetime.now(timezone.utc),
         )
 
         result = detector.detect(
@@ -1054,7 +1054,7 @@ class TestUnknownDefault:
             source_type="github_commit",
             source_name="GitHub Repository",
             evidence_url="https://github.com/user/repo/commit/abc123",
-            discovered_at=datetime.utcnow() - timedelta(hours=12),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=12),
             context="Fix for CVE-2025-2500 in parser",
             confidence=0.75,
         )
@@ -1081,7 +1081,7 @@ class TestUnknownDefault:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow(),
+            validated_at=datetime.now(timezone.utc),
         )
 
         result = detector.detect(
@@ -1105,7 +1105,7 @@ class TestEdgeCases:
             source_type="vendor_advisory",
             source_name="Vendor",
             evidence_url="https://vendor.com/advisory",
-            discovered_at=datetime.utcnow() - timedelta(hours=12),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=12),
             context="CVE-2025-3500 is under EMBARGO (all caps)",
             confidence=0.80,
         )
@@ -1132,7 +1132,7 @@ class TestEdgeCases:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow(),
+            validated_at=datetime.now(timezone.utc),
         )
 
         result = detector.detect(
@@ -1151,7 +1151,7 @@ class TestEdgeCases:
             source_type="vendor_advisory",
             source_name="Vendor",
             evidence_url="https://vendor.com/advisory",
-            discovered_at=datetime.utcnow() - timedelta(hours=12),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=12),
             context="CVE-2025-4500",
             confidence=0.90,
         )
@@ -1179,7 +1179,7 @@ class TestEdgeCases:
             is_ghost=False,
             registry_source="CVE_ORG",
             description="Some vulnerability",
-            validated_at=datetime.utcnow(),
+            validated_at=datetime.now(timezone.utc),
         )
 
         result = detector.detect(

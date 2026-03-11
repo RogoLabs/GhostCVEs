@@ -11,7 +11,7 @@ Author: rogolabs.net
 import logging
 import os
 import time
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Iterator
 from urllib.parse import urlencode
 
@@ -583,7 +583,7 @@ class GitHubDiscovery(BaseDiscovery):
                 source_type=SourceType.GITHUB_COMMIT,
                 source_name=f"GitHub Commit: {repo_name}",
                 evidence_url=html_url,
-                discovered_at=commit_date or datetime.utcnow(),
+                discovered_at=commit_date or datetime.now(timezone.utc),
                 context=message[:500] if message else None,
                 confidence=adjusted_confidence,
                 raw_data={

@@ -9,7 +9,7 @@ Author: rogolabs.net
 """
 
 import pytest
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from unittest.mock import Mock, MagicMock, patch
 
 from src.registry.multi_source_validator import MultiSourceValidator
@@ -61,7 +61,7 @@ class TestMultiSourceValidator:
             status=CVEStatus.PUBLISHED,
             is_ghost=False,
             registry_source="CVE.ORG",
-            validated_at=datetime.utcnow(),
+            validated_at=datetime.now(timezone.utc),
         )
         validator.set_cache("CVE-2025-1234", cached_result)
 
@@ -82,7 +82,7 @@ class TestMultiSourceValidator:
             status=CVEStatus.PUBLISHED,
             is_ghost=False,
             registry_source="CVE.ORG",
-            validated_at=datetime.utcnow() - timedelta(hours=2),
+            validated_at=datetime.now(timezone.utc) - timedelta(hours=2),
         )
         validator.set_cache("CVE-2025-1234", old_result)
 
@@ -92,7 +92,7 @@ class TestMultiSourceValidator:
             status=CVEStatus.PUBLISHED,
             is_ghost=False,
             registry_source="CVE.ORG",
-            validated_at=datetime.utcnow(),
+            validated_at=datetime.now(timezone.utc),
         )
         validator.cve_org_client.validate.return_value = fresh_result
 
@@ -399,7 +399,7 @@ class TestMultiSourceValidator:
             status=CVEStatus.PUBLISHED,
             is_ghost=False,
             registry_source="CVE.ORG",
-            validated_at=datetime.utcnow() - timedelta(seconds=5),
+            validated_at=datetime.now(timezone.utc) - timedelta(seconds=5),
         )
         validator.set_cache("CVE-2025-1234", recent_result)
 
@@ -419,7 +419,7 @@ class TestMultiSourceValidator:
             status=CVEStatus.PUBLISHED,
             is_ghost=False,
             registry_source="CVE.ORG",
-            validated_at=datetime.utcnow() - timedelta(seconds=15),
+            validated_at=datetime.now(timezone.utc) - timedelta(seconds=15),
         )
         validator.set_cache("CVE-2025-1234", old_result)
 
