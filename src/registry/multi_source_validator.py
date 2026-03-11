@@ -27,7 +27,7 @@ Author: rogolabs.net
 """
 
 import logging
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Optional
 
 from src.api.cve_org_client import CVEOrgAPIClient
@@ -329,7 +329,7 @@ class MultiSourceValidator:
         if result.validated_at is None:
             return None
 
-        age = datetime.utcnow() - result.validated_at
+        age = datetime.now(timezone.utc) - result.validated_at
         if age.total_seconds() > self._cache_ttl_seconds:
             # Expired - remove from cache
             del self._cache[cve_id]
