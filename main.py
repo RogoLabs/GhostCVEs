@@ -358,6 +358,70 @@ def check_resolutions(db_manager: DatabaseManager, dashboard: Dashboard) -> None
     dashboard.display_statistics(stats)
 
 
+def run_audit(
+    db_manager: DatabaseManager,
+    dashboard: Dashboard,
+    output_dir: str | None = None,
+) -> None:
+    """
+    Run source audit and generate reliability report.
+
+    Args:
+        db_manager: Database manager instance
+        dashboard: Dashboard for display
+        output_dir: Directory for output files
+    """
+    from src.analysis.source_audit import SourceAuditor, generate_audit_report, classify_source
+    from pathlib import Path
+
+    dashboard.console.print()
+    dashboard.console.print("[bold cyan]🔍 Starting Source Audit...[/bold cyan]")
+    dashboard.console.print()
+
+    # Initialize auditor
+    auditor = SourceAuditor(db_manager)
+
+    # Collect metrics for all sources
+    dashboard.console.print("[dim]Analyzing sources...[/dim]")
+    with dashboard.display_hunt_progress() as progress:
+        audit_task = progress.add_task(
+            "[cyan]Auditing sources...",
+            total=None,  # Indeterminate
+        )
+
+        metrics_list = auditor.audit_all_sources()
+
+        progress.update(audit_task, completed=True)
+
+    dashboard.console.print(f"[green]✓ Analyzed {len(metrics_list)} sources[/green]")
+    dashboard.console.print()
+
+    # Generate report
+    report_content = generate_audit_report(metrics_list)
+
+    # Save report
+    out_path = Path(output_dir) if output_dir else Path("reports")
+    out_path.mkdir(parents=True, exist_ok=True)
+    report_file = out_path / "source_audit_report.md"
+
+    report_file.write_text(report_content)
+
+    dashboard.console.print(f"[bold green]✓ Source Audit Complete[/bold green]")
+    dashboard.console.print(f"Report saved to: [cyan]{report_file}[/cyan]")
+    dashboard.console.print()
+
+    # Print summary
+    classifications = {}
+    for m in metrics_list:
+        classification = classify_source(m.reliability_score, m.total_discoveries, m.fetch_failure_rate)
+        classifications[classification] = classifications.get(classification, 0) + 1
+
+    dashboard.console.print("[bold]Summary:[/bold]")
+    dashboard.console.print(f"  Keep: {classifications.get('Keep', 0)}")
+    dashboard.console.print(f"  Optimize: {classifications.get('Optimize', 0)}")
+    dashboard.console.print(f"  Remove: {classifications.get('Remove', 0)}")
+
+
 def show_dashboard(db_manager: DatabaseManager, dashboard: Dashboard) -> None:
     """
     Display the Ghost CVE dashboard.
@@ -425,6 +489,12 @@ Examples:
         "--check-resolutions",
         action="store_true",
         help="Check for Ghost CVE resolutions (RESERVED → PUBLISHED)",
+    )
+
+    parser.add_argument(
+        "--audit",
+        action="store_true",
+        help="Run source audit and generate reliability report",
     )
 
     parser.add_argument(
@@ -510,7 +580,7 @@ Examples:
     
     try:
         # Default to dashboard if no mode specified
-        if not any([args.hunt, args.report, args.dashboard, args.check_resolutions]):
+        if not any([args.hunt, args.report, args.dashboard, args.check_resolutions, args.audit]):
             args.dashboard = True
 
         # Run requested modes
@@ -529,6 +599,13 @@ Examples:
                 dashboard=dashboard,
             )
 
+        if args.audit:
+            run_audit(
+                db_manager=db_manager,
+                dashboard=dashboard,
+                output_dir=args.output_dir,
+            )
+
         if args.report:
             run_report(
                 db_manager=db_manager,
@@ -537,7 +614,7 @@ Examples:
                 format=args.format,
             )
 
-        if args.dashboard and not args.hunt and not args.report and not args.check_resolutions:
+        if args.dashboard and not args.hunt and not args.report and not args.check_resolutions and not args.audit:
             show_dashboard(db_manager, dashboard)
 
         return 0
