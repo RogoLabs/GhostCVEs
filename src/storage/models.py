@@ -21,6 +21,7 @@ from sqlalchemy import (
     Integer,
     String,
     Text,
+    TypeDecorator,
     UniqueConstraint,
     create_engine,
 )
@@ -30,6 +31,40 @@ from sqlalchemy.orm import (
     mapped_column,
     relationship,
 )
+
+
+class TZDateTime(TypeDecorator):
+    """
+    DateTime type that ensures all values are timezone-aware.
+
+    SQLite doesn't natively support timezone-aware datetimes, so this type
+    ensures that:
+    1. Values written to DB are converted to UTC strings
+    2. Values read from DB are made timezone-aware (UTC)
+
+    This handles the mix of old (naive) and new (aware) data in the database.
+    """
+    impl = DateTime
+    cache_ok = True
+
+    def process_bind_param(self, value, dialect):
+        """Store datetime as UTC."""
+        if value is not None:
+            if value.tzinfo is None:
+                # Naive datetime - assume UTC
+                value = value.replace(tzinfo=timezone.utc)
+            # Already aware - just return
+            return value
+        return value
+
+    def process_result_value(self, value, dialect):
+        """Retrieve datetime and ensure it's timezone-aware."""
+        if value is not None:
+            if value.tzinfo is None:
+                # Make naive datetime aware (assume UTC)
+                return value.replace(tzinfo=timezone.utc)
+            return value
+        return value
 
 
 class Base(DeclarativeBase):
@@ -65,8 +100,8 @@ class GhostCVE(Base):
     cve_id: Mapped[str] = mapped_column(String(20), unique=True, nullable=False, index=True)
     
     # Discovery timestamps
-    first_seen: Mapped[datetime] = mapped_column(DateTime, nullable=False)
-    last_checked: Mapped[datetime] = mapped_column(DateTime, nullable=False)
+    first_seen: Mapped[datetime] = mapped_column(TZDateTime(), nullable=False)
+    last_checked: Mapped[datetime] = mapped_column(TZDateTime(), nullable=False)
     
     # Registry validation
     registry_status: Mapped[str] = mapped_column(String(20), nullable=False)
@@ -149,7 +184,7 @@ class DiscoverySource(Base):
     evidence_url: Mapped[str] = mapped_column(Text, nullable=False)
     
     # Discovery metadata
-    discovered_at: Mapped[datetime] = mapped_column(DateTime, nullable=False)
+    discovered_at: Mapped[datetime] = mapped_column(TZDateTime(), nullable=False)
     context: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
     confidence: Mapped[float] = mapped_column(Float, default=1.0)
     raw_data_json: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
@@ -204,8 +239,8 @@ class HuntRun(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     
     # Timing
-    started_at: Mapped[datetime] = mapped_column(DateTime, nullable=False)
-    completed_at: Mapped[Optional[datetime]] = mapped_column(DateTime, nullable=True)
+    started_at: Mapped[datetime] = mapped_column(TZDateTime(), nullable=False)
+    completed_at: Mapped[Optional[datetime]] = mapped_column(TZDateTime(), nullable=True)
     
     # Results
     total_cves_found: Mapped[int] = mapped_column(Integer, default=0)
