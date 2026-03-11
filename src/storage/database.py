@@ -711,6 +711,76 @@ class DatabaseManager:
         # For now, return empty list (stub)
         return []
 
+    def get_all_sources(self) -> list[str]:
+        """
+        Get list of all unique source names in the database.
+
+        Returns:
+            List of source names from discovery_sources table
+        """
+        with self.get_session() as session:
+            result = session.execute(
+                select(DiscoverySource.source_name)
+                .distinct()
+                .order_by(DiscoverySource.source_name)
+            )
+            sources = [row[0] for row in result]
+
+        return sources
+
+    def get_source_discoveries(self, source_name: str) -> list[dict]:
+        """
+        Get all CVE discoveries from a specific source.
+
+        Args:
+            source_name: Name of the source
+
+        Returns:
+            List of discovery records with CVE ID, ghost status, timestamp
+        """
+        with self.get_session() as session:
+            # Join discovery_sources with ghost_cves to get status
+            result = session.execute(
+                select(
+                    GhostCVE.cve_id,
+                    GhostCVE.is_ghost,
+                    DiscoverySource.discovered_at,
+                    GhostCVE.registry_status
+                )
+                .join(DiscoverySource, DiscoverySource.ghost_cve_id == GhostCVE.id)
+                .where(DiscoverySource.source_name == source_name)
+                .order_by(desc(DiscoverySource.discovered_at))
+            )
+
+            discoveries = [
+                {
+                    "cve_id": row[0],
+                    "is_ghost": bool(row[1]),
+                    "discovered_at": row[2].isoformat() if row[2] else None,
+                    "registry_status": row[3]
+                }
+                for row in result
+            ]
+
+        return discoveries
+
+    def get_source_resolution_history(self, source_name: str) -> list[dict]:
+        """
+        Get resolution history for CVEs discovered by a source.
+
+        Shows how long it took for RESERVED CVEs to become PUBLISHED.
+        Currently returns empty list as resolution tracking is not yet implemented.
+
+        Args:
+            source_name: Name of the source
+
+        Returns:
+            List of resolution records with timing information
+        """
+        # Resolution history tracking will be implemented in future
+        # For now, return empty list
+        return []
+
     def update_source_reliability(
         self,
         source_name: str,
