@@ -19,7 +19,7 @@ Author: rogolabs.net
 
 import tempfile
 import unittest
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from unittest.mock import Mock, patch, MagicMock
 
@@ -85,7 +85,7 @@ class TestCompleteGhostDetectionFlow(unittest.TestCase):
         - Should be stored in database with correct metadata
         """
         # Arrange: Create discovery from vendor advisory (8 hours ago)
-        discovery_time = datetime.utcnow() - timedelta(hours=8)
+        discovery_time = datetime.now(timezone.utc) - timedelta(hours=8)
         discovery = DiscoveryResult(
             cve_id="CVE-2026-1234",
             source_type="vendor_advisory",
@@ -168,7 +168,7 @@ class TestCompleteGhostDetectionFlow(unittest.TestCase):
             source_type="vendor_advisory",
             source_name="Vendor Security Page",
             evidence_url="https://vendor.example.com/cve-2026-99999",
-            discovered_at=datetime.utcnow() - timedelta(hours=10),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=10),
             confidence=0.95,
         )
 
@@ -177,7 +177,7 @@ class TestCompleteGhostDetectionFlow(unittest.TestCase):
             source_type="mailing_list",
             source_name="security-announce@lists.example.org",
             evidence_url="https://lists.example.org/archive/msg12345.html",
-            discovered_at=datetime.utcnow() - timedelta(hours=9),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=9),
             confidence=0.90,
         )
 
@@ -268,7 +268,7 @@ class TestPublishedCVEFlow(unittest.TestCase):
             source_type="github_advisory",
             source_name="github.com/vendor/repo",
             evidence_url="https://github.com/vendor/repo/security/advisories/GHSA-xxxx",
-            discovered_at=datetime.utcnow() - timedelta(hours=12),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=12),
             confidence=1.0,
         )
 
@@ -351,7 +351,7 @@ class TestGracePeriodHandling(unittest.TestCase):
             source_type="vendor_advisory",
             source_name="Vendor Security Team",
             evidence_url="https://vendor.example.com/security/2026-22222",
-            discovered_at=datetime.utcnow() - timedelta(hours=2),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=2),
             confidence=0.95,
         )
 
@@ -407,7 +407,7 @@ class TestResolutionDetection(unittest.TestCase):
             source_type="vendor_advisory",
             source_name="Vendor Site",
             evidence_url="https://vendor.example.com/cve-33333",
-            discovered_at=datetime.utcnow() - timedelta(days=5),
+            discovered_at=datetime.now(timezone.utc) - timedelta(days=5),
         )
 
         # Initially RESERVED (Ghost)
@@ -547,7 +547,7 @@ class TestMultiSourceDeduplication(unittest.TestCase):
             source_name="github.com/example/repo",
             evidence_url="https://github.com/example/repo/security/advisories/GHSA-1234",
             confidence=0.85,
-            discovered_at=datetime.utcnow() - timedelta(hours=10),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=10),
         )
 
         rss_discovery = DiscoveryResult(
@@ -556,7 +556,7 @@ class TestMultiSourceDeduplication(unittest.TestCase):
             source_name="Security RSS Feed",
             evidence_url="https://security-feed.example.com/item/44444",
             confidence=0.90,
-            discovered_at=datetime.utcnow() - timedelta(hours=9),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=9),
         )
 
         vendor_discovery = DiscoveryResult(
@@ -565,7 +565,7 @@ class TestMultiSourceDeduplication(unittest.TestCase):
             source_name="Official Vendor Advisory",
             evidence_url="https://vendor.example.com/advisories/44444",
             confidence=0.98,  # Highest confidence
-            discovered_at=datetime.utcnow() - timedelta(hours=8),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=8),
         )
 
         mock_validation = ValidationResult(
@@ -797,14 +797,14 @@ class TestFullPipelineIntegration(unittest.TestCase):
                 source_type="vendor_advisory",
                 source_name="Vendor A",
                 evidence_url="https://vendora.example.com/cve-77771",
-                discovered_at=datetime.utcnow() - timedelta(days=2),
+                discovered_at=datetime.now(timezone.utc) - timedelta(days=2),
             ),
             DiscoveryResult(
                 cve_id="CVE-2026-7072",  # Will be Published
                 source_type="vendor_advisory",
                 source_name="Vendor A",
                 evidence_url="https://vendora.example.com/cve-77772",
-                discovered_at=datetime.utcnow() - timedelta(days=1),
+                discovered_at=datetime.now(timezone.utc) - timedelta(days=1),
             ),
         ]
 
@@ -814,14 +814,14 @@ class TestFullPipelineIntegration(unittest.TestCase):
                 source_type="github_advisory",
                 source_name="github.com/example/repo",
                 evidence_url="https://github.com/example/repo/security/GHSA-5678",
-                discovered_at=datetime.utcnow() - timedelta(days=2),
+                discovered_at=datetime.now(timezone.utc) - timedelta(days=2),
             ),
             DiscoveryResult(
                 cve_id="CVE-2026-7073",  # New Ghost
                 source_type="github_advisory",
                 source_name="github.com/example/repo",
                 evidence_url="https://github.com/example/repo/commit/abc123",
-                discovered_at=datetime.utcnow() - timedelta(hours=15),
+                discovered_at=datetime.now(timezone.utc) - timedelta(hours=15),
             ),
         ]
 
@@ -831,7 +831,7 @@ class TestFullPipelineIntegration(unittest.TestCase):
                 source_type="rss_feed",
                 source_name="Security News Feed",
                 evidence_url="https://security-news.example.com/item/77774",
-                discovered_at=datetime.utcnow() - timedelta(hours=12),
+                discovered_at=datetime.now(timezone.utc) - timedelta(hours=12),
             ),
         ]
 
@@ -933,14 +933,14 @@ class TestFullPipelineIntegration(unittest.TestCase):
                 source_type="test",
                 source_name="Test Source",
                 evidence_url=f"https://example.com/88881",
-                discovered_at=datetime.utcnow() - timedelta(hours=10),
+                discovered_at=datetime.now(timezone.utc) - timedelta(hours=10),
             ),
             DiscoveryResult(
                 cve_id="CVE-2026-8082",
                 source_type="test",
                 source_name="Test Source",
                 evidence_url=f"https://example.com/88882",
-                discovered_at=datetime.utcnow() - timedelta(hours=10),
+                discovered_at=datetime.now(timezone.utc) - timedelta(hours=10),
             ),
         ]
 

@@ -7,7 +7,7 @@ GitHub Security Advisories Database via GraphQL API.
 """
 
 import pytest
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from unittest.mock import Mock, patch, MagicMock
 import json
 
@@ -52,8 +52,8 @@ class TestGitHubAdvisoryDiscovery:
                                 "summary": "Critical vulnerability in test package",
                                 "description": "A detailed description of the vulnerability",
                                 "severity": "CRITICAL",
-                                "publishedAt": (datetime.utcnow() - timedelta(days=5)).isoformat() + "Z",
-                                "updatedAt": (datetime.utcnow() - timedelta(days=1)).isoformat() + "Z",
+                                "publishedAt": (datetime.now(timezone.utc) - timedelta(days=5)).isoformat() + "Z",
+                                "updatedAt": (datetime.now(timezone.utc) - timedelta(days=1)).isoformat() + "Z",
                                 "vulnerabilities": {
                                     "edges": [
                                         {
@@ -104,8 +104,8 @@ class TestGitHubAdvisoryDiscovery:
                                 "summary": "Multiple CVEs in package",
                                 "description": "Multiple vulnerabilities",
                                 "severity": "HIGH",
-                                "publishedAt": (datetime.utcnow() - timedelta(days=5)).isoformat() + "Z",
-                                "updatedAt": (datetime.utcnow() - timedelta(days=1)).isoformat() + "Z",
+                                "publishedAt": (datetime.now(timezone.utc) - timedelta(days=5)).isoformat() + "Z",
+                                "updatedAt": (datetime.now(timezone.utc) - timedelta(days=1)).isoformat() + "Z",
                                 "vulnerabilities": {
                                     "edges": [
                                         {
@@ -155,8 +155,8 @@ class TestGitHubAdvisoryDiscovery:
                                 "summary": "Affects multiple packages",
                                 "description": "Multiple packages affected",
                                 "severity": "MEDIUM",
-                                "publishedAt": (datetime.utcnow() - timedelta(days=5)).isoformat() + "Z",
-                                "updatedAt": (datetime.utcnow() - timedelta(days=1)).isoformat() + "Z",
+                                "publishedAt": (datetime.now(timezone.utc) - timedelta(days=5)).isoformat() + "Z",
+                                "updatedAt": (datetime.now(timezone.utc) - timedelta(days=1)).isoformat() + "Z",
                                 "vulnerabilities": {
                                     "edges": [
                                         {
@@ -220,8 +220,8 @@ class TestGitHubAdvisoryDiscovery:
                                 "summary": "No CVE advisory",
                                 "description": "Advisory without CVE",
                                 "severity": "LOW",
-                                "publishedAt": (datetime.utcnow() - timedelta(days=5)).isoformat() + "Z",
-                                "updatedAt": (datetime.utcnow() - timedelta(days=1)).isoformat() + "Z",
+                                "publishedAt": (datetime.now(timezone.utc) - timedelta(days=5)).isoformat() + "Z",
+                                "updatedAt": (datetime.now(timezone.utc) - timedelta(days=1)).isoformat() + "Z",
                                 "vulnerabilities": {
                                     "edges": []
                                 }
@@ -295,8 +295,8 @@ class TestGitHubAdvisoryDiscovery:
                                 "summary": "Test vulnerability",
                                 "description": "Detailed description",
                                 "severity": "CRITICAL",
-                                "publishedAt": (datetime.utcnow() - timedelta(days=5)).isoformat() + "Z",
-                                "updatedAt": (datetime.utcnow() - timedelta(days=1)).isoformat() + "Z",
+                                "publishedAt": (datetime.now(timezone.utc) - timedelta(days=5)).isoformat() + "Z",
+                                "updatedAt": (datetime.now(timezone.utc) - timedelta(days=1)).isoformat() + "Z",
                                 "vulnerabilities": {
                                     "edges": [
                                         {
@@ -347,8 +347,8 @@ class TestGitHubAdvisoryDiscovery:
                                 "summary": "Test",
                                 "description": "Test",
                                 "severity": "MEDIUM",
-                                "publishedAt": (datetime.utcnow() - timedelta(days=5)).isoformat() + "Z",
-                                "updatedAt": (datetime.utcnow() - timedelta(days=1)).isoformat() + "Z",
+                                "publishedAt": (datetime.now(timezone.utc) - timedelta(days=5)).isoformat() + "Z",
+                                "updatedAt": (datetime.now(timezone.utc) - timedelta(days=1)).isoformat() + "Z",
                                 "vulnerabilities": {
                                     "edges": [
                                         {
@@ -394,8 +394,8 @@ class TestGitHubAdvisoryDiscovery:
                                 "summary": "Buffer overflow",
                                 "description": "A buffer overflow in processing",
                                 "severity": "CRITICAL",
-                                "publishedAt": (datetime.utcnow() - timedelta(days=5)).isoformat() + "Z",
-                                "updatedAt": (datetime.utcnow() - timedelta(days=1)).isoformat() + "Z",
+                                "publishedAt": (datetime.now(timezone.utc) - timedelta(days=5)).isoformat() + "Z",
+                                "updatedAt": (datetime.now(timezone.utc) - timedelta(days=1)).isoformat() + "Z",
                                 "vulnerabilities": {
                                     "edges": [
                                         {
@@ -447,8 +447,8 @@ class TestGitHubAdvisoryDiscoveryIntegration:
                                 "summary": "Test",
                                 "description": "Test",
                                 "severity": "HIGH",
-                                "publishedAt": (datetime.utcnow() - timedelta(days=5)).isoformat() + "Z",
-                                "updatedAt": (datetime.utcnow() - timedelta(days=1)).isoformat() + "Z",
+                                "publishedAt": (datetime.now(timezone.utc) - timedelta(days=5)).isoformat() + "Z",
+                                "updatedAt": (datetime.now(timezone.utc) - timedelta(days=1)).isoformat() + "Z",
                                 "vulnerabilities": {
                                     "edges": [
                                         {

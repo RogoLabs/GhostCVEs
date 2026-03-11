@@ -24,8 +24,8 @@ def test_timezone_naive_fails():
     # Create timezone-aware datetime
     discovered_at = datetime.now(timezone.utc)
 
-    # Create timezone-naive datetime (the old way)
-    naive_now = datetime.utcnow()
+    # Create timezone-naive datetime (the old deprecated way)
+    naive_now = datetime.utcnow()  # This creates a naive datetime
 
     # This should raise TypeError
     with pytest.raises(TypeError, match="can't subtract offset-naive and offset-aware datetimes"):
