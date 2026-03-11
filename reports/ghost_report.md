@@ -1,6 +1,6 @@
 # Ghost CVE Report
 
-**Generated:** 2026-03-11 12:17 UTC
+**Generated:** 2026-03-11 12:29 UTC
 
 ## Summary
 
@@ -87,6 +87,16 @@
 | CVE-2026-1220 | Debian Security Tracker | 2026-01-20 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 
 ## Critical Ghosts (30+ Days)
+
+### CVE-2026-2239
+
+- **First Seen:** 2026-02-09
+- **Days in Limbo:** 30
+
+**Discovery Sources:**
+
+- [Debian Security Tracker](https://security-tracker.debian.org/tracker/data/json) (2026-02-10)
+- [Red Hat Security Data](https://access.redhat.com/hydra/rest/securitydata/cve.json) (2026-02-09)
 
 ### CVE-2026-2100
 
