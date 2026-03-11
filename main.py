@@ -148,14 +148,14 @@ def run_hunt(
     # Ensure pipeline resources are ready
     dashboard.console.print("[dim]📦 Preparing pipeline resources...[/dim]")
     if orchestrator.ensure_resources():
-        # Get registry info from validator
-        repo_info = orchestrator.validator.local_registry.get_repo_info()
+        # Get registry info from multi-source validator
+        repo_info = orchestrator.multi_source_validator.local_registry.get_repo_info()
         dashboard.console.print(
             f"[green]✓ Local CVE registry ready[/green] "
             f"[dim](last updated: {repo_info.get('last_updated', 'unknown')})[/dim]"
         )
-        if orchestrator.validator._nvd_local_available:
-            nvd_info = orchestrator.validator.nvd_local.get_info()
+        if orchestrator.multi_source_validator.nvd_local.is_available():
+            nvd_info = orchestrator.multi_source_validator.nvd_local.get_info()
             dashboard.console.print(
                 f"[green]✓ Local NVD data ready[/green] "
                 f"[dim]({nvd_info.get('cve_count', 'unknown'):,} CVEs indexed)[/dim]"
