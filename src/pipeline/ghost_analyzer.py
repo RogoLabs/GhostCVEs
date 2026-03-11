@@ -20,7 +20,7 @@ Author: rogolabs.net
 """
 
 import logging
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import List
 
 from src.discovery.base import DiscoveryResult
@@ -209,7 +209,7 @@ class GhostAnalyzer:
 
         # Get oldest discovery for grace period calculation
         oldest_discovery = min(discoveries, key=lambda d: d.discovered_at)
-        age = datetime.utcnow() - oldest_discovery.discovered_at
+        age = datetime.now(timezone.utc) - oldest_discovery.discovered_at
         grace_period_delta = timedelta(hours=self.grace_period_hours)
 
         # Calculate grace period remaining
