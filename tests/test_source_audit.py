@@ -28,14 +28,14 @@ def test_reliability_score_calculation():
     """Test reliability score calculation from metrics."""
     score = calculate_reliability_score(
         ghost_detection_rate=0.80,
-        false_positive_rate=0.10,
+        false_positive_rate=0.10,  # Not used in scoring
         fetch_reliability=0.95,
         unique_discoveries_ratio=0.20
     )
 
-    # Should be weighted: 0.80*0.4 + 0.90*0.3 + 0.95*0.2 + 0.20*0.1
-    # = 0.32 + 0.27 + 0.19 + 0.02 = 0.80
-    assert 0.79 <= score <= 0.81
+    # Should be weighted: 0.80*0.6 + 0.20*0.3 + 0.95*0.1
+    # = 0.48 + 0.06 + 0.095 = 0.635
+    assert 0.63 <= score <= 0.64
 
 
 def test_identify_redundant_sources():

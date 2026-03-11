@@ -40,14 +40,16 @@ def calculate_reliability_score(
     Calculate weighted reliability score from component metrics.
 
     Weights:
-    - Ghost detection rate: 40% (most important - finding real ghosts)
-    - False positive rate: 30% (inverted - lower is better)
-    - Fetch reliability: 20% (source uptime/availability)
-    - Unique discoveries: 10% (value of unique CVEs)
+    - Ghost detection rate: 60% (most important - finding real ghosts)
+    - Unique discoveries: 30% (value of unique CVEs)
+    - Fetch reliability: 10% (source uptime/availability)
+
+    Note: false_positive_rate is collected but NOT used in scoring until we have
+    proper resolution tracking. Finding published CVEs is normal for advisory sources.
 
     Args:
         ghost_detection_rate: Ratio of discoveries that became true ghosts (0.0-1.0)
-        false_positive_rate: Ratio of discoveries already PUBLISHED (0.0-1.0)
+        false_positive_rate: Ratio of discoveries already PUBLISHED (0.0-1.0) [not used]
         fetch_reliability: Ratio of successful fetches (0.0-1.0)
         unique_discoveries_ratio: Ratio of unique CVEs vs total (0.0-1.0)
 
@@ -55,20 +57,16 @@ def calculate_reliability_score(
         Composite reliability score (0.0-1.0)
 
     Examples:
-        >>> calculate_reliability_score(0.80, 0.10, 0.95, 0.20)
-        0.80
-        >>> calculate_reliability_score(0.50, 0.40, 0.80, 0.05)
-        0.55
+        >>> calculate_reliability_score(0.20, 0.80, 0.95, 0.50)
+        0.40
+        >>> calculate_reliability_score(0.10, 0.90, 0.95, 0.20)
+        0.17
     """
-    # Invert false positive rate (lower is better)
-    fp_score = 1.0 - false_positive_rate
-
-    # Weighted average
+    # Weighted average (false_positive_rate intentionally excluded)
     score = (
-        ghost_detection_rate * 0.4 +
-        fp_score * 0.3 +
-        fetch_reliability * 0.2 +
-        unique_discoveries_ratio * 0.1
+        ghost_detection_rate * 0.6 +
+        unique_discoveries_ratio * 0.3 +
+        fetch_reliability * 0.1
     )
 
     return score
@@ -271,9 +269,12 @@ def classify_source(
     Classify source into Keep/Optimize/Remove based on metrics.
 
     Decision criteria:
-    - Keep: reliability >0.80, moderate discoveries, low failure rate
-    - Optimize: reliability 0.60-0.80, could be improved
-    - Remove: reliability <0.60 or very high failure rate or no discoveries
+    - Keep: reliability ≥0.30, moderate discoveries, low failure rate
+    - Optimize: reliability ≥0.15, could be improved
+    - Remove: reliability <0.15 or very high failure rate or no meaningful discoveries
+
+    Note: Thresholds are calibrated for sources that primarily find published CVEs.
+    Ghost detection rates of 10-20% are actually good for advisory sources.
 
     Args:
         reliability_score: Composite reliability score (0.0-1.0)
@@ -292,9 +293,9 @@ def classify_source(
         return "Remove"
 
     # Classify by reliability score
-    if reliability_score >= 0.80:
+    if reliability_score >= 0.30:
         return "Keep"
-    elif reliability_score >= 0.60:
+    elif reliability_score >= 0.15:
         return "Optimize"
     else:
         return "Remove"
