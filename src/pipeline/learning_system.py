@@ -14,7 +14,7 @@ Author: rogolabs.net
 """
 
 import logging
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Optional, List, Dict
 
 logger = logging.getLogger(__name__)
@@ -285,7 +285,7 @@ class SourceReliabilityTracker:
             )
 
         # Mark recalculation timestamp
-        self.db_manager.mark_recalculation(datetime.utcnow())
+        self.db_manager.mark_recalculation(datetime.now(timezone.utc))
 
         # Clear cache to force refresh
         self._cache.clear()
@@ -307,7 +307,7 @@ class SourceReliabilityTracker:
         if self._last_cache_refresh is None:
             return True
 
-        age = datetime.utcnow() - self._last_cache_refresh
+        age = datetime.now(timezone.utc) - self._last_cache_refresh
         return age > timedelta(hours=self.CACHE_TTL_HOURS)
 
     def _refresh_cache(self) -> None:
@@ -329,7 +329,7 @@ class SourceReliabilityTracker:
             if reliability is not None:
                 self._cache[source_name] = reliability
 
-        self._last_cache_refresh = datetime.utcnow()
+        self._last_cache_refresh = datetime.now(timezone.utc)
 
         logger.debug(f"Cache refreshed with {len(self._cache)} sources")
 
@@ -465,7 +465,7 @@ class LearningSystem:
         self.reliability_tracker.record_resolution(
             source_name=earliest_source.source_name,
             resolution_days=resolution_days,
-            timestamp=datetime.utcnow()
+            timestamp=datetime.now(timezone.utc)
         )
 
         # Store resolution pattern in history

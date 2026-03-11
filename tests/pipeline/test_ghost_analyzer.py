@@ -8,7 +8,7 @@ Author: rogolabs.net
 """
 
 import pytest
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from src.pipeline.ghost_analyzer import GhostAnalyzer, SourceReliabilityTracker
 from src.models.enums import DisclosureStatus, DisclosureType, CVEStatus
 from src.models.dataclasses import DisclosureClassification, GhostAnalysis
@@ -46,7 +46,7 @@ class TestGhostAnalyzerBasic:
             source_type="github_commit",
             source_name="test-repo",
             evidence_url="https://github.com/test/repo/commit/abc123",
-            discovered_at=datetime.utcnow() - timedelta(hours=12),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=12),
             context="Fix CVE-2025-1234: buffer overflow in parser",
             confidence=0.85
         )
@@ -63,7 +63,7 @@ class TestGhostAnalyzerBasic:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow()
+            validated_at=datetime.now(timezone.utc)
         )
 
         result = analyzer.analyze(
@@ -90,7 +90,7 @@ class TestGhostDetectionRules:
             source_type="vendor_advisory",
             source_name="Microsoft Security",
             evidence_url="https://msrc.microsoft.com/update-guide/CVE-2025-2001",
-            discovered_at=datetime.utcnow() - timedelta(hours=12),  # 12 hours old
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=12),  # 12 hours old
             context="CVE-2025-2001: Remote code execution vulnerability in Windows RDP",
             confidence=0.95
         )
@@ -107,7 +107,7 @@ class TestGhostDetectionRules:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow()
+            validated_at=datetime.now(timezone.utc)
         )
 
         result = analyzer.analyze([discovery], disclosure, validation)
@@ -124,7 +124,7 @@ class TestGhostDetectionRules:
             source_type="github_security_advisory",
             source_name="apache/struts",
             evidence_url="https://github.com/advisories/GHSA-xxxx-yyyy-zzzz",
-            discovered_at=datetime.utcnow() - timedelta(hours=24),  # 24 hours old
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=24),  # 24 hours old
             context="CVE-2025-2002: SQL injection in Struts framework",
             confidence=0.90
         )
@@ -141,7 +141,7 @@ class TestGhostDetectionRules:
             status=CVEStatus.NOT_FOUND,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow()
+            validated_at=datetime.now(timezone.utc)
         )
 
         result = analyzer.analyze([discovery], disclosure, validation)
@@ -157,7 +157,7 @@ class TestGhostDetectionRules:
             source_type="vendor_advisory",
             source_name="Cisco Security",
             evidence_url="https://sec.cloudapps.cisco.com/security/CVE-2025-2003",
-            discovered_at=datetime.utcnow() - timedelta(hours=3),  # 3 hours old - within grace
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=3),  # 3 hours old - within grace
             context="CVE-2025-2003: Critical vulnerability in IOS XE",
             confidence=0.95
         )
@@ -174,7 +174,7 @@ class TestGhostDetectionRules:
             status=CVEStatus.RESERVED,
             is_ghost=True,  # Validator says ghost, but we should override due to grace period
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow()
+            validated_at=datetime.now(timezone.utc)
         )
 
         result = analyzer.analyze([discovery], disclosure, validation)
@@ -191,7 +191,7 @@ class TestGhostDetectionRules:
             source_type="social_media",
             source_name="Twitter",
             evidence_url="https://twitter.com/user/status/123",
-            discovered_at=datetime.utcnow() - timedelta(hours=12),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=12),
             context="Just heard about CVE-2025-2004",
             confidence=0.50
         )
@@ -208,7 +208,7 @@ class TestGhostDetectionRules:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow()
+            validated_at=datetime.now(timezone.utc)
         )
 
         result = analyzer.analyze([discovery], disclosure, validation)
@@ -223,7 +223,7 @@ class TestGhostDetectionRules:
             source_type="vendor_advisory",
             source_name="RedHat Security",
             evidence_url="https://access.redhat.com/security/cve/CVE-2025-2005",
-            discovered_at=datetime.utcnow() - timedelta(hours=48),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=48),
             context="CVE-2025-2005: Privilege escalation in kernel",
             confidence=0.90
         )
@@ -241,7 +241,7 @@ class TestGhostDetectionRules:
             is_ghost=False,
             registry_source="CVE_ORG",
             description="Linux kernel privilege escalation",
-            validated_at=datetime.utcnow()
+            validated_at=datetime.now(timezone.utc)
         )
 
         result = analyzer.analyze([discovery], disclosure, validation)
@@ -256,7 +256,7 @@ class TestGhostDetectionRules:
             source_type="blog",
             source_name="Personal Blog",
             evidence_url="https://blog.example.com/post/123",
-            discovered_at=datetime.utcnow() - timedelta(hours=24),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=24),
             context="CVE-2025-2006 might be relevant",
             confidence=0.30
         )
@@ -273,7 +273,7 @@ class TestGhostDetectionRules:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow()
+            validated_at=datetime.now(timezone.utc)
         )
 
         result = analyzer.analyze([discovery], disclosure, validation)
@@ -294,7 +294,7 @@ class TestConfidenceScoring:
             source_type="vendor_advisory",
             source_name="Microsoft Security Response",
             evidence_url="https://msrc.microsoft.com/update-guide/CVE-2025-3001",
-            discovered_at=datetime.utcnow() - timedelta(days=7),  # 7 days old
+            discovered_at=datetime.now(timezone.utc) - timedelta(days=7),  # 7 days old
             context="CVE-2025-3001: Critical RCE in Windows. Patch available.",
             confidence=0.95
         )
@@ -311,7 +311,7 @@ class TestConfidenceScoring:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow()
+            validated_at=datetime.now(timezone.utc)
         )
 
         result = analyzer.analyze([discovery], disclosure, validation)
@@ -328,7 +328,7 @@ class TestConfidenceScoring:
             source_type="vendor_advisory",
             source_name="RedHat Security",
             evidence_url="https://access.redhat.com/security/cve/CVE-2025-3002",
-            discovered_at=datetime.utcnow() - timedelta(hours=12),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=12),
             context="CVE-2025-3002: Buffer overflow in glibc",
             confidence=0.85
         )
@@ -338,7 +338,7 @@ class TestConfidenceScoring:
             source_type="github_commit",
             source_name="glibc/glibc",
             evidence_url="https://github.com/glibc/glibc/commit/xyz",
-            discovered_at=datetime.utcnow() - timedelta(hours=10),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=10),
             context="Fix CVE-2025-3002: heap overflow in malloc",
             confidence=0.80
         )
@@ -355,7 +355,7 @@ class TestConfidenceScoring:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow()
+            validated_at=datetime.now(timezone.utc)
         )
 
         # Single source
@@ -377,7 +377,7 @@ class TestConfidenceScoring:
             source_type="vendor_advisory",
             source_name="Vendor",
             evidence_url="https://vendor.com/advisory",
-            discovered_at=datetime.utcnow() - timedelta(hours=8),  # 8 hours old
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=8),  # 8 hours old
             context="CVE-2025-3003: Security vulnerability",
             confidence=0.80
         )
@@ -388,7 +388,7 @@ class TestConfidenceScoring:
             source_type="vendor_advisory",
             source_name="Vendor",
             evidence_url="https://vendor.com/advisory2",
-            discovered_at=datetime.utcnow() - timedelta(days=10),  # 10 days old
+            discovered_at=datetime.now(timezone.utc) - timedelta(days=10),  # 10 days old
             context="CVE-2025-3004: Security vulnerability",
             confidence=0.80
         )
@@ -405,7 +405,7 @@ class TestConfidenceScoring:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow()
+            validated_at=datetime.now(timezone.utc)
         )
 
         validation_old = ValidationResult(
@@ -413,7 +413,7 @@ class TestConfidenceScoring:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow()
+            validated_at=datetime.now(timezone.utc)
         )
 
         result_recent = analyzer.analyze([discovery_recent], disclosure, validation_recent)
@@ -429,7 +429,7 @@ class TestConfidenceScoring:
             source_type="mailing_list",
             source_name="oss-security",
             evidence_url="https://seclists.org/oss-sec/2025/q1/123",
-            discovered_at=datetime.utcnow() - timedelta(hours=12),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=12),
             context="CVE-2025-3005: Vulnerability discovered in package X",
             confidence=0.70
         )
@@ -446,7 +446,7 @@ class TestConfidenceScoring:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow()
+            validated_at=datetime.now(timezone.utc)
         )
 
         result = analyzer.analyze([discovery], disclosure, validation)
@@ -465,7 +465,7 @@ class TestGracePeriodCalculation:
             source_type="github_commit",
             source_name="test/repo",
             evidence_url="https://github.com/test/repo/commit/abc",
-            discovered_at=datetime.utcnow() - timedelta(hours=2),  # 2 hours ago
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=2),  # 2 hours ago
             context="Fix CVE-2025-4001",
             confidence=0.80
         )
@@ -482,7 +482,7 @@ class TestGracePeriodCalculation:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow()
+            validated_at=datetime.now(timezone.utc)
         )
 
         result = analyzer.analyze([discovery], disclosure, validation)
@@ -500,7 +500,7 @@ class TestGracePeriodCalculation:
             source_type="vendor_advisory",  # High reliability source
             source_name="test/repo",
             evidence_url="https://github.com/test/repo/commit/def",
-            discovered_at=datetime.utcnow() - timedelta(hours=10),  # 10 hours ago
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=10),  # 10 hours ago
             context="Fix CVE-2025-4002: security vulnerability with details",
             confidence=0.90
         )
@@ -517,7 +517,7 @@ class TestGracePeriodCalculation:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow()
+            validated_at=datetime.now(timezone.utc)
         )
 
         result = analyzer.analyze([discovery], disclosure, validation)
@@ -533,7 +533,7 @@ class TestGracePeriodCalculation:
             source_type="github_commit",
             source_name="repo1",
             evidence_url="https://github.com/repo1/commit/abc",
-            discovered_at=datetime.utcnow() - timedelta(hours=8),  # 8 hours ago
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=8),  # 8 hours ago
             context="Fix CVE-2025-4003",
             confidence=0.80
         )
@@ -544,7 +544,7 @@ class TestGracePeriodCalculation:
             source_type="vendor_advisory",
             source_name="Vendor",
             evidence_url="https://vendor.com/advisory",
-            discovered_at=datetime.utcnow() - timedelta(hours=2),  # 2 hours ago
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=2),  # 2 hours ago
             context="CVE-2025-4003: vulnerability details",
             confidence=0.90
         )
@@ -561,7 +561,7 @@ class TestGracePeriodCalculation:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow()
+            validated_at=datetime.now(timezone.utc)
         )
 
         result = analyzer.analyze([discovery1, discovery2], disclosure, validation)
@@ -581,7 +581,7 @@ class TestReasoningQuality:
             source_type="vendor_advisory",
             source_name="Cisco",
             evidence_url="https://sec.cloudapps.cisco.com/security/CVE-2025-5001",
-            discovered_at=datetime.utcnow() - timedelta(days=5),
+            discovered_at=datetime.now(timezone.utc) - timedelta(days=5),
             context="CVE-2025-5001: Critical RCE vulnerability",
             confidence=0.95
         )
@@ -598,7 +598,7 @@ class TestReasoningQuality:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow()
+            validated_at=datetime.now(timezone.utc)
         )
 
         result = analyzer.analyze([discovery], disclosure, validation)
@@ -617,7 +617,7 @@ class TestReasoningQuality:
             source_type="github_commit",
             source_name="test/repo",
             evidence_url="https://github.com/test/repo/commit/xyz",
-            discovered_at=datetime.utcnow() - timedelta(hours=2),  # Within grace
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=2),  # Within grace
             context="Fix CVE-2025-5002",
             confidence=0.85
         )
@@ -634,7 +634,7 @@ class TestReasoningQuality:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow()
+            validated_at=datetime.now(timezone.utc)
         )
 
         result = analyzer.analyze([discovery], disclosure, validation)
@@ -694,7 +694,7 @@ class TestEdgeCases:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow()
+            validated_at=datetime.now(timezone.utc)
         )
 
         # Should handle empty list gracefully
@@ -708,7 +708,7 @@ class TestEdgeCases:
             source_type="github_commit",
             source_name="test/repo",
             evidence_url="https://github.com/test/repo/commit/abc",
-            discovered_at=datetime.utcnow() - timedelta(hours=12),
+            discovered_at=datetime.now(timezone.utc) - timedelta(hours=12),
             context="Fix CVE-2025-6002",
             confidence=0.80
         )
@@ -725,7 +725,7 @@ class TestEdgeCases:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow()
+            validated_at=datetime.now(timezone.utc)
         )
 
         # Should raise error for mismatched IDs
@@ -741,7 +741,7 @@ class TestEdgeCases:
                 source_type="vendor_advisory",
                 source_name=f"Vendor{i}",
                 evidence_url=f"https://vendor{i}.com/advisory",
-                discovered_at=datetime.utcnow() - timedelta(days=30),  # Very old
+                discovered_at=datetime.now(timezone.utc) - timedelta(days=30),  # Very old
                 context="CVE-2025-6003: Critical security vulnerability with full details",
                 confidence=0.99
             )
@@ -760,7 +760,7 @@ class TestEdgeCases:
             status=CVEStatus.RESERVED,
             is_ghost=True,
             registry_source="CVE_ORG",
-            validated_at=datetime.utcnow()
+            validated_at=datetime.now(timezone.utc)
         )
 
         result = analyzer.analyze(discoveries, disclosure, validation)

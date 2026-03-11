@@ -5,7 +5,7 @@ Tests source reliability tracking and learning from ghost resolutions.
 """
 
 import pytest
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from unittest.mock import Mock, MagicMock
 from src.pipeline.learning_system import (
     SourceReliabilityTracker,
@@ -35,7 +35,7 @@ class TestSourceReliabilityTracker:
         tracker.record_resolution(
             source_name="TestSource",
             resolution_days=3.5,
-            timestamp=datetime.utcnow()
+            timestamp=datetime.now(timezone.utc)
         )
 
         # Verify database call
@@ -54,7 +54,7 @@ class TestSourceReliabilityTracker:
         tracker.record_resolution(
             source_name="TestSource",
             resolution_days=0.5,
-            timestamp=datetime.utcnow()
+            timestamp=datetime.now(timezone.utc)
         )
 
         # Verify database call
@@ -70,7 +70,7 @@ class TestSourceReliabilityTracker:
 
         # Prime cache
         tracker._cache["TestSource"] = 0.85
-        tracker._last_cache_refresh = datetime.utcnow()
+        tracker._last_cache_refresh = datetime.now(timezone.utc)
 
         reliability = tracker.get_reliability("TestSource")
 
@@ -414,7 +414,7 @@ class TestLearningSystem:
         # Should not raise, just log and return
         system.learn_from_resolution(
             cve_id="CVE-2025-00000",
-            resolved_date=datetime.utcnow(),
+            resolved_date=datetime.now(timezone.utc),
             was_true_ghost=True
         )
 

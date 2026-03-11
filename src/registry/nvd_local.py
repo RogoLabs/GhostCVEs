@@ -12,7 +12,7 @@ import json
 import logging
 import os
 import requests
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Optional
 
@@ -250,7 +250,7 @@ class NVDLocalRegistry:
                     self._cve_index = {k.upper(): v for k, v in nvd_data.items() if k.startswith('CVE-')}
             
             self._loaded = True
-            self._last_loaded = datetime.utcnow()
+            self._last_loaded = datetime.now(timezone.utc)
             
             self.logger.info(f"Indexed {len(self._cve_index)} CVEs from NVD JSON")
             if console:
@@ -430,7 +430,7 @@ class NVDLocalRegistry:
         
         try:
             stat = self.nvd_json_path.stat()
-            file_age = datetime.utcnow() - datetime.fromtimestamp(stat.st_mtime)
+            file_age = datetime.now(timezone.utc) - datetime.fromtimestamp(stat.st_mtime)
             return file_age.total_seconds() > (max_age_hours * 3600)
         except Exception:
             return True
