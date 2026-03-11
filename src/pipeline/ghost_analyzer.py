@@ -171,6 +171,25 @@ class GhostAnalyzer:
             f"threshold={confidence_threshold:.0%}"
         )
 
+    @staticmethod
+    def _normalize_datetime(dt: datetime) -> datetime:
+        """
+        Normalize datetime to timezone-aware UTC.
+
+        Handles both timezone-naive and timezone-aware datetimes from database.
+        Old records may have naive timestamps; new records are aware.
+
+        Args:
+            dt: Datetime to normalize (naive or aware)
+
+        Returns:
+            Timezone-aware datetime in UTC
+        """
+        if dt.tzinfo is None:
+            # Naive datetime - assume UTC and make aware
+            return dt.replace(tzinfo=timezone.utc)
+        return dt
+
     def analyze(
         self,
         discoveries: List[DiscoveryResult],
@@ -206,6 +225,11 @@ class GhostAnalyzer:
                 )
 
         logger.debug(f"Analyzing {cve_id}: {len(discoveries)} discoveries")
+
+        # Normalize all timestamps to timezone-aware UTC (handles old DB data)
+        # Old records may have timezone-naive timestamps; new records are aware
+        for discovery in discoveries:
+            discovery.discovered_at = self._normalize_datetime(discovery.discovered_at)
 
         # Get oldest discovery for grace period calculation
         oldest_discovery = min(discoveries, key=lambda d: d.discovered_at)
