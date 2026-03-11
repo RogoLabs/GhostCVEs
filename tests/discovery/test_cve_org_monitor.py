@@ -8,7 +8,7 @@ from RESERVED to PUBLISHED.
 """
 
 import pytest
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from unittest.mock import Mock, patch, MagicMock
 import json
 
@@ -59,8 +59,8 @@ class TestCVEOrgMonitorDiscovery:
                     "cveId": "CVE-2025-12345",
                     "cveMetadata": {
                         "state": "PUBLISHED",
-                        "datePublished": (datetime.utcnow() - timedelta(hours=2)).isoformat() + "Z",
-                        "dateUpdated": (datetime.utcnow() - timedelta(hours=1)).isoformat() + "Z",
+                        "datePublished": (datetime.now(timezone.utc) - timedelta(hours=2)).isoformat() + "Z",
+                        "dateUpdated": (datetime.now(timezone.utc) - timedelta(hours=1)).isoformat() + "Z",
                     },
                     "containers": {
                         "cna": {
@@ -91,7 +91,7 @@ class TestCVEOrgMonitorDiscovery:
 
     def test_discover_multiple_published_cves(self):
         """Test discovering multiple recently published CVEs."""
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc)
         mock_cves = [
             {
                 "cveId": "CVE-2025-12345",
@@ -152,7 +152,7 @@ class TestCVEOrgMonitorDiscovery:
                 "cveMetadata": {
                     "state": "RESERVED",
                     "datePublished": None,
-                    "dateUpdated": (datetime.utcnow() - timedelta(hours=1)).isoformat() + "Z",
+                    "dateUpdated": (datetime.now(timezone.utc) - timedelta(hours=1)).isoformat() + "Z",
                 },
                 "containers": {
                     "cna": {}
@@ -176,7 +176,7 @@ class TestCVEOrgMonitorDiscovery:
                 "cveMetadata": {
                     "state": "REJECTED",
                     "datePublished": None,
-                    "dateUpdated": (datetime.utcnow() - timedelta(hours=1)).isoformat() + "Z",
+                    "dateUpdated": (datetime.now(timezone.utc) - timedelta(hours=1)).isoformat() + "Z",
                 },
                 "containers": {
                     "cna": {}
@@ -199,8 +199,8 @@ class TestCVEOrgMonitorDiscovery:
                 "cveId": "CVE-2025-12345",
                 "cveMetadata": {
                     "state": "PUBLISHED",
-                    "datePublished": (datetime.utcnow() - timedelta(hours=2)).isoformat() + "Z",
-                    "dateUpdated": (datetime.utcnow() - timedelta(hours=1)).isoformat() + "Z",
+                    "datePublished": (datetime.now(timezone.utc) - timedelta(hours=2)).isoformat() + "Z",
+                    "dateUpdated": (datetime.now(timezone.utc) - timedelta(hours=1)).isoformat() + "Z",
                     "assignerOrgId": "mitre",
                 },
                 "containers": {
@@ -237,8 +237,8 @@ class TestCVEOrgMonitorDiscovery:
                 "cveId": "CVE-2025-54321",
                 "cveMetadata": {
                     "state": "PUBLISHED",
-                    "datePublished": (datetime.utcnow() - timedelta(hours=1)).isoformat() + "Z",
-                    "dateUpdated": (datetime.utcnow() - timedelta(minutes=30)).isoformat() + "Z",
+                    "datePublished": (datetime.now(timezone.utc) - timedelta(hours=1)).isoformat() + "Z",
+                    "dateUpdated": (datetime.now(timezone.utc) - timedelta(minutes=30)).isoformat() + "Z",
                 },
                 "containers": {
                     "cna": {}
@@ -271,8 +271,8 @@ class TestCVEOrgMonitorDiscovery:
                 "cveId": "CVE-2025-12345",
                 "cveMetadata": {
                     "state": "PUBLISHED",
-                    "datePublished": (datetime.utcnow() - timedelta(hours=1)).isoformat() + "Z",
-                    "dateUpdated": (datetime.utcnow() - timedelta(minutes=30)).isoformat() + "Z",
+                    "datePublished": (datetime.now(timezone.utc) - timedelta(hours=1)).isoformat() + "Z",
+                    "dateUpdated": (datetime.now(timezone.utc) - timedelta(minutes=30)).isoformat() + "Z",
                 },
                 "containers": {
                     "cna": {
@@ -335,7 +335,7 @@ class TestCVEOrgMonitorFetchLogic:
 
     def test_discover_result_discovered_at_timestamp(self):
         """Test that discovered_at is set to CVE's update timestamp."""
-        update_time = datetime.utcnow() - timedelta(hours=1)
+        update_time = datetime.now(timezone.utc) - timedelta(hours=1)
         mock_cves = [
             {
                 "cveId": "CVE-2025-12345",
@@ -382,8 +382,8 @@ class TestCVEOrgMonitorIntegration:
                 "cveId": "CVE-2025-12345",
                 "cveMetadata": {
                     "state": "PUBLISHED",
-                    "datePublished": (datetime.utcnow() - timedelta(hours=2)).isoformat() + "Z",
-                    "dateUpdated": (datetime.utcnow() - timedelta(hours=1)).isoformat() + "Z",
+                    "datePublished": (datetime.now(timezone.utc) - timedelta(hours=2)).isoformat() + "Z",
+                    "dateUpdated": (datetime.now(timezone.utc) - timedelta(hours=1)).isoformat() + "Z",
                 },
                 "containers": {
                     "cna": {
@@ -421,8 +421,8 @@ class TestCVEOrgMonitorIntegration:
                 "cveId": "CVE-2025-12345",
                 "cveMetadata": {
                     "state": "PUBLISHED",
-                    "datePublished": (datetime.utcnow() - timedelta(hours=1)).isoformat() + "Z",
-                    "dateUpdated": (datetime.utcnow() - timedelta(minutes=30)).isoformat() + "Z",
+                    "datePublished": (datetime.now(timezone.utc) - timedelta(hours=1)).isoformat() + "Z",
+                    "dateUpdated": (datetime.now(timezone.utc) - timedelta(minutes=30)).isoformat() + "Z",
                 },
                 "containers": {
                     "cna": {
@@ -452,8 +452,8 @@ class TestCVEOrgMonitorIntegration:
                 "cveId": "CVE-2025-12345",
                 "cveMetadata": {
                     "state": "PUBLISHED",
-                    "datePublished": (datetime.utcnow() - timedelta(hours=1)).isoformat() + "Z",
-                    "dateUpdated": (datetime.utcnow() - timedelta(minutes=30)).isoformat() + "Z",
+                    "datePublished": (datetime.now(timezone.utc) - timedelta(hours=1)).isoformat() + "Z",
+                    "dateUpdated": (datetime.now(timezone.utc) - timedelta(minutes=30)).isoformat() + "Z",
                 },
                 "containers": {
                     "cna": {

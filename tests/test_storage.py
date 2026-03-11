@@ -7,7 +7,7 @@ Unit tests for the DatabaseManager and SQLAlchemy models.
 
 import pytest
 import tempfile
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from src.storage.database import DatabaseManager
@@ -43,7 +43,7 @@ class TestDatabaseManager:
             source_type="github_commit",
             source_name="Test Repository",
             evidence_url="https://github.com/test/repo/commit/abc123",
-            discovered_at=datetime.utcnow(),
+            discovered_at=datetime.now(timezone.utc),
             confidence=0.95,
         )
         
@@ -62,7 +62,7 @@ class TestDatabaseManager:
     
     def test_first_seen_not_updated(self, db_manager):
         """Test that first_seen is preserved on re-discovery."""
-        original_time = datetime.utcnow() - timedelta(days=5)
+        original_time = datetime.now(timezone.utc) - timedelta(days=5)
         
         # First discovery
         discovery1 = DiscoveryResult(
@@ -89,7 +89,7 @@ class TestDatabaseManager:
             source_type="rss_feed",
             source_name="Security Blog",
             evidence_url="https://blog.example.com/cve-2025-12345",
-            discovered_at=datetime.utcnow(),
+            discovered_at=datetime.now(timezone.utc),
         )
         
         validation2 = ValidationResult(
@@ -249,8 +249,8 @@ class TestGhostCVEModel:
         """Test days_in_limbo calculation."""
         ghost = GhostCVE(
             cve_id="CVE-2025-12345",
-            first_seen=datetime.utcnow() - timedelta(days=10),
-            last_checked=datetime.utcnow(),
+            first_seen=datetime.now(timezone.utc) - timedelta(days=10),
+            last_checked=datetime.now(timezone.utc),
             registry_status="RESERVED",
             is_ghost=True,
         )
@@ -261,8 +261,8 @@ class TestGhostCVEModel:
         """Test string representation."""
         ghost = GhostCVE(
             cve_id="CVE-2025-12345",
-            first_seen=datetime.utcnow(),
-            last_checked=datetime.utcnow(),
+            first_seen=datetime.now(timezone.utc),
+            last_checked=datetime.now(timezone.utc),
             registry_status="RESERVED",
             is_ghost=True,
         )

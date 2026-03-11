@@ -17,7 +17,7 @@ Author: rogolabs.net
 
 import json
 import time
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from unittest.mock import Mock, patch, MagicMock
 
 import pytest
@@ -522,7 +522,7 @@ class TestRecentChangesMonitoring:
             "cveMetadata": {
                 "cveId": "CVE-2025-12345",
                 "state": "PUBLISHED",
-                "dateUpdated": datetime.utcnow().isoformat() + "Z",
+                "dateUpdated": datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z'),
             },
             "containers": {}
         }
@@ -536,7 +536,7 @@ class TestRecentChangesMonitoring:
         assert result.last_modified is not None
         # Recent update (within last hour)
         # Use timezone-aware comparison
-        age = datetime.utcnow().replace(tzinfo=result.last_modified.tzinfo) - result.last_modified
+        age = datetime.now(timezone.utc).replace(tzinfo=result.last_modified.tzinfo) - result.last_modified
         assert age < timedelta(hours=1)
 
 
