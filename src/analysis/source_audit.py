@@ -260,3 +260,166 @@ class SourceAuditor:
                 other_cves.update(d["cve_id"] for d in discoveries)
 
         return other_cves
+
+
+def classify_source(
+    reliability_score: float,
+    total_discoveries: int,
+    fetch_failure_rate: float
+) -> str:
+    """
+    Classify source into Keep/Optimize/Remove based on metrics.
+
+    Decision criteria:
+    - Keep: reliability >0.80, moderate discoveries, low failure rate
+    - Optimize: reliability 0.60-0.80, could be improved
+    - Remove: reliability <0.60 or very high failure rate or no discoveries
+
+    Args:
+        reliability_score: Composite reliability score (0.0-1.0)
+        total_discoveries: Total CVEs discovered
+        fetch_failure_rate: Ratio of failed fetches (0.0-1.0)
+
+    Returns:
+        Classification: "Keep", "Optimize", or "Remove"
+    """
+    # Remove if no meaningful discoveries
+    if total_discoveries < 5:
+        return "Remove"
+
+    # Remove if fetch failure rate too high
+    if fetch_failure_rate > 0.20:
+        return "Remove"
+
+    # Classify by reliability score
+    if reliability_score >= 0.80:
+        return "Keep"
+    elif reliability_score >= 0.60:
+        return "Optimize"
+    else:
+        return "Remove"
+
+
+def generate_audit_report(metrics_list: list[SourceMetrics]) -> str:
+    """
+    Generate comprehensive markdown audit report.
+
+    Args:
+        metrics_list: List of source metrics (should be sorted by reliability)
+
+    Returns:
+        Markdown formatted audit report
+    """
+    report_lines = [
+        "# Source Audit Report",
+        "",
+        f"**Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M UTC')}",
+        f"**Total Sources Audited:** {len(metrics_list)}",
+        "",
+        "## Executive Summary",
+        ""
+    ]
+
+    # Count by classification
+    classifications = [classify_source(m.reliability_score, m.total_discoveries, m.fetch_failure_rate)
+                       for m in metrics_list]
+    keep_count = classifications.count("Keep")
+    optimize_count = classifications.count("Optimize")
+    remove_count = classifications.count("Remove")
+
+    report_lines.extend([
+        f"- **Keep (High Quality):** {keep_count} sources",
+        f"- **Optimize (Medium Quality):** {optimize_count} sources",
+        f"- **Remove (Low Quality):** {remove_count} sources",
+        "",
+        "## Detailed Source Analysis",
+        "",
+        "| Source | Reliability | Discoveries | Ghosts | FP Rate | Unique | Recommendation |",
+        "|--------|-------------|-------------|--------|---------|--------|----------------|"
+    ])
+
+    # Add each source
+    for metrics in metrics_list:
+        classification = classify_source(
+            metrics.reliability_score,
+            metrics.total_discoveries,
+            metrics.fetch_failure_rate
+        )
+
+        # Format row
+        row = (
+            f"| {metrics.source_name} "
+            f"| {metrics.reliability_score:.2f} "
+            f"| {metrics.total_discoveries} "
+            f"| {metrics.ghost_detection_rate:.1%} "
+            f"| {metrics.false_positive_rate:.1%} "
+            f"| {metrics.unique_cves_found} "
+            f"| **{classification}** |"
+        )
+        report_lines.append(row)
+
+    report_lines.extend([
+        "",
+        "## Recommendations",
+        "",
+        "### Sources to Keep",
+        ""
+    ])
+
+    # List sources to keep
+    keep_sources = [m for m in metrics_list if classify_source(m.reliability_score, m.total_discoveries, m.fetch_failure_rate) == "Keep"]
+    if keep_sources:
+        for metrics in keep_sources:
+            report_lines.append(
+                f"- **{metrics.source_name}**: "
+                f"Reliability {metrics.reliability_score:.2f}, "
+                f"{metrics.total_discoveries} discoveries"
+            )
+    else:
+        report_lines.append("*No sources meet 'Keep' criteria*")
+
+    report_lines.extend([
+        "",
+        "### Sources to Optimize",
+        ""
+    ])
+
+    # List sources to optimize
+    optimize_sources = [m for m in metrics_list if classify_source(m.reliability_score, m.total_discoveries, m.fetch_failure_rate) == "Optimize"]
+    if optimize_sources:
+        for metrics in optimize_sources:
+            report_lines.append(
+                f"- **{metrics.source_name}**: "
+                f"Reliability {metrics.reliability_score:.2f}, "
+                f"FP rate {metrics.false_positive_rate:.1%}"
+            )
+    else:
+        report_lines.append("*No sources need optimization*")
+
+    report_lines.extend([
+        "",
+        "### Sources to Remove",
+        ""
+    ])
+
+    # List sources to remove
+    remove_sources = [m for m in metrics_list if classify_source(m.reliability_score, m.total_discoveries, m.fetch_failure_rate) == "Remove"]
+    if remove_sources:
+        for metrics in remove_sources:
+            reason = []
+            if metrics.total_discoveries < 5:
+                reason.append("few discoveries")
+            if metrics.fetch_failure_rate > 0.20:
+                reason.append("high failure rate")
+            if metrics.reliability_score < 0.60:
+                reason.append("low reliability")
+
+            report_lines.append(
+                f"- **{metrics.source_name}**: "
+                f"Reliability {metrics.reliability_score:.2f} "
+                f"({', '.join(reason)})"
+            )
+    else:
+        report_lines.append("*No sources need removal*")
+
+    return "\n".join(report_lines)
