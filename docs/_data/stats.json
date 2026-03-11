@@ -1,0 +1,36 @@
+{
+  "generated_at": "2026-03-10T18:37:28.202277Z",
+  "summary": {
+    "total_cves": 5984,
+    "total_ghosts": 67,
+    "total_sources": 6446,
+    "status_breakdown": {
+      "NOT_FOUND": 67,
+      "PUBLISHED": 5915,
+      "REJECTED": 2
+    },
+    "source_type_breakdown": {
+      "distro_advisory": 5404,
+      "government_advisory": 148,
+      "mailing_list": 62,
+      "research_blog": 6,
+      "vendor_advisory": 826
+    },
+    "oldest_ghost": "CVE-2025-14338",
+    "oldest_ghost_days": 60
+  },
+  "status_breakdown": {
+    "NOT_FOUND": 67
+  },
+  "source_breakdown": {
+    "distro_advisory": 32,
+    "vendor_advisory": 62,
+    "mailing_list": 2
+  },
+  "age_distribution": {
+    "0-7": 30,
+    "8-30": 28,
+    "31-90": 9,
+    "90+": 0
+  }
+}
