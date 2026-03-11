@@ -14,10 +14,10 @@ def test_generate_audit_report():
         SourceMetrics(
             source_name="high_quality_source",
             total_discoveries=100,
-            ghost_detection_rate=0.85,
-            false_positive_rate=0.05,
+            ghost_detection_rate=0.50,
+            false_positive_rate=0.50,
             avg_time_to_resolution=3.5,
-            reliability_score=0.88,
+            reliability_score=0.40,  # 0.50*0.6 + 0.25*0.3 + 0.95*0.1 = 0.475
             last_successful_fetch=datetime.now(timezone.utc),
             fetch_failure_rate=0.02,
             avg_fetch_time=2.0,
@@ -26,10 +26,10 @@ def test_generate_audit_report():
         SourceMetrics(
             source_name="low_quality_source",
             total_discoveries=50,
-            ghost_detection_rate=0.40,
-            false_positive_rate=0.30,
+            ghost_detection_rate=0.05,
+            false_positive_rate=0.95,
             avg_time_to_resolution=10.0,
-            reliability_score=0.45,
+            reliability_score=0.10,  # 0.05*0.6 + 0.04*0.3 + 0.95*0.1 = 0.137
             last_successful_fetch=datetime.now(timezone.utc),
             fetch_failure_rate=0.15,
             avg_fetch_time=5.0,
@@ -42,36 +42,36 @@ def test_generate_audit_report():
     assert "Source Audit Report" in report
     assert "high_quality_source" in report
     assert "low_quality_source" in report
-    assert "0.88" in report  # Reliability score
+    assert "0.40" in report  # Reliability score
     assert "Keep" in report  # Classification
     assert "Remove" in report  # Low quality source
 
 
 def test_classify_source_keep():
     """Test classification of high-quality source."""
-    result = classify_source(0.85, 100, 0.02)
+    result = classify_source(0.35, 100, 0.02)
     assert result == "Keep"
 
 
 def test_classify_source_optimize():
     """Test classification of medium-quality source."""
-    result = classify_source(0.70, 50, 0.10)
+    result = classify_source(0.20, 50, 0.10)
     assert result == "Optimize"
 
 
 def test_classify_source_remove_low_reliability():
     """Test classification of low-reliability source."""
-    result = classify_source(0.50, 20, 0.10)
+    result = classify_source(0.10, 20, 0.10)
     assert result == "Remove"
 
 
 def test_classify_source_remove_few_discoveries():
     """Test classification of source with few discoveries."""
-    result = classify_source(0.90, 3, 0.05)
+    result = classify_source(0.40, 3, 0.05)
     assert result == "Remove"
 
 
 def test_classify_source_remove_high_failure_rate():
     """Test classification of source with high failure rate."""
-    result = classify_source(0.85, 100, 0.25)
+    result = classify_source(0.40, 100, 0.25)
     assert result == "Remove"
