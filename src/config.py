@@ -221,15 +221,7 @@ RSS_FEEDS: Final[list[RSSFeed]] = [
         source_type="distro_advisory",
         priority=2
     ),
-    
-    # Ubuntu USN
-    RSSFeed(
-        name="Ubuntu Security Notices",
-        url="https://ubuntu.com/security/notices/rss.xml",
-        source_type="distro_advisory",
-        priority=2
-    ),
-    
+
     # Red Hat RHSA
     RSSFeed(
         name="Red Hat Security Advisories",
@@ -285,13 +277,7 @@ RSS_FEEDS: Final[list[RSSFeed]] = [
         source_type="vendor_advisory",
         priority=1
     ),
-    RSSFeed(
-        name="Chrome Releases",
-        url="https://chromereleases.googleblog.com/feeds/posts/default",
-        source_type="vendor_advisory",
-        priority=1
-    ),
-    
+
     # Operating System Vendors
     RSSFeed(
         name="Apple Security Updates",
@@ -729,12 +715,6 @@ VENDOR_ENDPOINTS: Final[list[VendorEndpoint]] = [
         name="Red Hat Security Data",
         base_url="https://access.redhat.com",
         advisory_path="/hydra/rest/securitydata/cve.json",
-        source_type="vendor_advisory"
-    ),
-    VendorEndpoint(
-        name="Canonical Ubuntu CVE Tracker",
-        base_url="https://ubuntu.com",
-        advisory_path="/security/cves",
         source_type="vendor_advisory"
     ),
     VendorEndpoint(
