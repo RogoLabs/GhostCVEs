@@ -31,7 +31,7 @@ import logging
 import os
 import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 from src import __version__
@@ -125,7 +125,7 @@ def run_hunt(
         Dictionary with hunt results
     """
     logger = logging.getLogger(__name__)
-    started_at = datetime.utcnow()
+    started_at = datetime.now(timezone.utc)
 
     # Initialize the pipeline orchestrator
     orchestrator = PipelineOrchestrator(db_manager)
