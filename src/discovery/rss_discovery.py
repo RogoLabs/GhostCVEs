@@ -12,7 +12,7 @@ import gzip
 import io
 import json
 import logging
-from datetime import datetime
+from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from typing import Iterator
 from xml.etree import ElementTree as ET
@@ -337,7 +337,7 @@ class RSSDiscovery(BaseDiscovery):
                 source_type=source_type,
                 source_name=feed.name,
                 evidence_url=link,
-                discovered_at=pub_date or datetime.utcnow(),
+                discovered_at=pub_date or datetime.now(timezone.utc),
                 context=item.get("title", "")[:200],
                 confidence=0.85,
                 raw_data={

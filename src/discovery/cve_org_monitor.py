@@ -15,7 +15,7 @@ Author: rogolabs.net
 import logging
 import os
 import time
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Iterator
 from urllib.parse import urlencode
 
@@ -139,7 +139,7 @@ class CVEOrgMonitor(BaseDiscovery):
         self._wait_for_rate_limit()
 
         # Calculate the date range
-        cutoff_date = (datetime.utcnow() - timedelta(days=self.lookback_days)).isoformat()
+        cutoff_date = (datetime.now(timezone.utc) - timedelta(days=self.lookback_days)).isoformat()
 
         # Build query parameters
         # The CVE.org API can be queried for recently modified CVEs
@@ -267,7 +267,7 @@ class CVEOrgMonitor(BaseDiscovery):
             datetime object or current UTC time if parsing fails
         """
         if not date_str:
-            return datetime.utcnow()
+            return datetime.now(timezone.utc)
 
         try:
             # Handle ISO format with Z suffix
@@ -276,4 +276,4 @@ class CVEOrgMonitor(BaseDiscovery):
             return datetime.fromisoformat(date_str)
         except (ValueError, AttributeError):
             self.logger.debug(f"Could not parse datetime: {date_str}")
-            return datetime.utcnow()
+            return datetime.now(timezone.utc)

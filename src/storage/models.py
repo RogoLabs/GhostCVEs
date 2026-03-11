@@ -8,7 +8,7 @@ Defines the schema for tracking Ghost CVEs and their discovery sources.
 Author: rogolabs.net
 """
 
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Optional
 
 from sqlalchemy import (
@@ -100,7 +100,7 @@ class GhostCVE(Base):
         Returns:
             Number of days since first_seen
         """
-        delta = datetime.utcnow() - self.first_seen
+        delta = datetime.now(timezone.utc) - self.first_seen
         return delta.days
     
     def __repr__(self) -> str:

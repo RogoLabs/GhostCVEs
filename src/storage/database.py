@@ -11,7 +11,7 @@ Author: rogolabs.net
 
 import json
 import logging
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterator
 
@@ -268,7 +268,7 @@ class DatabaseManager:
         Returns:
             Newly created GhostCVE record
         """
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc)
         
         ghost_cve = GhostCVE(
             cve_id=discovery.cve_id,
@@ -328,7 +328,7 @@ class DatabaseManager:
         Returns:
             Updated GhostCVE record
         """
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc)
         
         # Update status fields (NOT first_seen!)
         existing.last_checked = now
@@ -531,7 +531,7 @@ class DatabaseManager:
             
             hunt_run = HuntRun(
                 started_at=started_at,
-                completed_at=datetime.utcnow(),
+                completed_at=datetime.now(timezone.utc),
                 total_cves_found=total_cves_found,
                 new_ghosts_found=new_ghosts_found,
                 total_ghosts=total_ghosts,
