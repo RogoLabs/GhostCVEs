@@ -47,10 +47,10 @@ class CVEValidationConfig:
     # Current year for validation (updated at runtime)
     # Maximum reasonable CVE ID numbers by year (approximate, based on historical data)
     # These are rough upper bounds - real counts vary but this catches obvious fakes
-    # Tightened to reduce false positives from high-ID CVEs
+    # Updated limits based on actual CVE allocations (some CNAs have large blocks)
     max_id_by_year: dict[int, int] = field(default_factory=lambda: {
-        2025: 50000,   # More realistic limit based on actual allocation
-        2026: 15000,   # We're in March 2026, adjust as year progresses
+        2025: 100000,  # Raised: published CVEs exist above 70k
+        2026: 30000,   # We're in March 2026, raised to accommodate large CNA blocks
         2027: 0,       # Future year - no CVEs yet
         2028: 0,
         2029: 0,
