@@ -1,19 +1,19 @@
 # Ghost CVE Report
 
-**Generated:** 2026-03-12 09:29 UTC
+**Generated:** 2026-03-12 15:17 UTC
 
 ## Summary
 
-- **Active Ghosts:** 89
-- **Total CVEs Tracked:** 6447
-- **Discovery Sources:** 7288
-- **Oldest Ghost:** CVE-2026-1220 (50 days)
+- **Active Ghosts:** 86
+- **Total CVEs Tracked:** 6492
+- **Discovery Sources:** 7334
+- **Oldest Ghost:** CVE-2026-1220 (51 days)
 
 ## Ghost CVE Registry
 
 | CVE ID | Source | First Seen | Evidence |
 |--------|--------|------------|----------|
-| CVE-2026-2436 | Red Hat Security Data | 2026-03-11 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
+| CVE-2026-2436 | Debian Security Tracker | 2026-03-11 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-1940 | Debian Security Tracker | 2026-03-11 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2025-64152 | OSS Security | 2026-03-09 | [Link](https://seclists.org/oss-sec/2026/q1/284) |
 | CVE-2025-55017 | OSS Security | 2026-03-09 | [Link](https://seclists.org/oss-sec/2026/q1/283) |
@@ -42,7 +42,6 @@
 | CVE-2026-2921 | Debian Security Tracker | 2026-03-06 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-3084 | Debian Security Tracker | 2026-03-06 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-3086 | Debian Security Tracker | 2026-03-06 | [Link](https://security-tracker.debian.org/tracker/data/json) |
-| CVE-2026-3234 | Red Hat Security Data | 2026-03-05 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
 | CVE-2026-2376 | Red Hat Security Data | 2026-03-04 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
 | CVE-2026-3195 | Debian Security Tracker | 2026-03-03 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-3196 | Debian Security Tracker | 2026-03-03 | [Link](https://security-tracker.debian.org/tracker/data/json) |
@@ -68,7 +67,6 @@
 | CVE-2025-15060 | ZDI Advisories | 2026-02-25 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-124/) |
 | CVE-2026-2491 | ZDI Advisories | 2026-02-25 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-129/) |
 | CVE-2026-2493 | ZDI Advisories | 2026-02-25 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-130/) |
-| CVE-2026-3099 | Debian Security Tracker | 2026-02-24 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-2708 | Debian Security Tracker | 2026-02-20 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-2625 | Debian Security Tracker | 2026-02-18 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-2470 | OSS Security | 2026-02-17 | [Link](https://seclists.org/oss-sec/2026/q1/168) |
@@ -79,7 +77,6 @@
 | CVE-2025-69690 | Full Disclosure | 2026-02-16 | [Link](https://seclists.org/fulldisclosure/2026/Feb/16) |
 | CVE-2026-2574 | Debian Security Tracker | 2026-02-16 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-2575 | Red Hat Security Data | 2026-02-16 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
-| CVE-2026-2366 | Red Hat Security Data | 2026-02-12 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
 | CVE-2026-2369 | Debian Security Tracker | 2026-02-12 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-0964 | Debian Security Tracker | 2026-02-11 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-0966 | Debian Security Tracker | 2026-02-11 | [Link](https://security-tracker.debian.org/tracker/data/json) |
@@ -127,7 +124,7 @@
 ### CVE-2026-2239
 
 - **First Seen:** 2026-02-09
-- **Days in Limbo:** 30
+- **Days in Limbo:** 31
 
 **Discovery Sources:**
 
@@ -214,7 +211,7 @@
 ### CVE-2025-58151
 
 - **First Seen:** 2026-01-27
-- **Days in Limbo:** 43
+- **Days in Limbo:** 44
 
 **Discovery Sources:**
 
@@ -223,7 +220,7 @@
 ### CVE-2026-1220
 
 - **First Seen:** 2026-01-20
-- **Days in Limbo:** 50
+- **Days in Limbo:** 51
 
 **Discovery Sources:**
 
