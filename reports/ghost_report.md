@@ -1,18 +1,20 @@
 # Ghost CVE Report
 
-**Generated:** 2026-03-12 15:17 UTC
+**Generated:** 2026-03-12 21:20 UTC
 
 ## Summary
 
-- **Active Ghosts:** 86
-- **Total CVEs Tracked:** 6492
-- **Discovery Sources:** 7334
+- **Active Ghosts:** 87
+- **Total CVEs Tracked:** 6501
+- **Discovery Sources:** 7346
 - **Oldest Ghost:** CVE-2026-1220 (51 days)
 
 ## Ghost CVE Registry
 
 | CVE ID | Source | First Seen | Evidence |
 |--------|--------|------------|----------|
+| CVE-2025-66249 | OSS Security | 2026-03-12 | [Link](https://seclists.org/oss-sec/2026/q1/298) |
+| CVE-2025-60012 | OSS Security | 2026-03-12 | [Link](https://seclists.org/oss-sec/2026/q1/297) |
 | CVE-2026-2436 | Debian Security Tracker | 2026-03-11 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-1940 | Debian Security Tracker | 2026-03-11 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2025-64152 | OSS Security | 2026-03-09 | [Link](https://seclists.org/oss-sec/2026/q1/284) |
@@ -42,7 +44,6 @@
 | CVE-2026-2921 | Debian Security Tracker | 2026-03-06 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-3084 | Debian Security Tracker | 2026-03-06 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-3086 | Debian Security Tracker | 2026-03-06 | [Link](https://security-tracker.debian.org/tracker/data/json) |
-| CVE-2026-2376 | Red Hat Security Data | 2026-03-04 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
 | CVE-2026-3195 | Debian Security Tracker | 2026-03-03 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-3196 | Debian Security Tracker | 2026-03-03 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-3442 | Debian Security Tracker | 2026-03-03 | [Link](https://security-tracker.debian.org/tracker/data/json) |
