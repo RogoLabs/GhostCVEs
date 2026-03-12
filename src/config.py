@@ -229,12 +229,13 @@ RSS_FEEDS: Final[list[RSSFeed]] = [
         source_type="vendor_advisory",
         priority=2
     ),
-    RSSFeed(
-        name="Red Hat RHSA RSS",
-        url="https://www.redhat.com/security/data/metrics/rhsa.xml",
-        source_type="vendor_advisory",
-        priority=2
-    ),
+    # BROKEN (404 - Duplicate of JSON API):
+    # RSSFeed(
+    # name="Red Hat RHSA RSS",
+    # url="https://www.redhat.com/security/data/metrics/rhsa.xml",
+    # source_type="vendor_advisory",
+    # priority=2
+    # ),
     
     # CISA
     RSSFeed(
@@ -245,12 +246,13 @@ RSS_FEEDS: Final[list[RSSFeed]] = [
     ),
     
     # NVD
-    RSSFeed(
-        name="NVD CVE Feed",
-        url="https://nvd.nist.gov/feeds/json/cve/1.1/nvdcve-1.1-recent.json.gz",
-        source_type="registry",
-        priority=3
-    ),
+    # BROKEN (403 - Deprecated JSON feeds):
+    # RSSFeed(
+    # name="NVD CVE Feed",
+    # url="https://nvd.nist.gov/feeds/json/cve/1.1/nvdcve-1.1-recent.json.gz",
+    # source_type="registry",
+    # priority=3
+    # ),
     
     # Full Disclosure / Security Mailing Lists
     RSSFeed(
@@ -271,32 +273,36 @@ RSS_FEEDS: Final[list[RSSFeed]] = [
     # ==========================================================================
     
     # Browser Vendors (Critical - wide attack surface)
-    RSSFeed(
-        name="Mozilla Security Advisories",
-        url="https://www.mozilla.org/en-US/security/advisories/rss.xml",
-        source_type="vendor_advisory",
-        priority=1
-    ),
+    # BROKEN (404):
+    # RSSFeed(
+    # name="Mozilla Security Advisories",
+    # url="https://www.mozilla.org/en-US/security/advisories/rss.xml",
+    # source_type="vendor_advisory",
+    # priority=1
+    # ),
 
     # Operating System Vendors
-    RSSFeed(
-        name="Apple Security Updates",
-        url="https://support.apple.com/en-us/HT201222",
-        source_type="vendor_advisory",
-        priority=1
-    ),
-    RSSFeed(
-        name="Android Security Bulletins",
-        url="https://source.android.com/security/bulletin",
-        source_type="vendor_advisory",
-        priority=1
-    ),
-    RSSFeed(
-        name="Linux Kernel CVE Announce",
-        url="https://lore.kernel.org/linux-cve-announce/",
-        source_type="vendor_advisory",
-        priority=1
-    ),
+    # BROKEN (Not RSS/Parse error):
+    # RSSFeed(
+    # name="Apple Security Updates",
+    # url="https://support.apple.com/en-us/HT201222",
+    # source_type="vendor_advisory",
+    # priority=1
+    # ),
+    # BROKEN (Not RSS/Parse error):
+    # RSSFeed(
+    # name="Android Security Bulletins",
+    # url="https://source.android.com/security/bulletin",
+    # source_type="vendor_advisory",
+    # priority=1
+    # ),
+    # BROKEN (Parse error):
+    # RSSFeed(
+    # name="Linux Kernel CVE Announce",
+    # url="https://lore.kernel.org/linux-cve-announce/",
+    # source_type="vendor_advisory",
+    # priority=1
+    # ),
     
     # Cloud Providers
     RSSFeed(
@@ -313,30 +319,34 @@ RSS_FEEDS: Final[list[RSSFeed]] = [
     ),
     
     # Enterprise Software
-    RSSFeed(
-        name="Oracle Security Alerts",
-        url="https://www.oracle.com/security-alerts/rss.xml",
-        source_type="vendor_advisory",
-        priority=1
-    ),
-    RSSFeed(
-        name="VMware Security Advisories",
-        url="https://www.broadcom.com/support/vmware-security-advisories",
-        source_type="vendor_advisory",
-        priority=1
-    ),
-    RSSFeed(
-        name="SAP Security Patch Day",
-        url="https://support.sap.com/content/dam/support/en_us/library/ssp/my-support/patch-day/sap_security_patchday_atom.xml",
-        source_type="vendor_advisory",
-        priority=1
-    ),
-    RSSFeed(
-        name="Atlassian Security Advisories",
-        url="https://www.atlassian.com/software/jira/security",
-        source_type="vendor_advisory",
-        priority=2
-    ),
+    # BROKEN (404):
+    # RSSFeed(
+    # name="Oracle Security Alerts",
+    # url="https://www.oracle.com/security-alerts/rss.xml",
+    # source_type="vendor_advisory",
+    # priority=1
+    # ),
+    # BROKEN (Parse error):
+    # RSSFeed(
+    # name="VMware Security Advisories",
+    # url="https://www.broadcom.com/support/vmware-security-advisories",
+    # source_type="vendor_advisory",
+    # priority=1
+    # ),
+    # BROKEN (404):
+    # RSSFeed(
+    # name="SAP Security Patch Day",
+    # url="https://support.sap.com/content/dam/support/en_us/library/ssp/my-support/patch-day/sap_security_patchday_atom.xml",
+    # source_type="vendor_advisory",
+    # priority=1
+    # ),
+    # BROKEN (Parse error):
+    # RSSFeed(
+    # name="Atlassian Security Advisories",
+    # url="https://www.atlassian.com/software/jira/security",
+    # source_type="vendor_advisory",
+    # priority=2
+    # ),
     RSSFeed(
         name="GitLab Security Releases",
         url="https://about.gitlab.com/atom.xml",
@@ -357,64 +367,72 @@ RSS_FEEDS: Final[list[RSSFeed]] = [
         source_type="vendor_advisory",
         priority=1
     ),
-    RSSFeed(
-        name="Palo Alto Networks Security Advisories",
-        url="https://securityadvisories.paloaltonetworks.com/rss.xml",
-        source_type="vendor_advisory",
-        priority=1
-    ),
+    # BROKEN (DNS resolution failed):
+    # RSSFeed(
+    # name="Palo Alto Networks Security Advisories",
+    # url="https://securityadvisories.paloaltonetworks.com/rss.xml",
+    # source_type="vendor_advisory",
+    # priority=1
+    # ),
     
     # Hardware Vendors
-    RSSFeed(
-        name="Intel Security Center",
-        url="https://www.intel.com/content/www/us/en/security-center/default.html",
-        source_type="vendor_advisory",
-        priority=1
-    ),
-    RSSFeed(
-        name="AMD Security Bulletins",
-        url="https://www.amd.com/en/resources/product-security.html",
-        source_type="vendor_advisory",
-        priority=2
-    ),
-    RSSFeed(
-        name="NVIDIA Security Bulletins",
-        url="https://www.nvidia.com/en-us/security/",
-        source_type="vendor_advisory",
-        priority=2
-    ),
-    RSSFeed(
-        name="Qualcomm Security Bulletins",
-        url="https://www.qualcomm.com/company/product-security/bulletins",
-        source_type="vendor_advisory",
-        priority=2
-    ),
+    # BROKEN (403 - Not RSS):
+    # RSSFeed(
+    # name="Intel Security Center",
+    # url="https://www.intel.com/content/www/us/en/security-center/default.html",
+    # source_type="vendor_advisory",
+    # priority=1
+    # ),
+    # BROKEN (Not RSS/Parse error):
+    # RSSFeed(
+    # name="AMD Security Bulletins",
+    # url="https://www.amd.com/en/resources/product-security.html",
+    # source_type="vendor_advisory",
+    # priority=2
+    # ),
+    # BROKEN (Not RSS/Parse error):
+    # RSSFeed(
+    # name="NVIDIA Security Bulletins",
+    # url="https://www.nvidia.com/en-us/security/",
+    # source_type="vendor_advisory",
+    # priority=2
+    # ),
+    # BROKEN (Not RSS/Parse error):
+    # RSSFeed(
+    # name="Qualcomm Security Bulletins",
+    # url="https://www.qualcomm.com/company/product-security/bulletins",
+    # source_type="vendor_advisory",
+    # priority=2
+    # ),
     
     # Critical Infrastructure / Libraries
-    RSSFeed(
-        name="OpenSSL Security Advisories",
-        url="https://www.openssl.org/news/secadv.atom",
-        source_type="vendor_advisory",
-        priority=1
-    ),
-    RSSFeed(
-        name="curl Security Advisories",
-        url="https://curl.se/docs/security.html",
-        source_type="vendor_advisory",
-        priority=1
-    ),
+    # BROKEN (404 - URL changed):
+    # RSSFeed(
+    # name="OpenSSL Security Advisories",
+    # url="https://www.openssl.org/news/secadv.atom",
+    # source_type="vendor_advisory",
+    # priority=1
+    # ),
+    # BROKEN (Parse error):
+    # RSSFeed(
+    # name="curl Security Advisories",
+    # url="https://curl.se/docs/security.html",
+    # source_type="vendor_advisory",
+    # priority=1
+    # ),
     RSSFeed(
         name="PHP Security Advisories",
         url="https://www.php.net/releases/feed.php",
         source_type="vendor_advisory",
         priority=2
     ),
-    RSSFeed(
-        name="Python Security Announcements",
-        url="https://mail.python.org/archives/list/security-announce@python.org/latest",
-        source_type="vendor_advisory",
-        priority=2
-    ),
+    # BROKEN (Parse error):
+    # RSSFeed(
+    # name="Python Security Announcements",
+    # url="https://mail.python.org/archives/list/security-announce@python.org/latest",
+    # source_type="vendor_advisory",
+    # priority=2
+    # ),
     
     # CMS / Web Platforms
     RSSFeed(
@@ -431,38 +449,43 @@ RSS_FEEDS: Final[list[RSSFeed]] = [
     ),
     
     # ICS/SCADA
-    RSSFeed(
-        name="Siemens ProductCERT",
-        url="https://new.siemens.com/global/en/products/services/cert.html",
-        source_type="vendor_advisory",
-        priority=2
-    ),
-    RSSFeed(
-        name="Schneider Electric Security Notifications",
-        url="https://www.se.com/ww/en/work/support/cybersecurity/security-notifications.jsp",
-        source_type="vendor_advisory",
-        priority=2
-    ),
+    # BROKEN (Parse error):
+    # RSSFeed(
+    # name="Siemens ProductCERT",
+    # url="https://new.siemens.com/global/en/products/services/cert.html",
+    # source_type="vendor_advisory",
+    # priority=2
+    # ),
+    # BROKEN (Parse error):
+    # RSSFeed(
+    # name="Schneider Electric Security Notifications",
+    # url="https://www.se.com/ww/en/work/support/cybersecurity/security-notifications.jsp",
+    # source_type="vendor_advisory",
+    # priority=2
+    # ),
     
     # Consumer Devices
-    RSSFeed(
-        name="Samsung Mobile Security",
-        url="https://security.samsungmobile.com/workScope.smsb",
-        source_type="vendor_advisory",
-        priority=2
-    ),
-    RSSFeed(
-        name="NETGEAR Security Advisories",
-        url="https://www.netgear.com/about/security/",
-        source_type="vendor_advisory",
-        priority=3
-    ),
-    RSSFeed(
-        name="TP-Link Security Advisories",
-        url="https://www.tp-link.com/us/press/security-advisory/",
-        source_type="vendor_advisory",
-        priority=3
-    ),
+    # BROKEN (Parse error):
+    # RSSFeed(
+    # name="Samsung Mobile Security",
+    # url="https://security.samsungmobile.com/workScope.smsb",
+    # source_type="vendor_advisory",
+    # priority=2
+    # ),
+    # BROKEN (Parse error):
+    # RSSFeed(
+    # name="NETGEAR Security Advisories",
+    # url="https://www.netgear.com/about/security/",
+    # source_type="vendor_advisory",
+    # priority=3
+    # ),
+    # BROKEN (Parse error):
+    # RSSFeed(
+    # name="TP-Link Security Advisories",
+    # url="https://www.tp-link.com/us/press/security-advisory/",
+    # source_type="vendor_advisory",
+    # priority=3
+    # ),
     RSSFeed(
         name="Zyxel Security Advisories",
         url="https://www.zyxel.com/support/security_advisories.shtml",
@@ -471,12 +494,13 @@ RSS_FEEDS: Final[list[RSSFeed]] = [
     ),
     
     # Collaboration Tools
-    RSSFeed(
-        name="Zoom Security Bulletins",
-        url="https://www.zoom.com/en/trust/security-bulletin/",
-        source_type="vendor_advisory",
-        priority=2
-    ),
+    # BROKEN (Parse error):
+    # RSSFeed(
+    # name="Zoom Security Bulletins",
+    # url="https://www.zoom.com/en/trust/security-bulletin/",
+    # source_type="vendor_advisory",
+    # priority=2
+    # ),
 ]
 
 
