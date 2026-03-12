@@ -1,12 +1,12 @@
 # Ghost CVE Report
 
-**Generated:** 2026-03-11 23:15 UTC
+**Generated:** 2026-03-12 09:29 UTC
 
 ## Summary
 
 - **Active Ghosts:** 89
-- **Total CVEs Tracked:** 6446
-- **Discovery Sources:** 7287
+- **Total CVEs Tracked:** 6447
+- **Discovery Sources:** 7288
 - **Oldest Ghost:** CVE-2026-1220 (50 days)
 
 ## Ghost CVE Registry
@@ -105,6 +105,25 @@
 
 ## Critical Ghosts (30+ Days)
 
+### CVE-2026-1609
+
+- **First Seen:** 2026-02-10
+- **Days in Limbo:** 30
+
+**Discovery Sources:**
+
+- [Red Hat Security Data](https://access.redhat.com/hydra/rest/securitydata/cve.json) (2026-02-10)
+
+### CVE-2026-1584
+
+- **First Seen:** 2026-02-10
+- **Days in Limbo:** 30
+
+**Discovery Sources:**
+
+- [Red Hat Security Data](https://access.redhat.com/hydra/rest/securitydata/cve.json) (2026-03-11)
+- [Debian Security Tracker](https://security-tracker.debian.org/tracker/data/json) (2026-02-10)
+
 ### CVE-2026-2239
 
 - **First Seen:** 2026-02-09
@@ -118,7 +137,7 @@
 ### CVE-2026-2100
 
 - **First Seen:** 2026-02-07
-- **Days in Limbo:** 32
+- **Days in Limbo:** 33
 
 **Discovery Sources:**
 
@@ -128,7 +147,7 @@
 ### CVE-2025-65852
 
 - **First Seen:** 2026-02-07
-- **Days in Limbo:** 32
+- **Days in Limbo:** 33
 
 **Discovery Sources:**
 
@@ -137,7 +156,7 @@
 ### CVE-2025-12805
 
 - **First Seen:** 2026-02-04
-- **Days in Limbo:** 35
+- **Days in Limbo:** 36
 
 **Discovery Sources:**
 
@@ -146,7 +165,7 @@
 ### CVE-2026-1767
 
 - **First Seen:** 2026-02-03
-- **Days in Limbo:** 36
+- **Days in Limbo:** 37
 
 **Discovery Sources:**
 
@@ -156,7 +175,7 @@
 ### CVE-2026-1766
 
 - **First Seen:** 2026-02-03
-- **Days in Limbo:** 36
+- **Days in Limbo:** 37
 
 **Discovery Sources:**
 
@@ -166,7 +185,7 @@
 ### CVE-2026-1765
 
 - **First Seen:** 2026-02-03
-- **Days in Limbo:** 36
+- **Days in Limbo:** 37
 
 **Discovery Sources:**
 
@@ -176,7 +195,7 @@
 ### CVE-2026-1764
 
 - **First Seen:** 2026-02-03
-- **Days in Limbo:** 36
+- **Days in Limbo:** 37
 
 **Discovery Sources:**
 
@@ -186,7 +205,7 @@
 ### CVE-2025-63374
 
 - **First Seen:** 2026-02-03
-- **Days in Limbo:** 36
+- **Days in Limbo:** 37
 
 **Discovery Sources:**
 
