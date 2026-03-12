@@ -214,6 +214,9 @@ class GitHubAdvisoryDiscovery(BaseDiscovery):
         """
         Process a single advisory and yield DiscoveryResult for each CVE.
 
+        Detects GitHub CNA (GitHub_M) assignments and boosts confidence
+        for CVEs assigned by GitHub's own CNA authority.
+
         Args:
             advisory: Advisory node from GraphQL response
 
@@ -235,8 +238,14 @@ class GitHubAdvisoryDiscovery(BaseDiscovery):
         # Extract affected packages
         affected_packages = self._extract_affected_packages(advisory)
 
+        # Detect GitHub CNA assignment
+        is_github_cna = self._is_github_cna_assignment(affected_packages, ghsa_id)
+
+        # Boost confidence for GitHub CNA assignments
+        confidence = 0.93 if is_github_cna else 0.90
+
         # Create context with package and severity info
-        context = self._create_context(summary, severity, affected_packages)
+        context = self._create_context(summary, severity, affected_packages, is_github_cna)
 
         # Create evidence URL
         evidence_url = f"{self.ADVISORY_BASE_URL}/{ghsa_id}"
@@ -253,7 +262,7 @@ class GitHubAdvisoryDiscovery(BaseDiscovery):
                 evidence_url=evidence_url,
                 discovered_at=discovered_at,
                 context=context,
-                confidence=0.90,  # High confidence - GitHub is authoritative
+                confidence=confidence,
                 raw_data={
                     "ghsa_id": ghsa_id,
                     "severity": severity,
@@ -262,8 +271,56 @@ class GitHubAdvisoryDiscovery(BaseDiscovery):
                     "affected_packages": affected_packages,
                     "published_at": published_at,
                     "updated_at": updated_at,
+                    "is_github_cna": is_github_cna,
                 },
             )
+
+    def _is_github_cna_assignment(
+        self,
+        affected_packages: list[dict],
+        ghsa_id: str,
+    ) -> bool:
+        """
+        Determine if a CVE was likely assigned by GitHub's CNA (GitHub_M).
+
+        GitHub acts as a CNA for vulnerabilities in open source packages
+        within GitHub-managed ecosystems (npm, RubyGems, PyPI, Maven, NuGet, etc.).
+        This detection is heuristic-based since the GraphQL API doesn't explicitly
+        expose CNA information.
+
+        Args:
+            affected_packages: List of affected package dictionaries
+            ghsa_id: GitHub Security Advisory ID
+
+        Returns:
+            True if the CVE was likely assigned by GitHub's CNA
+        """
+        # GitHub CNA primarily covers these ecosystems
+        github_cna_ecosystems = {
+            "NPM",
+            "RUBYGEMS",
+            "PYPI",
+            "MAVEN",
+            "NUGET",
+            "COMPOSER",
+            "GO",
+            "RUST",
+            "PIP",  # Alias for PYPI
+            "CARGO",  # Rust registry
+        }
+
+        # Check if any affected package is in a GitHub CNA ecosystem
+        for package in affected_packages:
+            ecosystem = package.get("ecosystem", "").upper()
+            if ecosystem in github_cna_ecosystems:
+                # GitHub likely assigned the CVE as the CNA for this ecosystem
+                self.logger.debug(
+                    f"Detected GitHub CNA assignment: {ghsa_id} "
+                    f"(ecosystem: {ecosystem})"
+                )
+                return True
+
+        return False
 
     def _extract_affected_packages(self, advisory: dict) -> list[dict]:
         """
@@ -302,6 +359,7 @@ class GitHubAdvisoryDiscovery(BaseDiscovery):
         summary: str,
         severity: str,
         packages: list[dict],
+        is_github_cna: bool = False,
     ) -> str:
         """
         Create a context string for the discovery result.
@@ -310,11 +368,15 @@ class GitHubAdvisoryDiscovery(BaseDiscovery):
             summary: Advisory summary
             severity: Severity level
             packages: List of affected packages
+            is_github_cna: Whether this CVE was assigned by GitHub's CNA
 
         Returns:
-            Context string combining summary, severity, and packages
+            Context string combining summary, severity, packages, and CNA info
         """
         parts = [summary]
+
+        if is_github_cna:
+            parts.append("[GitHub CNA]")
 
         if severity and severity != "UNKNOWN":
             parts.append(f"Severity: {severity}")
