@@ -87,7 +87,7 @@ class TestGitHubAdvisoryDiscovery:
         assert result.cve_id == "CVE-2025-12345"
         assert result.source_type == SourceType.GITHUB_ADVISORY
         assert result.source_name == "GitHub Security Advisories"
-        assert result.confidence == 0.90
+        assert result.confidence == 0.93
         assert "test-package" in result.context
         assert "CRITICAL" in result.context
 
@@ -140,7 +140,7 @@ class TestGitHubAdvisoryDiscovery:
         # All should have same source/confidence
         for result in results:
             assert result.source_type == SourceType.GITHUB_ADVISORY
-            assert result.confidence == 0.90
+            assert result.confidence == 0.93
 
     def test_discover_multiple_packages_in_advisory(self):
         """Test advisory with multiple affected packages."""
