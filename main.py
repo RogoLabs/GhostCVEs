@@ -37,6 +37,13 @@ from pathlib import Path
 from src import __version__
 from src.config import APP_SETTINGS, DATABASE_CONFIG, GITHUB_QUALITY_CONFIG
 from src.discovery import GitHubDiscovery, RSSDiscovery, VendorDiscovery, ExploitDBDiscovery
+from src.discovery.vendors import (
+    CitrixScraper,
+    IvantiScraper,
+    PaloAltoScraper,
+    FortinetScraper,
+    VMwareScraper,
+)
 from src.discovery.base import BaseDiscovery, DiscoveryResult
 from src.pipeline.orchestrator import PipelineOrchestrator
 from src.registry import CVEValidator
@@ -89,10 +96,19 @@ def create_discovery_modules(
     
     # RSS Discovery
     modules.append(RSSDiscovery())
-    
-    # Vendor Discovery
+
+    # Vendor Discovery (generic endpoint scraping)
     modules.append(VendorDiscovery(github_token=github_token))
-    
+
+    # Specialized Vendor Scrapers (high-confidence, vendor-specific)
+    modules.extend([
+        CitrixScraper(),
+        IvantiScraper(),
+        PaloAltoScraper(),
+        FortinetScraper(),
+        VMwareScraper(),
+    ])
+
     return modules
 
 

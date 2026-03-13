@@ -75,6 +75,11 @@ class VendorDiscovery(BaseDiscovery):
             "Microsoft MSRC",
             "F5 Security Advisories",
             "Juniper Security Bulletins",
+            "Cisco PSIRT",
+            "Red Hat Security Data",
+            "Debian Security Tracker",
+            "Oracle CPU",
+            "Apache Security",
             # Additional vendors will be activated as they are tested
         ]
 
