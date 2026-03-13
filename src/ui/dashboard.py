@@ -343,3 +343,125 @@ class Dashboard:
             message: Success message to display
         """
         self.console.print(f"[bold green]✅ {message}[/bold green]")
+
+    def display_source_health(self, health_monitor) -> None:
+        """
+        Display source health status dashboard.
+
+        Shows health status for all discovery sources including:
+        - Current status (HEALTHY/DEGRADED/FAILING)
+        - Last successful fetch time
+        - Consecutive failure count
+        - 24-hour error rate
+        - Response times
+
+        Args:
+            health_monitor: SourceHealthMonitor instance from orchestrator
+        """
+        from datetime import datetime, timezone
+        from src.monitoring.source_health import HealthStatus
+
+        # Create health status table
+        table = Table(title="📊 Source Health Status", show_header=True, header_style="bold")
+        table.add_column("Source", style="cyan", no_wrap=True, width=30)
+        table.add_column("Status", justify="center", width=12)
+        table.add_column("Last Success", justify="center", width=12)
+        table.add_column("Failures", justify="right", width=10)
+        table.add_column("Error Rate", justify="right", width=12)
+        table.add_column("Avg Response", justify="right", width=13)
+
+        all_health = health_monitor.get_all_health()
+
+        if not all_health:
+            self.console.print("\n[yellow]No source health data available yet.[/yellow]")
+            self.console.print("[dim]Run a hunt first to populate health metrics.[/dim]\n")
+            return
+
+        # Sort by status (failing first) then by consecutive failures
+        all_health.sort(key=lambda h: (
+            0 if h.status == HealthStatus.FAILING else (1 if h.status == HealthStatus.DEGRADED else 2),
+            -h.consecutive_failures
+        ))
+
+        for health in all_health:
+            # Status with emoji and color
+            if health.status == HealthStatus.HEALTHY:
+                status = "[green]✓ Healthy[/green]"
+            elif health.status == HealthStatus.DEGRADED:
+                status = "[yellow]⚠ Degraded[/yellow]"
+            else:
+                status = "[red]✗ Failing[/red]"
+
+            # Last success time (human-readable)
+            if health.last_success:
+                time_ago = datetime.now(timezone.utc) - health.last_success
+                total_seconds = time_ago.total_seconds()
+                if total_seconds < 60:
+                    last_success = "just now"
+                elif total_seconds < 3600:
+                    last_success = f"{int(total_seconds / 60)}m ago"
+                elif total_seconds < 86400:
+                    last_success = f"{int(total_seconds / 3600)}h ago"
+                else:
+                    last_success = f"{time_ago.days}d ago"
+            else:
+                last_success = "[dim]Never[/dim]"
+
+            # Format error rate with color
+            error_rate_pct = health.error_rate_24h * 100
+            if error_rate_pct < 5:
+                error_rate = f"[green]{error_rate_pct:.1f}%[/green]"
+            elif error_rate_pct < 25:
+                error_rate = f"[yellow]{error_rate_pct:.1f}%[/yellow]"
+            else:
+                error_rate = f"[red]{error_rate_pct:.1f}%[/red]"
+
+            # Format response time
+            if health.avg_response_time > 0:
+                avg_response = f"{health.avg_response_time:.2f}s"
+            else:
+                avg_response = "[dim]N/A[/dim]"
+
+            table.add_row(
+                health.source_name,
+                status,
+                last_success,
+                str(health.consecutive_failures),
+                error_rate,
+                avg_response
+            )
+
+        self.console.print()
+        self.console.print(table)
+
+        # Summary statistics
+        healthy_count = sum(1 for h in all_health if h.status == HealthStatus.HEALTHY)
+        degraded_count = sum(1 for h in all_health if h.status == HealthStatus.DEGRADED)
+        failing_count = sum(1 for h in all_health if h.status == HealthStatus.FAILING)
+        total_count = len(all_health)
+
+        self.console.print()
+        self.console.print("[bold]Summary:[/bold]")
+        self.console.print(f"  Total Sources: {total_count}")
+        self.console.print(f"  Healthy: [green]{healthy_count}[/green] ({healthy_count/total_count*100:.1f}%)")
+        self.console.print(f"  Degraded: [yellow]{degraded_count}[/yellow] ({degraded_count/total_count*100:.1f}%)")
+        self.console.print(f"  Failing: [red]{failing_count}[/red] ({failing_count/total_count*100:.1f}%)")
+
+        # Show failing sources with errors
+        if failing_count > 0:
+            self.console.print()
+            self.console.print("[bold red]Failing Sources:[/bold red]")
+            failing = health_monitor.get_failing_sources()
+            for health in failing:
+                self.console.print(f"  • {health.source_name}: {health.last_error}")
+
+        # Show degraded sources
+        if degraded_count > 0:
+            self.console.print()
+            self.console.print("[bold yellow]Degraded Sources:[/bold yellow]")
+            degraded = health_monitor.get_degraded_sources()
+            for health in degraded:
+                error_msg = health.last_error if health.last_error else "Multiple failures"
+                self.console.print(f"  • {health.source_name}: {error_msg}")
+
+        self.console.print()
