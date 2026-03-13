@@ -1,49 +1,27 @@
 # Ghost CVE Report
 
-**Generated:** 2026-03-13 15:20 UTC
+**Generated:** 2026-03-13 21:06 UTC
 
 ## Summary
 
-- **Active Ghosts:** 87
-- **Total CVEs Tracked:** 6520
-- **Discovery Sources:** 7404
+- **Active Ghosts:** 62
+- **Total CVEs Tracked:** 6521
+- **Discovery Sources:** 7420
 - **Oldest Ghost:** CVE-2026-1220 (52 days)
 
 ## Ghost CVE Registry
 
 | CVE ID | Source | First Seen | Evidence |
 |--------|--------|------------|----------|
-| CVE-2025-66249 | OSS Security | 2026-03-12 | [Link](https://seclists.org/oss-sec/2026/q1/298) |
-| CVE-2025-60012 | OSS Security | 2026-03-12 | [Link](https://seclists.org/oss-sec/2026/q1/297) |
 | CVE-2026-2436 | Debian Security Tracker | 2026-03-11 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-1940 | Debian Security Tracker | 2026-03-11 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2025-64152 | OSS Security | 2026-03-09 | [Link](https://seclists.org/oss-sec/2026/q1/284) |
 | CVE-2025-55017 | OSS Security | 2026-03-09 | [Link](https://seclists.org/oss-sec/2026/q1/283) |
-| CVE-2026-3838 | ZDI Advisories | 2026-03-09 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-171/) |
-| CVE-2026-3839 | ZDI Advisories | 2026-03-09 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-172/) |
 | CVE-2026-3633 | Debian Security Tracker | 2026-03-06 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-3634 | Debian Security Tracker | 2026-03-06 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-3632 | Debian Security Tracker | 2026-03-06 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-2092 | Red Hat Security Data | 2026-03-06 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
 | CVE-2026-2603 | Red Hat Security Data | 2026-03-06 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
-| CVE-2026-3555 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-153/) |
-| CVE-2026-3556 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-154/) |
-| CVE-2026-3557 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-155/) |
-| CVE-2026-3558 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-156/) |
-| CVE-2026-3559 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-157/) |
-| CVE-2026-3560 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-158/) |
-| CVE-2026-3561 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-159/) |
-| CVE-2026-3562 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-160/) |
-| CVE-2026-2923 | Debian Security Tracker | 2026-03-06 | [Link](https://security-tracker.debian.org/tracker/data/json) |
-| CVE-2026-3081 | Debian Security Tracker | 2026-03-06 | [Link](https://security-tracker.debian.org/tracker/data/json) |
-| CVE-2026-3082 | ZDI Advisories | 2026-03-06 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-163/) |
-| CVE-2026-2920 | Debian Security Tracker | 2026-03-06 | [Link](https://security-tracker.debian.org/tracker/data/json) |
-| CVE-2026-2922 | Debian Security Tracker | 2026-03-06 | [Link](https://security-tracker.debian.org/tracker/data/json) |
-| CVE-2026-3083 | Debian Security Tracker | 2026-03-06 | [Link](https://security-tracker.debian.org/tracker/data/json) |
-| CVE-2026-3085 | Debian Security Tracker | 2026-03-06 | [Link](https://security-tracker.debian.org/tracker/data/json) |
-| CVE-2026-2921 | Debian Security Tracker | 2026-03-06 | [Link](https://security-tracker.debian.org/tracker/data/json) |
-| CVE-2026-3084 | Debian Security Tracker | 2026-03-06 | [Link](https://security-tracker.debian.org/tracker/data/json) |
-| CVE-2026-3086 | Debian Security Tracker | 2026-03-06 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-3195 | Debian Security Tracker | 2026-03-03 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-3196 | Debian Security Tracker | 2026-03-03 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-3442 | Debian Security Tracker | 2026-03-03 | [Link](https://security-tracker.debian.org/tracker/data/json) |
@@ -65,9 +43,6 @@
 | CVE-2026-3184 | Debian Security Tracker | 2026-02-25 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-3190 | Red Hat Security Advisories | 2026-02-25 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
 | CVE-2026-3121 | Red Hat Security Advisories | 2026-02-25 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
-| CVE-2025-15060 | ZDI Advisories | 2026-02-25 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-124/) |
-| CVE-2026-2491 | ZDI Advisories | 2026-02-25 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-129/) |
-| CVE-2026-2493 | ZDI Advisories | 2026-02-25 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-130/) |
 | CVE-2026-2708 | Debian Security Tracker | 2026-02-20 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-2625 | Debian Security Tracker | 2026-02-18 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-2470 | OSS Security | 2026-02-17 | [Link](https://seclists.org/oss-sec/2026/q1/168) |
