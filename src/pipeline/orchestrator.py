@@ -17,6 +17,7 @@ Author: rogolabs.net
 """
 
 import logging
+import time
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import List, Optional
@@ -35,6 +36,7 @@ from src.registry.multi_source_validator import MultiSourceValidator
 from src.registry.validator import ValidationResult
 from src.storage.database import DatabaseManager
 from src.storage.models import GhostCVE
+from src.monitoring.source_health import SourceHealthMonitor
 
 
 logger = logging.getLogger(__name__)
@@ -131,6 +133,9 @@ class PipelineOrchestrator:
         self.learning_system = SourceReliabilityTracker(db_manager)
         self.ghost_analyzer = GhostAnalyzer(reliability_tracker=self.learning_system)
         self.root_cause_detector = RootCauseDetector()
+
+        # Health monitoring for source reliability tracking
+        self.health_monitor = SourceHealthMonitor()
 
         # Track processed CVEs to avoid duplicates within a run
         self._processed_cves: dict[str, ProcessedCVE] = {}
@@ -295,12 +300,18 @@ class PipelineOrchestrator:
 
         # Execute each discovery source
         for source in discovery_sources:
+            source_start_time = time.time()
+            
             try:
                 self.logger.info(f"Running discovery source: {source.name}")
                 stats.sources_used.append(source.name)
 
                 # Run discovery
                 discoveries = source.run()
+                
+                # Record successful fetch with response time
+                response_time = time.time() - source_start_time
+                self.health_monitor.record_success(source.name, response_time)
 
                 self.logger.info(
                     f"Discovery source '{source.name}' found {len(discoveries)} CVE mentions"
@@ -334,6 +345,9 @@ class PipelineOrchestrator:
                         self._processed_cves[processed.cve_id] = processed
 
             except Exception as e:
+                # Record failed fetch
+                self.health_monitor.record_failure(source.name, e)
+                
                 self.logger.error(
                     f"Error running discovery source '{source.name}': {e}",
                     exc_info=True
