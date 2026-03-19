@@ -1,18 +1,19 @@
 # Ghost CVE Report
 
-**Generated:** 2026-03-19 15:37 UTC
+**Generated:** 2026-03-19 21:17 UTC
 
 ## Summary
 
-- **Active Ghosts:** 61
-- **Total CVEs Tracked:** 6314
-- **Discovery Sources:** 7537
+- **Active Ghosts:** 62
+- **Total CVEs Tracked:** 6319
+- **Discovery Sources:** 7544
 - **Oldest Ghost:** CVE-2026-1220 (58 days)
 
 ## Ghost CVE Registry
 
 | CVE ID | Source | First Seen | Evidence |
 |--------|--------|------------|----------|
+| CVE-2026-4267 | GitHub Security Advisories | 2026-03-19 | [Link](https://github.com/advisories/GHSA-2xr4-chcf-vmvf) |
 | CVE-2026-3312 | Debian Security Tracker | 2026-03-17 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-3864 | OSS Security | 2026-03-17 | [Link](https://seclists.org/oss-sec/2026/q1/322) |
 | CVE-2026-4149 | ZDI Advisories | 2026-03-16 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-192/) |
@@ -77,6 +78,15 @@
 
 ## Critical Ghosts (30+ Days)
 
+### CVE-2026-2470
+
+- **First Seen:** 2026-02-17
+- **Days in Limbo:** 30
+
+**Discovery Sources:**
+
+- [OSS Security](https://seclists.org/oss-sec/2026/q1/168) (2026-02-17)
+
 ### CVE-2026-2604
 
 - **First Seen:** 2026-02-17
@@ -109,7 +119,7 @@
 ### CVE-2025-69691
 
 - **First Seen:** 2026-02-16
-- **Days in Limbo:** 30
+- **Days in Limbo:** 31
 
 **Discovery Sources:**
 
@@ -118,7 +128,7 @@
 ### CVE-2025-69690
 
 - **First Seen:** 2026-02-16
-- **Days in Limbo:** 30
+- **Days in Limbo:** 31
 
 **Discovery Sources:**
 
