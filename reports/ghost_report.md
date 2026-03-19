@@ -1,12 +1,12 @@
 # Ghost CVE Report
 
-**Generated:** 2026-03-18 21:00 UTC
+**Generated:** 2026-03-19 03:51 UTC
 
 ## Summary
 
 - **Active Ghosts:** 62
-- **Total CVEs Tracked:** 6309
-- **Discovery Sources:** 7525
+- **Total CVEs Tracked:** 6312
+- **Discovery Sources:** 7534
 - **Oldest Ghost:** CVE-2026-1220 (57 days)
 
 ## Ghost CVE Registry
@@ -19,7 +19,7 @@
 | CVE-2026-4155 | ZDI Advisories | 2026-03-16 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-195/) |
 | CVE-2026-4156 | ZDI Advisories | 2026-03-16 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-196/) |
 | CVE-2026-4157 | ZDI Advisories | 2026-03-16 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-197/) |
-| CVE-2026-2046 | ZDI Advisories | 2026-03-16 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-213/) |
+| CVE-2026-2046 | Debian Security Tracker | 2026-03-16 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-4158 | ZDI Advisories | 2026-03-16 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-215/) |
 | CVE-2026-2436 | Debian Security Tracker | 2026-03-11 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-1940 | Debian Security Tracker | 2026-03-11 | [Link](https://security-tracker.debian.org/tracker/data/json) |
@@ -78,6 +78,53 @@
 
 ## Critical Ghosts (30+ Days)
 
+### CVE-2026-2604
+
+- **First Seen:** 2026-02-17
+- **Days in Limbo:** 30
+
+**Discovery Sources:**
+
+- [Debian Security Tracker](https://security-tracker.debian.org/tracker/data/json) (2026-02-17)
+- [Red Hat Security Data](https://access.redhat.com/hydra/rest/securitydata/cve.json) (2026-02-17)
+
+### CVE-2026-2050
+
+- **First Seen:** 2026-02-17
+- **Days in Limbo:** 30
+
+**Discovery Sources:**
+
+- [Debian Security Tracker](https://security-tracker.debian.org/tracker/data/json) (2026-02-17)
+
+### CVE-2026-2049
+
+- **First Seen:** 2026-02-17
+- **Days in Limbo:** 30
+
+**Discovery Sources:**
+
+- [ZDI Advisories](http://www.zerodayinitiative.com/advisories/ZDI-26-214/) (2026-03-16)
+- [Debian Security Tracker](https://security-tracker.debian.org/tracker/data/json) (2026-02-17)
+
+### CVE-2025-69691
+
+- **First Seen:** 2026-02-16
+- **Days in Limbo:** 30
+
+**Discovery Sources:**
+
+- [Full Disclosure](https://seclists.org/fulldisclosure/2026/Feb/16) (2026-02-16)
+
+### CVE-2025-69690
+
+- **First Seen:** 2026-02-16
+- **Days in Limbo:** 30
+
+**Discovery Sources:**
+
+- [Full Disclosure](https://seclists.org/fulldisclosure/2026/Feb/16) (2026-02-16)
+
 ### CVE-2026-2574
 
 - **First Seen:** 2026-02-16
@@ -91,7 +138,7 @@
 ### CVE-2026-2369
 
 - **First Seen:** 2026-02-12
-- **Days in Limbo:** 34
+- **Days in Limbo:** 35
 
 **Discovery Sources:**
 
@@ -101,7 +148,7 @@
 ### CVE-2026-0964
 
 - **First Seen:** 2026-02-11
-- **Days in Limbo:** 35
+- **Days in Limbo:** 36
 
 **Discovery Sources:**
 
@@ -111,7 +158,7 @@
 ### CVE-2026-0966
 
 - **First Seen:** 2026-02-11
-- **Days in Limbo:** 35
+- **Days in Limbo:** 36
 
 **Discovery Sources:**
 
@@ -121,7 +168,7 @@
 ### CVE-2025-14821
 
 - **First Seen:** 2026-02-11
-- **Days in Limbo:** 35
+- **Days in Limbo:** 36
 
 **Discovery Sources:**
 
@@ -131,7 +178,7 @@
 ### CVE-2026-0968
 
 - **First Seen:** 2026-02-11
-- **Days in Limbo:** 35
+- **Days in Limbo:** 36
 
 **Discovery Sources:**
 
@@ -141,7 +188,7 @@
 ### CVE-2026-0967
 
 - **First Seen:** 2026-02-11
-- **Days in Limbo:** 35
+- **Days in Limbo:** 36
 
 **Discovery Sources:**
 
@@ -151,7 +198,7 @@
 ### CVE-2026-0965
 
 - **First Seen:** 2026-02-11
-- **Days in Limbo:** 35
+- **Days in Limbo:** 36
 
 **Discovery Sources:**
 
@@ -161,7 +208,7 @@
 ### CVE-2026-2272
 
 - **First Seen:** 2026-02-11
-- **Days in Limbo:** 35
+- **Days in Limbo:** 36
 
 **Discovery Sources:**
 
@@ -171,7 +218,7 @@
 ### CVE-2026-2271
 
 - **First Seen:** 2026-02-11
-- **Days in Limbo:** 35
+- **Days in Limbo:** 36
 
 **Discovery Sources:**
 
@@ -181,7 +228,7 @@
 ### CVE-2026-1609
 
 - **First Seen:** 2026-02-10
-- **Days in Limbo:** 36
+- **Days in Limbo:** 37
 
 **Discovery Sources:**
 
@@ -190,7 +237,7 @@
 ### CVE-2026-1584
 
 - **First Seen:** 2026-02-10
-- **Days in Limbo:** 36
+- **Days in Limbo:** 37
 
 **Discovery Sources:**
 
@@ -210,7 +257,7 @@
 ### CVE-2026-2100
 
 - **First Seen:** 2026-02-07
-- **Days in Limbo:** 39
+- **Days in Limbo:** 40
 
 **Discovery Sources:**
 
@@ -220,7 +267,7 @@
 ### CVE-2025-65852
 
 - **First Seen:** 2026-02-07
-- **Days in Limbo:** 39
+- **Days in Limbo:** 40
 
 **Discovery Sources:**
 
@@ -229,7 +276,7 @@
 ### CVE-2025-12805
 
 - **First Seen:** 2026-02-04
-- **Days in Limbo:** 42
+- **Days in Limbo:** 43
 
 **Discovery Sources:**
 
@@ -238,7 +285,7 @@
 ### CVE-2026-1767
 
 - **First Seen:** 2026-02-03
-- **Days in Limbo:** 43
+- **Days in Limbo:** 44
 
 **Discovery Sources:**
 
@@ -248,7 +295,7 @@
 ### CVE-2026-1766
 
 - **First Seen:** 2026-02-03
-- **Days in Limbo:** 43
+- **Days in Limbo:** 44
 
 **Discovery Sources:**
 
@@ -258,7 +305,7 @@
 ### CVE-2026-1765
 
 - **First Seen:** 2026-02-03
-- **Days in Limbo:** 43
+- **Days in Limbo:** 44
 
 **Discovery Sources:**
 
@@ -268,7 +315,7 @@
 ### CVE-2026-1764
 
 - **First Seen:** 2026-02-03
-- **Days in Limbo:** 43
+- **Days in Limbo:** 44
 
 **Discovery Sources:**
 
@@ -278,7 +325,7 @@
 ### CVE-2025-63374
 
 - **First Seen:** 2026-02-03
-- **Days in Limbo:** 43
+- **Days in Limbo:** 44
 
 **Discovery Sources:**
 
