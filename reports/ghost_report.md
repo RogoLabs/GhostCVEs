@@ -1,6 +1,6 @@
 # Ghost CVE Report
 
-**Generated:** 2026-03-22 15:19 UTC
+**Generated:** 2026-03-22 21:09 UTC
 
 ## Summary
 
@@ -106,7 +106,7 @@
 ### CVE-2026-2470
 
 - **First Seen:** 2026-02-17
-- **Days in Limbo:** 32
+- **Days in Limbo:** 33
 
 **Discovery Sources:**
 
@@ -144,7 +144,7 @@
 ### CVE-2025-69691
 
 - **First Seen:** 2026-02-16
-- **Days in Limbo:** 33
+- **Days in Limbo:** 34
 
 **Discovery Sources:**
 
@@ -153,7 +153,7 @@
 ### CVE-2025-69690
 
 - **First Seen:** 2026-02-16
-- **Days in Limbo:** 33
+- **Days in Limbo:** 34
 
 **Discovery Sources:**
 
