@@ -50,26 +50,59 @@ class VendorDiscovery(BaseDiscovery):
         endpoints: list[VendorEndpoint] | None = None,
         github_token: str | None = None,
         enabled: bool = True,
+        active_vendors: list[str] | None = None,
     ) -> None:
         """
         Initialize the vendor discovery module.
-        
+
         Args:
             endpoints: List of vendor endpoints to query.
                        Defaults to VENDOR_ENDPOINTS from config.
             github_token: GitHub token for authenticated endpoints
             enabled: Whether this discovery module is active
+            active_vendors: List of vendor names to actively scrape.
+                          If None, uses default active list.
+                          If provided, only these vendors will be scraped.
         """
         super().__init__(
             name="Vendor Discovery",
             source_type=SourceType.VENDOR_ADVISORY,
             enabled=enabled,
         )
-        
-        self.endpoints = endpoints or list(VENDOR_ENDPOINTS)
+
+        # Default active vendors list (start with high-value, tested vendors)
+        default_active_vendors = [
+            "Microsoft MSRC",
+            "F5 Security Advisories",
+            "Juniper Security Bulletins",
+            "Cisco PSIRT",
+            "Red Hat Security Data",
+            "Debian Security Tracker",
+            "Oracle CPU",
+            "Apache Security",
+            # Additional vendors will be activated as they are tested
+        ]
+
+        # Use provided active_vendors or default
+        self.active_vendors = active_vendors if active_vendors is not None else default_active_vendors
+
+        # Get all available endpoints
+        all_endpoints = endpoints or list(VENDOR_ENDPOINTS)
+
+        # Filter to only active vendors
+        self.endpoints = [
+            ep for ep in all_endpoints
+            if ep.name in self.active_vendors
+        ]
+
         self.github_token = github_token
         self.session = self._create_session()
         self._seen_urls: set[str] = set()
+
+        logger.info(
+            f"VendorDiscovery initialized with {len(self.endpoints)} active vendors: "
+            f"{', '.join(self.active_vendors)}"
+        )
     
     def _create_session(self) -> requests.Session:
         """

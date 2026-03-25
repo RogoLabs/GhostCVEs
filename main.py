@@ -37,6 +37,13 @@ from pathlib import Path
 from src import __version__
 from src.config import APP_SETTINGS, DATABASE_CONFIG, GITHUB_QUALITY_CONFIG
 from src.discovery import GitHubDiscovery, RSSDiscovery, VendorDiscovery, ExploitDBDiscovery
+from src.discovery.vendors import (
+    CitrixScraper,
+    IvantiScraper,
+    PaloAltoScraper,
+    FortinetScraper,
+    VMwareScraper,
+)
 from src.discovery.base import BaseDiscovery, DiscoveryResult
 from src.pipeline.orchestrator import PipelineOrchestrator
 from src.registry import CVEValidator
@@ -89,10 +96,19 @@ def create_discovery_modules(
     
     # RSS Discovery
     modules.append(RSSDiscovery())
-    
-    # Vendor Discovery
+
+    # Vendor Discovery (generic endpoint scraping)
     modules.append(VendorDiscovery(github_token=github_token))
-    
+
+    # Specialized Vendor Scrapers (high-confidence, vendor-specific)
+    modules.extend([
+        CitrixScraper(),
+        IvantiScraper(),
+        PaloAltoScraper(),
+        FortinetScraper(),
+        VMwareScraper(),
+    ])
+
     return modules
 
 
@@ -447,6 +463,39 @@ def show_dashboard(db_manager: DatabaseManager, dashboard: Dashboard) -> None:
     dashboard.display_statistics(stats)
 
 
+
+def check_source_health(db_manager: DatabaseManager, dashboard: Dashboard) -> None:
+    """
+    Check and display source health status.
+    
+    Requires at least one hunt run to populate health metrics.
+    
+    Args:
+        db_manager: Database manager instance
+        dashboard: Dashboard for display
+    """
+    logger = logging.getLogger(__name__)
+    
+    # Initialize the pipeline orchestrator to access health monitor
+    orchestrator = PipelineOrchestrator(db_manager)
+    
+    dashboard.console.print()
+    dashboard.console.print("[bold cyan]🏥 Source Health Monitoring Dashboard[/bold cyan]")
+    dashboard.console.print()
+    
+    # Check if we have any health data
+    all_health = orchestrator.health_monitor.get_all_health()
+    
+    if not all_health:
+        dashboard.display_warning(
+            "No source health data available. Run --hunt first to populate metrics."
+        )
+        return
+    
+    # Display health dashboard
+    dashboard.display_source_health(orchestrator.health_monitor)
+
+
 def main() -> int:
     """
     Main entry point for Ghost Hunter.
@@ -497,6 +546,12 @@ Examples:
         help="Run source audit and generate reliability report",
     )
 
+
+    parser.add_argument(
+        "--check-sources",
+        action="store_true",
+        help="Check source health status and display dashboard",
+    )
     parser.add_argument(
         "--format",
         choices=["console", "json", "csv", "markdown", "all"],
@@ -580,7 +635,7 @@ Examples:
     
     try:
         # Default to dashboard if no mode specified
-        if not any([args.hunt, args.report, args.dashboard, args.check_resolutions, args.audit]):
+        if not any([args.hunt, args.report, args.dashboard, args.check_resolutions, args.audit, args.check_sources]):
             args.dashboard = True
 
         # Run requested modes
@@ -606,6 +661,12 @@ Examples:
                 output_dir=args.output_dir,
             )
 
+        if args.check_sources:
+            check_source_health(
+                db_manager=db_manager,
+                dashboard=dashboard,
+            )
+
         if args.report:
             run_report(
                 db_manager=db_manager,
@@ -614,7 +675,7 @@ Examples:
                 format=args.format,
             )
 
-        if args.dashboard and not args.hunt and not args.report and not args.check_resolutions and not args.audit:
+        if args.dashboard and not args.hunt and not args.report and not args.check_resolutions and not args.audit and not args.check_sources:
             show_dashboard(db_manager, dashboard)
 
         return 0
