@@ -1,10 +1,10 @@
 # Ghost CVE Report
 
-**Generated:** 2026-03-26 15:23 UTC
+**Generated:** 2026-03-26 21:30 UTC
 
 ## Summary
 
-- **Active Ghosts:** 67
+- **Active Ghosts:** 55
 - **Total CVEs Tracked:** 6482
 - **Discovery Sources:** 7845
 - **Oldest Ghost:** CVE-2026-1220 (65 days)
@@ -28,7 +28,6 @@
 | CVE-2026-4157 | ZDI Advisories | 2026-03-16 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-197/) |
 | CVE-2026-2046 | Debian Security Tracker | 2026-03-16 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-4158 | ZDI Advisories | 2026-03-16 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-215/) |
-| CVE-2026-2436 | Debian Security Tracker | 2026-03-11 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2025-64152 | OSS Security | 2026-03-09 | [Link](https://seclists.org/oss-sec/2026/q1/284) |
 | CVE-2025-55017 | OSS Security | 2026-03-09 | [Link](https://seclists.org/oss-sec/2026/q1/283) |
 | CVE-2026-3195 | Debian Security Tracker | 2026-03-03 | [Link](https://security-tracker.debian.org/tracker/data/json) |
@@ -48,8 +47,6 @@
 | CVE-2025-71209 | ZDI Advisories | 2026-03-03 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-148/) |
 | CVE-2025-71218 | ZDI Advisories | 2026-03-03 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-149/) |
 | CVE-2026-3184 | Debian Security Tracker | 2026-02-25 | [Link](https://security-tracker.debian.org/tracker/data/json) |
-| CVE-2026-3190 | Red Hat Security Advisories | 2026-02-25 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
-| CVE-2026-3121 | Red Hat Security Advisories | 2026-02-25 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
 | CVE-2026-2708 | Debian Security Tracker | 2026-02-20 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-2625 | Debian Security Tracker | 2026-02-18 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-2470 | OSS Security | 2026-02-17 | [Link](https://seclists.org/oss-sec/2026/q1/168) |
@@ -59,18 +56,9 @@
 | CVE-2025-69691 | Full Disclosure | 2026-02-16 | [Link](https://seclists.org/fulldisclosure/2026/Feb/16) |
 | CVE-2025-69690 | Full Disclosure | 2026-02-16 | [Link](https://seclists.org/fulldisclosure/2026/Feb/16) |
 | CVE-2026-2574 | Debian Security Tracker | 2026-02-16 | [Link](https://security-tracker.debian.org/tracker/data/json) |
-| CVE-2026-0964 | Debian Security Tracker | 2026-02-11 | [Link](https://security-tracker.debian.org/tracker/data/json) |
-| CVE-2026-0966 | Debian Security Tracker | 2026-02-11 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2025-14821 | Debian Security Tracker | 2026-02-11 | [Link](https://security-tracker.debian.org/tracker/data/json) |
-| CVE-2026-0968 | Debian Security Tracker | 2026-02-11 | [Link](https://security-tracker.debian.org/tracker/data/json) |
-| CVE-2026-0967 | Debian Security Tracker | 2026-02-11 | [Link](https://security-tracker.debian.org/tracker/data/json) |
-| CVE-2026-0965 | Debian Security Tracker | 2026-02-11 | [Link](https://security-tracker.debian.org/tracker/data/json) |
-| CVE-2026-2272 | Debian Security Tracker | 2026-02-11 | [Link](https://security-tracker.debian.org/tracker/data/json) |
-| CVE-2026-2271 | Debian Security Tracker | 2026-02-11 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-1609 | Red Hat Security Data | 2026-02-10 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
 | CVE-2026-1584 | Red Hat Security Data | 2026-02-10 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
-| CVE-2026-2239 | Debian Security Tracker | 2026-02-09 | [Link](https://security-tracker.debian.org/tracker/data/json) |
-| CVE-2026-2100 | Debian Security Tracker | 2026-02-07 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2025-65852 | GitHub Security Advisories | 2026-02-07 | [Link](https://github.com/advisories/GHSA-rjv5-9px2-fqw6) |
 | CVE-2025-12805 | Red Hat Security Advisories | 2026-02-04 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
 | CVE-2026-1767 | Debian Security Tracker | 2026-02-03 | [Link](https://security-tracker.debian.org/tracker/data/json) |
@@ -106,7 +94,7 @@
 ### CVE-2026-2470
 
 - **First Seen:** 2026-02-17
-- **Days in Limbo:** 36
+- **Days in Limbo:** 37
 
 **Discovery Sources:**
 
@@ -144,7 +132,7 @@
 ### CVE-2025-69691
 
 - **First Seen:** 2026-02-16
-- **Days in Limbo:** 37
+- **Days in Limbo:** 38
 
 **Discovery Sources:**
 
@@ -153,7 +141,7 @@
 ### CVE-2025-69690
 
 - **First Seen:** 2026-02-16
-- **Days in Limbo:** 37
+- **Days in Limbo:** 38
 
 **Discovery Sources:**
 
@@ -169,26 +157,6 @@
 - [Debian Security Tracker](https://security-tracker.debian.org/tracker/data/json) (2026-02-17)
 - [Red Hat Security Data](https://access.redhat.com/hydra/rest/securitydata/cve.json) (2026-02-16)
 
-### CVE-2026-0964
-
-- **First Seen:** 2026-02-11
-- **Days in Limbo:** 43
-
-**Discovery Sources:**
-
-- [Debian Security Tracker](https://security-tracker.debian.org/tracker/data/json) (2026-02-12)
-- [Red Hat Security Data](https://access.redhat.com/hydra/rest/securitydata/cve.json) (2026-02-11)
-
-### CVE-2026-0966
-
-- **First Seen:** 2026-02-11
-- **Days in Limbo:** 43
-
-**Discovery Sources:**
-
-- [Debian Security Tracker](https://security-tracker.debian.org/tracker/data/json) (2026-02-12)
-- [Red Hat Security Data](https://access.redhat.com/hydra/rest/securitydata/cve.json) (2026-02-11)
-
 ### CVE-2025-14821
 
 - **First Seen:** 2026-02-11
@@ -197,56 +165,6 @@
 **Discovery Sources:**
 
 - [Debian Security Tracker](https://security-tracker.debian.org/tracker/data/json) (2026-02-12)
-- [Red Hat Security Data](https://access.redhat.com/hydra/rest/securitydata/cve.json) (2026-02-11)
-
-### CVE-2026-0968
-
-- **First Seen:** 2026-02-11
-- **Days in Limbo:** 43
-
-**Discovery Sources:**
-
-- [Debian Security Tracker](https://security-tracker.debian.org/tracker/data/json) (2026-02-12)
-- [Red Hat Security Data](https://access.redhat.com/hydra/rest/securitydata/cve.json) (2026-02-11)
-
-### CVE-2026-0967
-
-- **First Seen:** 2026-02-11
-- **Days in Limbo:** 43
-
-**Discovery Sources:**
-
-- [Debian Security Tracker](https://security-tracker.debian.org/tracker/data/json) (2026-02-12)
-- [Red Hat Security Data](https://access.redhat.com/hydra/rest/securitydata/cve.json) (2026-02-11)
-
-### CVE-2026-0965
-
-- **First Seen:** 2026-02-11
-- **Days in Limbo:** 43
-
-**Discovery Sources:**
-
-- [Debian Security Tracker](https://security-tracker.debian.org/tracker/data/json) (2026-02-12)
-- [Red Hat Security Data](https://access.redhat.com/hydra/rest/securitydata/cve.json) (2026-02-11)
-
-### CVE-2026-2272
-
-- **First Seen:** 2026-02-11
-- **Days in Limbo:** 43
-
-**Discovery Sources:**
-
-- [Debian Security Tracker](https://security-tracker.debian.org/tracker/data/json) (2026-02-11)
-- [Red Hat Security Data](https://access.redhat.com/hydra/rest/securitydata/cve.json) (2026-02-11)
-
-### CVE-2026-2271
-
-- **First Seen:** 2026-02-11
-- **Days in Limbo:** 43
-
-**Discovery Sources:**
-
-- [Debian Security Tracker](https://security-tracker.debian.org/tracker/data/json) (2026-02-11)
 - [Red Hat Security Data](https://access.redhat.com/hydra/rest/securitydata/cve.json) (2026-02-11)
 
 ### CVE-2026-1609
@@ -267,26 +185,6 @@
 
 - [Red Hat Security Data](https://access.redhat.com/hydra/rest/securitydata/cve.json) (2026-03-11)
 - [Debian Security Tracker](https://security-tracker.debian.org/tracker/data/json) (2026-02-10)
-
-### CVE-2026-2239
-
-- **First Seen:** 2026-02-09
-- **Days in Limbo:** 45
-
-**Discovery Sources:**
-
-- [Debian Security Tracker](https://security-tracker.debian.org/tracker/data/json) (2026-02-10)
-- [Red Hat Security Data](https://access.redhat.com/hydra/rest/securitydata/cve.json) (2026-02-09)
-
-### CVE-2026-2100
-
-- **First Seen:** 2026-02-07
-- **Days in Limbo:** 47
-
-**Discovery Sources:**
-
-- [Debian Security Tracker](https://security-tracker.debian.org/tracker/data/json) (2026-02-07)
-- [Red Hat Security Data](https://access.redhat.com/hydra/rest/securitydata/cve.json) (2026-02-07)
 
 ### CVE-2025-65852
 
