@@ -1,18 +1,20 @@
 # Ghost CVE Report
 
-**Generated:** 2026-03-26 21:30 UTC
+**Generated:** 2026-03-27 03:41 UTC
 
 ## Summary
 
-- **Active Ghosts:** 55
-- **Total CVEs Tracked:** 6482
-- **Discovery Sources:** 7845
+- **Active Ghosts:** 56
+- **Total CVEs Tracked:** 6493
+- **Discovery Sources:** 7860
 - **Oldest Ghost:** CVE-2026-1220 (65 days)
 
 ## Ghost CVE Registry
 
 | CVE ID | Source | First Seen | Evidence |
 |--------|--------|------------|----------|
+| CVE-2025-59490 | Debian Security Tracker | 2026-03-27 | [Link](https://security-tracker.debian.org/tracker/data/json) |
+| CVE-2026-4851 | OSS Security | 2026-03-26 | [Link](https://seclists.org/oss-sec/2026/q1/392) |
 | CVE-2026-3836 | Debian Security Tracker | 2026-03-24 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-3842 | Debian Security Tracker | 2026-03-20 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-4267 | GitHub Security Advisories | 2026-03-19 | [Link](https://github.com/advisories/GHSA-2xr4-chcf-vmvf) |
@@ -60,7 +62,6 @@
 | CVE-2026-1609 | Red Hat Security Data | 2026-02-10 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
 | CVE-2026-1584 | Red Hat Security Data | 2026-02-10 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
 | CVE-2025-65852 | GitHub Security Advisories | 2026-02-07 | [Link](https://github.com/advisories/GHSA-rjv5-9px2-fqw6) |
-| CVE-2025-12805 | Red Hat Security Advisories | 2026-02-04 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
 | CVE-2026-1767 | Debian Security Tracker | 2026-02-03 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-1766 | Debian Security Tracker | 2026-02-03 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-1765 | Debian Security Tracker | 2026-02-03 | [Link](https://security-tracker.debian.org/tracker/data/json) |
@@ -74,7 +75,7 @@
 ### CVE-2026-2708
 
 - **First Seen:** 2026-02-20
-- **Days in Limbo:** 34
+- **Days in Limbo:** 35
 
 **Discovery Sources:**
 
@@ -84,7 +85,7 @@
 ### CVE-2026-2625
 
 - **First Seen:** 2026-02-18
-- **Days in Limbo:** 36
+- **Days in Limbo:** 37
 
 **Discovery Sources:**
 
@@ -103,7 +104,7 @@
 ### CVE-2026-2604
 
 - **First Seen:** 2026-02-17
-- **Days in Limbo:** 37
+- **Days in Limbo:** 38
 
 **Discovery Sources:**
 
@@ -113,7 +114,7 @@
 ### CVE-2026-2050
 
 - **First Seen:** 2026-02-17
-- **Days in Limbo:** 37
+- **Days in Limbo:** 38
 
 **Discovery Sources:**
 
@@ -122,7 +123,7 @@
 ### CVE-2026-2049
 
 - **First Seen:** 2026-02-17
-- **Days in Limbo:** 37
+- **Days in Limbo:** 38
 
 **Discovery Sources:**
 
@@ -160,7 +161,7 @@
 ### CVE-2025-14821
 
 - **First Seen:** 2026-02-11
-- **Days in Limbo:** 43
+- **Days in Limbo:** 44
 
 **Discovery Sources:**
 
@@ -170,7 +171,7 @@
 ### CVE-2026-1609
 
 - **First Seen:** 2026-02-10
-- **Days in Limbo:** 44
+- **Days in Limbo:** 45
 
 **Discovery Sources:**
 
@@ -179,7 +180,7 @@
 ### CVE-2026-1584
 
 - **First Seen:** 2026-02-10
-- **Days in Limbo:** 44
+- **Days in Limbo:** 45
 
 **Discovery Sources:**
 
@@ -189,25 +190,16 @@
 ### CVE-2025-65852
 
 - **First Seen:** 2026-02-07
-- **Days in Limbo:** 47
+- **Days in Limbo:** 48
 
 **Discovery Sources:**
 
 - [GitHub Security Advisories](https://github.com/advisories/GHSA-rjv5-9px2-fqw6) (2026-02-07)
 
-### CVE-2025-12805
-
-- **First Seen:** 2026-02-04
-- **Days in Limbo:** 50
-
-**Discovery Sources:**
-
-- [Red Hat Security Advisories](https://access.redhat.com/hydra/rest/securitydata/cve.json) (2026-02-04)
-
 ### CVE-2026-1767
 
 - **First Seen:** 2026-02-03
-- **Days in Limbo:** 51
+- **Days in Limbo:** 52
 
 **Discovery Sources:**
 
@@ -217,7 +209,7 @@
 ### CVE-2026-1766
 
 - **First Seen:** 2026-02-03
-- **Days in Limbo:** 51
+- **Days in Limbo:** 52
 
 **Discovery Sources:**
 
@@ -227,7 +219,7 @@
 ### CVE-2026-1765
 
 - **First Seen:** 2026-02-03
-- **Days in Limbo:** 51
+- **Days in Limbo:** 52
 
 **Discovery Sources:**
 
@@ -237,7 +229,7 @@
 ### CVE-2026-1764
 
 - **First Seen:** 2026-02-03
-- **Days in Limbo:** 51
+- **Days in Limbo:** 52
 
 **Discovery Sources:**
 
@@ -247,7 +239,7 @@
 ### CVE-2025-63374
 
 - **First Seen:** 2026-02-03
-- **Days in Limbo:** 51
+- **Days in Limbo:** 52
 
 **Discovery Sources:**
 
