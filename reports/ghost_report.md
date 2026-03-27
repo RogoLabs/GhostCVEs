@@ -1,13 +1,13 @@
 # Ghost CVE Report
 
-**Generated:** 2026-03-27 09:38 UTC
+**Generated:** 2026-03-27 15:48 UTC
 
 ## Summary
 
 - **Active Ghosts:** 56
-- **Total CVEs Tracked:** 6493
-- **Discovery Sources:** 7860
-- **Oldest Ghost:** CVE-2026-1220 (65 days)
+- **Total CVEs Tracked:** 6496
+- **Discovery Sources:** 7866
+- **Oldest Ghost:** CVE-2026-1220 (66 days)
 
 ## Ghost CVE Registry
 
@@ -71,6 +71,16 @@
 | CVE-2026-1220 | Debian Security Tracker | 2026-01-20 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 
 ## Critical Ghosts (30+ Days)
+
+### CVE-2026-3184
+
+- **First Seen:** 2026-02-25
+- **Days in Limbo:** 30
+
+**Discovery Sources:**
+
+- [Debian Security Tracker](https://security-tracker.debian.org/tracker/data/json) (2026-02-26)
+- [Red Hat Security Advisories](https://access.redhat.com/hydra/rest/securitydata/cve.json) (2026-02-25)
 
 ### CVE-2026-2708
 
@@ -151,7 +161,7 @@
 ### CVE-2026-2574
 
 - **First Seen:** 2026-02-16
-- **Days in Limbo:** 38
+- **Days in Limbo:** 39
 
 **Discovery Sources:**
 
@@ -248,7 +258,7 @@
 ### CVE-2025-58151
 
 - **First Seen:** 2026-01-27
-- **Days in Limbo:** 58
+- **Days in Limbo:** 59
 
 **Discovery Sources:**
 
@@ -257,7 +267,7 @@
 ### CVE-2026-1220
 
 - **First Seen:** 2026-01-20
-- **Days in Limbo:** 65
+- **Days in Limbo:** 66
 
 **Discovery Sources:**
 
