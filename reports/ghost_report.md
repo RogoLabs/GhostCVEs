@@ -1,18 +1,19 @@
 # Ghost CVE Report
 
-**Generated:** 2026-03-28 09:21 UTC
+**Generated:** 2026-03-28 15:15 UTC
 
 ## Summary
 
-- **Active Ghosts:** 56
-- **Total CVEs Tracked:** 6501
-- **Discovery Sources:** 7872
-- **Oldest Ghost:** CVE-2026-1220 (66 days)
+- **Active Ghosts:** 57
+- **Total CVEs Tracked:** 6504
+- **Discovery Sources:** 7880
+- **Oldest Ghost:** CVE-2026-1220 (67 days)
 
 ## Ghost CVE Registry
 
 | CVE ID | Source | First Seen | Evidence |
 |--------|--------|------------|----------|
+| CVE-2026-4981 | Red Hat Security Data | 2026-03-28 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
 | CVE-2025-59490 | Debian Security Tracker | 2026-03-27 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-4851 | OSS Security | 2026-03-26 | [Link](https://seclists.org/oss-sec/2026/q1/392) |
 | CVE-2026-3836 | Debian Security Tracker | 2026-03-24 | [Link](https://security-tracker.debian.org/tracker/data/json) |
@@ -75,7 +76,7 @@
 ### CVE-2026-3184
 
 - **First Seen:** 2026-02-25
-- **Days in Limbo:** 30
+- **Days in Limbo:** 31
 
 **Discovery Sources:**
 
@@ -161,7 +162,7 @@
 ### CVE-2026-2574
 
 - **First Seen:** 2026-02-16
-- **Days in Limbo:** 39
+- **Days in Limbo:** 40
 
 **Discovery Sources:**
 
@@ -258,7 +259,7 @@
 ### CVE-2025-58151
 
 - **First Seen:** 2026-01-27
-- **Days in Limbo:** 59
+- **Days in Limbo:** 60
 
 **Discovery Sources:**
 
@@ -267,7 +268,7 @@
 ### CVE-2026-1220
 
 - **First Seen:** 2026-01-20
-- **Days in Limbo:** 66
+- **Days in Limbo:** 67
 
 **Discovery Sources:**
 
