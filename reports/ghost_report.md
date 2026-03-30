@@ -1,18 +1,23 @@
 # Ghost CVE Report
 
-**Generated:** 2026-03-30 15:17 UTC
+**Generated:** 2026-03-30 21:10 UTC
 
 ## Summary
 
-- **Active Ghosts:** 56
-- **Total CVEs Tracked:** 6470
-- **Discovery Sources:** 7896
+- **Active Ghosts:** 61
+- **Total CVEs Tracked:** 6485
+- **Discovery Sources:** 7913
 - **Oldest Ghost:** CVE-2026-1220 (69 days)
 
 ## Ghost CVE Registry
 
 | CVE ID | Source | First Seen | Evidence |
 |--------|--------|------------|----------|
+| CVE-2026-3689 | ZDI Advisories | 2026-03-30 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-227/) |
+| CVE-2026-3690 | ZDI Advisories | 2026-03-30 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-228/) |
+| CVE-2026-3691 | ZDI Advisories | 2026-03-30 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-229/) |
+| CVE-2026-5059 | ZDI Advisories | 2026-03-30 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-245/) |
+| CVE-2026-5058 | ZDI Advisories | 2026-03-30 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-246/) |
 | CVE-2026-4981 | Red Hat Security Data | 2026-03-28 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
 | CVE-2025-59490 | Debian Security Tracker | 2026-03-27 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-3836 | Debian Security Tracker | 2026-03-24 | [Link](https://security-tracker.debian.org/tracker/data/json) |
@@ -105,7 +110,7 @@
 ### CVE-2026-2470
 
 - **First Seen:** 2026-02-17
-- **Days in Limbo:** 40
+- **Days in Limbo:** 41
 
 **Discovery Sources:**
 
@@ -143,7 +148,7 @@
 ### CVE-2025-69691
 
 - **First Seen:** 2026-02-16
-- **Days in Limbo:** 41
+- **Days in Limbo:** 42
 
 **Discovery Sources:**
 
@@ -152,7 +157,7 @@
 ### CVE-2025-69690
 
 - **First Seen:** 2026-02-16
-- **Days in Limbo:** 41
+- **Days in Limbo:** 42
 
 **Discovery Sources:**
 
