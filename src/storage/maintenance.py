@@ -37,7 +37,7 @@ class DatabaseMaintenance:
                 "size_before": 0,
                 "size_after": 0,
                 "saved_bytes": 0,
-                "saved_percent": 0
+                "saved_percent": 0,
             }
 
         # Get size before
@@ -59,7 +59,7 @@ class DatabaseMaintenance:
             "size_before": size_before,
             "size_after": size_after,
             "saved_bytes": saved_bytes,
-            "saved_percent": saved_percent
+            "saved_percent": saved_percent,
         }
 
     def archive_old_sources(self, days: int = 90) -> int:
@@ -95,20 +95,26 @@ class DatabaseMaintenance:
             )
         """)
 
-        # Copy old sources to archive
-        cursor.execute("""
-            INSERT INTO discovery_sources_archive
+        # Copy old sources to archive (IGNORE duplicates from prior runs)
+        cursor.execute(
+            """
+            INSERT OR IGNORE INTO discovery_sources_archive
             SELECT * FROM discovery_sources
             WHERE discovered_at < ?
-        """, (cutoff,))
+        """,
+            (cutoff,),
+        )
 
         archived = cursor.rowcount
 
         # Delete old sources from main table
-        cursor.execute("""
+        cursor.execute(
+            """
             DELETE FROM discovery_sources
             WHERE discovered_at < ?
-        """, (cutoff,))
+        """,
+            (cutoff,),
+        )
 
         conn.commit()
         conn.close()
@@ -131,11 +137,14 @@ class DatabaseMaintenance:
         cutoff = datetime.utcnow() - timedelta(days=days)
 
         # Find resolved ghosts (no longer ghost status, old)
-        cursor.execute("""
+        cursor.execute(
+            """
             DELETE FROM ghost_cves
             WHERE is_ghost = 0
             AND last_checked < ?
-        """, (cutoff,))
+        """,
+            (cutoff,),
+        )
 
         cleaned = cursor.rowcount
 
@@ -158,7 +167,7 @@ class DatabaseMaintenance:
                 "active_ghosts": 0,
                 "total_sources": 0,
                 "archived_sources": 0,
-                "oldest_ghost_days": 0
+                "oldest_ghost_days": 0,
             }
 
         conn = sqlite3.connect(self.db_path)
@@ -197,7 +206,7 @@ class DatabaseMaintenance:
         """)
         oldest = cursor.fetchone()[0]
         if oldest:
-            oldest_date = datetime.fromisoformat(oldest.replace('Z', ''))
+            oldest_date = datetime.fromisoformat(oldest.replace("Z", ""))
             stats["oldest_ghost_days"] = (datetime.utcnow() - oldest_date).days
         else:
             stats["oldest_ghost_days"] = 0
@@ -261,6 +270,7 @@ class DatabaseMaintenance:
 
         # Copy database
         import shutil
+
         shutil.copy2(self.db_path, backup_file)
 
         # Keep only last 5 backups
