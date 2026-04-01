@@ -1,12 +1,12 @@
 # Ghost CVE Report
 
-**Generated:** 2026-03-31 21:17 UTC
+**Generated:** 2026-04-01 03:21 UTC
 
 ## Summary
 
 - **Active Ghosts:** 63
-- **Total CVEs Tracked:** 6506
-- **Discovery Sources:** 7945
+- **Total CVEs Tracked:** 6510
+- **Discovery Sources:** 7950
 - **Oldest Ghost:** CVE-2026-1220 (70 days)
 
 ## Ghost CVE Registry
@@ -92,7 +92,7 @@
 ### CVE-2026-2708
 
 - **First Seen:** 2026-02-20
-- **Days in Limbo:** 39
+- **Days in Limbo:** 40
 
 **Discovery Sources:**
 
@@ -102,7 +102,7 @@
 ### CVE-2026-2625
 
 - **First Seen:** 2026-02-18
-- **Days in Limbo:** 41
+- **Days in Limbo:** 42
 
 **Discovery Sources:**
 
@@ -121,7 +121,7 @@
 ### CVE-2026-2604
 
 - **First Seen:** 2026-02-17
-- **Days in Limbo:** 42
+- **Days in Limbo:** 43
 
 **Discovery Sources:**
 
@@ -131,7 +131,7 @@
 ### CVE-2026-2050
 
 - **First Seen:** 2026-02-17
-- **Days in Limbo:** 42
+- **Days in Limbo:** 43
 
 **Discovery Sources:**
 
@@ -140,7 +140,7 @@
 ### CVE-2026-2049
 
 - **First Seen:** 2026-02-17
-- **Days in Limbo:** 42
+- **Days in Limbo:** 43
 
 **Discovery Sources:**
 
@@ -178,7 +178,7 @@
 ### CVE-2025-14821
 
 - **First Seen:** 2026-02-11
-- **Days in Limbo:** 48
+- **Days in Limbo:** 49
 
 **Discovery Sources:**
 
@@ -188,7 +188,7 @@
 ### CVE-2026-1609
 
 - **First Seen:** 2026-02-10
-- **Days in Limbo:** 49
+- **Days in Limbo:** 50
 
 **Discovery Sources:**
 
@@ -197,7 +197,7 @@
 ### CVE-2026-1584
 
 - **First Seen:** 2026-02-10
-- **Days in Limbo:** 49
+- **Days in Limbo:** 50
 
 **Discovery Sources:**
 
@@ -207,7 +207,7 @@
 ### CVE-2025-65852
 
 - **First Seen:** 2026-02-07
-- **Days in Limbo:** 52
+- **Days in Limbo:** 53
 
 **Discovery Sources:**
 
@@ -216,7 +216,7 @@
 ### CVE-2026-1767
 
 - **First Seen:** 2026-02-03
-- **Days in Limbo:** 56
+- **Days in Limbo:** 57
 
 **Discovery Sources:**
 
@@ -226,7 +226,7 @@
 ### CVE-2026-1766
 
 - **First Seen:** 2026-02-03
-- **Days in Limbo:** 56
+- **Days in Limbo:** 57
 
 **Discovery Sources:**
 
@@ -236,7 +236,7 @@
 ### CVE-2026-1765
 
 - **First Seen:** 2026-02-03
-- **Days in Limbo:** 56
+- **Days in Limbo:** 57
 
 **Discovery Sources:**
 
@@ -246,7 +246,7 @@
 ### CVE-2026-1764
 
 - **First Seen:** 2026-02-03
-- **Days in Limbo:** 56
+- **Days in Limbo:** 57
 
 **Discovery Sources:**
 
@@ -256,7 +256,7 @@
 ### CVE-2025-63374
 
 - **First Seen:** 2026-02-03
-- **Days in Limbo:** 56
+- **Days in Limbo:** 57
 
 **Discovery Sources:**
 
