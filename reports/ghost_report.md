@@ -1,18 +1,19 @@
 # Ghost CVE Report
 
-**Generated:** 2026-04-11 03:26 UTC
+**Generated:** 2026-04-11 09:17 UTC
 
 ## Summary
 
-- **Active Ghosts:** 44
-- **Total CVEs Tracked:** 6646
-- **Discovery Sources:** 8249
+- **Active Ghosts:** 45
+- **Total CVEs Tracked:** 6649
+- **Discovery Sources:** 8252
 - **Oldest Ghost:** CVE-2026-1220 (80 days)
 
 ## Ghost CVE Registry
 
 | CVE ID | Source | First Seen | Evidence |
 |--------|--------|------------|----------|
+| CVE-2026-3865 | OSS Security | 2026-04-11 | [Link](https://seclists.org/oss-sec/2026/q2/97) |
 | CVE-2026-1403 | Debian Security Tracker | 2026-04-09 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-5266 | Debian Security Tracker | 2026-04-03 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2025-13763 | Debian Security Tracker | 2026-04-01 | [Link](https://security-tracker.debian.org/tracker/data/json) |
