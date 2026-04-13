@@ -1,13 +1,13 @@
 # Ghost CVE Report
 
-**Generated:** 2026-04-13 09:03 UTC
+**Generated:** 2026-04-13 15:13 UTC
 
 ## Summary
 
 - **Active Ghosts:** 45
 - **Total CVEs Tracked:** 6602
-- **Discovery Sources:** 8266
-- **Oldest Ghost:** CVE-2026-1220 (82 days)
+- **Discovery Sources:** 8270
+- **Oldest Ghost:** CVE-2026-1220 (83 days)
 
 ## Ghost CVE Registry
 
@@ -294,7 +294,7 @@
 ### CVE-2026-2574
 
 - **First Seen:** 2026-02-16
-- **Days in Limbo:** 55
+- **Days in Limbo:** 56
 
 **Discovery Sources:**
 
@@ -371,7 +371,7 @@
 ### CVE-2025-58151
 
 - **First Seen:** 2026-01-27
-- **Days in Limbo:** 75
+- **Days in Limbo:** 76
 
 **Discovery Sources:**
 
@@ -380,7 +380,7 @@
 ### CVE-2026-1220
 
 - **First Seen:** 2026-01-20
-- **Days in Limbo:** 82
+- **Days in Limbo:** 83
 
 **Discovery Sources:**
 
