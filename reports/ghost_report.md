@@ -1,18 +1,19 @@
 # Ghost CVE Report
 
-**Generated:** 2026-04-17 14:33 UTC
+**Generated:** 2026-04-17 20:53 UTC
 
 ## Summary
 
-- **Active Ghosts:** 56
-- **Total CVEs Tracked:** 6688
-- **Discovery Sources:** 8420
+- **Active Ghosts:** 57
+- **Total CVEs Tracked:** 6689
+- **Discovery Sources:** 8421
 - **Oldest Ghost:** CVE-2026-1220 (87 days)
 
 ## Ghost CVE Registry
 
 | CVE ID | Source | First Seen | Evidence |
 |--------|--------|------------|----------|
+| CVE-2025-66335 | OSS Security | 2026-04-17 | [Link](https://seclists.org/oss-sec/2026/q2/158) |
 | CVE-2026-6367 | Drupal Security Advisories | 2026-04-15 | [Link](https://www.drupal.org/sa-core-2026-003) |
 | CVE-2026-6366 | Drupal Security Advisories | 2026-04-15 | [Link](https://www.drupal.org/sa-core-2026-002) |
 | CVE-2026-6365 | Drupal Security Advisories | 2026-04-15 | [Link](https://www.drupal.org/sa-core-2026-001) |
@@ -75,7 +76,7 @@
 ### CVE-2026-3312
 
 - **First Seen:** 2026-03-17
-- **Days in Limbo:** 30
+- **Days in Limbo:** 31
 
 **Discovery Sources:**
 
@@ -269,7 +270,7 @@
 ### CVE-2026-2470
 
 - **First Seen:** 2026-02-17
-- **Days in Limbo:** 58
+- **Days in Limbo:** 59
 
 **Discovery Sources:**
 
