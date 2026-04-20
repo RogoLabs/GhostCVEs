@@ -1,18 +1,20 @@
 # Ghost CVE Report
 
-**Generated:** 2026-04-20 14:41 UTC
+**Generated:** 2026-04-20 20:41 UTC
 
 ## Summary
 
-- **Active Ghosts:** 57
-- **Total CVEs Tracked:** 6666
-- **Discovery Sources:** 8438
+- **Active Ghosts:** 59
+- **Total CVEs Tracked:** 6668
+- **Discovery Sources:** 8444
 - **Oldest Ghost:** CVE-2026-1220 (90 days)
 
 ## Ghost CVE Registry
 
 | CVE ID | Source | First Seen | Evidence |
 |--------|--------|------------|----------|
+| CVE-2026-5265 | Debian Security Tracker | 2026-04-20 | [Link](https://security-tracker.debian.org/tracker/data/json) |
+| CVE-2026-5367 | Debian Security Tracker | 2026-04-20 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2025-54505 | Debian Security Tracker | 2026-04-18 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-6367 | Drupal Security Advisories | 2026-04-15 | [Link](https://www.drupal.org/sa-core-2026-003) |
 | CVE-2026-6366 | Drupal Security Advisories | 2026-04-15 | [Link](https://www.drupal.org/sa-core-2026-002) |
@@ -85,7 +87,7 @@
 ### CVE-2026-3312
 
 - **First Seen:** 2026-03-17
-- **Days in Limbo:** 33
+- **Days in Limbo:** 34
 
 **Discovery Sources:**
 
@@ -279,7 +281,7 @@
 ### CVE-2026-2470
 
 - **First Seen:** 2026-02-17
-- **Days in Limbo:** 61
+- **Days in Limbo:** 62
 
 **Discovery Sources:**
 
