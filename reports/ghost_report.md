@@ -1,18 +1,19 @@
 # Ghost CVE Report
 
-**Generated:** 2026-04-21 15:29 UTC
+**Generated:** 2026-04-21 21:33 UTC
 
 ## Summary
 
-- **Active Ghosts:** 59
-- **Total CVEs Tracked:** 6679
-- **Discovery Sources:** 8456
+- **Active Ghosts:** 60
+- **Total CVEs Tracked:** 6722
+- **Discovery Sources:** 8499
 - **Oldest Ghost:** CVE-2026-1220 (91 days)
 
 ## Ghost CVE Registry
 
 | CVE ID | Source | First Seen | Evidence |
 |--------|--------|------------|----------|
+| CVE-2026-4367 | OSS Security | 2026-04-21 | [Link](https://seclists.org/oss-sec/2026/q2/192) |
 | CVE-2026-5265 | Debian Security Tracker | 2026-04-20 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-5367 | Debian Security Tracker | 2026-04-20 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2025-54505 | Debian Security Tracker | 2026-04-18 | [Link](https://security-tracker.debian.org/tracker/data/json) |
@@ -281,7 +282,7 @@
 ### CVE-2026-2470
 
 - **First Seen:** 2026-02-17
-- **Days in Limbo:** 62
+- **Days in Limbo:** 63
 
 **Discovery Sources:**
 
@@ -320,7 +321,7 @@
 ### CVE-2025-69691
 
 - **First Seen:** 2026-02-16
-- **Days in Limbo:** 63
+- **Days in Limbo:** 64
 
 **Discovery Sources:**
 
@@ -329,7 +330,7 @@
 ### CVE-2025-69690
 
 - **First Seen:** 2026-02-16
-- **Days in Limbo:** 63
+- **Days in Limbo:** 64
 
 **Discovery Sources:**
 
