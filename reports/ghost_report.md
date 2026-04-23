@@ -1,13 +1,13 @@
 # Ghost CVE Report
 
-**Generated:** 2026-04-23 09:46 UTC
+**Generated:** 2026-04-23 15:12 UTC
 
 ## Summary
 
-- **Active Ghosts:** 65
-- **Total CVEs Tracked:** 6752
-- **Discovery Sources:** 8582
-- **Oldest Ghost:** CVE-2026-1220 (92 days)
+- **Active Ghosts:** 64
+- **Total CVEs Tracked:** 6753
+- **Discovery Sources:** 8583
+- **Oldest Ghost:** CVE-2026-1220 (93 days)
 
 ## Ghost CVE Registry
 
@@ -36,7 +36,6 @@
 | CVE-2026-3865 | OSS Security | 2026-04-11 | [Link](https://seclists.org/oss-sec/2026/q2/97) |
 | CVE-2026-1403 | Debian Security Tracker | 2026-04-09 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-5266 | Debian Security Tracker | 2026-04-03 | [Link](https://security-tracker.debian.org/tracker/data/json) |
-| CVE-2025-13763 | Debian Security Tracker | 2026-04-01 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-4981 | Red Hat Security Data | 2026-03-28 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
 | CVE-2025-59490 | Debian Security Tracker | 2026-03-27 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-3836 | Debian Security Tracker | 2026-03-24 | [Link](https://security-tracker.debian.org/tracker/data/json) |
@@ -81,6 +80,16 @@
 
 ## Critical Ghosts (30+ Days)
 
+### CVE-2026-3836
+
+- **First Seen:** 2026-03-24
+- **Days in Limbo:** 30
+
+**Discovery Sources:**
+
+- [Debian Security Tracker](https://security-tracker.debian.org/tracker/data/json) (2026-03-25)
+- [Red Hat Security Advisories](https://access.redhat.com/hydra/rest/securitydata/cve.json) (2026-03-24)
+
 ### CVE-2026-3842
 
 - **First Seen:** 2026-03-20
@@ -93,7 +102,7 @@
 ### CVE-2026-3312
 
 - **First Seen:** 2026-03-17
-- **Days in Limbo:** 36
+- **Days in Limbo:** 37
 
 **Discovery Sources:**
 
@@ -344,7 +353,7 @@
 ### CVE-2026-2574
 
 - **First Seen:** 2026-02-16
-- **Days in Limbo:** 65
+- **Days in Limbo:** 66
 
 **Discovery Sources:**
 
@@ -421,7 +430,7 @@
 ### CVE-2025-58151
 
 - **First Seen:** 2026-01-27
-- **Days in Limbo:** 85
+- **Days in Limbo:** 86
 
 **Discovery Sources:**
 
@@ -430,7 +439,7 @@
 ### CVE-2026-1220
 
 - **First Seen:** 2026-01-20
-- **Days in Limbo:** 92
+- **Days in Limbo:** 93
 
 **Discovery Sources:**
 
