@@ -1,13 +1,13 @@
 # Ghost CVE Report
 
-**Generated:** 2026-04-27 09:47 UTC
+**Generated:** 2026-04-27 15:12 UTC
 
 ## Summary
 
 - **Active Ghosts:** 62
 - **Total CVEs Tracked:** 6675
-- **Discovery Sources:** 8609
-- **Oldest Ghost:** CVE-2026-1220 (96 days)
+- **Discovery Sources:** 8610
+- **Oldest Ghost:** CVE-2026-1220 (97 days)
 
 ## Ghost CVE Registry
 
@@ -78,6 +78,15 @@
 
 ## Critical Ghosts (30+ Days)
 
+### CVE-2026-4981
+
+- **First Seen:** 2026-03-28
+- **Days in Limbo:** 30
+
+**Discovery Sources:**
+
+- [Red Hat Security Data](https://access.redhat.com/hydra/rest/securitydata/cve.json) (2026-03-28)
+
 ### CVE-2025-59490
 
 - **First Seen:** 2026-03-27
@@ -90,7 +99,7 @@
 ### CVE-2026-3836
 
 - **First Seen:** 2026-03-24
-- **Days in Limbo:** 33
+- **Days in Limbo:** 34
 
 **Discovery Sources:**
 
@@ -109,7 +118,7 @@
 ### CVE-2026-3312
 
 - **First Seen:** 2026-03-17
-- **Days in Limbo:** 40
+- **Days in Limbo:** 41
 
 **Discovery Sources:**
 
@@ -350,7 +359,7 @@
 ### CVE-2026-2574
 
 - **First Seen:** 2026-02-16
-- **Days in Limbo:** 69
+- **Days in Limbo:** 70
 
 **Discovery Sources:**
 
@@ -427,7 +436,7 @@
 ### CVE-2025-58151
 
 - **First Seen:** 2026-01-27
-- **Days in Limbo:** 89
+- **Days in Limbo:** 90
 
 **Discovery Sources:**
 
@@ -436,7 +445,7 @@
 ### CVE-2026-1220
 
 - **First Seen:** 2026-01-20
-- **Days in Limbo:** 96
+- **Days in Limbo:** 97
 
 **Discovery Sources:**
 
