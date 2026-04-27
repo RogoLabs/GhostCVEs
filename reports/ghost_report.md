@@ -1,12 +1,12 @@
 # Ghost CVE Report
 
-**Generated:** 2026-04-27 15:12 UTC
+**Generated:** 2026-04-27 21:26 UTC
 
 ## Summary
 
-- **Active Ghosts:** 62
-- **Total CVEs Tracked:** 6675
-- **Discovery Sources:** 8610
+- **Active Ghosts:** 61
+- **Total CVEs Tracked:** 6686
+- **Discovery Sources:** 8621
 - **Oldest Ghost:** CVE-2026-1220 (97 days)
 
 ## Ghost CVE Registry
@@ -20,7 +20,6 @@
 | CVE-2026-6856 | Red Hat Security Data | 2026-04-23 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
 | CVE-2026-6406 | ZDI Advisories | 2026-04-23 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-299/) |
 | CVE-2026-4367 | Debian Security Tracker | 2026-04-21 | [Link](https://security-tracker.debian.org/tracker/data/json) |
-| CVE-2025-54505 | Debian Security Tracker | 2026-04-18 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-6367 | Drupal Security Advisories | 2026-04-15 | [Link](https://www.drupal.org/sa-core-2026-003) |
 | CVE-2026-6366 | Drupal Security Advisories | 2026-04-15 | [Link](https://www.drupal.org/sa-core-2026-002) |
 | CVE-2026-6365 | Drupal Security Advisories | 2026-04-15 | [Link](https://www.drupal.org/sa-core-2026-001) |
@@ -302,7 +301,7 @@
 ### CVE-2026-2470
 
 - **First Seen:** 2026-02-17
-- **Days in Limbo:** 68
+- **Days in Limbo:** 69
 
 **Discovery Sources:**
 
@@ -341,7 +340,7 @@
 ### CVE-2025-69691
 
 - **First Seen:** 2026-02-16
-- **Days in Limbo:** 69
+- **Days in Limbo:** 70
 
 **Discovery Sources:**
 
@@ -350,7 +349,7 @@
 ### CVE-2025-69690
 
 - **First Seen:** 2026-02-16
-- **Days in Limbo:** 69
+- **Days in Limbo:** 70
 
 **Discovery Sources:**
 
