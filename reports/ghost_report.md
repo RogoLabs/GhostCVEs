@@ -1,18 +1,26 @@
 # Ghost CVE Report
 
-**Generated:** 2026-04-29 03:20 UTC
+**Generated:** 2026-04-29 09:57 UTC
 
 ## Summary
 
-- **Active Ghosts:** 62
-- **Total CVEs Tracked:** 6709
-- **Discovery Sources:** 8654
+- **Active Ghosts:** 70
+- **Total CVEs Tracked:** 6747
+- **Discovery Sources:** 8692
 - **Oldest Ghost:** CVE-2026-1220 (98 days)
 
 ## Ghost CVE Registry
 
 | CVE ID | Source | First Seen | Evidence |
 |--------|--------|------------|----------|
+| CVE-2026-7168 | OSS Security | 2026-04-29 | [Link](https://seclists.org/oss-sec/2026/q2/272) |
+| CVE-2026-6276 | OSS Security | 2026-04-29 | [Link](https://seclists.org/oss-sec/2026/q2/271) |
+| CVE-2026-7009 | OSS Security | 2026-04-29 | [Link](https://seclists.org/oss-sec/2026/q2/270) |
+| CVE-2026-6253 | OSS Security | 2026-04-29 | [Link](https://seclists.org/oss-sec/2026/q2/269) |
+| CVE-2026-6429 | OSS Security | 2026-04-29 | [Link](https://seclists.org/oss-sec/2026/q2/268) |
+| CVE-2026-5773 | OSS Security | 2026-04-29 | [Link](https://seclists.org/oss-sec/2026/q2/267) |
+| CVE-2026-5545 | OSS Security | 2026-04-29 | [Link](https://seclists.org/oss-sec/2026/q2/266) |
+| CVE-2026-4873 | OSS Security | 2026-04-29 | [Link](https://seclists.org/oss-sec/2026/q2/265) |
 | CVE-2026-6691 | Debian Security Tracker | 2026-04-29 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-5763 | Debian Security Tracker | 2026-04-23 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-5744 | Debian Security Tracker | 2026-04-23 | [Link](https://security-tracker.debian.org/tracker/data/json) |
