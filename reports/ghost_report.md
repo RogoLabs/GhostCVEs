@@ -1,18 +1,19 @@
 # Ghost CVE Report
 
-**Generated:** 2026-05-01 03:43 UTC
+**Generated:** 2026-05-01 10:20 UTC
 
 ## Summary
 
-- **Active Ghosts:** 76
-- **Total CVEs Tracked:** 7670
-- **Discovery Sources:** 9766
-- **Oldest Ghost:** CVE-2026-1220 (100 days)
+- **Active Ghosts:** 75
+- **Total CVEs Tracked:** 7649
+- **Discovery Sources:** 9233
+- **Oldest Ghost:** CVE-2025-63374 (87 days)
 
 ## Ghost CVE Registry
 
 | CVE ID | Source | First Seen | Evidence |
 |--------|--------|------------|----------|
+| CVE-2026-1220 | Debian Security Tracker | 2026-05-01 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-23556 | Debian Security Tracker | 2026-05-01 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-23557 | Debian Security Tracker | 2026-05-01 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-22020 | Red Hat Security Data | 2026-05-01 | [Link](https://access.redhat.com/hydra/rest/securitydata/cve.json) |
@@ -87,8 +88,6 @@
 | CVE-2026-1765 | Debian Security Tracker | 2026-02-03 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2026-1764 | Debian Security Tracker | 2026-02-03 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 | CVE-2025-63374 | ZDI Advisories | 2026-02-03 | [Link](http://www.zerodayinitiative.com/advisories/ZDI-26-059/) |
-| CVE-2025-58151 | OSS Security | 2026-01-27 | [Link](https://seclists.org/oss-sec/2026/q1/118) |
-| CVE-2026-1220 | Debian Security Tracker | 2026-01-20 | [Link](https://security-tracker.debian.org/tracker/data/json) |
 
 ## Critical Ghosts (30+ Days)
 
@@ -446,25 +445,6 @@
 **Discovery Sources:**
 
 - [ZDI Advisories](http://www.zerodayinitiative.com/advisories/ZDI-26-059/) (2026-02-03)
-
-### CVE-2025-58151
-
-- **First Seen:** 2026-01-27
-- **Days in Limbo:** 93
-
-**Discovery Sources:**
-
-- [OSS Security](https://seclists.org/oss-sec/2026/q1/118) (2026-01-27)
-
-### CVE-2026-1220
-
-- **First Seen:** 2026-01-20
-- **Days in Limbo:** 100
-
-**Discovery Sources:**
-
-- [Debian Security Tracker](https://security-tracker.debian.org/tracker/data/json) (2026-01-21)
-- [Chrome Releases](http://chromereleases.googleblog.com/feeds/7996239757113969332/comments/default) (2026-01-20)
 
 
 ---
