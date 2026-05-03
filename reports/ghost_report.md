@@ -1,6 +1,6 @@
 # Ghost CVE Report
 
-**Generated:** 2026-05-03 10:16 UTC
+**Generated:** 2026-05-03 15:37 UTC
 
 ## Summary
 
@@ -91,10 +91,19 @@
 
 ## Critical Ghosts (30+ Days)
 
+### CVE-2026-5266
+
+- **First Seen:** 2026-04-03
+- **Days in Limbo:** 30
+
+**Discovery Sources:**
+
+- [Debian Security Tracker](https://security-tracker.debian.org/tracker/data/json) (2026-04-03)
+
 ### CVE-2026-4981
 
 - **First Seen:** 2026-03-28
-- **Days in Limbo:** 35
+- **Days in Limbo:** 36
 
 **Discovery Sources:**
 
@@ -112,7 +121,7 @@
 ### CVE-2026-3836
 
 - **First Seen:** 2026-03-24
-- **Days in Limbo:** 39
+- **Days in Limbo:** 40
 
 **Discovery Sources:**
 
@@ -131,7 +140,7 @@
 ### CVE-2026-3312
 
 - **First Seen:** 2026-03-17
-- **Days in Limbo:** 46
+- **Days in Limbo:** 47
 
 **Discovery Sources:**
 
@@ -372,7 +381,7 @@
 ### CVE-2026-2574
 
 - **First Seen:** 2026-02-16
-- **Days in Limbo:** 75
+- **Days in Limbo:** 76
 
 **Discovery Sources:**
 
