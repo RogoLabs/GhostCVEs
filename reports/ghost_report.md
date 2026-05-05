@@ -1,6 +1,6 @@
 # Ghost CVE Report
 
-**Generated:** 2026-05-05 03:22 UTC
+**Generated:** 2026-05-05 10:11 UTC
 
 ## Summary
 
