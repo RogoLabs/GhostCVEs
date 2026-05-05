@@ -175,36 +175,15 @@ jobs:
             python main.py --dashboard --no-banner 2>&1 | head -50 >> $GITHUB_STEP_SUMMARY || echo "Dashboard generation failed" >> $GITHUB_STEP_SUMMARY
           fi
 
-      - name: 📤 Commit Database Updates
+      - name: 📤 Commit Dashboard Updates
         if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
-          # Optimize database before commit (reduces size 20-30%)
-          echo "Optimizing database..."
-          python -c "
-          import sqlite3
-          from pathlib import Path
-
-          db_path = 'ghost_log.db'
-          if Path(db_path).exists():
-              size_before = Path(db_path).stat().st_size / (1024 * 1024)
-
-              conn = sqlite3.connect(db_path)
-              conn.execute('VACUUM')
-              conn.execute('ANALYZE')
-              conn.close()
-
-              size_after = Path(db_path).stat().st_size / (1024 * 1024)
-              saved = ((size_before - size_after) / size_before * 100) if size_before > 0 else 0
-
-              print(f'Database optimized: {size_before:.2f}MB -> {size_after:.2f}MB (saved {saved:.1f}%)')
-          " || echo "Database optimization skipped"
-
-          # Add database and reports
-          git add ghost_log.db || true
-          git add reports/ghost_report*.{json,csv,md} || true
+          # Only commit the latest summary report and docs (not DB or timestamped reports)
+          git add reports/ghost_report.md || true
+          git add docs/_data/ || true
 
           # Check if there are changes to commit
           if git diff --staged --quiet; then
@@ -222,36 +201,17 @@ jobs:
 
           git commit -m "🔍 Ghost Hunt: ${TIMESTAMP} | ${GHOST_COUNT} Ghosts tracked [via ${{ github.event_name }}]"
 
-          # Enhanced retry logic with exponential backoff
-          MAX_RETRIES=5
+          MAX_RETRIES=3
           RETRY_DELAY=10
 
           for i in $(seq 1 $MAX_RETRIES); do
-            echo "Push attempt $i of $MAX_RETRIES"
-
-            # Pull with rebase first
-            if git pull --rebase origin ${{ github.ref_name }}; then
-              echo "✓ Rebase successful"
-            else
-              echo "⚠ Rebase failed, attempting merge"
-              git rebase --abort || true
-              git pull --no-rebase origin ${{ github.ref_name }} || true
-            fi
-
-            # Try to push with extended timeout
-            if timeout 300 git push; then
+            if git pull --rebase origin ${{ github.ref_name }} && timeout 120 git push; then
               echo "✓ Push successful on attempt $i"
               exit 0
-            else
-              EXIT_CODE=$?
-              echo "✗ Push attempt $i failed (exit code: $EXIT_CODE)"
-
-              if [ $i -lt $MAX_RETRIES ]; then
-                echo "Waiting ${RETRY_DELAY}s before retry..."
-                sleep $RETRY_DELAY
-                RETRY_DELAY=$((RETRY_DELAY * 2))  # Exponential backoff: 10s -> 20s -> 40s -> 80s -> 160s
-              fi
             fi
+            echo "✗ Push attempt $i failed, retrying in ${RETRY_DELAY}s..."
+            sleep $RETRY_DELAY
+            RETRY_DELAY=$((RETRY_DELAY * 2))
           done
 
           echo "::error::Failed to push after $MAX_RETRIES attempts"

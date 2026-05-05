@@ -208,3 +208,11 @@ __marimo__/
 data/cvelistV5/
 data/nvd.json
 .worktrees/
+
+# Database (use Actions cache + artifacts instead of git)
+ghost_log.db
+
+# Timestamped reports (use artifacts; only ghost_report.md is committed)
+reports/ghost_report_*.json
+reports/ghost_report_*.csv
+reports/ghost_report_*.md
