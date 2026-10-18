@@ -50,15 +50,16 @@ class CVEValidationConfig:
     # Updated limits based on actual CVE allocations (some CNAs have large blocks)
     max_id_by_year: dict[int, int] = field(default_factory=lambda: {
         2025: 100000,  # Raised: published CVEs exist above 70k
-        2026: 30000,   # We're in March 2026, raised to accommodate large CNA blocks
+        2026: 300000,  # 2026 IDs above 111k were already published by October
         2027: 0,       # Future year - no CVEs yet
         2028: 0,
         2029: 0,
     })
 
     # For current year, maximum plausible ID based on month
-    # Tightened from 6000 to 5000 to reduce false positives
-    max_id_per_month: int = 5000
+    # 2026 allocation is running at ~11.5k/month; 25k leaves ~2x headroom
+    # while still rejecting obvious fakes (e.g. 6-digit IDs early in the year)
+    max_id_per_month: int = 25000
     
     # Suspicious patterns to reject
     reject_all_zeros: bool = True          # CVE-2025-0000000
