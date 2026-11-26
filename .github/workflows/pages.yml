@@ -71,14 +71,26 @@ jobs:
         with:
           path: docs
 
+      # deploy-pages intermittently fails with "Fetching artifact metadata failed"
+      # even after a successful upload. Retry once after a short wait.
       - name: 🚀 Deploy to GitHub Pages
         id: deployment
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+
+      - name: ⏳ Wait before retrying deploy
+        if: steps.deployment.outcome == 'failure'
+        run: sleep 60
+
+      - name: 🚀 Deploy to GitHub Pages (retry)
+        id: deployment_retry
+        if: steps.deployment.outcome == 'failure'
         uses: actions/deploy-pages@v4
 
       - name: ✅ Deployment Complete
         run: |
           echo "## 🚀 Dashboard Deployed" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "Dashboard URL: ${{ steps.deployment.outputs.page_url }}" >> $GITHUB_STEP_SUMMARY
+          echo "Dashboard URL: ${{ steps.deployment.outputs.page_url || steps.deployment_retry.outputs.page_url }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "The Ghost CVE dashboard has been successfully deployed!" >> $GITHUB_STEP_SUMMARY
